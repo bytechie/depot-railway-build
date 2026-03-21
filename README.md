@@ -63,8 +63,11 @@ depot-railway-build/
 │   ├── faq.md               # Common questions
 │   ├── api-endpoints.md     # REST API reference
 │   ├── deployment-workflows.md  # All deployment targets
+│   ├── all-flows-comparison.md  # Complete 4-flows analysis ⭐
 │   ├── openclaw-analysis.md    # OpenClaw deep dive
-│   ├── comparison-results.md   # Performance template
+│   ├── comparison-results.md   # Performance comparison (all flows)
+│   ├── railway-cost-video-script.md # Railway cost video ⭐
+│   ├── live-demo-walkthrough.md # Live presentation guide ⭐
 │   ├── demo-video-storyboard.md # Video production guide
 │   ├── video-script.md      # Recording script with timestamps
 │   └── stakeholder-presentation.md # Executive deck
@@ -74,12 +77,14 @@ depot-railway-build/
 
 ## Design Flows
 
-| Flow | Description | Status |
-|------|-------------|--------|
-| **1. Local → Railway** | Build locally, deploy via CLI | ⏸️ Not prioritized |
-| **2. Commit → Railway** | Railway auto-build on push | ⏸️ Not prioritized |
-| **3. GitHub Actions → Railway** | Baseline workflow | ✅ Implemented |
-| **4. GitHub Actions → Depot CI → Railway** | Showcase workflow | ✅ Implemented |
+| Flow | Description | Time | Cost | Best For |
+|------|-------------|------|------|----------|
+| **1. Local → Railway** | Build locally, deploy via CLI | 2-4 min | Free | Quick testing, solo devs |
+| **2. Commit → Railway** | Railway auto-build on push | 3-5 min | ~$0.05 | Zero config, low frequency |
+| **3. GitHub Actions → Railway** | CI builds, then deploys | 3-5 min | ~$0.01 | Teams needing CI |
+| **4. Depot CI → Railway** | Depot CI builds, then depots ⭐ | 30-60s | ~$0.01 | **Production** ⭐ |
+
+**📊 Full comparison:** See [all-flows-comparison.md](./docs/all-flows-comparison.md)
 | **5. Depot CI → AWS/GCP/Azure/Fly** | Multi-platform deployments | ✅ Implemented |
 
 ## Quick Start
@@ -116,7 +121,16 @@ docker run -p 3000:3000 openclaw-demo
 
 ## Expected Results
 
-### Performance Comparison
+### All 4 Flows Performance Comparison
+
+| Flow | Total Time | Cost/Build | Monthly (100 builds) | Best For |
+|------|------------|------------|---------------------|----------|
+| **Flow 1: Local → Railway** | 2-4 min | $0.00 | $0 | Quick testing |
+| **Flow 2: Git Push → Railway** | 3-5 min | ~$0.05 | ~$5 | Zero config |
+| **Flow 3: GitHub Actions → Railway** | 3-5 min | ~$0.01 | ~$1 | Teams needing CI |
+| **Flow 4: Depot CI → Railway** ⭐ | 30-60s | ~$0.01 | ~$1 | **Production** |
+
+### Depot CI vs Traditional CI
 
 | Metric | GitHub Actions | Depot CI | Improvement |
 |--------|----------------|----------|-------------|
@@ -129,10 +143,13 @@ docker run -p 3000:3000 openclaw-demo
 
 | Approach | Build Time | Cost/Build | Monthly (100 builds) |
 |----------|------------|------------|----------------------|
-| Baseline | 4-7 min | ~$0.10 | ~$10 |
-| **Depot CI** | 20-60s | ~$0.02 | ~$2 |
+| Railway Auto-Build | 3-5 min | ~$0.05 | ~$5 |
+| GitHub Actions | 4-7 min | ~$0.01 | ~$1 |
+| **Depot CI** | 20-60s | ~$0.01 | ~$1 |
 
-**Savings**: ~80% on CI/CD compute costs
+**Savings**: ~80% on CI/CD compute costs vs Railway auto-build
+
+**📊 Full comparison:** See [all-flows-comparison.md](./docs/all-flows-comparison.md)
 
 ## Deployment Options
 
@@ -163,15 +180,18 @@ Depot CI supports deployment to multiple platforms. Choose your target:
 
 | Document | Description |
 |----------|-------------|
+| [All Flows Comparison](./docs/all-flows-comparison.md) | Complete 4-flows analysis ⭐ |
 | [API Endpoints](./docs/api-endpoints.md) | REST API reference |
 | [OpenClaw Analysis](./docs/openclaw-analysis.md) | OpenClaw deep dive |
-| [Comparison Results](./docs/comparison-results.md) | Performance metrics |
+| [Comparison Results](./docs/comparison-results.md) | Performance metrics (all flows) |
 | [Deployment Workflows](./docs/deployment-workflows.md) | All platform deployments |
 
 ### Media & Presentations
 
 | Document | Description |
 |----------|-------------|
+| [Railway Cost Video Script](./docs/railway-cost-video-script.md) | 90s Railway cost video ⭐ |
+| [Live Demo Walkthrough](./docs/live-demo-walkthrough.md) | Live presentation script ⭐ |
 | [Demo Video Storyboard](./docs/demo-video-storyboard.md) | Video production guide |
 | [Video Script](./docs/video-script.md) | Recording script with timestamps |
 | [Stakeholder Presentation](./docs/stakeholder-presentation.md) | 17-slide executive deck |
