@@ -1,7 +1,7 @@
 # Depot CI Demo Video Script
 
 **Title**: "Depot CI: 40x Faster Builds for AI Development"
-**Duration**: 7:00 (updated)
+**Duration**: 7:45 (updated)
 **Format**: 16:9 (1920x1080)
 **Style**: Screen recording + voiceover with motion graphics overlays
 
@@ -355,9 +355,41 @@ GITHUB ACTIONS                    DEPOT CI
 
 ---
 
-## Section 3: The Demo (3:10 - 4:40)
+### 3:10 - 3:20 | The Security Bonus
 
-### 3:10 - 3:25 | Introducing OpenClaw
+**[VISUAL]** Diagram showing isolated sandboxes:
+
+```text
+┌─────────────────────────────────────────────────────────────────┐
+│                    ISOLATED SANDBOXES                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐        │
+│  │   Job A     │    │   Job B     │    │   Job C     │        │
+│  │   Sandbox   │    │   Sandbox   │    │   Sandbox   │        │
+│  │             │    │             │    │             │        │
+│  │  • Secrets  │    │  • Secrets  │    │  • Secrets  │        │
+│  │  • Isolated │    │  • Isolated │    │  • Isolated │        │
+│  │  • Destroyed│    │  • Destroyed│    │  • Destroyed│        │
+│  └─────────────┘    └─────────────┘    └─────────────┘        │
+│                                                                 │
+│  Never shared. Always secure.                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**[VOICEOVER]**
+"Every job runs in a dedicated sandbox. Never shared. Always destroyed after use. Your secrets stay yours. Your builds stay isolated."
+
+**[VISUAL]** Lock icon animation, shield appears around each sandbox
+
+**[VOICEOVER]**
+"Security isn't an afterthought — it's built in."
+
+---
+
+## Section 3: The Demo (3:20 - 4:50)
+
+### 3:20 - 3:35 | Introducing OpenClaw
 
 **[SCREEN]** OpenClaw website (openclaw.ai)
 
@@ -375,7 +407,7 @@ GITHUB ACTIONS                    DEPOT CI
 
 ---
 
-### 3:25 - 3:40 | The Tech Stack
+### 3:35 - 3:50 | The Tech Stack
 
 **[SCREEN]** VS Code showing the sample app:
 - TypeScript files
@@ -392,7 +424,7 @@ GITHUB ACTIONS                    DEPOT CI
 
 ---
 
-### 3:40 - 4:20 | The Comparison ⭐
+### 3:50 - 4:30 | The Comparison ⭐
 
 **[VISUAL]** Split screen appears:
 
@@ -436,7 +468,7 @@ Depot CI:       0:08 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ COMPLETE
 
 ---
 
-### 4:20 - 4:35 | The Results
+### 4:30 - 4:45 | The Results
 
 **[VISUAL]** Both screens show green checkmarks
 
@@ -466,7 +498,7 @@ Depot CI:       0:08 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ COMPLETE
 
 ---
 
-### 4:35 - 4:40 | Debugging Superpower ⭐
+### 4:45 - 4:55 | Debugging Superpower ⭐
 
 **[VISUAL]** Quick animation showing Depot CI dashboard:
 
@@ -490,6 +522,31 @@ Depot CI:       0:08 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ COMPLETE
 
 **[VISUAL]** Animation shows "Replay from step" button being clicked, job restarting from that step
 
+**[VISUAL]** Dashboard showing CPU/memory graphs, step timing metrics:
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│  JOB METRICS                                                 │
+├─────────────────────────────────────────────────────────────┤
+│  CPU Usage    ┌─────────────────────────────────────┐       │
+│  100% ─       │▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│       │
+│   50% ─       └─────────────────────────────────────┘       │
+│    0% ─                                              45s    │
+│                                                             │
+│  Memory      ┌─────────────────────────────────────┐       │
+│  8GB  ─       │▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░│       │
+│  4GB  ─       └─────────────────────────────────────┘       │
+│  0GB  ─                                              45s    │
+│                                                             │
+│  Step Timing: Checkout 2s │ Setup 8s │ Install 12s │ Build 45s │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**[VOICEOVER]**
+"Full observability. CPU usage, memory metrics, step-by-step timing. You don't just see that it failed — you see exactly why, exactly where, and exactly how to fix it."
+
+**[VISUAL]** Animation shows "Replay from step" button being clicked, job restarting from that step
+
 **[VOICEOVER]**
 "Or SSH directly into the running sandbox. Full observability, full control."
 
@@ -500,7 +557,7 @@ Depot CI:       0:08 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ COMPLETE
 
 ---
 
-### 4:40 - 4:45 | The Impact Statement
+### 4:55 - 5:00 | The Impact Statement
 
 **[VISUAL]** Both deployments show "Service live at..." URLs
 
@@ -509,9 +566,9 @@ Depot CI:       0:08 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ COMPLETE
 
 ---
 
-## Section 3.5: AI-Native CI (4:45 - 5:20)
+## Section 3.5: AI-Native CI (5:00 - 5:35)
 
-### 4:45 - 4:55 | AI Failure Diagnosis
+### 5:00 - 5:10 | AI Failure Diagnosis
 
 **[VISUAL]** Depot CI dashboard showing a failed job:
 
@@ -550,7 +607,7 @@ Depot CI:       0:08 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ COMPLETE
 
 ---
 
-### 4:55 - 5:05 | Built for Coding Agents
+### 5:10 - 5:20 | Built for Coding Agents
 
 **[VISUAL]** Animation showing Claude Code / Cursor logo alongside Depot CI logo
 
@@ -575,7 +632,7 @@ Depot CI:       0:08 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ COMPLETE
 
 ---
 
-### 5:05 - 5:20 | The End of Push-Wait-Guess
+### 5:20 - 5:35 | The End of Push-Wait-Guess
 
 **[VISUAL]** Terminal showing rapid agent iteration:
 
@@ -604,9 +661,9 @@ $ depot ci run --job test
 
 ---
 
-## Section 4: The Value (5:20 - 5:55)
+## Section 4: The Value (5:35 - 6:25)
 
-### 5:20 - 5:30 | Time Savings
+### 5:35 - 5:45 | Time Savings
 
 **[VISUAL]** Animated calculation:
 
@@ -627,7 +684,7 @@ $ depot ci run --job test
 
 ---
 
-### 5:30 - 5:40 | Cost Savings
+### 5:45 - 5:55 | Cost Savings
 
 **[VISUAL]** Cost comparison chart:
 
@@ -641,6 +698,26 @@ Savings: 80%
 **[VOICEOVER]**
 "And it's not just time — it's money. 80% reduction in CI compute costs. That's real dollars back in your budget."
 
+**[VISUAL]** Per-second billing comparison:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                   PER-SECOND BILLING                            │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  TRADITIONAL CI:           DEPOT CI:                            │
+│  31 seconds =               31 seconds =                        │
+│  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░│
+│  You pay for 1 minute       You pay for 31 seconds             │
+│  (rounded up)               (exact usage)                       │
+│                                                                 │
+│  Fair. Transparent. Honest.                                      │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**[VOICEOVER]**
+"Traditional CI rounds up. Thirty-one seconds? You pay for a full minute. Depot CI bills per second. Fair. Transparent. Honest."
+
 **[VISUAL]** Money animation (coins falling into piggy bank)
 
 **[VOICEOVER]**
@@ -648,7 +725,7 @@ Savings: 80%
 
 ---
 
-### 5:40 - 5:50 | The Bigger Picture
+### 5:55 - 6:05 | The Bigger Picture
 
 **[VISUAL]** Happy developer, multiple deployments flying by
 
@@ -662,9 +739,23 @@ Savings: 80%
 
 ---
 
-## Section 5: Call to Action (5:50 - 6:40)
+### 6:05 - 6:15 | Trusted by Teams
 
-### 5:50 - 6:05 | Get Started Today
+**[VISUAL]** Company logos or testimonials scrolling
+
+**[VOICEOVER]**
+"Teams across the industry are already shipping faster with Depot CI. From startups to enterprises, developers are reclaiming their time and focusing on what matters — building great software."
+
+**[VISUAL]** Text appears: *"Join the teams building at the speed of AI."*
+
+**[VOICEOVER]**
+"The future of CI isn't just faster. It's smarter. It's built for AI. And it's here."
+
+---
+
+## Section 5: Call to Action (6:15 - 7:45)
+
+### 6:15 - 6:30 | Get Started Today
 
 **[VISUAL]** Depot CI interface, beautiful and clean
 
@@ -678,7 +769,7 @@ Savings: 80%
 
 ---
 
-### 6:05 - 6:15 | One Command to Migrate
+### 6:30 - 6:40 | One Command to Migrate
 
 **[SCREEN]** Terminal showing:
 
@@ -695,7 +786,7 @@ $ depot ci migrate
 
 ---
 
-### 6:15 - 6:40 | Final CTA
+### 6:40 - 7:45 | Final CTA
 
 **[VISUAL]** Large URL: **depot.dev**
 
@@ -753,6 +844,27 @@ $ depot ci migrate
 
 ---
 
+### Production Notes
+
+**OpenClaw Demo:**
+
+OpenClaw is a fictional example app used for demonstration purposes. During recording, either:
+
+- Use a real-world sample app with similar tech stack (Node.js, TypeScript, Docker)
+- Replace OpenClaw references with actual customer/product names if available
+- Create a simple demo app that showcases the CI features
+
+**Social Proof Section:**
+
+The "Trusted by Teams" section (6:05-6:15) currently shows placeholder content. Options for production:
+
+- Add real company logos of Depot CI customers
+- Include testimonial quotes from real users
+- Use metrics like "X teams already using Depot CI"
+- Replace with depersonalized "teams like yours" messaging if specific logos aren't available
+
+---
+
 ## Alternative Closings
 
 ### Option A: Direct
@@ -773,11 +885,13 @@ $ depot ci migrate
 | Problem | 0:00 | Slow CI, frustrated dev | "Integrating is the bottleneck" |
 | Solution | 0:45 | Depot logo, diagram | "40x faster builds" |
 | **Why It Wins** | **1:30** | **3-part architecture + Switchyard** | **"It's not magic. It's architecture."** |
-| Demo | 3:10 | Split screen comparison | "4:32 vs 0:28" |
-| **Debugging** | **4:35** | **Replay from step UI** | **"Debug smarter"** |
-| **AI-Native CI** | **4:45** | **AI failure diagnosis + Agent loops** | **"Built for AI development"** |
-| Value | 5:20 | Time/money savings | "Extra morning every week" |
-| CTA | 5:50 | depot.dev URL | "Stop waiting. Start shipping." |
+| **Security** | **3:10** | **Isolated sandboxes diagram** | **"Security built in"** |
+| Demo | 3:20 | Split screen comparison | "4:32 vs 0:28" |
+| **Debugging** | **4:45** | **Replay from step + Metrics UI** | **"Debug smarter"** |
+| **AI-Native CI** | **5:00** | **AI failure diagnosis + Agent loops** | **"Built for AI development"** |
+| Value | 5:35 | Time/money savings | "Extra morning every week" |
+| **Social Proof** | **6:05** | **Teams/building faster** | **"Join the teams"** |
+| CTA | 6:15 | depot.dev URL | "Stop waiting. Start shipping." |
 
 ---
 
@@ -790,9 +904,12 @@ The "Why It Wins" section (1:30-3:10) showcases these key technical differentiat
 - **Drop-in Replacement Visual** (1:15-1:30): Shows .github/workflows → .depot/workflows copy animation
 - **3-Part Architecture Diagram** (1:45-2:00): Visual showing Frontend, Orchestrator (Switchyard), and Compute layers
 - **Switchyard Deep Dive** (2:00-2:15): Detailed view of workflow parsing, dependency resolution (DAG), and durable state machine
-- **Debugging Superpower** (4:35-4:40): Dashboard UI showing "Replay from step" and SSH debug buttons
-- **AI Failure Diagnosis** (4:45-4:55): Dashboard showing AI-generated failure analysis and suggested fixes
-- **Coding Agent Integration** (4:55-5:20): Agent loop diagram showing push-wait-guess vs fix-run-green comparison
+- **Security Bonus** (3:10-3:20): Isolated sandboxes diagram showing security built-in
+- **Debugging Superpower** (4:45-4:55): Dashboard UI showing "Replay from step", SSH debug, and CPU/memory metrics
+- **AI Failure Diagnosis** (5:00-5:10): Dashboard showing AI-generated failure analysis and suggested fixes
+- **Coding Agent Integration** (5:10-5:35): Agent loop diagram showing push-wait-guess vs fix-run-green comparison
+- **Per-Second Billing Visual** (5:45-5:55): Comparison showing traditional CI rounding vs Depot CI exact billing
+- **Social Proof** (6:05-6:15): Trusted by teams section (placeholder for real testimonials)
 
 **Overall Technical Comparison:**
 
@@ -801,8 +918,9 @@ The "Why It Wins" section (1:30-3:10) showcases these key technical differentiat
 | **Startup** | 40+ seconds cold start | 2-3 seconds standby pools | 10-20x faster |
 | **State** | Stateless (crash = restart) | Durable (crash = resume) | Reliable recovery |
 | **Scheduling** | Pull model (one job at a time) | Push model (DAG-aware) | Optimal parallelization |
+| **Security** | Shared runners | Isolated sandboxes | Never shared, always secure |
 | **Billing** | Per-minute (rounded up) | Per-second (exact) | Fair pricing |
-| **Debugging** | Restart from beginning | Replay from any step + SSH | Faster iteration |
+| **Debugging** | Restart from beginning | Replay from any step + SSH + Metrics | Faster iteration |
 | **AI Features** | None | AI failure diagnosis + Agent loops | Built for AI development |
 
 ---
