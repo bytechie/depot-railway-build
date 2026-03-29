@@ -313,21 +313,40 @@
 
 ### 3:00 - 3:10 | The Scheduling Problem
 
-**[VISUAL]** Side-by-side comparison:
+**[VISUAL]** Split screen shows the same workflow scheduled differently:
 
 ```
 GITHUB ACTIONS                    DEPOT CI
 ┌──────────────────┐             ┌──────────────────┐
-│ "Got any jobs?"  │             │  Job A → Job B   │
-│ "Here's ONE."    │             │  Job A → Job C   │
-│ "Got any more?"  │             │  [Parallel]      │
-│ "Here's ONE."    │             │  Optimized DAG   │
-└──────────────────┘             └──────────────────┘
-    Pull Model                       Push Model
+│ "Got any jobs?"  │             │    PARALLEL       │
+│ "Here's ONE."    │             │  ┌────┐  ┌────┐   │
+│ (runs job)       │             │  │test│  │lint│   │
+│                  │             │  └────┘  └────┘   │
+│ "Got any more?"  │             │       ↓          │
+│ "Here's ONE."    │             │    ┌────┐        │
+│ (runs next)      │             │    │build│       │
+│                  │             │    └────┘        │
+│ "Got any more?"  │             │       ↓          │
+│ "Here's ONE."    │             │    ┌────┐        │
+│ One. At. A. Time.│             │    │deploy│      │
+└──────────────────┘             │    └────┘        │
+    Pull Model                  └──────────────────┘
+                               Builds DAG → Schedules
+                               all jobs optimally
 ```
 
 **[VOICEOVER]**
-"GitHub asks for one job at a time. No awareness of what's coming next. Depot CI sees your entire workflow as a dependency graph — a DAG — and schedules everything optimally from the start."
+"GitHub Actions? The runner polls for jobs one at a time. No awareness of what else is coming. It can't plan ahead."
+
+**[VISUAL]** Animation highlights the DEPOT CI side showing the DAG being built
+
+**[VOICEOVER]**
+"Depot CI parses your workflow and builds a dependency graph — a DAG. It sees EVERY job upfront. It knows which jobs can run in parallel — like test and lint — and which must wait — like build needing test, or deploy needing everything else."
+
+**[VISUAL]** Animation shows parallel jobs (test + lint) running simultaneously in green boxes
+
+**[VOICEOVER]**
+"GitHub: 'Got any jobs?' 'Here's ONE.' Depot CI: 'Here's your workflow, here's your optimal schedule, go.'"
 
 **[PAUSE - 1 second]**
 
