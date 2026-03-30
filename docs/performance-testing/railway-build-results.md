@@ -17,11 +17,26 @@ Flow 2: Railway Auto-Build performance results.
 
 ## Build Time Summary
 
+### Initial Build (Cold)
+
 | Metric | Value |
 |--------|-------|
 | **Total Build Time** | **29.06 seconds** |
 | **Health Check** | Passed (1/1) |
 | **Status** | ✅ Success |
+
+### Rebuild (Cached) ⚡
+
+> **Test:** Rebuild triggered with no code changes to measure Railway's layer caching.
+
+| Metric | Value |
+|--------|-------|
+| **Total Build Time** | **3.81 seconds** |
+| **Health Check** | Passed (1/1) |
+| **Status** | ✅ Success |
+| **Speedup vs Initial** | **7.6x faster** |
+
+**All layers were cached** — Railway reused all previously built layers.
 
 ---
 
@@ -80,12 +95,35 @@ Flow 2: Railway Auto-Build performance results.
 
 ---
 
+## Rebuild Analysis (Cached)
+
+### Build Start
+```
+2026-03-30T12:29:55.018383612Z Using Detected Dockerfile
+2026-03-30T12:29:55.011256450Z [Region: us-east4]
+```
+
+### Build Complete (All Cached)
+```
+2026-03-30T12:29:58.831370741Z Build time: 3.81 seconds
+```
+
+### Health Check
+```
+2026-03-30T12:30:09.591148984Z [1/1] Healthcheck succeeded!
+```
+
+---
+
 ## Comparison
 
 | Flow | Build Time | Speedup |
 |------|------------|---------|
-| **Local Docker** | 2:09 (129s) | - |
-| **Railway Auto-Build** | 0:29 (29s) | **4.4x faster** |
+| **Local Clean** | 3:03 (183s) | baseline |
+| **Local Cached (no changes)** | 0:01 (1.3s) | 140x faster |
+| **Local Cached (code change)** | 0:17 (17s) | 10.8x faster |
+| **Railway Initial Build** | 0:29 (29s) | 6.3x faster |
+| **Railway Rebuild (cached)** | **0:04 (3.8s)** | **48x faster** |
 | **GitHub Actions** | TBD | - |
 | **Depot CI** | TBD | - |
 
@@ -93,16 +131,21 @@ Flow 2: Railway Auto-Build performance results.
 
 ## Key Observations
 
-1. **Railway is significantly faster** than local build (4.4x)
+1. **Railway is significantly faster** than local build (6.3x for clean build)
    - Railway has better network bandwidth to npm registry
    - Cached base images in Railway infrastructure
    - Optimized build servers
 
-2. **TypeScript compilation is fast** (~1s vs 5s local)
+2. **Railway caching is excellent** — Rebuild with cache took only 3.81s
+   - 48x faster than local clean build
+   - 7.6x faster than Railway's own initial build
+   - All layers cached and reused
+
+3. **TypeScript compilation is fast** (~1s vs 5s local)
    - Railway's build CPUs may be faster than local WSL2
    - Or the local measurement included overhead
 
-3. **Health check passed immediately**
+4. **Health check passed immediately**
    - Service started successfully
    - `/health` endpoint responding
 
