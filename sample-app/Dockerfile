@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install dependencies layer (cached by Depot)
 FROM base AS deps
-COPY package.json package-lock.json* ./
+COPY package.json package-lock.json ./
 RUN npm ci --omit=dev && \
     npm cache clean --force
 
