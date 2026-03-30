@@ -76,13 +76,72 @@ Go to your GitHub repository → Settings → Secrets and Variables → Actions
 
 Add the following secrets:
 
-| Secret Name | Description | How to Get |
-|-------------|-------------|------------|
-| `DEPOT_TOKEN` | Depot API token | `depot token` or Depot dashboard |
-| `DEPOT_PROJECT_ID` | Your Depot project ID | `depot project list` |
-| `RAILWAY_TOKEN` | Railway API token | `railway token` |
-| `RAILWAY_PROJECT_ID` | Your Railway project ID | `railway link` |
-| `RAILWAY_SERVICE_ID` | Your Railway service ID | Railway dashboard URL |
+| Secret Name | Required | Description | How to Get |
+|-------------|----------|-------------|------------|
+| `DEPOT_PROJECT_ID` | ✅ Yes | Your Depot project ID | `depot project list` |
+| `DEPOT_TOKEN` | ⚠️ Optional | Depot API token (fallback) | `depot token` or Depot dashboard |
+| `RAILWAY_TOKEN` | ✅ Yes | Railway API token | `railway token` |
+| `RAILWAY_PROJECT_ID` | ✅ Yes | Your Railway project ID | `railway link` |
+| `RAILWAY_SERVICE_ID` | ✅ Yes | Your Railway service ID | Railway dashboard URL |
+
+> **⚠️ Note on DEPOT_TOKEN:** This secret is **optional**. The workflow uses OIDC authentication by default (recommended). Add `DEPOT_TOKEN` only as a fallback if OIDC is not available or for edge cases like Dependabot workflows.
+
+---
+
+### 4.5. Set up OIDC Authentication (Recommended)
+
+OIDC allows GitHub Actions to authenticate with Depot without storing a static token.
+
+#### Step 1: Configure OIDC in Depot
+
+1. Go to [depot.dev](https://depot.dev) and open your project
+2. Go to **Settings** → **Trust Relationships**
+3. Click **Add trust relationship**
+4. Select **GitHub** as the provider
+5. Enter your GitHub owner (username or organization)
+6. Enter your repository name (exact match)
+7. Click **Add trust relationship**
+
+#### Step 2: Update Your Workflow
+
+The workflow supports both OIDC (primary) and `DEPOT_TOKEN` (fallback):
+
+```yaml
+jobs:
+  build:
+    runs-on: depot-ubuntu-22.04
+    permissions:
+      contents: read
+      id-token: write  # Required for OIDC
+    steps:
+      - uses: actions/checkout@v4
+      - uses: depot/setup-action@v1
+      - uses: depot/build-push-action@v1
+        with:
+          project: ${{ secrets.DEPOT_PROJECT_ID }}
+          token: ${{ secrets.DEPOT_TOKEN }}  # Optional! Falls back to OIDC
+          context: .
+```
+
+#### How Authentication Works
+
+| Scenario | Authentication Method |
+|----------|----------------------|
+| OIDC configured + no `DEPOT_TOKEN` | Uses OIDC ✅ (recommended) |
+| OIDC configured + `DEPOT_TOKEN` set | Uses `DEPOT_TOKEN` (token priority) |
+| No OIDC + `DEPOT_TOKEN` set | Uses `DEPOT_TOKEN` ✅ |
+| No OIDC + no `DEPOT_TOKEN` | Fails ❌ |
+
+**Benefits:**
+
+- No `DEPOT_TOKEN` secret to manage or rotate (with OIDC)
+- Temporary token issued per workflow run
+- Optional fallback for edge cases (Dependabot, forks, etc.)
+- More secure — no static credentials to leak
+
+For more details, see [depot-ci-auth-with-github.md](./depot-dev/depot-ci-auth-with-github.md).
+
+---
 
 ### 5. Run Workflows
 

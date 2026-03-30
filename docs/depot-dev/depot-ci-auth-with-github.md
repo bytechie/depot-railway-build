@@ -1,6 +1,6 @@
 # Depot CI Authentication with GitHub Actions
 
-This guide explains how to authenticate Depot CI with GitHub Actions using OIDC (recommended) or static tokens.
+This guide explains how to authenticate Depot CI with GitHub Actions using OIDC (recommended) or static tokens (optional fallback).
 
 ---
 
@@ -35,16 +35,17 @@ jobs:
       - uses: depot/build-push-action@v1
         with:
           project: <your-depot-project-id>
+          token: ${{ secrets.DEPOT_TOKEN }}  # Optional! Falls back to OIDC
           context: .
 ```
 
-**No `DEPOT_TOKEN` secret needed!** Depot authenticates automatically via OIDC.
+**No `DEPOT_TOKEN` secret needed!** Depot authenticates automatically via OIDC. Add `DEPOT_TOKEN` only if you need a fallback for edge cases (Dependabot, forks, etc.).
 
 ---
 
-## Alternative: Static Token (Project or Organization Token)
+## Alternative: Static Token (Optional Fallback)
 
-If OIDC is not an option (e.g., Dependabot workflows), use a project token or organization token.
+If OIDC is not an option (e.g., Dependabot workflows), you can use a project token or organization token as a fallback. The workflow will use OIDC by default, but fall back to the token if OIDC fails.
 
 ### Generate a Project Token
 
@@ -83,10 +84,12 @@ jobs:
 
 | Token Type | Scope | Best For |
 |------------|-------|----------|
-| **OIDC** | Project-scoped (temporary) | GitHub Actions (recommended) |
-| **Project Token** | Single project | CI without OIDC support |
-| **Organization Token** | All projects in org | Broad CI access |
+| **OIDC** | Project-scoped (temporary) | GitHub Actions (recommended, primary) |
+| **Project Token** | Single project | Optional fallback, CI without OIDC support |
+| **Organization Token** | All projects in org | Optional fallback, broad CI access |
 | **User Access Token** | All orgs & projects | Local development only |
+
+**Recommended Setup:** Configure OIDC and add `DEPOT_TOKEN` as an optional fallback. This provides the best of both worlds — OIDC security with token fallback for edge cases.
 
 ---
 

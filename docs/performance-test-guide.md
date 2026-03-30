@@ -2,6 +2,29 @@
 
 This guide walks through running and measuring all 4 deployment flows with actual timing data.
 
+---
+
+## 📋 Before You Begin
+
+**IMPORTANT:** Complete the initial setup first before running performance tests.
+
+👉 **Follow [setup-guide.md](../setup-guide.md) to:**
+
+1. Create Depot account and project
+2. Create Railway project and service
+3. Install Depot and Railway CLIs
+4. Get all required tokens and IDs
+
+The setup guide provides step-by-step instructions for:
+- Creating your Depot project (get `DEPOT_PROJECT_ID`)
+- Setting up OIDC authentication
+- Creating Railway service (get `RAILWAY_PROJECT_ID` and `RAILWAY_SERVICE_ID`)
+- Generating API tokens (`RAILWAY_TOKEN`)
+
+**Once setup is complete, return here to run the performance tests.**
+
+---
+
 ## Prerequisites
 
 | Account | What You Need |
@@ -16,13 +39,17 @@ This guide walks through running and measuring all 4 deployment flows with actua
 
 Add these secrets to your GitHub repository (Settings → Secrets and variables → Actions):
 
-| Secret | Description | How to Get |
-|--------|-------------|------------|
-| `DEPOT_TOKEN` | Depot API token | `depot login` → copy from `~/.depot/config.json` |
-| `DEPOT_PROJECT_ID` | Your Depot project ID | `depot project list` or Depot dashboard |
-| `RAILWAY_TOKEN` | Railway API token | Railway Settings → API Tokens |
-| `RAILWAY_PROJECT_ID` | Your Railway project ID | Railway project page URL |
-| `RAILWAY_SERVICE_ID` | Your service ID | Railway service page URL |
+> **Note:** You should have obtained these values from completing [setup-guide.md](../setup-guide.md).
+
+| Secret | Required | Description | Source |
+|--------|----------|-------------|--------|
+| `DEPOT_PROJECT_ID` | ✅ Yes | Your Depot project ID | From Depot dashboard or `depot project list` |
+| `DEPOT_TOKEN` | ⚠️ Optional | Depot API token (fallback) | From Depot dashboard |
+| `RAILWAY_TOKEN` | ✅ Yes | Railway API token | Railway Settings → API Tokens |
+| `RAILWAY_PROJECT_ID` | ✅ Yes | Your Railway project ID | Railway project page URL |
+| `RAILWAY_SERVICE_ID` | ✅ Yes | Your Railway service ID | Railway service page URL |
+
+> **OIDC Authentication:** The workflows use OIDC for Depot authentication by default (no `DEPOT_TOKEN` secret needed). The `DEPOT_TOKEN` is an optional fallback if OIDC is not configured. Ensure the OIDC trust relationship is configured in your Depot project settings as described in [setup-guide.md](../setup-guide.md).
 
 ---
 
@@ -245,3 +272,13 @@ git commit --allow-empty -m "Trigger Railway" && git push
 ```
 
 After each flow, record times from the respective platform's dashboard.
+
+---
+
+## Need Help with Setup?
+
+If you haven't completed the initial setup yet, refer to:
+
+- **[setup-guide.md](../setup-guide.md)** — Complete setup walkthrough (Depot, Railway, GitHub)
+- **[quick-start.md](../quick-start.md)** — Quick reference for common commands
+- **[github-secrets.md](../github-secrets.md)** — Detailed secrets configuration guide

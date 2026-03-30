@@ -1,6 +1,7 @@
 # Flow 4: GitHub Actions → Depot CI → Railway (Showcase)
 # This workflow demonstrates Depot CI's capabilities
 # Expected: 5-10x faster than the baseline workflow
+# Authentication: OIDC (primary) with DEPOT_TOKEN fallback (optional)
 
 name: Build & Deploy with Depot CI
 
@@ -24,9 +25,17 @@ jobs:
     runs-on: depot-ubuntu-22.04
     timeout-minutes: 5
 
+    # OIDC permissions (primary) — DEPOT_TOKEN is optional fallback
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Setup Depot CLI
+        uses: depot/setup-action@v1
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -42,25 +51,27 @@ jobs:
           npm ci
           echo "::endgroup::"
 
-      - name: Authenticate with Depot
-        run: depot login --token ${{ secrets.DEPOT_TOKEN }}
-
-      - name: Build Docker image with Depot (40x faster)
-        run: |
-          echo "::group::Depot CI Build"
-          cd sample-app
-          depot build -t openclaw-demo:${{ github.sha }} -t openclaw-demo:latest .
-          echo "::endgroup::"
+      - name: Build Docker image with Depot
+        uses: depot/build-push-action@v1
+        with:
+          project: ${{ env.DEPOT_PROJECT_ID }}
+          token: ${{ secrets.DEPOT_TOKEN }}  # Optional! Falls back to OIDC
+          context: ./sample-app
+          tags: openclaw-demo:${{ github.sha }},openclaw-demo:latest
 
       - name: Run tests
         run: |
+          echo "::group::Running tests"
           cd sample-app
           npm test
+          echo "::endgroup::"
 
       - name: Build TypeScript
         run: |
+          echo "::group::Building TypeScript"
           cd sample-app
           npm run build
+          echo "::endgroup::"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
