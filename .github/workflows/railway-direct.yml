@@ -10,11 +10,33 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      skip_deploy:
+        description: 'Skip deployment to Railway'
+        required: false
+        type: boolean
+        default: false
+      debug_enabled:
+        description: 'Enable debug mode'
+        required: false
+        type: boolean
+        default: false
+      log_level:
+        description: 'Log level'
+        required: false
+        type: choice
+        default: 'info'
+        options:
+          - debug
+          - info
+          - warning
+          - error
 
 env:
   NODE_VERSION: '18'
   RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
   RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
+  LOG_LEVEL: ${{ github.event.inputs.log_level || 'info' }}
 
 jobs:
   build:
@@ -25,6 +47,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Enable debug logging
+        if: github.event.inputs.debug_enabled == 'true'
+        run: |
+          echo "🐛 Debug mode enabled"
+          echo "LOG_LEVEL=${{ env.LOG_LEVEL }}" >> $GITHUB_ENV
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -62,7 +90,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     timeout-minutes: 15
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: |
+      (github.ref == 'refs/heads/main' && github.event_name == 'push') ||
+      (github.event_name == 'workflow_dispatch' && inputs.skip_deploy != true)
 
     steps:
       - name: Checkout code
