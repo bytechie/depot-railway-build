@@ -18,19 +18,32 @@ Baseline local build performance for the OpenClaw Demo sample app.
 
 ## Build Times (Local)
 
-### Multi-Stage Build Breakdown
+### Clean Build (No Cache)
 
 | Stage | Duration | Description |
 |-------|----------|-------------|
-| `deps` | ~115s | All dependencies (312 packages including devDependencies) |
-| `production-deps` | ~113s | Production only (302 packages) |
+| `deps` | ~164s | All dependencies (312 packages including devDependencies) |
+| `production-deps` | ~157s | Production only (302 packages) |
 | `build` | ~5s | TypeScript compilation (`tsc`) |
 | `production` | ~2s | User creation, permissions |
-| `export` | ~9s | Image assembly and export |
+| `export` | ~14s | Image assembly and export |
 
-**Total Wall-Clock Time:** ~129 seconds (2:09)
+**Total Wall-Clock Time:** ~183 seconds (3:03)
 
 > **Note:** `deps` and `production-deps` stages run in parallel, so the total time is not additive.
+
+### Cached Build (No Changes) ⚡
+
+> **IMPORTANT:** This cached build was run **immediately after the clean build with no code changes**. This represents the **best-case scenario** for Docker layer caching — when absolutely nothing has changed in the source code, package.json, or Dockerfile.
+
+| Build Type | Time | Speedup |
+|------------|------|---------|
+| Clean (no cache) | 3:03 (183s) | baseline |
+| **Cached (no changes)** | **0:01 (1.3s)** | **140x faster** |
+
+**All stages were cached** — Docker reused all existing layers without rebuilding anything.
+
+> **Why this matters:** In real CI/CD scenarios, most builds will have at least some changes (code, dependencies, or Dockerfile). This cached result shows the theoretical maximum caching benefit. Actual cached builds with changes will be slower as only unchanged layers are cached.
 
 ---
 
@@ -89,20 +102,22 @@ COPY package.json ./
 1. **npm ci dominates build time** - The dependency installation accounts for ~90% of total build time
 2. **Parallel stages help** - Running `deps` and `production-deps` simultaneously saves ~113 seconds
 3. **TypeScript is fast** - Compilation takes only 5 seconds once dependencies are installed
-4. **Layer caching opportunity** - With Depot CI, the dependency layers can be cached across builds
+4. **Layer caching is critical** - With no changes, cached builds are 140x faster (1.3s vs 183s)
+5. **Railway beats local** - Railway (29s) is 6.3x faster than local clean build (183s) due to better infrastructure
 
 ---
 
-## Comparison Targets
+## Comparison: All Flows
 
-Once setup is complete, compare this local baseline against:
+| Flow | Build Time | vs Local Clean |
+|------|------------|----------------|
+| **Local Clean** | 3:03 (183s) | baseline |
+| **Local Cached (no changes)** | 0:01 (1.3s) | 140x faster |
+| **Railway Auto-Build** | 0:29 (29s) | 6.3x faster |
+| **GitHub Actions** | TBD | - |
+| **Depot CI** | TBD | - |
 
-| Flow | Expected Time | Notes |
-|------|---------------|-------|
-| **Local (baseline)** | 2:09 | Current measurement |
-| **Railway Auto-Build** | 3-5 min | Cold build on Railway infrastructure |
-| **GitHub Actions** | 3-5 min | Standard ubuntu-latest runner |
-| **Depot CI** | 30-60s | Cached layers + faster runners |
+> **See also:** [railway-build-results.md](./railway-build-results.md) for detailed Railway build analysis.
 
 ---
 
@@ -110,10 +125,14 @@ Once setup is complete, compare this local baseline against:
 
 ```bash
 cd sample-app
+```
+
+Cached build (no changes):
+```bash
 docker build -t openclaw-demo:test .
 ```
 
-For a clean build (no cache):
+Clean build (no cache):
 ```bash
 docker build --no-cache -t openclaw-demo:test .
 ```
@@ -122,8 +141,8 @@ docker build --no-cache -t openclaw-demo:test .
 
 ## Next Steps
 
-1. [ ] Push changes to trigger Railway build
-2. [ ] Run Flow 2 (Railway auto-build) and record time
+1. [x] Push changes to trigger Railway build
+2. [x] Run Flow 2 (Railway auto-build) and record time → **29s**
 3. [ ] Run Flow 3 (GitHub Actions) and record time
 4. [ ] Run Flow 4 (Depot CI) and record time
 5. [ ] Update this document with all flow results
