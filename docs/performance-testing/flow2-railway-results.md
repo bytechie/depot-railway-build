@@ -217,6 +217,26 @@ git clean -fd sample-app/
 
 ---
 
+## System Specifications
+
+### Local System
+- **Hardware:** HP EliteBook 840 G7 (laptop)
+- **CPU:** Intel Core i5-10310U @ 1.70GHz (4 cores, 8 threads)
+- **RAM:** 24 GB
+- **OS:** Windows 11 Pro with WSL2
+
+### Railway (us-east4)
+- **CPU:** 32 vCPU
+- **RAM:** 32 GB
+- **Network:** Cloud datacenter bandwidth
+
+**Why Railway wins for dependency-heavy builds:**
+- **8x more CPU cores** = parallel npm package downloads
+- **Superior network bandwidth** (cloud vs residential)
+- **Optimized build infrastructure** (dedicated vs shared laptop)
+
+---
+
 ## Comparison So Far
 
 | Test | Flow 1 (Local) | Flow 2 (Railway) | Winner |

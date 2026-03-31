@@ -1,0 +1,282 @@
+2026-03-31T05:13:04.099099643Z [inf]  
+2026-03-31T05:13:05.353489567Z [inf]  [35m[Region: us-east4][0m
+2026-03-31T05:13:05.364046119Z [inf]  [35m=========================
+2026-03-31T05:13:05.364074716Z [inf]  Using Detected Dockerfile
+2026-03-31T05:13:05.364081551Z [inf]  =========================
+2026-03-31T05:13:05.364090267Z [inf]  [0m
+2026-03-31T05:13:05.364105953Z [inf]  context: 4drq-AC
+2026-03-31T05:13:05.546655880Z [inf]  [internal] load build definition from Dockerfile
+2026-03-31T05:13:05.546706659Z [inf]  [internal] load build definition from Dockerfile
+2026-03-31T05:13:05.546722799Z [inf]  [internal] load build definition from Dockerfile
+2026-03-31T05:13:05.546742157Z [inf]  [internal] load build definition from Dockerfile
+2026-03-31T05:13:05.552869539Z [inf]  [internal] load build definition from Dockerfile
+2026-03-31T05:13:05.557223499Z [inf]  [internal] load metadata for docker.io/library/node:18-alpine
+2026-03-31T05:13:05.631659794Z [inf]  [internal] load metadata for docker.io/library/node:18-alpine
+2026-03-31T05:13:05.631948893Z [inf]  [internal] load .dockerignore
+2026-03-31T05:13:05.632099719Z [inf]  [internal] load .dockerignore
+2026-03-31T05:13:05.632406395Z [inf]  [internal] load .dockerignore
+2026-03-31T05:13:05.638779244Z [inf]  [internal] load .dockerignore
+2026-03-31T05:13:05.645022158Z [inf]  [production-deps 1/2] COPY package.json package-lock.json ./
+2026-03-31T05:13:05.645062648Z [inf]  [internal] load build context
+2026-03-31T05:13:05.645081144Z [inf]  [base 2/2] WORKDIR /app
+2026-03-31T05:13:05.645096192Z [inf]  [base 1/2] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2026-03-31T05:13:05.645157570Z [inf]  [production 4/4] RUN addgroup -g 1001 -S nodejs &&     adduser -S openclaw -u 1001
+2026-03-31T05:13:05.645175032Z [inf]  [production 3/4] COPY package.json ./
+2026-03-31T05:13:05.645188497Z [inf]  [production 2/4] COPY --from=production-deps /app/node_modules ./node_modules
+2026-03-31T05:13:05.645199868Z [inf]  [production-deps 2/2] RUN npm ci --omit=dev &&     npm cache clean --force
+2026-03-31T05:13:05.645208419Z [inf]  [production 1/4] COPY --from=build /app/dist ./dist
+2026-03-31T05:13:05.645222904Z [inf]  [build 3/3] RUN npm run build
+2026-03-31T05:13:05.645233481Z [inf]  [build 2/3] COPY . .
+2026-03-31T05:13:05.645243427Z [inf]  [build 1/3] COPY --from=deps /app/node_modules ./node_modules
+2026-03-31T05:13:05.645256379Z [inf]  [deps 2/2] RUN npm ci &&     npm cache clean --force
+2026-03-31T05:13:05.645280823Z [inf]  [internal] load build context
+2026-03-31T05:13:05.645298072Z [inf]  [base 1/2] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2026-03-31T05:13:05.652336023Z [inf]  [base 1/2] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2026-03-31T05:13:05.653034973Z [inf]  [internal] load build context
+2026-03-31T05:13:05.665489939Z [inf]  [internal] load build context
+2026-03-31T05:13:05.668430295Z [inf]  [base 2/2] WORKDIR /app
+2026-03-31T05:13:05.668541067Z [inf]  [production-deps 1/2] COPY package.json package-lock.json ./
+2026-03-31T05:13:05.695590595Z [inf]  [production-deps 1/2] COPY package.json package-lock.json ./
+2026-03-31T05:13:05.697410533Z [inf]  [deps 2/2] RUN npm ci &&     npm cache clean --force
+2026-03-31T05:13:05.697441837Z [inf]  [production-deps 2/2] RUN npm ci --omit=dev &&     npm cache clean --force
+2026-03-31T05:13:06.804919255Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@eslint/config-array@0.23.3',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.805415513Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@eslint/config-helpers@0.5.3',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.805907693Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@eslint/core@1.1.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.806217014Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@eslint/object-schema@3.0.3',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.806486222Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@eslint/plugin-kit@0.6.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.806746969Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@eslint/config-array@0.23.3',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.807275046Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@eslint/config-helpers@0.5.3',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.807333422Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.807727195Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@eslint/core@1.1.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.808057689Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint@10.1.0',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.808103772Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@eslint/object-schema@3.0.3',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.808373918Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@eslint/plugin-kit@0.6.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.808586836Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint-scope@9.1.2',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.808788199Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.809056973Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'espree@11.2.0',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.809168465Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.809217441Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.809946856Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint@10.1.0',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.810436733Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint-scope@9.1.2',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.810653083Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.810902653Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'espree@11.2.0',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:06.811013998Z [inf]  npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+npm warn EBADENGINE }
+
+2026-03-31T05:13:07.989923936Z [inf]  npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+
+2026-03-31T05:13:08.161531181Z [inf]  npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+
+2026-03-31T05:13:08.22973635Z [inf]  npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+
+2026-03-31T05:13:08.259818285Z [inf]  npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+
+2026-03-31T05:13:08.516765748Z [inf]  npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+
+2026-03-31T05:13:08.519331551Z [inf]  npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+
+2026-03-31T05:13:08.61384199Z [inf]  npm warn deprecated fstream@1.0.12: This package is no longer supported.
+
+2026-03-31T05:13:08.674896776Z [inf]  npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+
+2026-03-31T05:13:09.153297463Z [inf]  npm warn deprecated fstream@1.0.12: This package is no longer supported.
+
+2026-03-31T05:13:09.194491076Z [inf]  npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+
+2026-03-31T05:13:09.690379771Z [inf]  npm warn deprecated fluent-ffmpeg@2.1.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+
+2026-03-31T05:13:10.492058771Z [inf]  npm warn deprecated fluent-ffmpeg@2.1.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+
+2026-03-31T05:13:16.079466629Z [inf]  
+added 302 packages, and audited 303 packages in 10s
+
+2026-03-31T05:13:16.079527941Z [inf]  
+
+2026-03-31T05:13:16.079538489Z [inf]  31 packages are looking for funding
+  run `npm fund` for details
+
+2026-03-31T05:13:16.08343376Z [inf]  
+2 vulnerabilities (1 moderate, 1 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+
+2026-03-31T05:13:16.084881288Z [inf]  npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.12.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.12.1
+npm notice To update run: npm install -g npm@11.12.1
+npm notice
+
+2026-03-31T05:13:16.235827132Z [inf]  npm warn using --force Recommended protections disabled.
+
+2026-03-31T05:13:16.818214403Z [inf]  [production-deps 2/2] RUN npm ci --omit=dev &&     npm cache clean --force
+2026-03-31T05:13:16.847503469Z [inf]  
+added 410 packages, and audited 411 packages in 11s
+
+2026-03-31T05:13:16.847532708Z [inf]  
+59 packages are looking for funding
+  run `npm fund` for details
+
+2026-03-31T05:13:16.850303227Z [inf]  
+2 vulnerabilities (1 moderate, 1 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+
+2026-03-31T05:13:16.851548713Z [inf]  npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.12.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.12.1
+npm notice To update run: npm install -g npm@11.12.1
+npm notice
+
+2026-03-31T05:13:16.998319321Z [inf]  npm warn using --force Recommended protections disabled.
+
+2026-03-31T05:13:17.365129017Z [inf]  [deps 2/2] RUN npm ci &&     npm cache clean --force
+2026-03-31T05:13:18.453608122Z [inf]  [build 1/3] COPY --from=deps /app/node_modules ./node_modules
+2026-03-31T05:13:19.524737843Z [inf]  [build 1/3] COPY --from=deps /app/node_modules ./node_modules
+2026-03-31T05:13:19.526099693Z [inf]  [build 2/3] COPY . .
+2026-03-31T05:13:19.594511170Z [inf]  [build 2/3] COPY . .
+2026-03-31T05:13:19.596884453Z [inf]  [build 3/3] RUN npm run build
+2026-03-31T05:13:20.037298137Z [inf]  
+> openclaw-demo@1.0.0 build
+> tsc
+
+
+2026-03-31T05:13:21.11012578Z [inf]  npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.12.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.12.1
+npm notice To update run: npm install -g npm@11.12.1
+npm notice
+
+2026-03-31T05:13:21.256850203Z [inf]  [build 3/3] RUN npm run build
+2026-03-31T05:13:21.392139702Z [inf]  [production 1/4] COPY --from=build /app/dist ./dist
+2026-03-31T05:13:21.392186753Z [inf]  [production 2/4] COPY --from=production-deps /app/node_modules ./node_modules
+2026-03-31T05:13:22.525491756Z [inf]  [production 2/4] COPY --from=production-deps /app/node_modules ./node_modules
+2026-03-31T05:13:22.528318757Z [inf]  [production 3/4] COPY package.json ./
+2026-03-31T05:13:22.609681315Z [inf]  [production 3/4] COPY package.json ./
+2026-03-31T05:13:22.611778633Z [inf]  [production 4/4] RUN addgroup -g 1001 -S nodejs &&     adduser -S openclaw -u 1001
+2026-03-31T05:13:22.714729979Z [inf]  [production 4/4] RUN addgroup -g 1001 -S nodejs &&     adduser -S openclaw -u 1001
+2026-03-31T05:13:23.661175169Z [inf]  [auth] sharing credentials for production-us-east4-eqdc4a.railway-registry.com
+2026-03-31T05:13:23.661241819Z [inf]  [auth] sharing credentials for production-us-east4-eqdc4a.railway-registry.com
+2026-03-31T05:13:30.682094948Z [inf]  [92mBuild time: 25.32 seconds[0m
+2026-03-31T05:13:36.089050848Z [inf]  
+2026-03-31T05:13:36.089053309Z [inf]  [35m====================
+Starting Healthcheck
+====================
+[0m
+2026-03-31T05:13:36.089053878Z [inf]  [37mPath: /health[0m
+2026-03-31T05:13:36.089054478Z [inf]  [37mRetry window: 1m40s[0m
+2026-03-31T05:13:36.089055036Z [inf]  
+2026-03-31T05:13:36.255868413Z [inf]  [92m[1/1] Healthcheck succeeded![0m
