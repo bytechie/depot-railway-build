@@ -1,0 +1,60 @@
+2026-03-30T12:29:53.907074970Z [inf]  
+2026-03-30T12:29:55.011256450Z [inf]  [35m[Region: us-east4][0m
+2026-03-30T12:29:55.018351654Z [inf]  [35m=========================
+2026-03-30T12:29:55.018378475Z [inf]  Using Detected Dockerfile
+2026-03-30T12:29:55.018383612Z [inf]  =========================
+2026-03-30T12:29:55.018388229Z [inf]  [0m
+2026-03-30T12:29:55.018406029Z [inf]  context: w1xl-dtLv
+2026-03-30T12:29:55.174984529Z [inf]  [internal] load build definition from Dockerfile
+2026-03-30T12:29:55.175037403Z [inf]  [internal] load build definition from Dockerfile
+2026-03-30T12:29:55.175061134Z [inf]  [internal] load build definition from Dockerfile
+2026-03-30T12:29:55.175084680Z [inf]  [internal] load build definition from Dockerfile
+2026-03-30T12:29:55.195851275Z [inf]  [internal] load build definition from Dockerfile
+2026-03-30T12:29:55.200003043Z [inf]  [internal] load metadata for docker.io/library/node:18-alpine
+2026-03-30T12:29:55.203437362Z [inf]  [auth] library/node:pull token for registry-1.docker.io
+2026-03-30T12:29:55.203474010Z [inf]  [auth] library/node:pull token for registry-1.docker.io
+2026-03-30T12:29:55.336498478Z [inf]  [internal] load metadata for docker.io/library/node:18-alpine
+2026-03-30T12:29:55.336847386Z [inf]  [internal] load .dockerignore
+2026-03-30T12:29:55.336867961Z [inf]  [internal] load .dockerignore
+2026-03-30T12:29:55.337176159Z [inf]  [internal] load .dockerignore
+2026-03-30T12:29:55.344631776Z [inf]  [internal] load .dockerignore
+2026-03-30T12:29:55.348711487Z [inf]  [production 2/4] COPY --from=production-deps /app/node_modules ./node_modules
+2026-03-30T12:29:55.348752851Z [inf]  [production-deps 2/2] RUN npm ci --omit=dev &&     npm cache clean --force
+2026-03-30T12:29:55.348766826Z [inf]  [production 1/4] COPY --from=build /app/dist ./dist
+2026-03-30T12:29:55.348785105Z [inf]  [build 3/3] RUN npm run build
+2026-03-30T12:29:55.348795412Z [inf]  [build 2/3] COPY . .
+2026-03-30T12:29:55.348802745Z [inf]  [build 1/3] COPY --from=deps /app/node_modules ./node_modules
+2026-03-30T12:29:55.348810941Z [inf]  [deps 2/2] RUN npm ci &&     npm cache clean --force
+2026-03-30T12:29:55.348820248Z [inf]  [production-deps 1/2] COPY package.json package-lock.json ./
+2026-03-30T12:29:55.348828112Z [inf]  [internal] load build context
+2026-03-30T12:29:55.348835021Z [inf]  [base 2/2] WORKDIR /app
+2026-03-30T12:29:55.348842926Z [inf]  [base 1/2] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2026-03-30T12:29:55.348862455Z [inf]  [production 4/4] RUN addgroup -g 1001 -S nodejs &&     adduser -S openclaw -u 1001
+2026-03-30T12:29:55.348870361Z [inf]  [production 3/4] COPY package.json ./
+2026-03-30T12:29:55.348888561Z [inf]  [internal] load build context
+2026-03-30T12:29:55.348903980Z [inf]  [base 1/2] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2026-03-30T12:29:55.354725360Z [inf]  [internal] load build context
+2026-03-30T12:29:55.366131753Z [inf]  [internal] load build context
+2026-03-30T12:29:55.369801335Z [inf]  [base 2/2] WORKDIR /app
+2026-03-30T12:29:55.369822685Z [inf]  [production-deps 1/2] COPY package.json package-lock.json ./
+2026-03-30T12:29:55.369835992Z [inf]  [deps 2/2] RUN npm ci &&     npm cache clean --force
+2026-03-30T12:29:55.369848567Z [inf]  [build 1/3] COPY --from=deps /app/node_modules ./node_modules
+2026-03-30T12:29:55.369858314Z [inf]  [build 2/3] COPY . .
+2026-03-30T12:29:55.369866183Z [inf]  [build 3/3] RUN npm run build
+2026-03-30T12:29:55.369874965Z [inf]  [production 1/4] COPY --from=build /app/dist ./dist
+2026-03-30T12:29:55.369884827Z [inf]  [production-deps 2/2] RUN npm ci --omit=dev &&     npm cache clean --force
+2026-03-30T12:29:55.369895280Z [inf]  [production 2/4] COPY --from=production-deps /app/node_modules ./node_modules
+2026-03-30T12:29:55.369903534Z [inf]  [production 3/4] COPY package.json ./
+2026-03-30T12:29:55.369916443Z [inf]  [production 4/4] RUN addgroup -g 1001 -S nodejs &&     adduser -S openclaw -u 1001
+2026-03-30T12:29:55.471255691Z [inf]  [auth] sharing credentials for production-us-east4-eqdc4a.railway-registry.com
+2026-03-30T12:29:55.471303660Z [inf]  [auth] sharing credentials for production-us-east4-eqdc4a.railway-registry.com
+2026-03-30T12:29:58.831370741Z [inf]  [92mBuild time: 3.81 seconds[0m
+2026-03-30T12:30:09.299318822Z [inf]  
+2026-03-30T12:30:09.299322331Z [inf]  [35m====================
+Starting Healthcheck
+====================
+[0m
+2026-03-30T12:30:09.299323196Z [inf]  [37mPath: /health[0m
+2026-03-30T12:30:09.299324018Z [inf]  [37mRetry window: 1m40s[0m
+2026-03-30T12:30:09.299324951Z [inf]  
+2026-03-30T12:30:09.591148984Z [inf]  [92m[1/1] Healthcheck succeeded![0m
