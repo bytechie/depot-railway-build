@@ -8,6 +8,17 @@ name: Build & Deploy to Railway (Baseline)
 on:
   workflow_dispatch:
     inputs:
+      test_case:
+        description: 'Performance Test Case'
+        required: true
+        type: choice
+        default: 'baseline'
+        options:
+          - baseline
+          - test-2-comment
+          - test-3-function
+          - test-4-dependency
+          - test-5-major
       skip_deploy:
         description: 'Skip deployment to Railway'
         required: false
@@ -38,6 +49,43 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Apply Test Case 2: Comment Change
+        if: github.event.inputs.test_case == 'test-2-comment'
+        run: ./scripts/apply-test-case-2.sh
+
+      - name: Apply Test Case 3: New Function
+        if: github.event.inputs.test_case == 'test-3-function'
+        run: ./scripts/apply-test-case-3.sh
+
+      - name: Apply Test Case 4: New Dependency
+        if: github.event.inputs.test_case == 'test-4-dependency'
+        run: ./scripts/apply-test-case-4.sh
+
+      - name: Apply Test Case 5: Major Changes
+        if: github.event.inputs.test_case == 'test-5-major'
+        run: ./scripts/apply-test-case-5.sh
+
+      - name: Display Test Case Info
+        run: |
+          echo "📊 Running Test Case: ${{ github.event.inputs.test_case }}"
+          case "${{ github.event.inputs.test_case }}" in
+            baseline)
+              echo "Baseline: No changes (fully cached)"
+              ;;
+            test-2-comment)
+              echo "Test 2: Comment Change (~80% cache expected)"
+              ;;
+            test-3-function)
+              echo "Test 3: New Function (~60% cache expected)"
+              ;;
+            test-4-dependency)
+              echo "Test 4: New Dependency (~40% cache expected)"
+              ;;
+            test-5-major)
+              echo "Test 5: Major Changes (~10% cache expected)"
+              ;;
+          esac
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
