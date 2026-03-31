@@ -71,8 +71,6 @@ jobs:
           cache: type=gha
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          annotations: |
-            manifest:description:Built with GitHub Actions
 
       - name: Run tests in Docker image
         run: |
