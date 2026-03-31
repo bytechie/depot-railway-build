@@ -4,6 +4,19 @@ Complete instructions for running each test case individually for all 4 flows.
 
 ---
 
+## Quick Reference: All Flows
+
+| Flow | How to Run | Tool |
+|------|-------------|------|
+| **Flow 1: Local** | `./scripts/run-flow1-tests.sh` | Automated script ⚡ |
+| **Flow 2: Railway** | `./scripts/run-flow2-tests.sh` | Automated script ⚡ |
+| **Flow 3: GitHub Actions** | Workflow dropdown | GitHub UI |
+| **Flow 4: Depot CI** | Workflow dropdown | GitHub UI |
+
+---
+
+---
+
 ## Quick Start: Using Workflow Dropdowns ⚡
 
 **Flows 3 & 4 (GitHub Actions & Depot CI) now have built-in test case selection!**
@@ -79,190 +92,71 @@ rm -f sample-app/.eslintrc.js
 
 ---
 
-## Flow 1: Local → Railway
+## Flow 1: Local → Railway ⚡
 
-### Test Case 1: Baseline (No Changes)
+### Using the Automated Test Runner
 
-**Purpose:** Measure fully cached build
+**All test cases with one command!**
 
 ```bash
-cd sample-app
-time docker build -t openclaw-demo:test .
+./scripts/run-flow1-tests.sh
 ```
 
-**Record:** `___ seconds`
+**Features:**
+- ✅ Automatically applies each test case
+- ✅ Runs Docker build with timing
+- ✅ Shows cache hit statistics
+- ✅ Records results to CSV
+- ✅ Resets state between tests
+
+**What happens:**
+```
+1. Select test case (1-6) from menu
+2. Script applies changes
+3. Builds Docker image
+4. Records build time
+5. Resets for next test
+```
+
+**View results:**
+```bash
+cat docs/performance-testing/results/performance-results.csv
+```
 
 ---
 
-### Test Case 2: Comment Change
+## Flow 2: Railway Auto-Build ⚡
 
-**Purpose:** Minimal source change
+### Using the Automated Test Runner
 
-```bash
-# Apply test case
-./scripts/apply-test-case-2.sh
-
-# Build and measure
-cd sample-app
-time docker build -t openclaw-demo:test .
-```
-
-**Record:** `___ seconds`
-
----
-
-### Test Case 3: New Function
-
-**Purpose:** Small code addition
+**All test cases with one command!**
 
 ```bash
-# Apply test case
-./scripts/apply-test-case-3.sh
-
-# Build and measure
-cd sample-app
-time docker build -t openclaw-demo:test .
+./scripts/run-flow2-tests.sh
 ```
 
-**Record:** `___ seconds`
+**Features:**
+- ✅ Automatically applies each test case
+- ✅ Creates temporary commit
+- ✅ Pushes to trigger Railway
+- ✅ Prompts for build time
+- ✅ Resets state between tests
+- ✅ No branch management needed!
 
----
-
-### Test Case 4: New Dependency
-
-**Purpose:** Package.json change
-
-```bash
-# Apply test case
-./scripts/apply-test-case-4.sh
-
-# Build and measure
-cd sample-app
-time docker build -t openclaw-demo:test .
+**What happens:**
+```
+1. Select test case (1-6) from menu
+2. Script applies changes
+3. Creates temporary commit
+4. Pushes to Railway
+5. Railway builds automatically
+6. Enter the time you see in Railway dashboard
+7. Script resets to clean state
 ```
 
-**Record:** `___ seconds`
+**Important:** The script uses temporary commits that get reset after each test. No branch pollution!
 
 ---
-
-### Test Case 5: Major Changes
-
-**Purpose:** Significant changes
-
-```bash
-# Apply test case
-./scripts/apply-test-case-5.sh
-
-# Build and measure
-cd sample-app
-time docker build -t openclaw-demo:test .
-```
-
-**Record:** `___ seconds`
-
----
-
-## Flow 2: Commit → Railway (Auto-Build)
-
-### Test Case 1: Baseline (No Changes)
-
-**Purpose:** Already measured - Railway rebuild with cache
-
-**Reference:** `docs/performance-testing/railway-build-results.md`
-- Initial build: 29.06 seconds
-- Cached rebuild: 3.81 seconds
-
----
-
-### Test Case 2: Comment Change
-
-**Purpose:** Minimal source change on Railway
-
-```bash
-# Apply test case
-./scripts/apply-test-case-2.sh
-
-# Commit and push
-git add sample-app/src/index.ts
-git commit -m "Test Case 2: Comment change"
-git push
-```
-
-**Watch Railway build:**
-1. Go to Railway dashboard
-2. Watch the build progress
-3. Record the build time from logs
-
-**Record:** `___ seconds`
-
----
-
-### Test Case 3: New Function
-
-**Purpose:** Small code addition on Railway
-
-```bash
-# Apply test case
-./scripts/apply-test-case-3.sh
-
-# Commit and push
-git add sample-app/
-git commit -m "Test Case 3: New function"
-git push
-```
-
-**Watch Railway build:**
-1. Go to Railway dashboard
-2. Watch the build progress
-3. Record the build time from logs
-
-**Record:** `___ seconds`
-
----
-
-### Test Case 4: New Dependency
-
-**Purpose:** Package.json change on Railway
-
-```bash
-# Apply test case
-./scripts/apply-test-case-4.sh
-
-# Commit and push
-git add sample-app/
-git commit -m "Test Case 4: New dependency"
-git push
-```
-
-**Watch Railway build:**
-1. Go to Railway dashboard
-2. Watch the build progress
-3. Record the build time from logs
-
-**Record:** `___ seconds`
-
----
-
-### Test Case 5: Major Changes
-
-**Purpose:** Significant changes on Railway
-
-```bash
-# Apply test case
-./scripts/apply-test-case-5.sh
-
-# Commit and push
-git add sample-app/
-git commit -m "Test Case 5: Major changes"
-git push
-```
-
-**Watch Railway build:**
-1. Go to Railway dashboard
-2. Watch the build progress
-3. Record the build time from logs
-
-**Record:** `___ seconds`
 
 ---
 
