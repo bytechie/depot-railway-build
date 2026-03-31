@@ -56,7 +56,7 @@ jobs:
           images: ${{ env.GHCR_IMAGE }}
           tags: |
             type=sha,prefix={{branch}}-
-            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=gh-latest,enable={{is_default_branch}}
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
 
@@ -75,7 +75,7 @@ jobs:
       - name: Run tests in Docker image
         run: |
           echo "Testing image: ${{ steps.meta.outputs.tags }}"
-          docker run --rm ${{ env.GHCR_IMAGE }}:latest npm test
+          docker run --rm ${{ env.GHCR_IMAGE }}:gh-latest npm test
 
       - name: Image built successfully
         run: |
@@ -102,7 +102,7 @@ jobs:
       - name: Deploy GHCR image to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          IMAGE: ${{ env.GHCR_IMAGE }}:latest
+          IMAGE: ${{ env.GHCR_IMAGE }}:gh-latest
         run: |
           echo "::group::Deploying GHCR image to Railway"
           echo "Image: $IMAGE"
