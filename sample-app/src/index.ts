@@ -1,10 +1,5 @@
 /**
- * Test Case 2: Comment Change - 2026-03-31T04:48:47Z
- * Performance test: Minimal source change
- */
-/**
  * OpenClaw Demo - Main Entry Point
-import { getTestMetric, calculateScore, formatBytes } from './utils.js';
  * Personal AI Assistant with Skills System
  */
 
@@ -83,8 +78,6 @@ app.post('/message', async (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-
-// Test Case 3: Metric endpointapp.get('/metric', (_req, res) => {  res.json({    metric: getTestMetric('test-case-3'),    score: calculateScore([1, 2, 3, 4, 5]),    formatted: formatBytes(1024)  });});
   console.log(`🦞 OpenClaw Demo running on port ${PORT}`);
   console.log(`📊 Skills registered: ${skillRegistry.list().length}`);
   console.log(`🤖 AI Model: ${aiModel.name}`);
