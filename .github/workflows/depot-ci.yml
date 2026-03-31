@@ -6,11 +6,13 @@
 name: Build & Deploy with Depot CI
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
+    inputs:
+      skip_deploy:
+        description: 'Skip deployment to Railway'
+        required: false
+        type: boolean
+        default: false
 
 env:
   NODE_VERSION: '18'
@@ -85,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: depot-build
     timeout-minutes: 5
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: inputs.skip_deploy != true
 
     steps:
       - name: Checkout code
