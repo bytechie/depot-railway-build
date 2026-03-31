@@ -48,25 +48,25 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Apply Test Case 2: Comment Change
-        if: github.event.inputs.test_case == 'test-2-comment'
+        if: inputs.test_case == 'test-2-comment'
         run: ./scripts/apply-test-case-2.sh
 
       - name: Apply Test Case 3: New Function
-        if: github.event.inputs.test_case == 'test-3-function'
+        if: inputs.test_case == 'test-3-function'
         run: ./scripts/apply-test-case-3.sh
 
       - name: Apply Test Case 4: New Dependency
-        if: github.event.inputs.test_case == 'test-4-dependency'
+        if: inputs.test_case == 'test-4-dependency'
         run: ./scripts/apply-test-case-4.sh
 
       - name: Apply Test Case 5: Major Changes
-        if: github.event.inputs.test_case == 'test-5-major'
+        if: inputs.test_case == 'test-5-major'
         run: ./scripts/apply-test-case-5.sh
 
       - name: Display Test Case Info
         run: |
-          echo "📊 Running Test Case: ${{ github.event.inputs.test_case }}"
-          case "${{ github.event.inputs.test_case }}" in
+          echo "📊 Running Test Case: ${{ inputs.test_case }}"
+          case "${{ inputs.test_case }}" in
             baseline)
               echo "Baseline: No changes (fully cached)"
               ;;
