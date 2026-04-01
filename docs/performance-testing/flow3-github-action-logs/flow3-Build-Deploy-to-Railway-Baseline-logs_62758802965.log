@@ -1,0 +1,1339 @@
+2026-03-31T11:44:19.4851956Z Current runner version: '2.333.0'
+2026-03-31T11:44:19.4884589Z ##[group]Runner Image Provisioner
+2026-03-31T11:44:19.4885800Z Hosted Compute Agent
+2026-03-31T11:44:19.4886737Z Version: 20260213.493
+2026-03-31T11:44:19.4887945Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-31T11:44:19.4889574Z Build Date: 2026-02-13T00:28:41Z
+2026-03-31T11:44:19.4890754Z Worker ID: {d0aa690d-9f91-47d3-9ea9-3ea9ec42adc8}
+2026-03-31T11:44:19.4892057Z Azure Region: northcentralus
+2026-03-31T11:44:19.4893050Z ##[endgroup]
+2026-03-31T11:44:19.4895330Z ##[group]Operating System
+2026-03-31T11:44:19.4896479Z Ubuntu
+2026-03-31T11:44:19.4897354Z 24.04.4
+2026-03-31T11:44:19.4898209Z LTS
+2026-03-31T11:44:19.4899407Z ##[endgroup]
+2026-03-31T11:44:19.4900281Z ##[group]Runner Image
+2026-03-31T11:44:19.4901210Z Image: ubuntu-24.04
+2026-03-31T11:44:19.4902242Z Version: 20260323.65.1
+2026-03-31T11:44:19.4904255Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260323.65/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-31T11:44:19.4907121Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260323.65
+2026-03-31T11:44:19.4908728Z ##[endgroup]
+2026-03-31T11:44:19.4913887Z ##[group]GITHUB_TOKEN Permissions
+2026-03-31T11:44:19.4917464Z Actions: write
+2026-03-31T11:44:19.4918365Z ArtifactMetadata: write
+2026-03-31T11:44:19.4919873Z Attestations: write
+2026-03-31T11:44:19.4920780Z Checks: write
+2026-03-31T11:44:19.4921581Z Contents: write
+2026-03-31T11:44:19.4922547Z Deployments: write
+2026-03-31T11:44:19.4923411Z Discussions: write
+2026-03-31T11:44:19.4924213Z Issues: write
+2026-03-31T11:44:19.4925212Z Metadata: read
+2026-03-31T11:44:19.4926092Z Models: read
+2026-03-31T11:44:19.4926899Z Packages: write
+2026-03-31T11:44:19.4927805Z Pages: write
+2026-03-31T11:44:19.4929173Z PullRequests: write
+2026-03-31T11:44:19.4930309Z RepositoryProjects: write
+2026-03-31T11:44:19.4931286Z SecurityEvents: write
+2026-03-31T11:44:19.4932325Z Statuses: write
+2026-03-31T11:44:19.4933844Z ##[endgroup]
+2026-03-31T11:44:19.4937107Z Secret source: Actions
+2026-03-31T11:44:19.4938256Z Prepare workflow directory
+2026-03-31T11:44:19.6169927Z Prepare all required actions
+2026-03-31T11:44:19.6226332Z Getting action download info
+2026-03-31T11:44:20.0911061Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-03-31T11:44:20.2265133Z Download action repository 'docker/setup-buildx-action@v3' (SHA:8d2750c68a42422c14e847fe6c8ac0403b4cbd6f)
+2026-03-31T11:44:21.8272572Z Download action repository 'docker/login-action@v3' (SHA:c94ce9fb468520275223c153574b00df6fe4bcc9)
+2026-03-31T11:44:22.4401147Z Download action repository 'docker/metadata-action@v5' (SHA:c299e40c65443455700f0fdfc63efafe5b349051)
+2026-03-31T11:44:23.0880787Z Download action repository 'docker/build-push-action@v5' (SHA:ca052bb54ab0790a636c9b5f226502c73d547a25)
+2026-03-31T11:44:23.7325889Z Complete job name: Build Docker Image
+2026-03-31T11:44:23.7942264Z ##[group]Run actions/checkout@v4
+2026-03-31T11:44:23.7943122Z with:
+2026-03-31T11:44:23.7943456Z   repository: bytechie/depot-railway-build
+2026-03-31T11:44:23.7944011Z   token: ***
+2026-03-31T11:44:23.7944342Z   ssh-strict: true
+2026-03-31T11:44:23.7944617Z   ssh-user: git
+2026-03-31T11:44:23.7944913Z   persist-credentials: true
+2026-03-31T11:44:23.7945267Z   clean: true
+2026-03-31T11:44:23.7945618Z   sparse-checkout-cone-mode: true
+2026-03-31T11:44:23.7945931Z   fetch-depth: 1
+2026-03-31T11:44:23.7946251Z   fetch-tags: false
+2026-03-31T11:44:23.7946566Z   show-progress: true
+2026-03-31T11:44:23.7946819Z   lfs: false
+2026-03-31T11:44:23.7947112Z   submodules: false
+2026-03-31T11:44:23.7947447Z   set-safe-directory: true
+2026-03-31T11:44:23.7947972Z env:
+2026-03-31T11:44:23.7948288Z   NODE_VERSION: 18
+2026-03-31T11:44:23.7948709Z   RAILWAY_PROJECT_ID: ***
+2026-03-31T11:44:23.7949319Z   RAILWAY_SERVICE_ID: ***
+2026-03-31T11:44:23.7949840Z   GHCR_IMAGE: ghcr.io/bytechie/openclaw-demo
+2026-03-31T11:44:23.7950174Z ##[endgroup]
+2026-03-31T11:44:23.9144738Z Syncing repository: bytechie/depot-railway-build
+2026-03-31T11:44:23.9146657Z ##[group]Getting Git version info
+2026-03-31T11:44:23.9147218Z Working directory is '/home/runner/work/depot-railway-build/depot-railway-build'
+2026-03-31T11:44:23.9148028Z [command]/usr/bin/git version
+2026-03-31T11:44:23.9184187Z git version 2.53.0
+2026-03-31T11:44:23.9213826Z ##[endgroup]
+2026-03-31T11:44:23.9234327Z Temporarily overriding HOME='/home/runner/work/_temp/7707d252-612b-4d4f-8706-ed73e33c62e0' before making global git config changes
+2026-03-31T11:44:23.9235790Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-31T11:44:23.9240666Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/depot-railway-build/depot-railway-build
+2026-03-31T11:44:23.9286065Z Deleting the contents of '/home/runner/work/depot-railway-build/depot-railway-build'
+2026-03-31T11:44:23.9291397Z ##[group]Initializing the repository
+2026-03-31T11:44:23.9296559Z [command]/usr/bin/git init /home/runner/work/depot-railway-build/depot-railway-build
+2026-03-31T11:44:23.9393086Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-31T11:44:23.9400209Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-31T11:44:23.9405209Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-31T11:44:23.9407021Z hint: call:
+2026-03-31T11:44:23.9407583Z hint:
+2026-03-31T11:44:23.9408158Z hint: 	git config --global init.defaultBranch <name>
+2026-03-31T11:44:23.9409132Z hint:
+2026-03-31T11:44:23.9409855Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-31T11:44:23.9410851Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-31T11:44:23.9411697Z hint:
+2026-03-31T11:44:23.9412201Z hint: 	git branch -m <name>
+2026-03-31T11:44:23.9412647Z hint:
+2026-03-31T11:44:23.9413359Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-31T11:44:23.9416736Z Initialized empty Git repository in /home/runner/work/depot-railway-build/depot-railway-build/.git/
+2026-03-31T11:44:23.9418802Z [command]/usr/bin/git remote add origin https://github.com/bytechie/depot-railway-build
+2026-03-31T11:44:23.9446000Z ##[endgroup]
+2026-03-31T11:44:23.9448019Z ##[group]Disabling automatic garbage collection
+2026-03-31T11:44:23.9453112Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-31T11:44:23.9483611Z ##[endgroup]
+2026-03-31T11:44:23.9484402Z ##[group]Setting up auth
+2026-03-31T11:44:23.9494348Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-31T11:44:23.9529290Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-31T11:44:23.9832243Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-31T11:44:23.9865447Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-31T11:44:24.0095237Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-31T11:44:24.0154548Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-31T11:44:24.0396431Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-31T11:44:24.0433848Z ##[endgroup]
+2026-03-31T11:44:24.0434248Z ##[group]Fetching the repository
+2026-03-31T11:44:24.0444802Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +31608f90900c35722249da19b46e23f0af24f8a2:refs/remotes/origin/main
+2026-03-31T11:44:24.3933675Z From https://github.com/bytechie/depot-railway-build
+2026-03-31T11:44:24.3950035Z  * [new ref]         31608f90900c35722249da19b46e23f0af24f8a2 -> origin/main
+2026-03-31T11:44:24.3986771Z ##[endgroup]
+2026-03-31T11:44:24.3996251Z ##[group]Determining the checkout info
+2026-03-31T11:44:24.3997067Z ##[endgroup]
+2026-03-31T11:44:24.4007104Z [command]/usr/bin/git sparse-checkout disable
+2026-03-31T11:44:24.4073944Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-31T11:44:24.4131480Z ##[group]Checking out the ref
+2026-03-31T11:44:24.4133917Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-03-31T11:44:24.4313477Z Switched to a new branch 'main'
+2026-03-31T11:44:24.4321580Z branch 'main' set up to track 'origin/main'.
+2026-03-31T11:44:24.4338634Z ##[endgroup]
+2026-03-31T11:44:24.4405604Z [command]/usr/bin/git log -1 --format=%H
+2026-03-31T11:44:24.4443426Z 31608f90900c35722249da19b46e23f0af24f8a2
+2026-03-31T11:44:24.4736572Z ##[group]Run echo "📊 Running Test Case: baseline"
+2026-03-31T11:44:24.4737020Z [36;1mecho "📊 Running Test Case: baseline"[0m
+2026-03-31T11:44:24.4737332Z [36;1mcase "baseline" in[0m
+2026-03-31T11:44:24.4737560Z [36;1m  baseline)[0m
+2026-03-31T11:44:24.4737822Z [36;1m    echo "Baseline: No changes (fully cached)"[0m
+2026-03-31T11:44:24.4738107Z [36;1m    ;;[0m
+2026-03-31T11:44:24.4738302Z [36;1m  test-2-comment)[0m
+2026-03-31T11:44:24.4738579Z [36;1m    echo "Test 2: Comment Change (~80% cache expected)"[0m
+2026-03-31T11:44:24.4739093Z [36;1m    ;;[0m
+2026-03-31T11:44:24.4739291Z [36;1m  test-3-function)[0m
+2026-03-31T11:44:24.4739573Z [36;1m    echo "Test 3: New Function (~60% cache expected)"[0m
+2026-03-31T11:44:24.4739881Z [36;1m    ;;[0m
+2026-03-31T11:44:24.4740070Z [36;1m  test-4-dependency)[0m
+2026-03-31T11:44:24.4740377Z [36;1m    echo "Test 4: New Dependency (~40% cache expected)"[0m
+2026-03-31T11:44:24.4740689Z [36;1m    ;;[0m
+2026-03-31T11:44:24.4740916Z [36;1m  test-5-major)[0m
+2026-03-31T11:44:24.4741185Z [36;1m    echo "Test 5: Major Changes (~10% cache expected)"[0m
+2026-03-31T11:44:24.4741488Z [36;1m    ;;[0m
+2026-03-31T11:44:24.4741660Z [36;1mesac[0m
+2026-03-31T11:44:24.4770821Z shell: /usr/bin/bash -e {0}
+2026-03-31T11:44:24.4771078Z env:
+2026-03-31T11:44:24.4771247Z   NODE_VERSION: 18
+2026-03-31T11:44:24.4771580Z   RAILWAY_PROJECT_ID: ***
+2026-03-31T11:44:24.4771861Z   RAILWAY_SERVICE_ID: ***
+2026-03-31T11:44:24.4772111Z   GHCR_IMAGE: ghcr.io/bytechie/openclaw-demo
+2026-03-31T11:44:24.4772382Z ##[endgroup]
+2026-03-31T11:44:24.4841598Z 📊 Running Test Case: baseline
+2026-03-31T11:44:24.4845522Z Baseline: No changes (fully cached)
+2026-03-31T11:44:24.4926841Z ##[group]Run docker/setup-buildx-action@v3
+2026-03-31T11:44:24.4927146Z with:
+2026-03-31T11:44:24.4927334Z   driver: docker-container
+2026-03-31T11:44:24.4927538Z   use: true
+2026-03-31T11:44:24.4927713Z   keep-state: false
+2026-03-31T11:44:24.4927906Z   cache-binary: true
+2026-03-31T11:44:24.4928091Z   cleanup: true
+2026-03-31T11:44:24.4928267Z   install: false
+2026-03-31T11:44:24.4928441Z env:
+2026-03-31T11:44:24.4928611Z   NODE_VERSION: 18
+2026-03-31T11:44:24.4929120Z   RAILWAY_PROJECT_ID: ***
+2026-03-31T11:44:24.4929404Z   RAILWAY_SERVICE_ID: ***
+2026-03-31T11:44:24.4929644Z   GHCR_IMAGE: ghcr.io/bytechie/openclaw-demo
+2026-03-31T11:44:24.4929902Z ##[endgroup]
+2026-03-31T11:44:24.9066784Z ##[group]Docker info
+2026-03-31T11:44:24.9068120Z [command]/usr/bin/docker version
+2026-03-31T11:44:24.9068768Z Client: Docker Engine - Community
+2026-03-31T11:44:24.9080834Z  Version:           28.0.4
+2026-03-31T11:44:24.9081263Z  API version:       1.48
+2026-03-31T11:44:24.9081728Z  Go version:        go1.23.7
+2026-03-31T11:44:24.9082286Z  Git commit:        b8034c0
+2026-03-31T11:44:24.9082707Z  Built:             Tue Mar 25 15:07:16 2025
+2026-03-31T11:44:24.9083164Z  OS/Arch:           linux/amd64
+2026-03-31T11:44:24.9083546Z  Context:           default
+2026-03-31T11:44:24.9083785Z 
+2026-03-31T11:44:24.9083942Z Server: Docker Engine - Community
+2026-03-31T11:44:24.9084326Z  Engine:
+2026-03-31T11:44:24.9084601Z   Version:          28.0.4
+2026-03-31T11:44:24.9085234Z   API version:      1.48 (minimum version 1.24)
+2026-03-31T11:44:24.9085521Z   Go version:       go1.23.7
+2026-03-31T11:44:24.9085743Z   Git commit:       6430e49
+2026-03-31T11:44:24.9085977Z   Built:            Tue Mar 25 15:07:16 2025
+2026-03-31T11:44:24.9086248Z   OS/Arch:          linux/amd64
+2026-03-31T11:44:24.9086485Z   Experimental:     false
+2026-03-31T11:44:24.9086694Z  containerd:
+2026-03-31T11:44:24.9086874Z   Version:          v2.2.2
+2026-03-31T11:44:24.9087149Z   GitCommit:        301b2dac98f15c27117da5c8af12118a041a31d9
+2026-03-31T11:44:24.9087452Z  runc:
+2026-03-31T11:44:24.9087621Z   Version:          1.3.4
+2026-03-31T11:44:24.9087833Z   GitCommit:        v1.3.4-0-gd6d73eb8
+2026-03-31T11:44:24.9088407Z  docker-init:
+2026-03-31T11:44:24.9088735Z   Version:          0.19.0
+2026-03-31T11:44:24.9089325Z   GitCommit:        de40ad0
+2026-03-31T11:44:24.9090733Z [command]/usr/bin/docker info
+2026-03-31T11:44:25.4372858Z Client: Docker Engine - Community
+2026-03-31T11:44:25.4373582Z  Version:    28.0.4
+2026-03-31T11:44:25.4374062Z  Context:    default
+2026-03-31T11:44:25.4374541Z  Debug Mode: false
+2026-03-31T11:44:25.4374987Z  Plugins:
+2026-03-31T11:44:25.4375443Z   buildx: Docker Buildx (Docker Inc.)
+2026-03-31T11:44:25.4375957Z     Version:  v0.32.1
+2026-03-31T11:44:25.4376555Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2026-03-31T11:44:25.4377124Z   compose: Docker Compose (Docker Inc.)
+2026-03-31T11:44:25.4377625Z     Version:  v2.38.2
+2026-03-31T11:44:25.4378216Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2026-03-31T11:44:25.4378608Z 
+2026-03-31T11:44:25.4382789Z Server:
+2026-03-31T11:44:25.4383244Z  Containers: 0
+2026-03-31T11:44:25.4387952Z   Running: 0
+2026-03-31T11:44:25.4388220Z   Paused: 0
+2026-03-31T11:44:25.4388400Z   Stopped: 0
+2026-03-31T11:44:25.4388570Z  Images: 6
+2026-03-31T11:44:25.4388746Z  Server Version: 28.0.4
+2026-03-31T11:44:25.4389458Z  Storage Driver: overlay2
+2026-03-31T11:44:25.4389849Z   Backing Filesystem: extfs
+2026-03-31T11:44:25.4390238Z   Supports d_type: true
+2026-03-31T11:44:25.4390557Z   Using metacopy: false
+2026-03-31T11:44:25.4390777Z   Native Overlay Diff: false
+2026-03-31T11:44:25.4390999Z   userxattr: false
+2026-03-31T11:44:25.4391194Z  Logging Driver: json-file
+2026-03-31T11:44:25.4391409Z  Cgroup Driver: systemd
+2026-03-31T11:44:25.4391612Z  Cgroup Version: 2
+2026-03-31T11:44:25.4391788Z  Plugins:
+2026-03-31T11:44:25.4392043Z   Volume: local
+2026-03-31T11:44:25.4392277Z   Network: bridge host ipvlan macvlan null overlay
+2026-03-31T11:44:25.4393051Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2026-03-31T11:44:25.4393438Z  Swarm: inactive
+2026-03-31T11:44:25.4393650Z  Runtimes: runc io.containerd.runc.v2
+2026-03-31T11:44:25.4393906Z  Default Runtime: runc
+2026-03-31T11:44:25.4394115Z  Init Binary: docker-init
+2026-03-31T11:44:25.4394407Z  containerd version: 301b2dac98f15c27117da5c8af12118a041a31d9
+2026-03-31T11:44:25.4394738Z  runc version: v1.3.4-0-gd6d73eb8
+2026-03-31T11:44:25.4394977Z  init version: de40ad0
+2026-03-31T11:44:25.4395181Z  Security Options:
+2026-03-31T11:44:25.4395367Z   apparmor
+2026-03-31T11:44:25.4395527Z   seccomp
+2026-03-31T11:44:25.4395692Z    Profile: builtin
+2026-03-31T11:44:25.4395872Z   cgroupns
+2026-03-31T11:44:25.4396048Z  Kernel Version: 6.17.0-1008-azure
+2026-03-31T11:44:25.4396299Z  Operating System: Ubuntu 24.04.4 LTS
+2026-03-31T11:44:25.4396542Z  OSType: linux
+2026-03-31T11:44:25.4396720Z  Architecture: x86_64
+2026-03-31T11:44:25.4396917Z  CPUs: 2
+2026-03-31T11:44:25.4398216Z  Total Memory: 7.752GiB
+2026-03-31T11:44:25.4409450Z  Name: runnervmrg6be
+2026-03-31T11:44:25.4410566Z  ID: 26c853c4-ebf5-403c-a446-44e39e017c08
+2026-03-31T11:44:25.4411233Z  Docker Root Dir: /var/lib/docker
+2026-03-31T11:44:25.4411652Z  Debug Mode: false
+2026-03-31T11:44:25.4411982Z  Username: githubactions
+2026-03-31T11:44:25.4412345Z  Experimental: false
+2026-03-31T11:44:25.4412697Z  Insecure Registries:
+2026-03-31T11:44:25.4419455Z   ::1/128
+2026-03-31T11:44:25.4420185Z   127.0.0.0/8
+2026-03-31T11:44:25.4420528Z  Live Restore Enabled: false
+2026-03-31T11:44:25.4420829Z 
+2026-03-31T11:44:25.4421486Z ##[endgroup]
+2026-03-31T11:44:25.5199639Z ##[group]Buildx version
+2026-03-31T11:44:25.5231164Z [command]/usr/bin/docker buildx version
+2026-03-31T11:44:25.5934884Z github.com/docker/buildx v0.32.1 d3bfb3f4e48a67dda56e957a6636f4fab6c5fcb2
+2026-03-31T11:44:25.5969688Z ##[endgroup]
+2026-03-31T11:44:25.6182290Z ##[group]Inspecting default docker context
+2026-03-31T11:44:25.6330949Z [
+2026-03-31T11:44:25.6331307Z   {
+2026-03-31T11:44:25.6331505Z     "Name": "default",
+2026-03-31T11:44:25.6331734Z     "Metadata": {},
+2026-03-31T11:44:25.6331958Z     "Endpoints": {
+2026-03-31T11:44:25.6332178Z       "docker": {
+2026-03-31T11:44:25.6332398Z         "Host": "unix:///var/run/docker.sock",
+2026-03-31T11:44:25.6332695Z         "SkipTLSVerify": false
+2026-03-31T11:44:25.6332921Z       }
+2026-03-31T11:44:25.6333084Z     },
+2026-03-31T11:44:25.6333260Z     "TLSMaterial": {},
+2026-03-31T11:44:25.6333479Z     "Storage": {
+2026-03-31T11:44:25.6333679Z       "MetadataPath": "<IN MEMORY>",
+2026-03-31T11:44:25.6333928Z       "TLSPath": "<IN MEMORY>"
+2026-03-31T11:44:25.6334138Z     }
+2026-03-31T11:44:25.6334311Z   }
+2026-03-31T11:44:25.6334465Z ]
+2026-03-31T11:44:25.6334893Z ##[endgroup]
+2026-03-31T11:44:25.6335241Z ##[group]Creating a new builder instance
+2026-03-31T11:44:25.8080037Z [command]/usr/bin/docker buildx create --name builder-6f5447f4-aa88-4879-a068-2256e3b922d9 --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+2026-03-31T11:44:25.9142200Z builder-6f5447f4-aa88-4879-a068-2256e3b922d9
+2026-03-31T11:44:25.9178699Z ##[endgroup]
+2026-03-31T11:44:25.9182430Z ##[group]Booting builder
+2026-03-31T11:44:25.9243054Z [command]/usr/bin/docker buildx inspect --bootstrap --builder builder-6f5447f4-aa88-4879-a068-2256e3b922d9
+2026-03-31T11:44:25.9899817Z #1 [internal] booting buildkit
+2026-03-31T11:44:26.1403684Z #1 pulling image moby/buildkit:buildx-stable-1
+2026-03-31T11:44:30.6192955Z #1 pulling image moby/buildkit:buildx-stable-1 4.6s done
+2026-03-31T11:44:30.7692366Z #1 creating container buildx_buildkit_builder-6f5447f4-aa88-4879-a068-2256e3b922d90
+2026-03-31T11:44:31.0331894Z #1 creating container buildx_buildkit_builder-6f5447f4-aa88-4879-a068-2256e3b922d90 0.4s done
+2026-03-31T11:44:31.0352921Z #1 DONE 5.0s
+2026-03-31T11:44:31.0850997Z Name:          builder-6f5447f4-aa88-4879-a068-2256e3b922d9
+2026-03-31T11:44:31.0871358Z Driver:        docker-container
+2026-03-31T11:44:31.0873340Z Last Activity: 2026-03-31 11:44:25 +0000 UTC
+2026-03-31T11:44:31.0873687Z 
+2026-03-31T11:44:31.0873797Z Nodes:
+2026-03-31T11:44:31.0874287Z Name:                  builder-6f5447f4-aa88-4879-a068-2256e3b922d90
+2026-03-31T11:44:31.0874916Z Endpoint:              unix:///var/run/docker.sock
+2026-03-31T11:44:31.0875402Z Status:                running
+2026-03-31T11:44:31.0876286Z BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+2026-03-31T11:44:31.0880582Z BuildKit version:      v0.28.1
+2026-03-31T11:44:31.0881192Z Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/386
+2026-03-31T11:44:31.0882963Z Labels:
+2026-03-31T11:44:31.0883401Z  org.mobyproject.buildkit.worker.executor:         oci
+2026-03-31T11:44:31.0884140Z  org.mobyproject.buildkit.worker.hostname:         7abd8065b6e1
+2026-03-31T11:44:31.0884857Z  org.mobyproject.buildkit.worker.network:          host
+2026-03-31T11:44:31.0885623Z  org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+2026-03-31T11:44:31.0886099Z  org.mobyproject.buildkit.worker.selinux.enabled:  false
+2026-03-31T11:44:31.0886604Z  org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+2026-03-31T11:44:31.0887019Z GC Policy rule#0:
+2026-03-31T11:44:31.0887211Z  All:            false
+2026-03-31T11:44:31.0887544Z  Filters:        type==source.local,type==exec.cachemount,type==source.git.checkout
+2026-03-31T11:44:31.0888352Z  Keep Duration:  48h0m0s
+2026-03-31T11:44:31.0888568Z  Max Used Space: 488.3MiB
+2026-03-31T11:44:31.0888775Z GC Policy rule#1:
+2026-03-31T11:44:31.0889477Z  All:            false
+2026-03-31T11:44:31.0889809Z  Keep Duration:  1440h0m0s
+2026-03-31T11:44:31.0890393Z  Reserved Space: 7.451GiB
+2026-03-31T11:44:31.0890792Z  Max Used Space: 54.02GiB
+2026-03-31T11:44:31.0891678Z  Min Free Space: 13.97GiB
+2026-03-31T11:44:31.0892049Z GC Policy rule#2:
+2026-03-31T11:44:31.0892338Z  All:            false
+2026-03-31T11:44:31.0894030Z  Reserved Space: 7.451GiB
+2026-03-31T11:44:31.0894459Z  Max Used Space: 54.02GiB
+2026-03-31T11:44:31.0894815Z  Min Free Space: 13.97GiB
+2026-03-31T11:44:31.0895155Z GC Policy rule#3:
+2026-03-31T11:44:31.0895491Z  All:            true
+2026-03-31T11:44:31.0895819Z  Reserved Space: 7.451GiB
+2026-03-31T11:44:31.0896170Z  Max Used Space: 54.02GiB
+2026-03-31T11:44:31.0896523Z  Min Free Space: 13.97GiB
+2026-03-31T11:44:31.0920547Z ##[endgroup]
+2026-03-31T11:44:31.2109720Z ##[group]Inspect builder
+2026-03-31T11:44:31.2111343Z {
+2026-03-31T11:44:31.2111764Z   "nodes": [
+2026-03-31T11:44:31.2112162Z     {
+2026-03-31T11:44:31.2112662Z       "name": "builder-6f5447f4-aa88-4879-a068-2256e3b922d90",
+2026-03-31T11:44:31.2113226Z       "endpoint": "unix:///var/run/docker.sock",
+2026-03-31T11:44:31.2113722Z       "status": "running",
+2026-03-31T11:44:31.2114567Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+2026-03-31T11:44:31.2115240Z       "buildkit": "v0.28.1",
+2026-03-31T11:44:31.2115868Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+2026-03-31T11:44:31.2117451Z       "features": {
+2026-03-31T11:44:31.2122308Z         "Automatically load images to the Docker Engine image store": true,
+2026-03-31T11:44:31.2122956Z         "Cache export": true,
+2026-03-31T11:44:31.2123360Z         "Direct push": true,
+2026-03-31T11:44:31.2123742Z         "Docker exporter": true,
+2026-03-31T11:44:31.2124166Z         "Multi-platform build": true,
+2026-03-31T11:44:31.2124588Z         "OCI exporter": true
+2026-03-31T11:44:31.2124923Z       },
+2026-03-31T11:44:31.2125189Z       "labels": {
+2026-03-31T11:44:31.2125506Z         "org.mobyproject.buildkit.worker.executor": "oci",
+2026-03-31T11:44:31.2125926Z         "org.mobyproject.buildkit.worker.hostname": "7abd8065b6e1",
+2026-03-31T11:44:31.2126324Z         "org.mobyproject.buildkit.worker.network": "host",
+2026-03-31T11:44:31.2126722Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+2026-03-31T11:44:31.2127395Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+2026-03-31T11:44:31.2127821Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+2026-03-31T11:44:31.2128132Z       },
+2026-03-31T11:44:31.2128295Z       "gcPolicy": [
+2026-03-31T11:44:31.2128475Z         {
+2026-03-31T11:44:31.2128630Z           "all": false,
+2026-03-31T11:44:31.2128820Z           "filter": [
+2026-03-31T11:44:31.2149733Z             "type==source.local",
+2026-03-31T11:44:31.2150209Z             "type==exec.cachemount",
+2026-03-31T11:44:31.2150691Z             "type==source.git.checkout"
+2026-03-31T11:44:31.2151133Z           ],
+2026-03-31T11:44:31.2151446Z           "keepDuration": "48h0m0s",
+2026-03-31T11:44:31.2151853Z           "maxUsedSpace": "488.3MiB"
+2026-03-31T11:44:31.2152227Z         },
+2026-03-31T11:44:31.2152485Z         {
+2026-03-31T11:44:31.2153031Z           "all": false,
+2026-03-31T11:44:31.2153406Z           "keepDuration": "1440h0m0s",
+2026-03-31T11:44:31.2153986Z           "reservedSpace": "7.451GiB",
+2026-03-31T11:44:31.2154414Z           "maxUsedSpace": "54.02GiB",
+2026-03-31T11:44:31.2154828Z           "minFreeSpace": "13.97GiB"
+2026-03-31T11:44:31.2155187Z         },
+2026-03-31T11:44:31.2155479Z         {
+2026-03-31T11:44:31.2155774Z           "all": false,
+2026-03-31T11:44:31.2156134Z           "reservedSpace": "7.451GiB",
+2026-03-31T11:44:31.2156581Z           "maxUsedSpace": "54.02GiB",
+2026-03-31T11:44:31.2157034Z           "minFreeSpace": "13.97GiB"
+2026-03-31T11:44:31.2157717Z         },
+2026-03-31T11:44:31.2158019Z         {
+2026-03-31T11:44:31.2158322Z           "all": true,
+2026-03-31T11:44:31.2158684Z           "reservedSpace": "7.451GiB",
+2026-03-31T11:44:31.2159852Z           "maxUsedSpace": "54.02GiB",
+2026-03-31T11:44:31.2160335Z           "minFreeSpace": "13.97GiB"
+2026-03-31T11:44:31.2160883Z         }
+2026-03-31T11:44:31.2161179Z       ]
+2026-03-31T11:44:31.2161459Z     }
+2026-03-31T11:44:31.2161733Z   ],
+2026-03-31T11:44:31.2162146Z   "name": "builder-6f5447f4-aa88-4879-a068-2256e3b922d9",
+2026-03-31T11:44:31.2162785Z   "driver": "docker-container",
+2026-03-31T11:44:31.2163234Z   "lastActivity": "2026-03-31T11:44:25.000Z"
+2026-03-31T11:44:31.2163684Z }
+2026-03-31T11:44:31.2164307Z ##[endgroup]
+2026-03-31T11:44:31.2164897Z ##[group]BuildKit version
+2026-03-31T11:44:31.2165389Z builder-6f5447f4-aa88-4879-a068-2256e3b922d90: v0.28.1
+2026-03-31T11:44:31.2166185Z ##[endgroup]
+2026-03-31T11:44:31.2297383Z ##[group]Run docker/login-action@v3
+2026-03-31T11:44:31.2297655Z with:
+2026-03-31T11:44:31.2297824Z   registry: ghcr.io
+2026-03-31T11:44:31.2298014Z   username: bytechie
+2026-03-31T11:44:31.2298503Z   password: ***
+2026-03-31T11:44:31.2298696Z   logout: true
+2026-03-31T11:44:31.2299244Z env:
+2026-03-31T11:44:31.2299432Z   NODE_VERSION: 18
+2026-03-31T11:44:31.2299710Z   RAILWAY_PROJECT_ID: ***
+2026-03-31T11:44:31.2299991Z   RAILWAY_SERVICE_ID: ***
+2026-03-31T11:44:31.2300506Z   GHCR_IMAGE: ghcr.io/bytechie/openclaw-demo
+2026-03-31T11:44:31.2300887Z ##[endgroup]
+2026-03-31T11:44:31.5514948Z Logging into ghcr.io...
+2026-03-31T11:44:31.8545197Z Login Succeeded!
+2026-03-31T11:44:31.8702065Z ##[group]Run docker/metadata-action@v5
+2026-03-31T11:44:31.8702478Z with:
+2026-03-31T11:44:31.8702733Z   images: ghcr.io/bytechie/openclaw-demo
+2026-03-31T11:44:31.8703590Z   tags: type=sha,prefix={{branch}}-
+type=raw,value=gh-latest,enable={{is_default_branch}}
+type=semver,pattern={{version}}
+type=semver,pattern={{major}}.{{minor}}
+
+2026-03-31T11:44:31.8704406Z   context: workflow
+2026-03-31T11:44:31.8704870Z   github-token: ***
+2026-03-31T11:44:31.8705134Z env:
+2026-03-31T11:44:31.8705392Z   NODE_VERSION: 18
+2026-03-31T11:44:31.8705818Z   RAILWAY_PROJECT_ID: ***
+2026-03-31T11:44:31.8706207Z   RAILWAY_SERVICE_ID: ***
+2026-03-31T11:44:31.8706537Z   GHCR_IMAGE: ghcr.io/bytechie/openclaw-demo
+2026-03-31T11:44:31.8706926Z ##[endgroup]
+2026-03-31T11:44:32.7884350Z ##[group]Context info
+2026-03-31T11:44:32.7896566Z eventName: workflow_dispatch
+2026-03-31T11:44:32.7897250Z sha: 31608f90900c35722249da19b46e23f0af24f8a2
+2026-03-31T11:44:32.7897876Z ref: refs/heads/main
+2026-03-31T11:44:32.7899092Z workflow: Build & Deploy to Railway (Baseline)
+2026-03-31T11:44:32.7899710Z action: meta
+2026-03-31T11:44:32.7900339Z actor: bytechie
+2026-03-31T11:44:32.7900790Z runNumber: 59
+2026-03-31T11:44:32.7901171Z runId: 23795546101
+2026-03-31T11:44:32.7902817Z commitDate: Tue Mar 31 2026 11:43:14 GMT+0000 (Coordinated Universal Time)
+2026-03-31T11:44:32.7904588Z ##[endgroup]
+2026-03-31T11:44:32.7911783Z ##[group]Processing images input
+2026-03-31T11:44:32.7913759Z name=ghcr.io/bytechie/openclaw-demo,enable=true
+2026-03-31T11:44:32.7916145Z ##[endgroup]
+2026-03-31T11:44:32.7919948Z ##[group]Processing tags input
+2026-03-31T11:44:32.7921490Z type=semver,pattern={{version}},value=,match=,enable=true,priority=900
+2026-03-31T11:44:32.7923182Z type=semver,pattern={{major}}.{{minor}},value=,match=,enable=true,priority=900
+2026-03-31T11:44:32.7924850Z type=raw,value=gh-latest,enable={{is_default_branch}},priority=200
+2026-03-31T11:44:32.7934372Z type=sha,prefix={{branch}}-,format=short,enable=true,priority=100
+2026-03-31T11:44:32.7935455Z ##[endgroup]
+2026-03-31T11:44:32.7936345Z ##[group]Processing flavor input
+2026-03-31T11:44:32.7936811Z latest=auto
+2026-03-31T11:44:32.7937309Z prefix=
+2026-03-31T11:44:32.7937735Z prefixLatest=false
+2026-03-31T11:44:32.7938119Z suffix=
+2026-03-31T11:44:32.7938560Z suffixLatest=false
+2026-03-31T11:44:32.7939526Z ##[endgroup]
+2026-03-31T11:44:32.8013270Z ##[group]Docker image version
+2026-03-31T11:44:32.8017372Z gh-latest
+2026-03-31T11:44:32.8019868Z ##[endgroup]
+2026-03-31T11:44:32.8020646Z ##[group]Docker tags
+2026-03-31T11:44:32.8021088Z ghcr.io/bytechie/openclaw-demo:gh-latest
+2026-03-31T11:44:32.8021652Z ghcr.io/bytechie/openclaw-demo:main-31608f9
+2026-03-31T11:44:32.8022429Z ##[endgroup]
+2026-03-31T11:44:32.8097869Z ##[group]Docker labels
+2026-03-31T11:44:32.8102127Z org.opencontainers.image.created=2026-03-31T11:44:32.792Z
+2026-03-31T11:44:32.8104953Z org.opencontainers.image.description=speedup build for railway using depot
+2026-03-31T11:44:32.8105785Z org.opencontainers.image.licenses=
+2026-03-31T11:44:32.8108812Z org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2
+2026-03-31T11:44:32.8110172Z org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build
+2026-03-31T11:44:32.8111074Z org.opencontainers.image.title=depot-railway-build
+2026-03-31T11:44:32.8112334Z org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build
+2026-03-31T11:44:32.8113227Z org.opencontainers.image.version=gh-latest
+2026-03-31T11:44:32.8114027Z ##[endgroup]
+2026-03-31T11:44:32.8114623Z ##[group]Annotations
+2026-03-31T11:44:32.8115178Z manifest:org.opencontainers.image.created=2026-03-31T11:44:32.792Z
+2026-03-31T11:44:32.8116221Z manifest:org.opencontainers.image.description=speedup build for railway using depot
+2026-03-31T11:44:32.8117132Z manifest:org.opencontainers.image.licenses=
+2026-03-31T11:44:32.8117912Z manifest:org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2
+2026-03-31T11:44:32.8119524Z manifest:org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build
+2026-03-31T11:44:32.8120588Z manifest:org.opencontainers.image.title=depot-railway-build
+2026-03-31T11:44:32.8121549Z manifest:org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build
+2026-03-31T11:44:32.8122486Z manifest:org.opencontainers.image.version=gh-latest
+2026-03-31T11:44:32.8123339Z ##[endgroup]
+2026-03-31T11:44:32.8123924Z ##[group]JSON output
+2026-03-31T11:44:32.8124976Z {
+2026-03-31T11:44:32.8127399Z   "tags": [
+2026-03-31T11:44:32.8127806Z     "ghcr.io/bytechie/openclaw-demo:gh-latest",
+2026-03-31T11:44:32.8128409Z     "ghcr.io/bytechie/openclaw-demo:main-31608f9"
+2026-03-31T11:44:32.8129560Z   ],
+2026-03-31T11:44:32.8129875Z   "tag-names": [
+2026-03-31T11:44:32.8130208Z     "gh-latest",
+2026-03-31T11:44:32.8130551Z     "main-31608f9"
+2026-03-31T11:44:32.8130881Z   ],
+2026-03-31T11:44:32.8131157Z   "labels": {
+2026-03-31T11:44:32.8131653Z     "org.opencontainers.image.created": "2026-03-31T11:44:32.792Z",
+2026-03-31T11:44:32.8132610Z     "org.opencontainers.image.description": "speedup build for railway using depot",
+2026-03-31T11:44:32.8133414Z     "org.opencontainers.image.licenses": "",
+2026-03-31T11:44:32.8134173Z     "org.opencontainers.image.revision": "31608f90900c35722249da19b46e23f0af24f8a2",
+2026-03-31T11:44:32.8135228Z     "org.opencontainers.image.source": "https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:44:32.8136204Z     "org.opencontainers.image.title": "depot-railway-build",
+2026-03-31T11:44:32.8136898Z     "org.opencontainers.image.url": "https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:44:32.8137660Z     "org.opencontainers.image.version": "gh-latest"
+2026-03-31T11:44:32.8138129Z   },
+2026-03-31T11:44:32.8138378Z   "annotations": [
+2026-03-31T11:44:32.8141391Z     "manifest:org.opencontainers.image.created=2026-03-31T11:44:32.792Z",
+2026-03-31T11:44:32.8142376Z     "manifest:org.opencontainers.image.description=speedup build for railway using depot",
+2026-03-31T11:44:32.8143119Z     "manifest:org.opencontainers.image.licenses=",
+2026-03-31T11:44:32.8143816Z     "manifest:org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2",
+2026-03-31T11:44:32.8144804Z     "manifest:org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:44:32.8145688Z     "manifest:org.opencontainers.image.title=depot-railway-build",
+2026-03-31T11:44:32.8146758Z     "manifest:org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:44:32.8147528Z     "manifest:org.opencontainers.image.version=gh-latest"
+2026-03-31T11:44:32.8147982Z   ]
+2026-03-31T11:44:32.8148199Z }
+2026-03-31T11:44:32.8148777Z ##[endgroup]
+2026-03-31T11:44:32.8149502Z ##[group]Bake file definition (tags)
+2026-03-31T11:44:32.8149852Z {
+2026-03-31T11:44:32.8150075Z   "target": {
+2026-03-31T11:44:32.8150343Z     "docker-metadata-action": {
+2026-03-31T11:44:32.8150673Z       "tags": [
+2026-03-31T11:44:32.8151021Z         "ghcr.io/bytechie/openclaw-demo:gh-latest",
+2026-03-31T11:44:32.8151526Z         "ghcr.io/bytechie/openclaw-demo:main-31608f9"
+2026-03-31T11:44:32.8151941Z       ],
+2026-03-31T11:44:32.8152184Z       "args": {
+2026-03-31T11:44:32.8152578Z         "DOCKER_META_IMAGES": "ghcr.io/bytechie/openclaw-demo",
+2026-03-31T11:44:32.8153110Z         "DOCKER_META_VERSION": "gh-latest"
+2026-03-31T11:44:32.8153511Z       }
+2026-03-31T11:44:32.8153743Z     }
+2026-03-31T11:44:32.8153982Z   }
+2026-03-31T11:44:32.8154218Z }
+2026-03-31T11:44:32.8154648Z ##[endgroup]
+2026-03-31T11:44:32.8155139Z ##[group]Bake file definition (labels)
+2026-03-31T11:44:32.8155495Z {
+2026-03-31T11:44:32.8155745Z   "target": {
+2026-03-31T11:44:32.8156070Z     "docker-metadata-action": {
+2026-03-31T11:44:32.8156437Z       "labels": {
+2026-03-31T11:44:32.8156905Z         "org.opencontainers.image.created": "2026-03-31T11:44:32.792Z",
+2026-03-31T11:44:32.8157668Z         "org.opencontainers.image.description": "speedup build for railway using depot",
+2026-03-31T11:44:32.8158509Z         "org.opencontainers.image.licenses": "",
+2026-03-31T11:44:32.8159448Z         "org.opencontainers.image.revision": "31608f90900c35722249da19b46e23f0af24f8a2",
+2026-03-31T11:44:32.8160381Z         "org.opencontainers.image.source": "https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:44:32.8161164Z         "org.opencontainers.image.title": "depot-railway-build",
+2026-03-31T11:44:32.8161965Z         "org.opencontainers.image.url": "https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:44:32.8162711Z         "org.opencontainers.image.version": "gh-latest"
+2026-03-31T11:44:32.8163144Z       }
+2026-03-31T11:44:32.8163385Z     }
+2026-03-31T11:44:32.8163619Z   }
+2026-03-31T11:44:32.8163854Z }
+2026-03-31T11:44:32.8164306Z ##[endgroup]
+2026-03-31T11:44:32.8164808Z ##[group]Bake file definition (annotations)
+2026-03-31T11:44:32.8165216Z {
+2026-03-31T11:44:32.8165453Z   "target": {
+2026-03-31T11:44:32.8165769Z     "docker-metadata-action": {
+2026-03-31T11:44:32.8166137Z       "annotations": [
+2026-03-31T11:44:32.8166641Z         "manifest:org.opencontainers.image.created=2026-03-31T11:44:32.792Z",
+2026-03-31T11:44:32.8167521Z         "manifest:org.opencontainers.image.description=speedup build for railway using depot",
+2026-03-31T11:44:32.8168296Z         "manifest:org.opencontainers.image.licenses=",
+2026-03-31T11:44:32.8169356Z         "manifest:org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2",
+2026-03-31T11:44:32.8170450Z         "manifest:org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:44:32.8171378Z         "manifest:org.opencontainers.image.title=depot-railway-build",
+2026-03-31T11:44:32.8172215Z         "manifest:org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:44:32.8173057Z         "manifest:org.opencontainers.image.version=gh-latest"
+2026-03-31T11:44:32.8173538Z       ]
+2026-03-31T11:44:32.8173776Z     }
+2026-03-31T11:44:32.8173997Z   }
+2026-03-31T11:44:32.8174229Z }
+2026-03-31T11:44:32.8174693Z ##[endgroup]
+2026-03-31T11:44:32.8377670Z ##[group]Run docker/build-push-action@v5
+2026-03-31T11:44:32.8377960Z with:
+2026-03-31T11:44:32.8378136Z   context: ./sample-app
+2026-03-31T11:44:32.8378331Z   push: true
+2026-03-31T11:44:32.8379009Z   tags: ghcr.io/bytechie/openclaw-demo:31608f90900c35722249da19b46e23f0af24f8a2
+ghcr.io/bytechie/openclaw-demo:gh-latest
+
+2026-03-31T11:44:32.8381457Z   labels: org.opencontainers.image.created=2026-03-31T11:44:32.792Z
+org.opencontainers.image.description=speedup build for railway using depot
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2
+org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build
+org.opencontainers.image.title=depot-railway-build
+org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build
+org.opencontainers.image.version=gh-latest
+2026-03-31T11:44:32.8383444Z   cache-from: type=gha
+2026-03-31T11:44:32.8383662Z   cache-to: type=gha,mode=max
+2026-03-31T11:44:32.8383911Z   load: false
+2026-03-31T11:44:32.8384084Z   no-cache: false
+2026-03-31T11:44:32.8384259Z   pull: false
+2026-03-31T11:44:32.8384564Z   github-token: ***
+2026-03-31T11:44:32.8384753Z env:
+2026-03-31T11:44:32.8384906Z   NODE_VERSION: 18
+2026-03-31T11:44:32.8385163Z   RAILWAY_PROJECT_ID: ***
+2026-03-31T11:44:32.8385431Z   RAILWAY_SERVICE_ID: ***
+2026-03-31T11:44:32.8385670Z   GHCR_IMAGE: ghcr.io/bytechie/openclaw-demo
+2026-03-31T11:44:32.8385952Z   DOCKER_METADATA_OUTPUT_VERSION: gh-latest
+2026-03-31T11:44:32.8386480Z   DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/bytechie/openclaw-demo:gh-latest
+ghcr.io/bytechie/openclaw-demo:main-31608f9
+2026-03-31T11:44:32.8387056Z   DOCKER_METADATA_OUTPUT_TAG_NAMES: gh-latest
+main-31608f9
+2026-03-31T11:44:32.8389288Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2026-03-31T11:44:32.792Z
+org.opencontainers.image.description=speedup build for railway using depot
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2
+org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build
+org.opencontainers.image.title=depot-railway-build
+org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build
+org.opencontainers.image.version=gh-latest
+2026-03-31T11:44:32.8393369Z   DOCKER_METADATA_OUTPUT_ANNOTATIONS: manifest:org.opencontainers.image.created=2026-03-31T11:44:32.792Z
+manifest:org.opencontainers.image.description=speedup build for railway using depot
+manifest:org.opencontainers.image.licenses=
+manifest:org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2
+manifest:org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build
+manifest:org.opencontainers.image.title=depot-railway-build
+manifest:org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build
+manifest:org.opencontainers.image.version=gh-latest
+2026-03-31T11:44:32.8400772Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/bytechie/openclaw-demo:gh-latest","ghcr.io/bytechie/openclaw-demo:main-31608f9"],"tag-names":["gh-latest","main-31608f9"],"labels":{"org.opencontainers.image.created":"2026-03-31T11:44:32.792Z","org.opencontainers.image.description":"speedup build for railway using depot","org.opencontainers.image.licenses":"","org.opencontainers.image.revision":"31608f90900c35722249da19b46e23f0af24f8a2","org.opencontainers.image.source":"https://github.com/bytechie/depot-railway-build","org.opencontainers.image.title":"depot-railway-build","org.opencontainers.image.url":"https://github.com/bytechie/depot-railway-build","org.opencontainers.image.version":"gh-latest"},"annotations":["manifest:org.opencontainers.image.created=2026-03-31T11:44:32.792Z","manifest:org.opencontainers.image.description=speedup build for railway using depot","manifest:org.opencontainers.image.licenses=","manifest:org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2","manifest:org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build","manifest:org.opencontainers.image.title=depot-railway-build","manifest:org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build","manifest:org.opencontainers.image.version=gh-latest"]}
+2026-03-31T11:44:32.8406006Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_TAGS: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake-tags.json
+2026-03-31T11:44:32.8407040Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_LABELS: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake-labels.json
+2026-03-31T11:44:32.8407997Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_ANNOTATIONS: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake-annotations.json
+2026-03-31T11:44:32.8409049Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake.json
+2026-03-31T11:44:32.8409582Z ##[endgroup]
+2026-03-31T11:44:33.1263060Z ##[group]GitHub Actions runtime token ACs
+2026-03-31T11:44:33.1297633Z refs/heads/main: read/write
+2026-03-31T11:44:33.1302666Z ##[endgroup]
+2026-03-31T11:44:33.1306389Z ##[group]Docker info
+2026-03-31T11:44:33.1384966Z [command]/usr/bin/docker version
+2026-03-31T11:44:33.1705884Z Client: Docker Engine - Community
+2026-03-31T11:44:33.1707997Z  Version:           28.0.4
+2026-03-31T11:44:33.1708404Z  API version:       1.48
+2026-03-31T11:44:33.1710400Z  Go version:        go1.23.7
+2026-03-31T11:44:33.1710802Z  Git commit:        b8034c0
+2026-03-31T11:44:33.1713182Z  Built:             Tue Mar 25 15:07:16 2025
+2026-03-31T11:44:33.1716834Z  OS/Arch:           linux/amd64
+2026-03-31T11:44:33.1717270Z  Context:           default
+2026-03-31T11:44:33.1719054Z 
+2026-03-31T11:44:33.1719218Z Server: Docker Engine - Community
+2026-03-31T11:44:33.1720438Z  Engine:
+2026-03-31T11:44:33.1720794Z   Version:          28.0.4
+2026-03-31T11:44:33.1721556Z   API version:      1.48 (minimum version 1.24)
+2026-03-31T11:44:33.1722070Z   Go version:       go1.23.7
+2026-03-31T11:44:33.1722898Z   Git commit:       6430e49
+2026-03-31T11:44:33.1723327Z   Built:            Tue Mar 25 15:07:16 2025
+2026-03-31T11:44:33.1724040Z   OS/Arch:          linux/amd64
+2026-03-31T11:44:33.1724442Z   Experimental:     false
+2026-03-31T11:44:33.1725186Z  containerd:
+2026-03-31T11:44:33.1725496Z   Version:          v2.2.2
+2026-03-31T11:44:33.1726230Z   GitCommit:        301b2dac98f15c27117da5c8af12118a041a31d9
+2026-03-31T11:44:33.1726780Z  runc:
+2026-03-31T11:44:33.1727420Z   Version:          1.3.4
+2026-03-31T11:44:33.1727865Z   GitCommit:        v1.3.4-0-gd6d73eb8
+2026-03-31T11:44:33.1728494Z  docker-init:
+2026-03-31T11:44:33.1728816Z   Version:          0.19.0
+2026-03-31T11:44:33.1729750Z   GitCommit:        de40ad0
+2026-03-31T11:44:33.1814503Z [command]/usr/bin/docker info
+2026-03-31T11:44:33.2438725Z Client: Docker Engine - Community
+2026-03-31T11:44:33.2439241Z  Version:    28.0.4
+2026-03-31T11:44:33.2439556Z  Context:    default
+2026-03-31T11:44:33.2440348Z  Debug Mode: false
+2026-03-31T11:44:33.2440644Z  Plugins:
+2026-03-31T11:44:33.2449589Z   buildx: Docker Buildx (Docker Inc.)
+2026-03-31T11:44:33.2450095Z     Version:  v0.32.1
+2026-03-31T11:44:33.2450542Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2026-03-31T11:44:33.2451090Z   compose: Docker Compose (Docker Inc.)
+2026-03-31T11:44:33.2451509Z     Version:  v2.38.2
+2026-03-31T11:44:33.2451967Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2026-03-31T11:44:33.2452384Z 
+2026-03-31T11:44:33.2452496Z Server:
+2026-03-31T11:44:33.2452773Z  Containers: 1
+2026-03-31T11:44:33.2452972Z   Running: 1
+2026-03-31T11:44:33.2453147Z   Paused: 0
+2026-03-31T11:44:33.2453317Z   Stopped: 0
+2026-03-31T11:44:33.2453483Z  Images: 7
+2026-03-31T11:44:33.2453657Z  Server Version: 28.0.4
+2026-03-31T11:44:33.2453870Z  Storage Driver: overlay2
+2026-03-31T11:44:33.2454089Z   Backing Filesystem: extfs
+2026-03-31T11:44:33.2454308Z   Supports d_type: true
+2026-03-31T11:44:33.2454508Z   Using metacopy: false
+2026-03-31T11:44:33.2454700Z   Native Overlay Diff: false
+2026-03-31T11:44:33.2454933Z   userxattr: false
+2026-03-31T11:44:33.2455791Z  Logging Driver: json-file
+2026-03-31T11:44:33.2456065Z  Cgroup Driver: systemd
+2026-03-31T11:44:33.2456274Z  Cgroup Version: 2
+2026-03-31T11:44:33.2456464Z  Plugins:
+2026-03-31T11:44:33.2456645Z   Volume: local
+2026-03-31T11:44:33.2456894Z   Network: bridge host ipvlan macvlan null overlay
+2026-03-31T11:44:33.2457425Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2026-03-31T11:44:33.2457782Z  Swarm: inactive
+2026-03-31T11:44:33.2457989Z  Runtimes: io.containerd.runc.v2 runc
+2026-03-31T11:44:33.2458232Z  Default Runtime: runc
+2026-03-31T11:44:33.2458439Z  Init Binary: docker-init
+2026-03-31T11:44:33.2458722Z  containerd version: 301b2dac98f15c27117da5c8af12118a041a31d9
+2026-03-31T11:44:33.2459836Z  runc version: v1.3.4-0-gd6d73eb8
+2026-03-31T11:44:33.2460274Z  init version: de40ad0
+2026-03-31T11:44:33.2460948Z  Security Options:
+2026-03-31T11:44:33.2461265Z   apparmor
+2026-03-31T11:44:33.2461556Z   seccomp
+2026-03-31T11:44:33.2461853Z    Profile: builtin
+2026-03-31T11:44:33.2462193Z   cgroupns
+2026-03-31T11:44:33.2462507Z  Kernel Version: 6.17.0-1008-azure
+2026-03-31T11:44:33.2462947Z  Operating System: Ubuntu 24.04.4 LTS
+2026-03-31T11:44:33.2463328Z  OSType: linux
+2026-03-31T11:44:33.2463644Z  Architecture: x86_64
+2026-03-31T11:44:33.2463948Z  CPUs: 2
+2026-03-31T11:44:33.2464237Z  Total Memory: 7.752GiB
+2026-03-31T11:44:33.2464579Z  Name: runnervmrg6be
+2026-03-31T11:44:33.2464941Z  ID: 26c853c4-ebf5-403c-a446-44e39e017c08
+2026-03-31T11:44:33.2465370Z  Docker Root Dir: /var/lib/docker
+2026-03-31T11:44:33.2465764Z  Debug Mode: false
+2026-03-31T11:44:33.2466101Z  Username: githubactions
+2026-03-31T11:44:33.2466445Z  Experimental: false
+2026-03-31T11:44:33.2466779Z  Insecure Registries:
+2026-03-31T11:44:33.2467103Z   ::1/128
+2026-03-31T11:44:33.2467358Z   127.0.0.0/8
+2026-03-31T11:44:33.2467632Z  Live Restore Enabled: false
+2026-03-31T11:44:33.2467855Z 
+2026-03-31T11:44:33.2468313Z ##[endgroup]
+2026-03-31T11:44:33.2469322Z ##[group]Proxy configuration
+2026-03-31T11:44:33.2478176Z No proxy configuration found
+2026-03-31T11:44:33.2480543Z ##[endgroup]
+2026-03-31T11:44:33.3182887Z ##[group]Buildx version
+2026-03-31T11:44:33.3215902Z [command]/usr/bin/docker buildx version
+2026-03-31T11:44:33.3841656Z github.com/docker/buildx v0.32.1 d3bfb3f4e48a67dda56e957a6636f4fab6c5fcb2
+2026-03-31T11:44:33.3880020Z ##[endgroup]
+2026-03-31T11:44:33.3881469Z ##[group]Builder info
+2026-03-31T11:44:33.4943924Z {
+2026-03-31T11:44:33.4947271Z   "nodes": [
+2026-03-31T11:44:33.4947589Z     {
+2026-03-31T11:44:33.4948026Z       "name": "builder-6f5447f4-aa88-4879-a068-2256e3b922d90",
+2026-03-31T11:44:33.4948644Z       "endpoint": "unix:///var/run/docker.sock",
+2026-03-31T11:44:33.4950099Z       "status": "running",
+2026-03-31T11:44:33.4951023Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+2026-03-31T11:44:33.4952042Z       "buildkit": "v0.28.1",
+2026-03-31T11:44:33.4952649Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+2026-03-31T11:44:33.4953290Z       "features": {
+2026-03-31T11:44:33.4953824Z         "Automatically load images to the Docker Engine image store": true,
+2026-03-31T11:44:33.4954489Z         "Cache export": true,
+2026-03-31T11:44:33.4954894Z         "Direct push": true,
+2026-03-31T11:44:33.4955244Z         "Docker exporter": true,
+2026-03-31T11:44:33.4955699Z         "Multi-platform build": true,
+2026-03-31T11:44:33.4956129Z         "OCI exporter": true
+2026-03-31T11:44:33.4956498Z       },
+2026-03-31T11:44:33.4956793Z       "labels": {
+2026-03-31T11:44:33.4957236Z         "org.mobyproject.buildkit.worker.executor": "oci",
+2026-03-31T11:44:33.4957938Z         "org.mobyproject.buildkit.worker.hostname": "7abd8065b6e1",
+2026-03-31T11:44:33.4958651Z         "org.mobyproject.buildkit.worker.network": "host",
+2026-03-31T11:44:33.4959722Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+2026-03-31T11:44:33.4960930Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+2026-03-31T11:44:33.4961734Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+2026-03-31T11:44:33.4962309Z       },
+2026-03-31T11:44:33.4962592Z       "gcPolicy": [
+2026-03-31T11:44:33.4962903Z         {
+2026-03-31T11:44:33.4963182Z           "all": false,
+2026-03-31T11:44:33.4963510Z           "filter": [
+2026-03-31T11:44:33.4964109Z             "type==source.local",
+2026-03-31T11:44:33.4964537Z             "type==exec.cachemount",
+2026-03-31T11:44:33.4964993Z             "type==source.git.checkout"
+2026-03-31T11:44:33.4965438Z           ],
+2026-03-31T11:44:33.4965761Z           "keepDuration": "48h0m0s"
+2026-03-31T11:44:33.4966162Z         },
+2026-03-31T11:44:33.4966438Z         {
+2026-03-31T11:44:33.4966727Z           "all": false,
+2026-03-31T11:44:33.4967102Z           "keepDuration": "1440h0m0s"
+2026-03-31T11:44:33.4967513Z         },
+2026-03-31T11:44:33.4967789Z         {
+2026-03-31T11:44:33.4968082Z           "all": false
+2026-03-31T11:44:33.4968449Z         },
+2026-03-31T11:44:33.4968765Z         {
+2026-03-31T11:44:33.4969417Z           "all": true
+2026-03-31T11:44:33.4969745Z         }
+2026-03-31T11:44:33.4970016Z       ]
+2026-03-31T11:44:33.4970295Z     }
+2026-03-31T11:44:33.4970568Z   ],
+2026-03-31T11:44:33.4970942Z   "name": "builder-6f5447f4-aa88-4879-a068-2256e3b922d9",
+2026-03-31T11:44:33.4971543Z   "driver": "docker-container",
+2026-03-31T11:44:33.4972037Z   "lastActivity": "2026-03-31T11:44:25.000Z"
+2026-03-31T11:44:33.4972480Z }
+2026-03-31T11:44:33.4973123Z ##[endgroup]
+2026-03-31T11:44:33.6876705Z [command]/usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --iidfile /home/runner/work/_temp/docker-actions-toolkit-g2FtTm/build-iidfile-4dea1db80d.txt --label org.opencontainers.image.created=2026-03-31T11:44:32.792Z --label org.opencontainers.image.description=speedup build for railway using depot --label org.opencontainers.image.licenses= --label org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2 --label org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build --label org.opencontainers.image.title=depot-railway-build --label org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build --label org.opencontainers.image.version=gh-latest --attest type=provenance,mode=min,inline-only=true,builder-id=https://github.com/bytechie/depot-railway-build/actions/runs/23795546101 --tag ghcr.io/bytechie/openclaw-demo:31608f90900c35722249da19b46e23f0af24f8a2 --tag ghcr.io/bytechie/openclaw-demo:gh-latest --metadata-file /home/runner/work/_temp/docker-actions-toolkit-g2FtTm/build-metadata-0e6ec3f1e9.json --push ./sample-app
+2026-03-31T11:44:34.0608153Z #0 building with "builder-6f5447f4-aa88-4879-a068-2256e3b922d9" instance using docker-container driver
+2026-03-31T11:44:34.0609544Z 
+2026-03-31T11:44:34.0609825Z #1 [internal] load build definition from Dockerfile
+2026-03-31T11:44:34.0610335Z #1 transferring dockerfile: 1.04kB done
+2026-03-31T11:44:34.0610693Z #1 DONE 0.0s
+2026-03-31T11:44:34.0610865Z 
+2026-03-31T11:44:34.0611076Z #2 [auth] library/node:pull token for registry-1.docker.io
+2026-03-31T11:44:34.0611504Z #2 DONE 0.0s
+2026-03-31T11:44:34.0611643Z 
+2026-03-31T11:44:34.0612154Z #3 [internal] load metadata for docker.io/library/node:18-alpine
+2026-03-31T11:44:34.2889534Z #3 DONE 0.5s
+2026-03-31T11:44:34.4620490Z 
+2026-03-31T11:44:34.4621163Z #4 [internal] load .dockerignore
+2026-03-31T11:44:34.4621824Z #4 transferring context: 134B done
+2026-03-31T11:44:34.4622301Z #4 DONE 0.0s
+2026-03-31T11:44:34.4625057Z 
+2026-03-31T11:44:34.4625495Z #5 [internal] load build context
+2026-03-31T11:44:34.4626078Z #5 DONE 0.0s
+2026-03-31T11:44:34.4626289Z 
+2026-03-31T11:44:34.4627021Z #6 [base 1/2] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2026-03-31T11:44:34.4628139Z #6 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e done
+2026-03-31T11:44:34.4629100Z #6 DONE 0.0s
+2026-03-31T11:44:34.4629613Z 
+2026-03-31T11:44:34.4629795Z #7 importing cache manifest from gha:7919836823022379646
+2026-03-31T11:44:34.5283758Z #7 DONE 0.2s
+2026-03-31T11:44:34.6283294Z 
+2026-03-31T11:44:34.6284967Z #5 [internal] load build context
+2026-03-31T11:44:34.6290084Z #5 transferring context: 145.04kB 0.0s done
+2026-03-31T11:44:34.6293109Z #5 DONE 0.0s
+2026-03-31T11:44:34.6293365Z 
+2026-03-31T11:44:34.6293607Z #8 [deps 2/2] RUN npm ci &&     npm cache clean --force
+2026-03-31T11:44:34.6294135Z #8 CACHED
+2026-03-31T11:44:34.6294311Z 
+2026-03-31T11:44:34.6294456Z #9 [base 2/2] WORKDIR /app
+2026-03-31T11:44:34.6294798Z #9 CACHED
+2026-03-31T11:44:34.6294959Z 
+2026-03-31T11:44:34.6295255Z #10 [production-deps 1/2] COPY package.json package-lock.json ./
+2026-03-31T11:44:34.6295845Z #10 CACHED
+2026-03-31T11:44:34.6296002Z 
+2026-03-31T11:44:34.6296262Z #11 [build 1/3] COPY --from=deps /app/node_modules ./node_modules
+2026-03-31T11:44:34.7578768Z #11 sha256:e756c82873137646c70900fbc062048454a131fb8b8cca1b85c9ef5dd805709a 93B / 93B 0.1s done
+2026-03-31T11:44:34.9083228Z #11 sha256:8863fdfba91cda161a16df952a3e5d3ba2ce49dc098b5dd46d301d879d9da2fc 0B / 18.89MB 0.2s
+2026-03-31T11:44:34.9084608Z #11 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 446B / 446B 0.2s done
+2026-03-31T11:44:34.9085701Z #11 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0B / 1.26MB 0.2s
+2026-03-31T11:44:34.9087299Z #11 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0B / 40.01MB 0.2s
+2026-03-31T11:44:35.0584409Z #11 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0B / 3.64MB 0.2s
+2026-03-31T11:44:35.2082316Z #11 sha256:8863fdfba91cda161a16df952a3e5d3ba2ce49dc098b5dd46d301d879d9da2fc 1.05MB / 18.89MB 0.5s
+2026-03-31T11:44:35.2083476Z #11 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 1.26MB / 1.26MB 0.4s done
+2026-03-31T11:44:35.3579676Z #11 sha256:8863fdfba91cda161a16df952a3e5d3ba2ce49dc098b5dd46d301d879d9da2fc 4.19MB / 18.89MB 0.6s
+2026-03-31T11:44:35.3581379Z #11 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 4.19MB / 40.01MB 0.6s
+2026-03-31T11:44:35.3582739Z #11 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 1.05MB / 3.64MB 0.5s
+2026-03-31T11:44:35.4948058Z #11 sha256:8863fdfba91cda161a16df952a3e5d3ba2ce49dc098b5dd46d301d879d9da2fc 7.34MB / 18.89MB 0.8s
+2026-03-31T11:44:35.4953161Z #11 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 3.64MB / 3.64MB 0.6s done
+2026-03-31T11:44:35.4954009Z #11 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
+2026-03-31T11:44:35.6577397Z #11 sha256:8863fdfba91cda161a16df952a3e5d3ba2ce49dc098b5dd46d301d879d9da2fc 12.58MB / 18.89MB 0.9s
+2026-03-31T11:44:35.6578646Z #11 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 18.87MB / 40.01MB 0.9s
+2026-03-31T11:44:35.8083141Z #11 sha256:8863fdfba91cda161a16df952a3e5d3ba2ce49dc098b5dd46d301d879d9da2fc 18.89MB / 18.89MB 1.1s done
+2026-03-31T11:44:35.8084970Z #11 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 31.46MB / 40.01MB 1.1s
+2026-03-31T11:44:35.9207597Z #11 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 40.01MB / 40.01MB 1.2s done
+2026-03-31T11:44:35.9208638Z #11 DONE 1.4s
+2026-03-31T11:44:36.0724949Z 
+2026-03-31T11:44:36.0725674Z #11 [build 1/3] COPY --from=deps /app/node_modules ./node_modules
+2026-03-31T11:44:36.0726645Z #11 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e
+2026-03-31T11:44:36.9849400Z #11 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 1.1s done
+2026-03-31T11:44:36.9850061Z #11 DONE 2.4s
+2026-03-31T11:44:37.1758583Z 
+2026-03-31T11:44:37.1759691Z #11 [build 1/3] COPY --from=deps /app/node_modules ./node_modules
+2026-03-31T11:44:37.1763768Z #11 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.0s done
+2026-03-31T11:44:37.1765197Z #11 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 done
+2026-03-31T11:44:37.1766275Z #11 extracting sha256:e756c82873137646c70900fbc062048454a131fb8b8cca1b85c9ef5dd805709a done
+2026-03-31T11:44:37.1767291Z #11 extracting sha256:8863fdfba91cda161a16df952a3e5d3ba2ce49dc098b5dd46d301d879d9da2fc
+2026-03-31T11:44:38.8477283Z #11 extracting sha256:8863fdfba91cda161a16df952a3e5d3ba2ce49dc098b5dd46d301d879d9da2fc 1.8s done
+2026-03-31T11:44:38.8479578Z #11 DONE 4.3s
+2026-03-31T11:44:39.0671264Z 
+2026-03-31T11:44:39.0672871Z #12 [build 2/3] COPY . .
+2026-03-31T11:44:39.9227757Z #12 DONE 1.1s
+2026-03-31T11:44:40.0751091Z 
+2026-03-31T11:44:40.0754138Z #13 [build 3/3] RUN npm run build
+2026-03-31T11:44:40.4115556Z #13 0.487 
+2026-03-31T11:44:40.4117328Z #13 0.487 > openclaw-demo@1.0.0 build
+2026-03-31T11:44:40.4119366Z #13 0.487 > tsc
+2026-03-31T11:44:40.4123899Z #13 0.487 
+2026-03-31T11:44:42.0287200Z #13 2.104 npm notice
+2026-03-31T11:44:42.0291360Z #13 2.104 npm notice New major version of npm available! 10.8.2 -> 11.12.1
+2026-03-31T11:44:42.0293090Z #13 2.104 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.12.1
+2026-03-31T11:44:42.0294182Z #13 2.104 npm notice To update run: npm install -g npm@11.12.1
+2026-03-31T11:44:42.0294775Z #13 2.104 npm notice
+2026-03-31T11:44:42.1960364Z #13 DONE 2.1s
+2026-03-31T11:44:42.1970607Z 
+2026-03-31T11:44:42.1972287Z #14 [production-deps 2/2] RUN npm ci --omit=dev &&     npm cache clean --force
+2026-03-31T11:44:42.3867478Z #14 ...
+2026-03-31T11:44:42.3867927Z 
+2026-03-31T11:44:42.3868114Z #9 [base 2/2] WORKDIR /app
+2026-03-31T11:44:42.3868815Z #9 CACHED
+2026-03-31T11:44:42.3869015Z 
+2026-03-31T11:44:42.3869281Z #15 [production 1/4] COPY --from=build /app/dist ./dist
+2026-03-31T11:44:42.3871781Z #15 DONE 0.0s
+2026-03-31T11:44:42.3871996Z 
+2026-03-31T11:44:42.3872944Z #14 [production-deps 2/2] RUN npm ci --omit=dev &&     npm cache clean --force
+2026-03-31T11:44:42.3874541Z #14 sha256:81c1bd0ec1e7393fe01d21a0d7ad2f5d61cbb07d01eceb05a5086c7f68f1cc0f 34.75kB / 34.75kB 0.1s done
+2026-03-31T11:44:42.5472717Z #14 extracting sha256:81c1bd0ec1e7393fe01d21a0d7ad2f5d61cbb07d01eceb05a5086c7f68f1cc0f done
+2026-03-31T11:44:42.5477116Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 0B / 299.07MB 0.2s
+2026-03-31T11:44:43.1473236Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 15.73MB / 299.07MB 0.9s
+2026-03-31T11:44:43.5985345Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 31.46MB / 299.07MB 1.4s
+2026-03-31T11:44:44.0474853Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 47.19MB / 299.07MB 1.8s
+2026-03-31T11:44:44.6479830Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 65.01MB / 299.07MB 2.4s
+2026-03-31T11:44:45.2470931Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 81.79MB / 299.07MB 3.0s
+2026-03-31T11:44:45.6978666Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 97.52MB / 299.07MB 3.5s
+2026-03-31T11:44:46.2992045Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 114.29MB / 299.07MB 4.1s
+2026-03-31T11:44:46.8981586Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 134.22MB / 299.07MB 4.7s
+2026-03-31T11:44:47.3476691Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 149.95MB / 299.07MB 5.1s
+2026-03-31T11:44:47.7975597Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 165.68MB / 299.07MB 5.6s
+2026-03-31T11:44:48.2477936Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 182.45MB / 299.07MB 6.0s
+2026-03-31T11:44:48.6973979Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 199.23MB / 299.07MB 6.5s
+2026-03-31T11:44:49.2975550Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 219.15MB / 299.07MB 7.1s
+2026-03-31T11:44:49.7472064Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 234.88MB / 299.07MB 7.5s
+2026-03-31T11:44:50.3486563Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 253.76MB / 299.07MB 8.1s
+2026-03-31T11:44:50.7971499Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 269.48MB / 299.07MB 8.6s
+2026-03-31T11:44:51.2475266Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 285.21MB / 299.07MB 9.0s
+2026-03-31T11:44:52.9217752Z #14 sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 299.07MB / 299.07MB 10.5s done
+2026-03-31T11:44:52.9219369Z #14 extracting sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1
+2026-03-31T11:44:58.9169766Z #14 extracting sha256:b3a4699a508682ac6f17300c03e187f17efd4db43caf8f22bca2f24c1d9866f1 6.1s done
+2026-03-31T11:44:58.9170889Z #14 DONE 16.7s
+2026-03-31T11:44:59.7195377Z 
+2026-03-31T11:44:59.7198677Z #16 [production 2/4] COPY --from=production-deps /app/node_modules ./node_modules
+2026-03-31T11:45:03.2449262Z #16 DONE 3.5s
+2026-03-31T11:45:03.3962722Z 
+2026-03-31T11:45:03.3963215Z #17 [production 3/4] COPY package.json ./
+2026-03-31T11:45:03.3963622Z #17 DONE 0.1s
+2026-03-31T11:45:03.3964010Z 
+2026-03-31T11:45:03.3964522Z #18 [production 4/4] RUN addgroup -g 1001 -S nodejs &&     adduser -S openclaw -u 1001
+2026-03-31T11:45:03.3965120Z #18 DONE 0.1s
+2026-03-31T11:45:03.5499401Z 
+2026-03-31T11:45:03.5499831Z #19 exporting to image
+2026-03-31T11:45:03.5500229Z #19 exporting layers
+2026-03-31T11:45:06.3351807Z #19 exporting layers 2.9s done
+2026-03-31T11:45:06.3354258Z #19 exporting manifest sha256:00b7412f78d41d7db06aa9ae59c3305eb1618fa4bd56116c3e817455623b9509
+2026-03-31T11:45:06.4532024Z #19 exporting manifest sha256:00b7412f78d41d7db06aa9ae59c3305eb1618fa4bd56116c3e817455623b9509 done
+2026-03-31T11:45:06.4533360Z #19 exporting config sha256:5b708faedb0aa56d190c3efcb9cb0c73b3df60b5c6c2c19c5bca7d64eb41d2a6 done
+2026-03-31T11:45:06.4534745Z #19 exporting attestation manifest sha256:d307c0c32bb7b3da4eed2b14946f087acf6c1b5f6cdc5b60dc55cd9e6e0aa5f1 done
+2026-03-31T11:45:06.4536115Z #19 exporting manifest list sha256:808eeb42f4e87a70c042244d80baa9eb265e71bd22601b380a160f95d6af721c done
+2026-03-31T11:45:06.4537068Z #19 DONE 3.0s
+2026-03-31T11:45:06.4537262Z 
+2026-03-31T11:45:06.4537541Z #20 [auth] bytechie/openclaw-demo:pull,push token for ghcr.io
+2026-03-31T11:45:06.4538118Z #20 DONE 0.0s
+2026-03-31T11:45:06.4538303Z 
+2026-03-31T11:45:06.4538458Z #21 exporting to GitHub Actions Cache
+2026-03-31T11:45:06.4540089Z #21 preparing build cache for export 0.1s done
+2026-03-31T11:45:06.4540582Z #21 sending cache export
+2026-03-31T11:45:06.6483650Z #21 writing layer sha256:17dc5c7204c34fe31c8258455aa6c32299f38ee13ba405710fe4a7b06f54642f
+2026-03-31T11:45:06.7021190Z #21 writing layer sha256:17dc5c7204c34fe31c8258455aa6c32299f38ee13ba405710fe4a7b06f54642f 0.2s done
+2026-03-31T11:45:06.9515195Z #21 writing layer sha256:2a0c0a7b44a75a4edd293a8f4eeb81d2e8d66c69d81925a5d5ca5f34822ba6f3
+2026-03-31T11:45:07.0731371Z #21 writing layer sha256:2a0c0a7b44a75a4edd293a8f4eeb81d2e8d66c69d81925a5d5ca5f34822ba6f3 0.3s done
+2026-03-31T11:45:07.2591097Z #21 writing layer sha256:55efb6ad11422b02abf2f63e6df2c8ed59a59066101b629b311d620e74ad00ce
+2026-03-31T11:45:07.3826503Z #21 writing layer sha256:55efb6ad11422b02abf2f63e6df2c8ed59a59066101b629b311d620e74ad00ce 0.3s done
+2026-03-31T11:45:07.5484541Z #21 writing layer sha256:acc16acb7a30504d7045cd61060bec3bb0d5c4d5e666698f0bc36186a3a0b7d3
+2026-03-31T11:45:07.8563860Z #21 writing layer sha256:acc16acb7a30504d7045cd61060bec3bb0d5c4d5e666698f0bc36186a3a0b7d3 0.3s done
+2026-03-31T11:45:08.0441108Z #21 writing layer sha256:f67694a91560aeb8af05ee0095fc0932ce2bc5dc1171c26b4e5683e3fd05acf7
+2026-03-31T11:45:08.2546527Z #21 writing layer sha256:f67694a91560aeb8af05ee0095fc0932ce2bc5dc1171c26b4e5683e3fd05acf7 0.2s done
+2026-03-31T11:45:08.4337843Z #21 writing layer sha256:f6a7ab500227d45b0b3fd4d4a231d009d533d1287f8c69af3e23a15e2c172f3a
+2026-03-31T11:45:09.8429037Z #21 writing layer sha256:f6a7ab500227d45b0b3fd4d4a231d009d533d1287f8c69af3e23a15e2c172f3a 1.6s done
+2026-03-31T11:45:10.1604059Z #21 sending cache export 3.7s done
+2026-03-31T11:45:10.1604586Z #21 DONE 3.8s
+2026-03-31T11:45:14.2077080Z 
+2026-03-31T11:45:14.2077583Z #22 resolving provenance for metadata file
+2026-03-31T11:45:14.2171618Z #22 DONE 0.0s
+2026-03-31T11:45:14.2282008Z ##[group]ImageID
+2026-03-31T11:45:14.2284280Z sha256:808eeb42f4e87a70c042244d80baa9eb265e71bd22601b380a160f95d6af721c
+2026-03-31T11:45:14.2287401Z ##[endgroup]
+2026-03-31T11:45:14.2288087Z ##[group]Digest
+2026-03-31T11:45:14.2288648Z sha256:808eeb42f4e87a70c042244d80baa9eb265e71bd22601b380a160f95d6af721c
+2026-03-31T11:45:14.2291330Z ##[endgroup]
+2026-03-31T11:45:14.2291812Z ##[group]Metadata
+2026-03-31T11:45:14.2299618Z {
+2026-03-31T11:45:14.2299936Z   "buildx.build.provenance": {
+2026-03-31T11:45:14.2300386Z     "builder": {
+2026-03-31T11:45:14.2301026Z       "id": "https://github.com/bytechie/depot-railway-build/actions/runs/23795546101"
+2026-03-31T11:45:14.2301746Z     },
+2026-03-31T11:45:14.2302191Z     "buildType": "https://mobyproject.org/buildkit@v1",
+2026-03-31T11:45:14.2302731Z     "materials": [
+2026-03-31T11:45:14.2303062Z       {
+2026-03-31T11:45:14.2303522Z         "uri": "pkg:docker/node@18-alpine?platform=linux%2Famd64",
+2026-03-31T11:45:14.2304115Z         "digest": {
+2026-03-31T11:45:14.2304702Z           "sha256": "8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e"
+2026-03-31T11:45:14.2305403Z         }
+2026-03-31T11:45:14.2305697Z       }
+2026-03-31T11:45:14.2305969Z     ],
+2026-03-31T11:45:14.2306243Z     "invocation": {
+2026-03-31T11:45:14.2306603Z       "configSource": {
+2026-03-31T11:45:14.2306989Z         "entryPoint": "Dockerfile"
+2026-03-31T11:45:14.2307402Z       },
+2026-03-31T11:45:14.2307707Z       "parameters": {
+2026-03-31T11:45:14.2308081Z         "frontend": "dockerfile.v0",
+2026-03-31T11:45:14.2308536Z         "args": {
+2026-03-31T11:45:14.2309327Z           "label:org.opencontainers.image.created": "2026-03-31T11:44:32.792Z",
+2026-03-31T11:45:14.2310425Z           "label:org.opencontainers.image.description": "speedup build for railway using depot",
+2026-03-31T11:45:14.2311573Z           "label:org.opencontainers.image.licenses": "",
+2026-03-31T11:45:14.2312590Z           "label:org.opencontainers.image.revision": "31608f90900c35722249da19b46e23f0af24f8a2",
+2026-03-31T11:45:14.2313895Z           "label:org.opencontainers.image.source": "https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:45:14.2315122Z           "label:org.opencontainers.image.title": "depot-railway-build",
+2026-03-31T11:45:14.2316281Z           "label:org.opencontainers.image.url": "https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:45:14.2317455Z           "label:org.opencontainers.image.version": "gh-latest"
+2026-03-31T11:45:14.2318173Z         },
+2026-03-31T11:45:14.2318459Z         "locals": [
+2026-03-31T11:45:14.2318760Z           {
+2026-03-31T11:45:14.2332522Z             "name": "context"
+2026-03-31T11:45:14.2332958Z           },
+2026-03-31T11:45:14.2333233Z           {
+2026-03-31T11:45:14.2333555Z             "name": "dockerfile"
+2026-03-31T11:45:14.2333921Z           }
+2026-03-31T11:45:14.2334175Z         ]
+2026-03-31T11:45:14.2334432Z       },
+2026-03-31T11:45:14.2334699Z       "environment": {
+2026-03-31T11:45:14.2335043Z         "github_actor": "bytechie",
+2026-03-31T11:45:14.2335458Z         "github_actor_id": "68915114",
+2026-03-31T11:45:14.2335971Z         "github_event_name": "workflow_dispatch",
+2026-03-31T11:45:14.2336483Z         "github_event_payload": {
+2026-03-31T11:45:14.2336861Z           "inputs": {
+2026-03-31T11:45:14.2337181Z             "debug_enabled": "false",
+2026-03-31T11:45:14.2337598Z             "skip_deploy": "true",
+2026-03-31T11:45:14.2338583Z             "test_case": "baseline"
+2026-03-31T11:45:14.2339243Z           },
+2026-03-31T11:45:14.2339561Z           "ref": "refs/heads/main",
+2026-03-31T11:45:14.2339975Z           "repository": {
+2026-03-31T11:45:14.2340355Z             "allow_forking": true,
+2026-03-31T11:45:14.2341360Z             "archive_url": "https://api.github.com/repos/bytechie/depot-railway-build/{archive_format}{/ref}",
+2026-03-31T11:45:14.2342195Z             "archived": false,
+2026-03-31T11:45:14.2342924Z             "assignees_url": "https://api.github.com/repos/bytechie/depot-railway-build/assignees{/user}",
+2026-03-31T11:45:14.2344013Z             "blobs_url": "https://api.github.com/repos/bytechie/depot-railway-build/git/blobs{/sha}",
+2026-03-31T11:45:14.2345285Z             "branches_url": "https://api.github.com/repos/bytechie/depot-railway-build/branches{/branch}",
+2026-03-31T11:45:14.2346240Z             "clone_url": "https://github.com/bytechie/depot-railway-build.git",
+2026-03-31T11:45:14.2347308Z             "collaborators_url": "https://api.github.com/repos/bytechie/depot-railway-build/collaborators{/collaborator}",
+2026-03-31T11:45:14.2348574Z             "comments_url": "https://api.github.com/repos/bytechie/depot-railway-build/comments{/number}",
+2026-03-31T11:45:14.2349907Z             "commits_url": "https://api.github.com/repos/bytechie/depot-railway-build/commits{/sha}",
+2026-03-31T11:45:14.2351043Z             "compare_url": "https://api.github.com/repos/bytechie/depot-railway-build/compare/{base}...{head}",
+2026-03-31T11:45:14.2352261Z             "contents_url": "https://api.github.com/repos/bytechie/depot-railway-build/contents/{+path}",
+2026-03-31T11:45:14.2353280Z             "contributors_url": "https://api.github.com/repos/bytechie/depot-railway-build/contributors",
+2026-03-31T11:45:14.2354062Z             "created_at": "2026-03-19T10:35:52Z",
+2026-03-31T11:45:14.2354469Z             "default_branch": "main",
+2026-03-31T11:45:14.2355195Z             "deployments_url": "https://api.github.com/repos/bytechie/depot-railway-build/deployments",
+2026-03-31T11:45:14.2355981Z             "description": "speedup build for railway using depot",
+2026-03-31T11:45:14.2356503Z             "disabled": false,
+2026-03-31T11:45:14.2357147Z             "downloads_url": "https://api.github.com/repos/bytechie/depot-railway-build/downloads",
+2026-03-31T11:45:14.2358048Z             "events_url": "https://api.github.com/repos/bytechie/depot-railway-build/events",
+2026-03-31T11:45:14.2358711Z             "fork": false,
+2026-03-31T11:45:14.2360207Z             "forks": 0,
+2026-03-31T11:45:14.2360430Z             "forks_count": 0,
+2026-03-31T11:45:14.2360829Z             "forks_url": "https://api.github.com/repos/bytechie/depot-railway-build/forks",
+2026-03-31T11:45:14.2361296Z             "full_name": "bytechie/depot-railway-build",
+2026-03-31T11:45:14.2361792Z             "git_commits_url": "https://api.github.com/repos/bytechie/depot-railway-build/git/commits{/sha}",
+2026-03-31T11:45:14.2362422Z             "git_refs_url": "https://api.github.com/repos/bytechie/depot-railway-build/git/refs{/sha}",
+2026-03-31T11:45:14.2363052Z             "git_tags_url": "https://api.github.com/repos/bytechie/depot-railway-build/git/tags{/sha}",
+2026-03-31T11:45:14.2363556Z             "git_url": "git://github.com/bytechie/depot-railway-build.git",
+2026-03-31T11:45:14.2363892Z             "has_discussions": false,
+2026-03-31T11:45:14.2364142Z             "has_downloads": true,
+2026-03-31T11:45:14.2364373Z             "has_issues": true,
+2026-03-31T11:45:14.2364586Z             "has_pages": false,
+2026-03-31T11:45:14.2364806Z             "has_projects": true,
+2026-03-31T11:45:14.2365043Z             "has_pull_requests": true,
+2026-03-31T11:45:14.2365274Z             "has_wiki": false,
+2026-03-31T11:45:14.2365486Z             "homepage": null,
+2026-03-31T11:45:14.2365838Z             "hooks_url": "https://api.github.com/repos/bytechie/depot-railway-build/hooks",
+2026-03-31T11:45:14.2366325Z             "html_url": "https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:45:14.2366655Z             "id": 1186163480,
+2026-03-31T11:45:14.2366866Z             "is_template": false,
+2026-03-31T11:45:14.2367321Z             "issue_comment_url": "https://api.github.com/repos/bytechie/depot-railway-build/issues/comments{/number}",
+2026-03-31T11:45:14.2368411Z             "issue_events_url": "https://api.github.com/repos/bytechie/depot-railway-build/issues/events{/number}",
+2026-03-31T11:45:14.2370271Z             "issues_url": "https://api.github.com/repos/bytechie/depot-railway-build/issues{/number}",
+2026-03-31T11:45:14.2371328Z             "keys_url": "https://api.github.com/repos/bytechie/depot-railway-build/keys{/key_id}",
+2026-03-31T11:45:14.2372605Z             "labels_url": "https://api.github.com/repos/bytechie/depot-railway-build/labels{/name}",
+2026-03-31T11:45:14.2373345Z             "language": "Shell",
+2026-03-31T11:45:14.2373995Z             "languages_url": "https://api.github.com/repos/bytechie/depot-railway-build/languages",
+2026-03-31T11:45:14.2374741Z             "license": null,
+2026-03-31T11:45:14.2375373Z             "merges_url": "https://api.github.com/repos/bytechie/depot-railway-build/merges",
+2026-03-31T11:45:14.2376465Z             "milestones_url": "https://api.github.com/repos/bytechie/depot-railway-build/milestones{/number}",
+2026-03-31T11:45:14.2377293Z             "mirror_url": null,
+2026-03-31T11:45:14.2377693Z             "name": "depot-railway-build",
+2026-03-31T11:45:14.2378138Z             "node_id": "R_kgDORrNrGA",
+2026-03-31T11:45:14.2379486Z             "notifications_url": "https://api.github.com/repos/bytechie/depot-railway-build/notifications{?since,all,participating}",
+2026-03-31T11:45:14.2380498Z             "open_issues": 0,
+2026-03-31T11:45:14.2380879Z             "open_issues_count": 0,
+2026-03-31T11:45:14.2381273Z             "owner": {
+2026-03-31T11:45:14.2381810Z               "avatar_url": "https://avatars.githubusercontent.com/u/68915114?v=4",
+2026-03-31T11:45:14.2382662Z               "events_url": "https://api.github.com/users/bytechie/events{/privacy}",
+2026-03-31T11:45:14.2383492Z               "followers_url": "https://api.github.com/users/bytechie/followers",
+2026-03-31T11:45:14.2384370Z               "following_url": "https://api.github.com/users/bytechie/following{/other_user}",
+2026-03-31T11:45:14.2385260Z               "gists_url": "https://api.github.com/users/bytechie/gists{/gist_id}",
+2026-03-31T11:45:14.2385886Z               "gravatar_id": "",
+2026-03-31T11:45:14.2386333Z               "html_url": "https://github.com/bytechie",
+2026-03-31T11:45:14.2386801Z               "id": 68915114,
+2026-03-31T11:45:14.2387168Z               "login": "bytechie",
+2026-03-31T11:45:14.2387603Z               "node_id": "MDQ6VXNlcjY4OTE1MTE0",
+2026-03-31T11:45:14.2388230Z               "organizations_url": "https://api.github.com/users/bytechie/orgs",
+2026-03-31T11:45:14.2389455Z               "received_events_url": "https://api.github.com/users/bytechie/received_events",
+2026-03-31T11:45:14.2390330Z               "repos_url": "https://api.github.com/users/bytechie/repos",
+2026-03-31T11:45:14.2390891Z               "site_admin": false,
+2026-03-31T11:45:14.2391527Z               "starred_url": "https://api.github.com/users/bytechie/starred{/owner}{/repo}",
+2026-03-31T11:45:14.2392449Z               "subscriptions_url": "https://api.github.com/users/bytechie/subscriptions",
+2026-03-31T11:45:14.2393121Z               "type": "User",
+2026-03-31T11:45:14.2393557Z               "url": "https://api.github.com/users/bytechie",
+2026-03-31T11:45:14.2394177Z               "user_view_type": "public"
+2026-03-31T11:45:14.2394575Z             },
+2026-03-31T11:45:14.2394880Z             "private": true,
+2026-03-31T11:45:14.2395287Z             "pull_request_creation_policy": "all",
+2026-03-31T11:45:14.2396061Z             "pulls_url": "https://api.github.com/repos/bytechie/depot-railway-build/pulls{/number}",
+2026-03-31T11:45:14.2398047Z             "pushed_at": "2026-03-31T11:43:15Z",
+2026-03-31T11:45:14.2399660Z             "releases_url": "https://api.github.com/repos/bytechie/depot-railway-build/releases{/id}",
+2026-03-31T11:45:14.2400487Z             "size": 298,
+2026-03-31T11:45:14.2401002Z             "ssh_url": "git@github.com:bytechie/depot-railway-build.git",
+2026-03-31T11:45:14.2401554Z             "stargazers_count": 0,
+2026-03-31T11:45:14.2403429Z             "stargazers_url": "https://api.github.com/repos/bytechie/depot-railway-build/stargazers",
+2026-03-31T11:45:14.2404612Z             "statuses_url": "https://api.github.com/repos/bytechie/depot-railway-build/statuses/{sha}",
+2026-03-31T11:45:14.2405761Z             "subscribers_url": "https://api.github.com/repos/bytechie/depot-railway-build/subscribers",
+2026-03-31T11:45:14.2407150Z             "subscription_url": "https://api.github.com/repos/bytechie/depot-railway-build/subscription",
+2026-03-31T11:45:14.2408127Z             "svn_url": "https://github.com/bytechie/depot-railway-build",
+2026-03-31T11:45:14.2409782Z             "tags_url": "https://api.github.com/repos/bytechie/depot-railway-build/tags",
+2026-03-31T11:45:14.2410766Z             "teams_url": "https://api.github.com/repos/bytechie/depot-railway-build/teams",
+2026-03-31T11:45:14.2411520Z             "topics": [],
+2026-03-31T11:45:14.2412227Z             "trees_url": "https://api.github.com/repos/bytechie/depot-railway-build/git/trees{/sha}",
+2026-03-31T11:45:14.2413036Z             "updated_at": "2026-03-31T11:43:18Z",
+2026-03-31T11:45:14.2413695Z             "url": "https://api.github.com/repos/bytechie/depot-railway-build",
+2026-03-31T11:45:14.2414358Z             "visibility": "private",
+2026-03-31T11:45:14.2414793Z             "watchers": 0,
+2026-03-31T11:45:14.2415168Z             "watchers_count": 0,
+2026-03-31T11:45:14.2415602Z             "web_commit_signoff_required": false
+2026-03-31T11:45:14.2416068Z           },
+2026-03-31T11:45:14.2416360Z           "sender": {
+2026-03-31T11:45:14.2416912Z             "avatar_url": "https://avatars.githubusercontent.com/u/68915114?v=4",
+2026-03-31T11:45:14.2417792Z             "events_url": "https://api.github.com/users/bytechie/events{/privacy}",
+2026-03-31T11:45:14.2418671Z             "followers_url": "https://api.github.com/users/bytechie/followers",
+2026-03-31T11:45:14.2419858Z             "following_url": "https://api.github.com/users/bytechie/following{/other_user}",
+2026-03-31T11:45:14.2420739Z             "gists_url": "https://api.github.com/users/bytechie/gists{/gist_id}",
+2026-03-31T11:45:14.2421133Z             "gravatar_id": "",
+2026-03-31T11:45:14.2421414Z             "html_url": "https://github.com/bytechie",
+2026-03-31T11:45:14.2421704Z             "id": 68915114,
+2026-03-31T11:45:14.2421937Z             "login": "bytechie",
+2026-03-31T11:45:14.2422184Z             "node_id": "MDQ6VXNlcjY4OTE1MTE0",
+2026-03-31T11:45:14.2422543Z             "organizations_url": "https://api.github.com/users/bytechie/orgs",
+2026-03-31T11:45:14.2423030Z             "received_events_url": "https://api.github.com/users/bytechie/received_events",
+2026-03-31T11:45:14.2423492Z             "repos_url": "https://api.github.com/users/bytechie/repos",
+2026-03-31T11:45:14.2423813Z             "site_admin": false,
+2026-03-31T11:45:14.2424165Z             "starred_url": "https://api.github.com/users/bytechie/starred{/owner}{/repo}",
+2026-03-31T11:45:14.2424684Z             "subscriptions_url": "https://api.github.com/users/bytechie/subscriptions",
+2026-03-31T11:45:14.2425080Z             "type": "User",
+2026-03-31T11:45:14.2425350Z             "url": "https://api.github.com/users/bytechie",
+2026-03-31T11:45:14.2425662Z             "user_view_type": "public"
+2026-03-31T11:45:14.2425892Z           },
+2026-03-31T11:45:14.2426122Z           "workflow": ".github/workflows/railway-direct.yml"
+2026-03-31T11:45:14.2426401Z         },
+2026-03-31T11:45:14.2426574Z         "github_job": "build",
+2026-03-31T11:45:14.2426790Z         "github_ref": "refs/heads/main",
+2026-03-31T11:45:14.2427040Z         "github_ref_name": "main",
+2026-03-31T11:45:14.2427357Z         "github_ref_protected": "false",
+2026-03-31T11:45:14.2427747Z         "github_ref_type": "branch",
+2026-03-31T11:45:14.2428177Z         "github_repository": "bytechie/depot-railway-build",
+2026-03-31T11:45:14.2428488Z         "github_repository_id": "1186163480",
+2026-03-31T11:45:14.2428751Z         "github_repository_owner": "bytechie",
+2026-03-31T11:45:14.2429552Z         "github_repository_owner_id": "68915114",
+2026-03-31T11:45:14.2429849Z         "github_run_attempt": "1",
+2026-03-31T11:45:14.2430081Z         "github_run_id": "23795546101",
+2026-03-31T11:45:14.2430316Z         "github_run_number": "59",
+2026-03-31T11:45:14.2430544Z         "github_runner_arch": "X64",
+2026-03-31T11:45:14.2430924Z         "github_runner_environment": "github-hosted",
+2026-03-31T11:45:14.2431222Z         "github_runner_image_os": "ubuntu24",
+2026-03-31T11:45:14.2431505Z         "github_runner_image_version": "20260323.65.1",
+2026-03-31T11:45:14.2431814Z         "github_runner_name": "GitHub Actions 1000000328",
+2026-03-31T11:45:14.2432089Z         "github_runner_os": "Linux",
+2026-03-31T11:45:14.2432435Z         "github_runner_tracking_id": "github_e6892f8b-df14-4b7a-b508-77af2f759b64",
+2026-03-31T11:45:14.2432839Z         "github_server_url": "https://github.com",
+2026-03-31T11:45:14.2433121Z         "github_triggering_actor": "bytechie",
+2026-03-31T11:45:14.2433438Z         "github_workflow": "Build & Deploy to Railway (Baseline)",
+2026-03-31T11:45:14.2433998Z         "github_workflow_ref": "bytechie/depot-railway-build/.github/workflows/railway-direct.yml@refs/heads/main",
+2026-03-31T11:45:14.2434584Z         "github_workflow_sha": "31608f90900c35722249da19b46e23f0af24f8a2",
+2026-03-31T11:45:14.2434935Z         "platform": "linux/amd64"
+2026-03-31T11:45:14.2435151Z       }
+2026-03-31T11:45:14.2435296Z     }
+2026-03-31T11:45:14.2435444Z   },
+2026-03-31T11:45:14.2435974Z   "buildx.build.ref": "builder-6f5447f4-aa88-4879-a068-2256e3b922d9/builder-6f5447f4-aa88-4879-a068-2256e3b922d90/li0yu7lsum2xaif9f1xpnf0dq",
+2026-03-31T11:45:14.2436600Z   "containerimage.descriptor": {
+2026-03-31T11:45:14.2436902Z     "mediaType": "application/vnd.oci.image.index.v1+json",
+2026-03-31T11:45:14.2437357Z     "digest": "sha256:808eeb42f4e87a70c042244d80baa9eb265e71bd22601b380a160f95d6af721c",
+2026-03-31T11:45:14.2437749Z     "size": 856
+2026-03-31T11:45:14.2437908Z   },
+2026-03-31T11:45:14.2438280Z   "containerimage.digest": "sha256:808eeb42f4e87a70c042244d80baa9eb265e71bd22601b380a160f95d6af721c",
+2026-03-31T11:45:14.2439408Z   "image.name": "ghcr.io/bytechie/openclaw-demo:31608f90900c35722249da19b46e23f0af24f8a2,ghcr.io/bytechie/openclaw-demo:gh-latest"
+2026-03-31T11:45:14.2439974Z }
+2026-03-31T11:45:14.2440317Z ##[endgroup]
+2026-03-31T11:45:14.2467955Z ##[group]Run echo "Testing image: ghcr.io/bytechie/openclaw-demo:31608f90900c35722249da19b46e23f0af24f8a2"
+2026-03-31T11:45:14.2468713Z [36;1mecho "Testing image: ghcr.io/bytechie/openclaw-demo:31608f90900c35722249da19b46e23f0af24f8a2"[0m
+2026-03-31T11:45:14.2469828Z [36;1mdocker run --rm ghcr.io/bytechie/openclaw-demo:31608f90900c35722249da19b46e23f0af24f8a2 npm test[0m
+2026-03-31T11:45:14.2496874Z shell: /usr/bin/bash -e {0}
+2026-03-31T11:45:14.2497112Z env:
+2026-03-31T11:45:14.2497281Z   NODE_VERSION: 18
+2026-03-31T11:45:14.2497610Z   RAILWAY_PROJECT_ID: ***
+2026-03-31T11:45:14.2497915Z   RAILWAY_SERVICE_ID: ***
+2026-03-31T11:45:14.2498145Z   GHCR_IMAGE: ghcr.io/bytechie/openclaw-demo
+2026-03-31T11:45:14.2498436Z   DOCKER_METADATA_OUTPUT_VERSION: gh-latest
+2026-03-31T11:45:14.2499325Z   DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/bytechie/openclaw-demo:gh-latest
+ghcr.io/bytechie/openclaw-demo:main-31608f9
+2026-03-31T11:45:14.2499970Z   DOCKER_METADATA_OUTPUT_TAG_NAMES: gh-latest
+main-31608f9
+2026-03-31T11:45:14.2502057Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2026-03-31T11:44:32.792Z
+org.opencontainers.image.description=speedup build for railway using depot
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2
+org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build
+org.opencontainers.image.title=depot-railway-build
+org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build
+org.opencontainers.image.version=gh-latest
+2026-03-31T11:45:14.2506082Z   DOCKER_METADATA_OUTPUT_ANNOTATIONS: manifest:org.opencontainers.image.created=2026-03-31T11:44:32.792Z
+manifest:org.opencontainers.image.description=speedup build for railway using depot
+manifest:org.opencontainers.image.licenses=
+manifest:org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2
+manifest:org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build
+manifest:org.opencontainers.image.title=depot-railway-build
+manifest:org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build
+manifest:org.opencontainers.image.version=gh-latest
+2026-03-31T11:45:14.2513238Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/bytechie/openclaw-demo:gh-latest","ghcr.io/bytechie/openclaw-demo:main-31608f9"],"tag-names":["gh-latest","main-31608f9"],"labels":{"org.opencontainers.image.created":"2026-03-31T11:44:32.792Z","org.opencontainers.image.description":"speedup build for railway using depot","org.opencontainers.image.licenses":"","org.opencontainers.image.revision":"31608f90900c35722249da19b46e23f0af24f8a2","org.opencontainers.image.source":"https://github.com/bytechie/depot-railway-build","org.opencontainers.image.title":"depot-railway-build","org.opencontainers.image.url":"https://github.com/bytechie/depot-railway-build","org.opencontainers.image.version":"gh-latest"},"annotations":["manifest:org.opencontainers.image.created=2026-03-31T11:44:32.792Z","manifest:org.opencontainers.image.description=speedup build for railway using depot","manifest:org.opencontainers.image.licenses=","manifest:org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2","manifest:org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build","manifest:org.opencontainers.image.title=depot-railway-build","manifest:org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build","manifest:org.opencontainers.image.version=gh-latest"]}
+2026-03-31T11:45:14.2518453Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_TAGS: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake-tags.json
+2026-03-31T11:45:14.2519605Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_LABELS: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake-labels.json
+2026-03-31T11:45:14.2520599Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_ANNOTATIONS: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake-annotations.json
+2026-03-31T11:45:14.2521704Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake.json
+2026-03-31T11:45:14.2522262Z ##[endgroup]
+2026-03-31T11:45:14.2569554Z Testing image: ghcr.io/bytechie/openclaw-demo:31608f90900c35722249da19b46e23f0af24f8a2
+2026-03-31T11:45:14.2691040Z Unable to find image 'ghcr.io/bytechie/openclaw-demo:31608f90900c35722249da19b46e23f0af24f8a2' locally
+2026-03-31T11:45:15.0403559Z 31608f90900c35722249da19b46e23f0af24f8a2: Pulling from bytechie/openclaw-demo
+2026-03-31T11:45:15.2263235Z f18232174bc9: Pulling fs layer
+2026-03-31T11:45:15.2263997Z dd71dde834b5: Pulling fs layer
+2026-03-31T11:45:15.2264387Z 1e5a4c89cee5: Pulling fs layer
+2026-03-31T11:45:15.2264779Z 25ff2da83641: Pulling fs layer
+2026-03-31T11:45:15.2265178Z e756c8287313: Pulling fs layer
+2026-03-31T11:45:15.2265418Z acc16acb7a30: Pulling fs layer
+2026-03-31T11:45:15.2265649Z f6a7ab500227: Pulling fs layer
+2026-03-31T11:45:15.2265888Z 17dc5c7204c3: Pulling fs layer
+2026-03-31T11:45:15.2266326Z 55efb6ad1142: Pulling fs layer
+2026-03-31T11:45:15.2266598Z 25ff2da83641: Waiting
+2026-03-31T11:45:15.2266794Z e756c8287313: Waiting
+2026-03-31T11:45:15.2266980Z 17dc5c7204c3: Waiting
+2026-03-31T11:45:15.2267162Z 55efb6ad1142: Waiting
+2026-03-31T11:45:15.2267478Z acc16acb7a30: Waiting
+2026-03-31T11:45:15.2267759Z f6a7ab500227: Waiting
+2026-03-31T11:45:15.5557908Z 1e5a4c89cee5: Verifying Checksum
+2026-03-31T11:45:15.5560434Z 1e5a4c89cee5: Download complete
+2026-03-31T11:45:15.6476927Z dd71dde834b5: Verifying Checksum
+2026-03-31T11:45:15.6477609Z dd71dde834b5: Download complete
+2026-03-31T11:45:15.8103713Z 25ff2da83641: Verifying Checksum
+2026-03-31T11:45:15.8104650Z 25ff2da83641: Download complete
+2026-03-31T11:45:15.8992765Z f18232174bc9: Verifying Checksum
+2026-03-31T11:45:15.8993263Z f18232174bc9: Download complete
+2026-03-31T11:45:16.0298505Z f18232174bc9: Pull complete
+2026-03-31T11:45:16.0313628Z e756c8287313: Verifying Checksum
+2026-03-31T11:45:16.0317979Z e756c8287313: Download complete
+2026-03-31T11:45:16.3096228Z 17dc5c7204c3: Verifying Checksum
+2026-03-31T11:45:16.3097353Z 17dc5c7204c3: Download complete
+2026-03-31T11:45:16.3593977Z f6a7ab500227: Verifying Checksum
+2026-03-31T11:45:16.3597663Z f6a7ab500227: Download complete
+2026-03-31T11:45:16.4770087Z acc16acb7a30: Verifying Checksum
+2026-03-31T11:45:16.4772803Z acc16acb7a30: Download complete
+2026-03-31T11:45:16.6428975Z 55efb6ad1142: Verifying Checksum
+2026-03-31T11:45:16.6430941Z 55efb6ad1142: Download complete
+2026-03-31T11:45:17.9784932Z dd71dde834b5: Pull complete
+2026-03-31T11:45:18.0356105Z 1e5a4c89cee5: Pull complete
+2026-03-31T11:45:18.0519339Z 25ff2da83641: Pull complete
+2026-03-31T11:45:18.0647050Z e756c8287313: Pull complete
+2026-03-31T11:45:18.0816333Z acc16acb7a30: Pull complete
+2026-03-31T11:45:21.2834367Z f6a7ab500227: Pull complete
+2026-03-31T11:45:21.3185354Z 17dc5c7204c3: Pull complete
+2026-03-31T11:45:21.3371735Z 55efb6ad1142: Pull complete
+2026-03-31T11:45:21.3413440Z Digest: sha256:808eeb42f4e87a70c042244d80baa9eb265e71bd22601b380a160f95d6af721c
+2026-03-31T11:45:21.3424520Z Status: Downloaded newer image for ghcr.io/bytechie/openclaw-demo:31608f90900c35722249da19b46e23f0af24f8a2
+2026-03-31T11:45:21.9428515Z 
+2026-03-31T11:45:21.9430058Z > openclaw-demo@1.0.0 test
+2026-03-31T11:45:21.9432410Z > echo "Running tests..." && exit 0
+2026-03-31T11:45:21.9433516Z 
+2026-03-31T11:45:21.9470050Z Running tests...
+2026-03-31T11:45:22.0463821Z ##[group]Run echo "::notice::Image built and pushed to GHCR"
+2026-03-31T11:45:22.0464276Z [36;1mecho "::notice::Image built and pushed to GHCR"[0m
+2026-03-31T11:45:22.0464668Z [36;1mecho "Image: ghcr.io/bytechie/openclaw-demo:gh-latest[0m
+2026-03-31T11:45:22.0465051Z [36;1mghcr.io/bytechie/openclaw-demo:main-31608f9"[0m
+2026-03-31T11:45:22.0465519Z [36;1mecho "Digest: sha256:808eeb42f4e87a70c042244d80baa9eb265e71bd22601b380a160f95d6af721c"[0m
+2026-03-31T11:45:22.0492733Z shell: /usr/bin/bash -e {0}
+2026-03-31T11:45:22.0492974Z env:
+2026-03-31T11:45:22.0493144Z   NODE_VERSION: 18
+2026-03-31T11:45:22.0493481Z   RAILWAY_PROJECT_ID: ***
+2026-03-31T11:45:22.0493766Z   RAILWAY_SERVICE_ID: ***
+2026-03-31T11:45:22.0494004Z   GHCR_IMAGE: ghcr.io/bytechie/openclaw-demo
+2026-03-31T11:45:22.0494293Z   DOCKER_METADATA_OUTPUT_VERSION: gh-latest
+2026-03-31T11:45:22.0494853Z   DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/bytechie/openclaw-demo:gh-latest
+ghcr.io/bytechie/openclaw-demo:main-31608f9
+2026-03-31T11:45:22.0495428Z   DOCKER_METADATA_OUTPUT_TAG_NAMES: gh-latest
+main-31608f9
+2026-03-31T11:45:22.0497493Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2026-03-31T11:44:32.792Z
+org.opencontainers.image.description=speedup build for railway using depot
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2
+org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build
+org.opencontainers.image.title=depot-railway-build
+org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build
+org.opencontainers.image.version=gh-latest
+2026-03-31T11:45:22.0501788Z   DOCKER_METADATA_OUTPUT_ANNOTATIONS: manifest:org.opencontainers.image.created=2026-03-31T11:44:32.792Z
+manifest:org.opencontainers.image.description=speedup build for railway using depot
+manifest:org.opencontainers.image.licenses=
+manifest:org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2
+manifest:org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build
+manifest:org.opencontainers.image.title=depot-railway-build
+manifest:org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build
+manifest:org.opencontainers.image.version=gh-latest
+2026-03-31T11:45:22.0508441Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/bytechie/openclaw-demo:gh-latest","ghcr.io/bytechie/openclaw-demo:main-31608f9"],"tag-names":["gh-latest","main-31608f9"],"labels":{"org.opencontainers.image.created":"2026-03-31T11:44:32.792Z","org.opencontainers.image.description":"speedup build for railway using depot","org.opencontainers.image.licenses":"","org.opencontainers.image.revision":"31608f90900c35722249da19b46e23f0af24f8a2","org.opencontainers.image.source":"https://github.com/bytechie/depot-railway-build","org.opencontainers.image.title":"depot-railway-build","org.opencontainers.image.url":"https://github.com/bytechie/depot-railway-build","org.opencontainers.image.version":"gh-latest"},"annotations":["manifest:org.opencontainers.image.created=2026-03-31T11:44:32.792Z","manifest:org.opencontainers.image.description=speedup build for railway using depot","manifest:org.opencontainers.image.licenses=","manifest:org.opencontainers.image.revision=31608f90900c35722249da19b46e23f0af24f8a2","manifest:org.opencontainers.image.source=https://github.com/bytechie/depot-railway-build","manifest:org.opencontainers.image.title=depot-railway-build","manifest:org.opencontainers.image.url=https://github.com/bytechie/depot-railway-build","manifest:org.opencontainers.image.version=gh-latest"]}
+2026-03-31T11:45:22.0514086Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_TAGS: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake-tags.json
+2026-03-31T11:45:22.0515010Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_LABELS: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake-labels.json
+2026-03-31T11:45:22.0516209Z   DOCKER_METADATA_OUTPUT_BAKE_FILE_ANNOTATIONS: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake-annotations.json
+2026-03-31T11:45:22.0517135Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /home/runner/work/_temp/docker-actions-toolkit-WDP162/docker-metadata-action-bake.json
+2026-03-31T11:45:22.0517670Z ##[endgroup]
+2026-03-31T11:45:22.0583051Z ##[notice]Image built and pushed to GHCR
+2026-03-31T11:45:22.0590718Z Image: ghcr.io/bytechie/openclaw-demo:gh-latest
+2026-03-31T11:45:22.0591088Z ghcr.io/bytechie/openclaw-demo:main-31608f9
+2026-03-31T11:45:22.0591500Z Digest: sha256:808eeb42f4e87a70c042244d80baa9eb265e71bd22601b380a160f95d6af721c
+2026-03-31T11:45:22.0665003Z Post job cleanup.
+2026-03-31T11:45:22.3040581Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-g2FtTm
+2026-03-31T11:45:22.3054957Z ##[endgroup]
+2026-03-31T11:45:22.3065811Z ##[group]Post cache
+2026-03-31T11:45:22.3066171Z State not set
+2026-03-31T11:45:22.3066722Z ##[endgroup]
+2026-03-31T11:45:22.3192827Z Post job cleanup.
+2026-03-31T11:45:22.6254011Z ##[group]Logout from ghcr.io
+2026-03-31T11:45:22.6305557Z [command]/usr/bin/docker logout ghcr.io
+2026-03-31T11:45:22.6440031Z Removing login credentials for ghcr.io
+2026-03-31T11:45:22.6470794Z ##[endgroup]
+2026-03-31T11:45:22.6473356Z ##[group]Post cache
+2026-03-31T11:45:22.6477129Z State not set
+2026-03-31T11:45:22.6477695Z ##[endgroup]
+2026-03-31T11:45:22.6602100Z Post job cleanup.
+2026-03-31T11:45:22.9573845Z ##[group]Removing builder
+2026-03-31T11:45:23.0800826Z [command]/usr/bin/docker buildx rm builder-6f5447f4-aa88-4879-a068-2256e3b922d9
+2026-03-31T11:45:24.2646523Z builder-6f5447f4-aa88-4879-a068-2256e3b922d9 removed
+2026-03-31T11:45:24.2683584Z ##[endgroup]
+2026-03-31T11:45:24.2686106Z ##[group]Cleaning up certificates
+2026-03-31T11:45:24.2694401Z ##[endgroup]
+2026-03-31T11:45:24.2696097Z ##[group]Post cache
+2026-03-31T11:45:24.2699530Z State not set
+2026-03-31T11:45:24.2700671Z ##[endgroup]
+2026-03-31T11:45:24.2884259Z Post job cleanup.
+2026-03-31T11:45:24.3883284Z [command]/usr/bin/git version
+2026-03-31T11:45:24.3927089Z git version 2.53.0
+2026-03-31T11:45:24.3974785Z Temporarily overriding HOME='/home/runner/work/_temp/e48f8101-1f9e-4a0d-846a-de6a497f1d02' before making global git config changes
+2026-03-31T11:45:24.3978746Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-31T11:45:24.3982730Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/depot-railway-build/depot-railway-build
+2026-03-31T11:45:24.4029312Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-31T11:45:24.4067202Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-31T11:45:24.4305463Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-31T11:45:24.4331128Z http.https://github.com/.extraheader
+2026-03-31T11:45:24.4344330Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-31T11:45:24.4379392Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-31T11:45:24.4612938Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-31T11:45:24.4649296Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-31T11:45:24.4993248Z Evaluate and set job outputs
+2026-03-31T11:45:24.4998396Z Set output 'image-tag'
+2026-03-31T11:45:24.5000473Z Set output 'image-digest'
+2026-03-31T11:45:24.5001563Z Cleaning up orphan processes
+2026-03-31T11:45:24.5305884Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, docker/build-push-action@v5, docker/login-action@v3, docker/metadata-action@v5, docker/setup-buildx-action@v3. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
