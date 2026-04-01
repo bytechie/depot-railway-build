@@ -97,18 +97,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Install dependencies
-        run: |
-          echo "::group::Installing dependencies"
-          cd sample-app
-          npm ci
-          echo "::endgroup::"
-
       - name: Build Docker image with Depot
         uses: depot/build-push-action@v1
         with:
@@ -122,69 +110,10 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Run tests
-        run: |
-          echo "::group::Running tests"
-          cd sample-app
-          npm test
-          echo "::endgroup::"
-
-      - name: Build TypeScript
-        run: |
-          echo "::group::Building TypeScript"
-          cd sample-app
-          npm run build
-          echo "::endgroup::"
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist-depot
-          path: sample-app/dist
-          retention-days: 1
-
-  deploy-railway:
-    name: Deploy to Railway from Depot
-    runs-on: ubuntu-latest
-    needs: depot-build
-    timeout-minutes: 5
-    if: inputs.skip_deploy != true
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist-depot
-          path: sample-app/dist
-
-      - name: Install Railway CLI
-        run: |
-          curl -sSL https://railway.app/install.sh | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-      - name: Deploy pre-built artifacts to Railway
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: |
-          echo "::group::Deploying to Railway (from Depot build)"
-          cd sample-app
-          railway up --service ${{ env.RAILWAY_SERVICE_ID }}
-          echo "::endgroup::"
-
-      - name: Verify deployment
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: |
-          echo "Deployment URL:"
-          railway domain --service ${{ env.RAILWAY_SERVICE_ID }}
-
   benchmark:
     name: Compare Performance
     runs-on: ubuntu-latest
-    needs: [depot-build, deploy-railway]
+    needs: depot-build
     if: always()
 
     steps:
@@ -193,9 +122,9 @@ jobs:
           echo "📊 Depot CI Performance Metrics"
           echo "================================"
           echo "Build job completed in: ${{ needs.depot-build.result }}"
-          echo "Deploy job completed in: ${{ needs.deploy-railway.result }}"
           echo ""
-          echo "🚀 Expected vs Baseline:"
-          echo "   Baseline: ~4-7 minutes"
-          echo "   Depot CI: ~20-60 seconds"
-          echo "   Speedup:   ~5-10x faster"
+          echo "🚀 Fair Comparison: All work inside Docker build"
+          echo "   Flow 3 (GitHub): ubuntu-latest + docker/build-push-action"
+          echo "   Flow 4 (Depot): depot-ubuntu-22.04 + depot/build-push-action"
+          echo ""
+          echo "⚡ Expected Speedup: 5-10x faster"
