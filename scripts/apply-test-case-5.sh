@@ -118,14 +118,8 @@ EOF
 # Update index.ts with new endpoints
 if ! grep -q "Database" src/index.ts; then
   # Create a temporary file with the new imports at the top
-  # Find the first 'import' line and add our imports before it
-  awk '
-    /^import express/ {
-      print "import { Database } from '\"'\"'./database.js'\"'\"';"
-      print "import { Cache } from '\"'\"'./cache.js'\"'\"';"
-    }
-    { print }
-  ' src/index.ts > src/index.ts.tmp && mv src/index.ts.tmp src/index.ts
+  # Find the first 'import express' line and add our imports before it
+  awk '/^import express/ {print "import { Database } from '\''./database.js'\'';"; print "import { Cache } from '\''./cache.js'\'';"} {print}' src/index.ts > src/index.ts.tmp && mv src/index.ts.tmp src/index.ts
 
   # Add initialization after PORT declaration
   sed -i "/const PORT =/a\\
