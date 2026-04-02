@@ -1,0 +1,689 @@
+Build started at: Thu Apr  2 00:47:39 EDT 2026
+========================================
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 13.45kB 0.0s done
+#1 DONE 0.1s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+#2 DONE 1.3s
+
+#3 docker-image://docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
+#3 resolve docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e 0.1s done
+#3 DONE 0.2s
+
+#3 docker-image://docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 0B / 11.98MB 0.2s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 1.05MB / 11.98MB 0.5s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 2.10MB / 11.98MB 0.8s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 3.15MB / 11.98MB 0.9s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 4.19MB / 11.98MB 1.1s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 5.24MB / 11.98MB 1.2s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 6.29MB / 11.98MB 1.4s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 7.34MB / 11.98MB 1.5s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 8.39MB / 11.98MB 1.7s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 9.44MB / 11.98MB 1.8s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 10.49MB / 11.98MB 2.0s
+#3 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 11.98MB / 11.98MB 2.1s done
+#3 extracting sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416
+#3 extracting sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 0.2s done
+#3 DONE 2.5s
+
+#4 [internal] load metadata for docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+#4 DONE 0.9s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 1.26kB 0.0s done
+#5 DONE 0.0s
+
+#6 [ext-deps 1/3] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+#6 resolve docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b 0.0s done
+#6 sha256:0594f60e91c58a9c1a2505ed11f0823eaf05c52be0b49ceaffdf389d066d1441 450B / 450B 0.2s done
+#6 sha256:3dea9ce2fc4a195a1cf8db2fb69c1cfb7c817a9248d4d6bc0ddcb1f701d3ef0d 0B / 1.25MB 0.2s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 0B / 57.86MB 0.2s
+#6 sha256:03bbf11124abb071f8b8551ed5e778f07f76a9e24319be963961391a69306787 0B / 3.32kB 0.2s
+#6 sha256:03bbf11124abb071f8b8551ed5e778f07f76a9e24319be963961391a69306787 3.32kB / 3.32kB 0.4s done
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 0B / 211.51MB 0.2s
+#6 sha256:3dea9ce2fc4a195a1cf8db2fb69c1cfb7c817a9248d4d6bc0ddcb1f701d3ef0d 1.25MB / 1.25MB 0.6s done
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 0B / 64.40MB 0.2s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 0B / 24.04MB 0.2s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 4.19MB / 64.40MB 1.8s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 3.15MB / 57.86MB 2.6s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 8.39MB / 64.40MB 3.6s
+#6 ...
+
+#7 [internal] load build context
+#7 transferring context: 92.27MB 5.7s done
+#7 DONE 5.8s
+
+#6 [ext-deps 1/3] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 8.39MB / 211.51MB 5.3s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 2.10MB / 24.04MB 5.0s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 6.29MB / 57.86MB 6.0s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 12.58MB / 64.40MB 5.7s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 16.78MB / 64.40MB 7.0s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 20.97MB / 64.40MB 8.6s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 9.44MB / 57.86MB 9.2s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 4.19MB / 24.04MB 8.9s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 17.83MB / 211.51MB 10.3s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 25.17MB / 64.40MB 10.0s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 29.36MB / 64.40MB 11.2s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 12.58MB / 57.86MB 12.8s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 33.55MB / 64.40MB 12.7s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 6.29MB / 24.04MB 12.8s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 37.75MB / 64.40MB 13.7s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 15.73MB / 57.86MB 15.1s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 28.31MB / 211.51MB 15.4s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 41.19MB / 64.40MB 15.2s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 8.39MB / 24.04MB 16.4s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 45.09MB / 64.40MB 16.9s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 18.87MB / 57.86MB 17.5s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 49.28MB / 64.40MB 18.2s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 22.02MB / 57.86MB 19.1s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 10.49MB / 24.04MB 18.8s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 53.02MB / 64.40MB 19.9s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 35.65MB / 211.51MB 20.5s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 25.17MB / 57.86MB 21.1s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 56.62MB / 64.40MB 21.2s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 12.58MB / 24.04MB 21.7s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 28.31MB / 57.86MB 22.9s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 60.57MB / 64.40MB 22.9s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 63.96MB / 64.40MB 23.8s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 14.68MB / 24.04MB 23.8s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 31.46MB / 57.86MB 24.4s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 34.60MB / 57.86MB 25.7s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 45.09MB / 211.51MB 25.6s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 16.78MB / 24.04MB 25.9s
+#6 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 64.40MB / 64.40MB 26.3s done
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 0B / 48.49MB 0.2s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 37.75MB / 57.86MB 27.1s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 18.87MB / 24.04MB 27.5s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 40.89MB / 57.86MB 28.1s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 3.15MB / 48.49MB 2.1s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 44.04MB / 57.86MB 29.3s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 20.97MB / 24.04MB 29.2s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 47.19MB / 57.86MB 30.5s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 56.62MB / 211.51MB 30.7s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 6.29MB / 48.49MB 4.1s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 23.07MB / 24.04MB 31.0s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 50.14MB / 57.86MB 31.7s
+#6 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 24.04MB / 24.04MB 31.9s done
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 9.44MB / 48.49MB 5.9s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 53.48MB / 57.86MB 33.1s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 12.58MB / 48.49MB 7.5s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 56.62MB / 57.86MB 34.3s
+#6 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 57.86MB / 57.86MB 34.7s done
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 65.01MB / 211.51MB 35.8s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 15.73MB / 48.49MB 9.3s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 18.87MB / 48.49MB 10.7s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 22.02MB / 48.49MB 12.1s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 25.17MB / 48.49MB 13.3s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 28.31MB / 48.49MB 14.2s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 75.50MB / 211.51MB 40.8s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 31.46MB / 48.49MB 15.1s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 34.60MB / 48.49MB 15.8s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 37.75MB / 48.49MB 16.6s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 40.89MB / 48.49MB 17.2s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 44.04MB / 48.49MB 17.9s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 87.03MB / 211.51MB 45.1s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 47.19MB / 48.49MB 18.8s
+#6 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 48.49MB / 48.49MB 19.9s done
+#6 extracting sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 98.57MB / 211.51MB 48.3s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 110.10MB / 211.51MB 50.4s
+#6 extracting sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 4.3s done
+#6 extracting sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 121.63MB / 211.51MB 52.5s
+#6 extracting sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 2.2s done
+#6 extracting sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 133.17MB / 211.51MB 54.1s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 145.67MB / 211.51MB 56.2s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 157.29MB / 211.51MB 58.2s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 168.82MB / 211.51MB 59.7s
+#6 extracting sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 7.4s done
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 180.36MB / 211.51MB 61.3s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 191.89MB / 211.51MB 62.7s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 202.50MB / 211.51MB 64.2s
+#6 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 211.51MB / 211.51MB 65.5s done
+#6 extracting sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884
+#6 extracting sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 10.3s done
+#6 extracting sha256:03bbf11124abb071f8b8551ed5e778f07f76a9e24319be963961391a69306787
+#6 extracting sha256:03bbf11124abb071f8b8551ed5e778f07f76a9e24319be963961391a69306787 0.2s done
+#6 DONE 76.5s
+
+#6 [ext-deps 1/3] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+#6 extracting sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f
+#6 extracting sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 5.2s done
+#6 DONE 81.7s
+
+#6 [ext-deps 1/3] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+#6 extracting sha256:3dea9ce2fc4a195a1cf8db2fb69c1cfb7c817a9248d4d6bc0ddcb1f701d3ef0d 0.1s done
+#6 extracting sha256:0594f60e91c58a9c1a2505ed11f0823eaf05c52be0b49ceaffdf389d066d1441 0.0s done
+#6 DONE 81.8s
+
+#8 [build  2/15] RUN set -eux;     for attempt in 1 2 3 4 5; do       if curl --retry 5 --retry-all-errors --retry-delay 2 -fsSL https://bun.sh/install | bash; then         break;       fi;       if [ "$attempt" -eq 5 ]; then         exit 1;       fi;       sleep $((attempt * 2));     done
+#8 ...
+
+#9 [stage-5  1/15] WORKDIR /app
+#9 DONE 6.3s
+
+#10 [ext-deps 2/3] COPY extensions /tmp/extensions
+#10 ...
+
+#11 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#11 0.752 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#11 0.854 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#11 0.889 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+#11 1.036 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8792 kB]
+#11 ...
+
+#10 [ext-deps 2/3] COPY extensions /tmp/extensions
+#10 DONE 8.6s
+
+#8 [build  2/15] RUN set -eux;     for attempt in 1 2 3 4 5; do       if curl --retry 5 --retry-all-errors --retry-delay 2 -fsSL https://bun.sh/install | bash; then         break;       fi;       if [ "$attempt" -eq 5 ]; then         exit 1;       fi;       sleep $((attempt * 2));     done
+#8 6.642 + + curlbash
+#8 6.643  --retry 5 --retry-all-errors --retry-delay 2 -fsSL https://bun.sh/install
+#8 7.137 #=#=#                                                                         ##O#-#                                                                        ##O=#  #                                                                      #=#=-#  #                                                                                                                                                0.0%                                                                           0.3%                                                                           0.4%                                                                           0.7%                                                                           0.9%                                                                           1.0%                                                                           1.1%                                                                           1.3%#                                                                          1.5%#                                                                          1.8%#                                                                          2.0%#                                                                          2.1%#                                                                          2.2%
+#8 ...
+
+#12 [ext-deps 3/3] RUN mkdir -p /out &&     for ext in ; do       if [ -f "/tmp/extensions/$ext/package.json" ]; then         mkdir -p "/out/$ext" &&         cp "/tmp/extensions/$ext/package.json" "/out/$ext/package.json";       fi;     done
+#12 DONE 0.4s
+
+#8 [build  2/15] RUN set -eux;     for attempt in 1 2 3 4 5; do       if curl --retry 5 --retry-all-errors --retry-delay 2 -fsSL https://bun.sh/install | bash; then         break;       fi;       if [ "$attempt" -eq 5 ]; then         exit 1;       fi;       sleep $((attempt * 2));     done
+#8 7.137 #=#=#                                                                         ##O#-#                                                                        ##O=#  #                                                                      #=#=-#  #                                                                                                                                                0.0%                                                                           0.3%                                                                           0.4%                                                                           0.7%                                                                           0.9%                                                                           1.0%                                                                           1.1%                                                                           1.3%#                                                                          1.5%#                                                                          1.8%#                                                                          2.0%#                                                                          2.1%#                                                                          2.2%#                                                                          2.4%#                                                                          2.6%##                                                                         2.8%##                                                                         2.9%##                                                                         3.0%##                                                                         3.3%##                                                                         3.5%##                                                                         3.9%##                                                                         4.1%###                                                                        4.5%###                                                                        4.9%####                                                                       5.6%####                                                                       6.2%####                                                                       6.9%#####                                                                      7.4%#####                                                                      7.7%######                                                                     8.4%######                                                                     8.7%######                                                                     9.3%######                                                                     9.6%#######                                                                   10.0%#######                                                                   10.7%########                                                                  11.6%########                                                                  12.3%#########                                                                 13.3%#########                                                                 13.7%##########                                                                14.6%###########                                                               15.5%###########                                                               16.6%############                                                              17.5%############                                                              17.8%#############                                                             18.7%##############                                                            19.8%###############                                                           21.0%###############                                                           22.0%################                                                          22.6%#################                                                         23.9%#################                                                         25.0%##################                                                        26.1%###################                                                       27.3%####################                                                      28.2%#####################                                                     29.2%#####################                                                     30.4%######################                                                    31.1%######################                                                    31.6%#######################                                                   32.7%########################                                                  33.9%########################                                                  34.3%#########################                                                 34.9%#########################                                                 35.4%##########################                                                36.3%##########################                                                37.3%###########################                                               38.3%############################                                              39.7%#############################                                             41.0%##############################                                            42.5%###############################                                           43.1%###############################                                           43.6%###############################                                           44.0%################################                                          45.3%#################################                                         47.1%##################################                                        48.2%##################################                                        48.6%####################################                                      50.1%####################################                                      51.1%#####################################                                     52.3%######################################                                    52.8%######################################                                    53.4%######################################                                    54.1%#######################################                                   54.6%#######################################                                   55.3%########################################                                  55.7%########################################                                  56.6%#########################################                                 57.4%#########################################                                 58.1%##########################################                                58.7%##########################################                                59.1%##########################################                                59.4%###########################################                               59.9%###########################################                               60.6%###########################################                               60.9%############################################                              61.5%############################################                              62.1%#############################################                             62.6%#############################################                             63.3%##############################################                            64.8%###############################################                           66.4%################################################                          67.7%#################################################                         69.1%##################################################                        70.5%###################################################                       71.4%####################################################                      72.5%#####################################################                     73.9%######################################################                    75.2%######################################################                    75.9%#######################################################                   76.4%########################################################                  78.2%#########################################################                 79.6%##########################################################                81.5%###########################################################               83.0%############################################################              83.5%#############################################################             85.2%##############################################################            86.3%###############################################################           87.8%
+#8 ...
+
+#11 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#11 3.749 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#11 3.798 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [294 kB]
+#11 5.787 Fetched 9347 kB in 5s (1814 kB/s)
+#11 5.787 Reading package lists...
+#11 7.108 Reading package lists...
+#11 8.184 Building dependency tree...
+#11 8.586 Calculating upgrade...
+#11 9.321 The following packages will be upgraded:
+#11 9.321   imagemagick imagemagick-6-common imagemagick-6.q16
+#11 9.321   libmagickcore-6-arch-config libmagickcore-6-headers libmagickcore-6.q16-6
+#11 9.321   libmagickcore-6.q16-6-extra libmagickcore-6.q16-dev libmagickcore-dev
+#11 9.321   libmagickwand-6-headers libmagickwand-6.q16-6 libmagickwand-6.q16-dev
+#11 9.324   libmagickwand-dev libpng-dev libpng16-16 linux-libc-dev
+#11 9.511 16 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#11 9.511 Need to get 7636 kB of archives.
+#11 9.511 After this operation, 39.9 kB of additional disk space will be used.
+#11 9.511 Get:1 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickwand-6.q16-dev amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [412 kB]
+#11 9.697 Get:2 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickwand-dev all 8:6.9.11.60+dfsg-1.6+deb12u7 [1336 B]
+#11 9.739 Get:3 http://deb.debian.org/debian-security bookworm-security/main amd64 libpng-dev amd64 1.6.39-2+deb12u4 [360 kB]
+#11 9.833 Get:4 http://deb.debian.org/debian-security bookworm-security/main amd64 libpng16-16 amd64 1.6.39-2+deb12u4 [276 kB]
+#11 9.929 Get:5 http://deb.debian.org/debian-security bookworm-security/main amd64 imagemagick-6.q16 amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [344 kB]
+#11 10.02 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-6.q16-dev amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [1118 kB]
+#11 10.28 Get:7 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-6.q16-6 amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [1798 kB]
+#11 10.69 Get:8 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickwand-6.q16-6 amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [414 kB]
+#11 10.75 Get:9 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-dev all 8:6.9.11.60+dfsg-1.6+deb12u7 [1344 B]
+#11 10.75 Get:10 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-6-arch-config amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [135 kB]
+#11 10.77 Get:11 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickwand-6-headers all 8:6.9.11.60+dfsg-1.6+deb12u7 [10.5 kB]
+#11 10.78 Get:12 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-6-headers all 8:6.9.11.60+dfsg-1.6+deb12u7 [50.9 kB]
+#11 10.78 Get:13 http://deb.debian.org/debian-security bookworm-security/main amd64 imagemagick-6-common all 8:6.9.11.60+dfsg-1.6+deb12u7 [171 kB]
+#11 10.83 Get:14 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-6.q16-6-extra amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [177 kB]
+#11 10.98 Get:15 http://deb.debian.org/debian-security bookworm-security/main amd64 imagemagick amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [127 kB]
+#11 11.12 Get:16 http://deb.debian.org/debian-security bookworm-security/main amd64 linux-libc-dev amd64 6.1.164-1 [2240 kB]
+#11 12.11 debconf: delaying package configuration, since apt-utils is not installed
+#11 12.19 Fetched 7636 kB in 2s (3308 kB/s)
+#11 12.23 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23258 files and directories currently installed.)
+#11 12.31 Preparing to unpack .../00-libmagickwand-6.q16-dev_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+#11 12.33 Unpacking libmagickwand-6.q16-dev:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 12.53 Preparing to unpack .../01-libmagickwand-dev_8%3a6.9.11.60+dfsg-1.6+deb12u7_all.deb ...
+#11 12.57 Unpacking libmagickwand-dev (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 12.64 Preparing to unpack .../02-libpng-dev_1.6.39-2+deb12u4_amd64.deb ...
+#11 12.66 Unpacking libpng-dev:amd64 (1.6.39-2+deb12u4) over (1.6.39-2+deb12u3) ...
+#11 12.79 Preparing to unpack .../03-libpng16-16_1.6.39-2+deb12u4_amd64.deb ...
+#11 12.82 Unpacking libpng16-16:amd64 (1.6.39-2+deb12u4) over (1.6.39-2+deb12u3) ...
+#11 12.93 Preparing to unpack .../04-imagemagick-6.q16_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+#11 12.95 Unpacking imagemagick-6.q16 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 13.21 Preparing to unpack .../05-libmagickcore-6.q16-dev_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+#11 13.22 Unpacking libmagickcore-6.q16-dev:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 13.90 Preparing to unpack .../06-libmagickcore-6.q16-6_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+#11 ...
+
+#8 [build  2/15] RUN set -eux;     for attempt in 1 2 3 4 5; do       if curl --retry 5 --retry-all-errors --retry-delay 2 -fsSL https://bun.sh/install | bash; then         break;       fi;       if [ "$attempt" -eq 5 ]; then         exit 1;       fi;       sleep $((attempt * 2));     done
+#8 7.137 #=#=#                                                                         ##O#-#                                                                        ##O=#  #                                                                      #=#=-#  #                                                                                                                                                0.0%                                                                           0.3%                                                                           0.4%                                                                           0.7%                                                                           0.9%                                                                           1.0%                                                                           1.1%                                                                           1.3%#                                                                          1.5%#                                                                          1.8%#                                                                          2.0%#                                                                          2.1%#                                                                          2.2%#                                                                          2.4%#                                                                          2.6%##                                                                         2.8%##                                                                         2.9%##                                                                         3.0%##                                                                         3.3%##                                                                         3.5%##                                                                         3.9%##                                                                         4.1%###                                                                        4.5%###                                                                        4.9%####                                                                       5.6%####                                                                       6.2%####                                                                       6.9%#####                                                                      7.4%#####                                                                      7.7%######                                                                     8.4%######                                                                     8.7%######                                                                     9.3%######                                                                     9.6%#######                                                                   10.0%#######                                                                   10.7%########                                                                  11.6%########                                                                  12.3%#########                                                                 13.3%#########                                                                 13.7%##########                                                                14.6%###########                                                               15.5%###########                                                               16.6%############                                                              17.5%############                                                              17.8%#############                                                             18.7%##############                                                            19.8%###############                                                           21.0%###############                                                           22.0%################                                                          22.6%#################                                                         23.9%#################                                                         25.0%##################                                                        26.1%###################                                                       27.3%####################                                                      28.2%#####################                                                     29.2%#####################                                                     30.4%######################                                                    31.1%######################                                                    31.6%#######################                                                   32.7%########################                                                  33.9%########################                                                  34.3%#########################                                                 34.9%#########################                                                 35.4%##########################                                                36.3%##########################                                                37.3%###########################                                               38.3%############################                                              39.7%#############################                                             41.0%##############################                                            42.5%###############################                                           43.1%###############################                                           43.6%###############################                                           44.0%################################                                          45.3%#################################                                         47.1%##################################                                        48.2%##################################                                        48.6%####################################                                      50.1%####################################                                      51.1%#####################################                                     52.3%######################################                                    52.8%######################################                                    53.4%######################################                                    54.1%#######################################                                   54.6%#######################################                                   55.3%########################################                                  55.7%########################################                                  56.6%#########################################                                 57.4%#########################################                                 58.1%##########################################                                58.7%##########################################                                59.1%##########################################                                59.4%###########################################                               59.9%###########################################                               60.6%###########################################                               60.9%############################################                              61.5%############################################                              62.1%#############################################                             62.6%#############################################                             63.3%##############################################                            64.8%###############################################                           66.4%################################################                          67.7%#################################################                         69.1%##################################################                        70.5%###################################################                       71.4%####################################################                      72.5%#####################################################                     73.9%######################################################                    75.2%######################################################                    75.9%#######################################################                   76.4%########################################################                  78.2%#########################################################                 79.6%##########################################################                81.5%###########################################################               83.0%############################################################              83.5%#############################################################             85.2%##############################################################            86.3%###############################################################           87.8%################################################################          89.2%#################################################################         91.1%##################################################################        92.5%###################################################################       94.2%#######################################################################   98.9%#######################################################################   99.5%######################################################################## 100.0%
+#8 22.75 bun was installed successfully to ~/.bun/bin/bun 
+#8 22.75 
+#8 22.79 Added "~/.bun/bin" to $PATH in "~/.bashrc" 
+#8 22.79 
+#8 22.79 To get started, run: 
+#8 22.79 
+#8 22.79   source /root/.bashrc 
+#8 22.79   bun --help 
+#8 22.79 + break
+#8 DONE 23.4s
+
+#11 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#11 14.04 Unpacking libmagickcore-6.q16-6:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 17.36 Preparing to unpack .../07-libmagickwand-6.q16-6_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+#11 17.37 Unpacking libmagickwand-6.q16-6:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 17.49 Preparing to unpack .../08-libmagickcore-dev_8%3a6.9.11.60+dfsg-1.6+deb12u7_all.deb ...
+#11 ...
+
+#13 [build  3/15] RUN corepack enable
+#13 DONE 0.4s
+
+#11 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#11 17.53 Unpacking libmagickcore-dev (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 17.62 Preparing to unpack .../09-libmagickcore-6-arch-config_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+#11 ...
+
+#14 [build  4/15] WORKDIR /app
+#14 DONE 0.1s
+
+#11 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#11 17.66 Unpacking libmagickcore-6-arch-config:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 17.75 Preparing to unpack .../10-libmagickwand-6-headers_8%3a6.9.11.60+dfsg-1.6+deb12u7_all.deb ...
+#11 ...
+
+#15 [build  5/15] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+#15 DONE 0.1s
+
+#16 [build  6/15] COPY ui/package.json ./ui/package.json
+#16 DONE 0.1s
+
+#17 [build  7/15] COPY patches ./patches
+#17 DONE 0.1s
+
+#11 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#11 17.79 Unpacking libmagickwand-6-headers (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 ...
+
+#18 [build  8/15] COPY scripts/postinstall-bundled-plugins.mjs scripts/npm-runner.mjs ./scripts/
+#18 DONE 0.1s
+
+#11 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#11 18.00 Preparing to unpack .../11-libmagickcore-6-headers_8%3a6.9.11.60+dfsg-1.6+deb12u7_all.deb ...
+#11 18.04 Unpacking libmagickcore-6-headers (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 ...
+
+#19 [build  9/15] COPY --from=ext-deps /out/ ./extensions/
+#19 DONE 0.1s
+
+#20 [build 10/15] RUN --mount=type=cache,id=openclaw-pnpm-store,target=/root/.local/share/pnpm/store,sharing=locked     NODE_OPTIONS=--max-old-space-size=2048 pnpm install --frozen-lockfile
+#20 0.435 ! Corepack is about to download https://registry.npmjs.org/pnpm/-/pnpm-10.32.1.tgz
+#20 4.616 Scope: all 2 workspace projects
+#20 4.825 Lockfile is up to date, resolution step is skipped
+#20 5.328 Packages: +1201
+#20 5.328 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#20 5.890 
+#20 5.890    ╭───────────────────────────────────────────────╮
+#20 5.890    │                                               │
+#20 5.890    │     Update available! 10.32.1 → 10.33.0.      │
+#20 5.890    │     Changelog: https://pnpm.io/v/10.33.0      │
+#20 5.890    │   To update, run: corepack use pnpm@10.33.0   │
+#20 5.890    │                                               │
+#20 5.890    ╰───────────────────────────────────────────────╯
+#20 5.890 
+#20 ...
+
+#11 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#11 18.51 Preparing to unpack .../12-imagemagick-6-common_8%3a6.9.11.60+dfsg-1.6+deb12u7_all.deb ...
+#11 18.53 Unpacking imagemagick-6-common (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 18.65 Preparing to unpack .../13-libmagickcore-6.q16-6-extra_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+#11 18.67 Unpacking libmagickcore-6.q16-6-extra:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 18.79 Preparing to unpack .../14-imagemagick_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+#11 18.84 Unpacking imagemagick (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+#11 19.17 Preparing to unpack .../15-linux-libc-dev_6.1.164-1_amd64.deb ...
+#11 19.19 Unpacking linux-libc-dev:amd64 (6.1.164-1) over (6.1.162-1) ...
+#11 22.69 Setting up imagemagick-6-common (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 22.82 Setting up linux-libc-dev:amd64 (6.1.164-1) ...
+#11 22.86 Setting up libpng16-16:amd64 (1.6.39-2+deb12u4) ...
+#11 22.87 Setting up libmagickcore-6-headers (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 22.91 Setting up libmagickcore-6-arch-config:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 22.93 Setting up libmagickwand-6-headers (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 22.96 Setting up libpng-dev:amd64 (1.6.39-2+deb12u4) ...
+#11 22.99 Setting up libmagickcore-6.q16-6:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 23.01 Setting up libmagickwand-6.q16-6:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 23.03 Setting up libmagickcore-6.q16-6-extra:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 23.05 Setting up libmagickcore-6.q16-dev:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 23.08 Setting up imagemagick-6.q16 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 23.32 Setting up libmagickwand-6.q16-dev:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 23.34 Setting up libmagickcore-dev (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 23.38 Setting up imagemagick (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 23.41 Setting up libmagickwand-dev (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+#11 23.46 Processing triggers for libc-bin (2.36-9+deb12u13) ...
+#11 23.61 Processing triggers for hicolor-icon-theme (0.17-2) ...
+#11 23.72 Reading package lists...
+#11 ...
+
+#20 [build 10/15] RUN --mount=type=cache,id=openclaw-pnpm-store,target=/root/.local/share/pnpm/store,sharing=locked     NODE_OPTIONS=--max-old-space-size=2048 pnpm install --frozen-lockfile
+#20 6.065 Progress: resolved 0, reused 0, downloaded 1, added 0
+#20 7.069 Progress: resolved 0, reused 0, downloaded 14, added 9
+#20 8.073 Progress: resolved 0, reused 0, downloaded 20, added 9
+#20 9.091 Progress: resolved 0, reused 0, downloaded 30, added 13
+#20 10.29 Progress: resolved 0, reused 0, downloaded 45, added 17
+#20 11.30 Progress: resolved 0, reused 0, downloaded 64, added 27
+#20 14.17 Progress: resolved 0, reused 0, downloaded 64, added 28
+#20 ...
+
+#11 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#11 23.72 Reading package lists...
+#11 26.15 Building dependency tree...
+#11 26.61 Reading state information...
+#11 27.47 procps is already the newest version (2:4.0.2-3).
+#11 27.47 hostname is already the newest version (3.23+nmu1).
+#11 27.47 curl is already the newest version (7.88.1-10+deb12u14).
+#11 27.47 git is already the newest version (1:2.39.5-0+deb12u3).
+#11 27.47 openssl is already the newest version (3.0.18-1~deb12u2).
+#11 27.47 The following NEW packages will be installed:
+#11 27.48   lsof
+#11 27.61 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+#11 27.61 Need to get 318 kB of archives.
+#11 27.61 After this operation, 494 kB of additional disk space will be used.
+#11 27.61 Get:1 http://deb.debian.org/debian bookworm/main amd64 lsof amd64 4.95.0-1 [318 kB]
+#11 32.36 debconf: delaying package configuration, since apt-utils is not installed
+#11 32.49 Fetched 318 kB in 1s (393 kB/s)
+#11 32.56 Selecting previously unselected package lsof.
+#11 32.56 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23258 files and directories currently installed.)
+#11 32.67 Preparing to unpack .../lsof_4.95.0-1_amd64.deb ...
+#11 32.69 Unpacking lsof (4.95.0-1) ...
+#11 33.06 Setting up lsof (4.95.0-1) ...
+#11 ...
+
+#20 [build 10/15] RUN --mount=type=cache,id=openclaw-pnpm-store,target=/root/.local/share/pnpm/store,sharing=locked     NODE_OPTIONS=--max-old-space-size=2048 pnpm install --frozen-lockfile
+#20 15.19 Progress: resolved 0, reused 0, downloaded 75, added 30
+#20 ...
+
+#11 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#11 DONE 33.6s
+
+#21 [stage-5  3/15] RUN chown node:node /app
+#21 DONE 1.0s
+
+#20 [build 10/15] RUN --mount=type=cache,id=openclaw-pnpm-store,target=/root/.local/share/pnpm/store,sharing=locked     NODE_OPTIONS=--max-old-space-size=2048 pnpm install --frozen-lockfile
+#20 16.19 Progress: resolved 0, reused 0, downloaded 84, added 33
+#20 17.22 Progress: resolved 0, reused 0, downloaded 94, added 39
+#20 18.26 Progress: resolved 0, reused 0, downloaded 110, added 49
+#20 19.26 Progress: resolved 0, reused 0, downloaded 121, added 55
+#20 20.27 Progress: resolved 0, reused 0, downloaded 136, added 63
+#20 21.28 Progress: resolved 0, reused 0, downloaded 175, added 96
+#20 22.36 Progress: resolved 0, reused 0, downloaded 218, added 120
+#20 23.37 Progress: resolved 0, reused 0, downloaded 242, added 138
+#20 24.38 Progress: resolved 0, reused 0, downloaded 265, added 174
+#20 25.38 Progress: resolved 0, reused 0, downloaded 279, added 262
+#20 26.38 Progress: resolved 0, reused 0, downloaded 288, added 288
+#20 27.41 Progress: resolved 0, reused 0, downloaded 308, added 307
+#20 28.39 Progress: resolved 0, reused 0, downloaded 326, added 326
+#20 29.39 Progress: resolved 0, reused 0, downloaded 347, added 347
+#20 30.41 Progress: resolved 0, reused 0, downloaded 353, added 352
+#20 31.41 Progress: resolved 0, reused 0, downloaded 361, added 361
+#20 32.41 Progress: resolved 0, reused 0, downloaded 369, added 368
+#20 33.42 Progress: resolved 0, reused 0, downloaded 373, added 373
+#20 34.42 Progress: resolved 0, reused 0, downloaded 382, added 378
+#20 35.42 Progress: resolved 0, reused 0, downloaded 388, added 383
+#20 36.44 Progress: resolved 0, reused 0, downloaded 408, added 405
+#20 37.45 Progress: resolved 0, reused 0, downloaded 420, added 418
+#20 38.46 Progress: resolved 0, reused 0, downloaded 438, added 429
+#20 39.46 Progress: resolved 0, reused 0, downloaded 456, added 448
+#20 40.46 Progress: resolved 0, reused 0, downloaded 479, added 476
+#20 41.46 Progress: resolved 0, reused 0, downloaded 511, added 511
+#20 42.46 Progress: resolved 0, reused 0, downloaded 517, added 512
+#20 43.46 Progress: resolved 0, reused 0, downloaded 532, added 524
+#20 44.46 Progress: resolved 0, reused 0, downloaded 561, added 563
+#20 45.46 Progress: resolved 0, reused 0, downloaded 587, added 590
+#20 46.47 Progress: resolved 0, reused 0, downloaded 599, added 600
+#20 47.54 Progress: resolved 0, reused 0, downloaded 607, added 604
+#20 48.54 Progress: resolved 0, reused 0, downloaded 611, added 607
+#20 49.86 Progress: resolved 0, reused 0, downloaded 612, added 607
+#20 51.67 Progress: resolved 0, reused 0, downloaded 613, added 607
+#20 52.70 Progress: resolved 0, reused 0, downloaded 629, added 617
+#20 53.70 Progress: resolved 0, reused 0, downloaded 637, added 630
+#20 54.70 Progress: resolved 0, reused 0, downloaded 659, added 648
+#20 55.71 Progress: resolved 0, reused 0, downloaded 686, added 671
+#20 56.72 Progress: resolved 0, reused 0, downloaded 697, added 683
+#20 56.93 Packages are hard linked from the content-addressable store to the virtual store.
+#20 56.93   Content-addressable store is at: /root/.local/share/pnpm/store/v10
+#20 56.93   Virtual store is at:             node_modules/.pnpm
+#20 57.75 Progress: resolved 0, reused 0, downloaded 709, added 697
+#20 58.76 Progress: resolved 0, reused 0, downloaded 727, added 707
+#20 59.78 Progress: resolved 0, reused 0, downloaded 765, added 741
+#20 60.79 Progress: resolved 0, reused 0, downloaded 782, added 750
+#20 61.78 Progress: resolved 0, reused 0, downloaded 804, added 759
+#20 63.03 Progress: resolved 0, reused 0, downloaded 804, added 760
+#20 64.01 Progress: resolved 0, reused 0, downloaded 815, added 763
+#20 65.03 Progress: resolved 0, reused 0, downloaded 825, added 767
+#20 66.03 Progress: resolved 0, reused 0, downloaded 846, added 784
+#20 67.03 Progress: resolved 0, reused 0, downloaded 869, added 867
+#20 68.03 Progress: resolved 0, reused 0, downloaded 881, added 908
+#20 69.04 Progress: resolved 0, reused 0, downloaded 906, added 932
+#20 70.04 Progress: resolved 0, reused 0, downloaded 915, added 942
+#20 71.04 Progress: resolved 0, reused 0, downloaded 928, added 955
+#20 72.04 Progress: resolved 0, reused 0, downloaded 964, added 990
+#20 73.04 Progress: resolved 0, reused 0, downloaded 994, added 1023
+#20 74.05 Progress: resolved 0, reused 0, downloaded 1041, added 1068
+#20 74.26  WARN  Tarball download average speed 41 KiB/s (size 153 KiB) is below 50 KiB/s: https://registry.npmjs.org/pngjs/-/pngjs-6.0.0.tgz (GET)
+#20 75.05 Progress: resolved 0, reused 0, downloaded 1080, added 1112
+#20 76.05 Progress: resolved 0, reused 0, downloaded 1091, added 1123
+#20 77.10 Progress: resolved 0, reused 0, downloaded 1097, added 1130
+#20 78.11 Progress: resolved 0, reused 0, downloaded 1104, added 1138
+#20 79.11 Progress: resolved 0, reused 0, downloaded 1115, added 1150
+#20 80.11 Progress: resolved 0, reused 0, downloaded 1119, added 1153
+#20 81.26 Progress: resolved 0, reused 0, downloaded 1120, added 1153
+#20 82.40 Progress: resolved 0, reused 0, downloaded 1132, added 1162
+#20 83.40 Progress: resolved 0, reused 0, downloaded 1143, added 1172
+#20 84.40 Progress: resolved 0, reused 0, downloaded 1148, added 1176
+#20 85.40 Progress: resolved 0, reused 0, downloaded 1151, added 1194
+#20 86.65 Progress: resolved 0, reused 0, downloaded 1151, added 1195
+#20 87.65 Progress: resolved 0, reused 0, downloaded 1152, added 1196
+#20 88.65 Progress: resolved 0, reused 0, downloaded 1153, added 1197
+#20 89.65 Progress: resolved 0, reused 0, downloaded 1155, added 1197
+#20 90.69 Progress: resolved 0, reused 0, downloaded 1155, added 1198
+#20 91.68 Progress: resolved 0, reused 0, downloaded 1155, added 1199
+#20 113.2 Progress: resolved 0, reused 0, downloaded 1156, added 1199
+#20 114.2 Progress: resolved 0, reused 0, downloaded 1156, added 1200
+#20 135.9 Progress: resolved 0, reused 0, downloaded 1157, added 1200
+#20 140.6 Progress: resolved 0, reused 0, downloaded 1157, added 1201
+#20 146.0 Progress: resolved 0, reused 0, downloaded 1157, added 1201, done
+#20 146.0 node_modules/protobufjs postinstall$ node scripts/postinstall
+#20 146.1 node_modules/sharp install$ node install/check.js || npm run build
+#20 146.1 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall$ node download-lib.js
+#20 146.1 node_modules/esbuild postinstall$ node install.js
+#20 146.5 node_modules/sharp install: Done
+#20 146.5 node_modules/protobufjs postinstall: Done
+#20 146.5 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: Downloading lib matrix-sdk-crypto.linux-x64-gnu.node from https://github.com/matrix-org/matrix-rust-sdk-crypto-nodejs/releases/download/v0.4.0/matrix-sdk-crypto.linux-x64-gnu.node
+#20 146.5 node_modules/@tloncorp/tlon-skill postinstall$ node scripts/postinstall.js
+#20 147.0 node_modules/esbuild postinstall: Done
+#20 147.1 node_modules/node-llama-cpp postinstall$ node ./dist/cli/cli.js postinstall
+#20 147.1 .../libsignal/node_modules/protobufjs postinstall$ node scripts/postinstall
+#20 147.1 node_modules/@tloncorp/tlon-skill postinstall: [tlon-skill] Binary ready: /app/node_modules/@tloncorp/tlon-skill-linux-x64/tlon
+#20 147.1 node_modules/@tloncorp/tlon-skill postinstall: Done
+#20 147.5 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: 0 b/s - 4.8% [1.0 MB/21.0 MB]
+#20 147.5 .../libsignal/node_modules/protobufjs postinstall: Done
+#20 148.5 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: 2.3 MB/s - 19.4% [4.1 MB/21.0 MB]
+#20 149.5 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: 3.1 MB/s - 35.1% [7.4 MB/21.0 MB]
+#20 149.6 node_modules/node-llama-cpp postinstall: Done
+#20 150.5 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: 3.0 MB/s - 48.1% [10.1 MB/21.0 MB]
+#20 151.5 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: 3.4 MB/s - 63.4% [13.3 MB/21.0 MB]
+#20 152.5 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: 3.3 MB/s - 82.7% [17.4 MB/21.0 MB]
+#20 153.5 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: Download Completed
+#20 153.5 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: Done
+#20 153.6 node_modules/@whiskeysockets/baileys preinstall$ node ./engine-requirements.js
+#20 153.8 node_modules/@whiskeysockets/baileys preinstall: Done
+#20 154.9 
+#20 155.2 . postinstall$ node scripts/postinstall-bundled-plugins.mjs
+#20 155.4 . postinstall: Done
+#20 155.4 . prepare$ command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git config core.hooksPath git-hooks || exit 0
+#20 155.5 . prepare: Done
+#20 155.7 Done in 2m 31.7s using pnpm v10.32.1
+#20 DONE 156.0s
+
+#22 [build 11/15] COPY . .
+#22 DONE 11.8s
+
+#23 [build 12/15] RUN for dir in /app/extensions /app/.agent /app/.agents; do       if [ -d "$dir" ]; then         find "$dir" -type d -exec chmod 755 {} +;         find "$dir" -type f -exec chmod 644 {} +;       fi;     done
+#23 DONE 19.4s
+
+#24 [build 13/15] RUN pnpm canvas:a2ui:bundle ||     (echo "A2UI bundle: creating stub (non-fatal)" &&      mkdir -p src/canvas-host/a2ui &&      echo "/* A2UI bundle unavailable in this build */" > src/canvas-host/a2ui/a2ui.bundle.js &&      echo "stub" > src/canvas-host/a2ui/.bundle.hash &&      rm -rf vendor/a2ui apps/shared/OpenClawKit/Tools/CanvasA2UI)
+#24 0.841 
+#24 0.841 > openclaw@2026.4.2 canvas:a2ui:bundle /app
+#24 0.841 > bash scripts/bundle-a2ui.sh
+#24 0.841 
+#24 5.643 <DIR>/a2ui.bundle.js  chunk │ size: 486.00 kB
+#24 5.643 
+#24 5.643 ✔ rolldown v1.0.0-rc.12 Finished in 179.66 ms
+#24 DONE 5.8s
+
+#25 [build 14/15] RUN pnpm build:docker
+#25 1.175 
+#25 1.175 > openclaw@2026.4.2 build:docker /app
+#25 1.175 > node scripts/tsdown-build.mjs && node scripts/runtime-postbuild.mjs && node scripts/build-stamp.mjs && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/copy-export-html-templates.ts && node --import tsx scripts/write-build-info.ts && node --import tsx scripts/write-cli-startup-metadata.ts && node --import tsx scripts/write-cli-compat.ts
+#25 1.175 
+#25 56.15 [copy-hook-metadata] Copied 4 hook metadata files.
+#25 56.40 [copy-export-html-templates] Copied 5 export-html assets.
+#25 DONE 75.9s
+
+#26 [build 15/15] RUN pnpm ui:build
+#26 1.085 
+#26 1.085 > openclaw@2026.4.2 ui:build /app
+#26 1.085 > node scripts/ui.js build
+#26 1.085 
+#26 1.738 
+#26 1.738 > openclaw-control-ui@ build /app/ui
+#26 1.738 > vite build
+#26 1.738 
+#26 2.050 vite v8.0.3 building client environment for production...
+#26 2.072 [2Ktransforming...✓ 1622 modules transformed.
+#26 3.197 rendering chunks...
+#26 4.261 computing gzip size...
+#26 4.309 ../dist/control-ui/index.html                                    2.98 kB │ gzip:   1.08 kB
+#26 4.309 ../dist/control-ui/assets/index-Bhjki1_a.css                   196.49 kB │ gzip:  32.30 kB
+#26 4.309 ../dist/control-ui/assets/directive-C6NBp6xJ.js                  0.36 kB │ gzip:   0.27 kB │ map:     1.03 kB
+#26 4.309 ../dist/control-ui/assets/hash-Bt1aVMQ3.js                       0.38 kB │ gzip:   0.26 kB │ map:     1.19 kB
+#26 4.309 ../dist/control-ui/assets/github-copilot-headers-CrI0CIJ7.js     0.46 kB │ gzip:   0.31 kB │ map:     1.80 kB
+#26 4.309 ../dist/control-ui/assets/channel-config-extras-DNCeHtEf.js      0.50 kB │ gzip:   0.32 kB │ map:     2.16 kB
+#26 4.309 ../dist/control-ui/assets/preload-helper-xBbMyY7u.js             1.20 kB │ gzip:   0.68 kB
+#26 4.309 ../dist/control-ui/assets/skills-shared-DJsJP4-4.js              1.50 kB │ gzip:   0.69 kB │ map:     4.49 kB
+#26 4.309 ../dist/control-ui/assets/transform-messages-XKqwKV3D.js         2.17 kB │ gzip:   0.97 kB │ map:    12.71 kB
+#26 4.309 ../dist/control-ui/assets/instances-DTNtCw6q.js                  2.79 kB │ gzip:   1.07 kB │ map:     5.53 kB
+#26 4.309 ../dist/control-ui/assets/logs-vVeVJ0CI.js                       3.12 kB │ gzip:   1.15 kB │ map:     6.45 kB
+#26 4.309 ../dist/control-ui/assets/openai-responses-DJl0G-3f.js           3.18 kB │ gzip:   1.53 kB │ map:    10.61 kB
+#26 4.309 ../dist/control-ui/assets/azure-openai-responses-BlgsZIK0.js     3.32 kB │ gzip:   1.57 kB │ map:    10.55 kB
+#26 4.309 ../dist/control-ui/assets/format-Cbj45nru.js                     3.70 kB │ gzip:   1.60 kB │ map:    19.60 kB
+#26 4.309 ../dist/control-ui/assets/debug-CWZygxPv.js                      4.17 kB │ gzip:   1.28 kB │ map:     7.15 kB
+#26 4.309 ../dist/control-ui/assets/de-DU-XmSEb.js                         4.32 kB │ gzip:   2.11 kB │ map:     6.89 kB
+#26 4.309 ../dist/control-ui/assets/zh-TW-CCgwa2eS.js                      4.69 kB │ gzip:   2.67 kB │ map:     8.08 kB
+#26 4.309 ../dist/control-ui/assets/pt-BR-RqwUvKTB.js                      5.15 kB │ gzip:   2.41 kB │ map:     8.62 kB
+#26 4.309 ../dist/control-ui/assets/google-DH3sJwd0.js                     5.65 kB │ gzip:   2.06 kB │ map:    23.08 kB
+#26 4.309 ../dist/control-ui/assets/google-vertex-lQwbjEII.js              6.37 kB │ gzip:   2.32 kB │ map:    25.43 kB
+#26 4.309 ../dist/control-ui/assets/openai-responses-shared-d8tCggM4.js    7.35 kB │ gzip:   2.39 kB │ map:    28.57 kB
+#26 4.309 ../dist/control-ui/assets/skills--6nT6ERj.js                     9.16 kB │ gzip:   2.79 kB │ map:    17.60 kB
+#26 4.309 ../dist/control-ui/assets/zh-CN-CUzhgfRs.js                     10.95 kB │ gzip:   5.25 kB │ map:    18.70 kB
+#26 4.309 ../dist/control-ui/assets/openai-codex-responses-BFNlkFpD.js    11.00 kB │ gzip:   4.30 kB │ map:    41.96 kB
+#26 4.309 ../dist/control-ui/assets/google-gemini-cli-BpxbH95Q.js         11.18 kB │ gzip:   4.32 kB │ map:    49.77 kB
+#26 4.309 ../dist/control-ui/assets/sessions-Dr_r3LLC.js                  11.49 kB │ gzip:   3.20 kB │ map:    27.51 kB
+#26 4.309 ../dist/control-ui/assets/openai-completions-Bx9WUImb.js        11.88 kB │ gzip:   3.93 kB │ map:    46.60 kB
+#26 4.309 ../dist/control-ui/assets/es-Be891ZDf.js                        11.93 kB │ gzip:   4.83 kB │ map:    19.08 kB
+#26 4.309 ../dist/control-ui/assets/lit-zdTgzAJI.js                       15.03 kB │ gzip:   5.87 kB │ map:    34.52 kB
+#26 4.309 ../dist/control-ui/assets/nodes-B1R45Hyv.js                     21.99 kB │ gzip:   5.02 kB │ map:    53.05 kB
+#26 4.309 ../dist/control-ui/assets/channels-6kAnhm1b.js                  22.18 kB │ gzip:   4.93 kB │ map:    59.83 kB
+#26 4.309 ../dist/control-ui/assets/dist-D8DZLmCF.js                      22.50 kB │ gzip:   6.69 kB │ map:    75.94 kB
+#26 4.309 ../dist/control-ui/assets/agents-CmyA4rQV.js                    46.25 kB │ gzip:  11.07 kB │ map:   130.21 kB
+#26 4.309 ../dist/control-ui/assets/cron-f2Wyb0Eo.js                      49.18 kB │ gzip:   8.47 kB │ map:    95.70 kB
+#26 4.309 ../dist/control-ui/assets/anthropic-BzPVIrLm.js                 82.24 kB │ gzip:  22.59 kB │ map:   361.55 kB
+#26 4.309 ../dist/control-ui/assets/openai-Cn7eGqwa.js                   105.20 kB │ gzip:  28.25 kB │ map:   473.47 kB
+#26 4.309 ../dist/control-ui/assets/event-stream-B8X6sYaV.js             247.22 kB │ gzip:  20.77 kB │ map:   634.65 kB
+#26 4.309 ../dist/control-ui/assets/google-shared-CbPHVnPr.js            263.21 kB │ gzip:  52.59 kB │ map: 1,177.12 kB
+#26 4.309 ../dist/control-ui/assets/index-Bhz0foFB.js                    795.06 kB │ gzip: 215.82 kB │ map: 2,544.34 kB
+#26 4.309 ../dist/control-ui/assets/mistral-BHA4h9bS.js                  803.00 kB │ gzip:  82.83 kB │ map: 2,513.35 kB
+#26 4.309 
+#26 4.314 ✓ built in 2.26s
+#26 DONE 4.6s
+
+#27 [runtime-assets 1/1] RUN CI=true pnpm prune --prod &&     find dist -type f ( -name '*.d.ts' -o -name '*.d.mts' -o -name '*.d.cts' -o -name '*.map' ) -delete
+#27 1.738 Lockfile is up to date, resolution step is skipped
+#27 4.889 Packages: +18
+#27 4.889 ++++++++++++++++++
+#27 5.280 Progress: resolved 0, reused 0, downloaded 1, added 0
+#27 6.281 Progress: resolved 0, reused 0, downloaded 3, added 0
+#27 8.942 Progress: resolved 0, reused 0, downloaded 4, added 0
+#27 11.24 Progress: resolved 0, reused 0, downloaded 5, added 0
+#27 12.38 Progress: resolved 0, reused 0, downloaded 6, added 0
+#27 14.88 Progress: resolved 0, reused 0, downloaded 7, added 0
+#27 15.88 Progress: resolved 0, reused 0, downloaded 9, added 0
+#27 20.08 Progress: resolved 0, reused 0, downloaded 10, added 0
+#27 22.27 Progress: resolved 0, reused 0, downloaded 11, added 0
+#27 23.35 Progress: resolved 0, reused 0, downloaded 13, added 0
+#27 24.35 Progress: resolved 0, reused 0, downloaded 14, added 0
+#27 28.10 Progress: resolved 0, reused 0, downloaded 15, added 0
+#27 32.94 Progress: resolved 0, reused 0, downloaded 16, added 0
+#27 33.94 Progress: resolved 0, reused 0, downloaded 17, added 0
+#27 34.95 Progress: resolved 0, reused 0, downloaded 23, added 0
+#27 35.95 Progress: resolved 0, reused 0, downloaded 30, added 0
+#27 36.95 Progress: resolved 0, reused 0, downloaded 34, added 0
+#27 37.95 Progress: resolved 0, reused 0, downloaded 35, added 0
+#27 38.95 Progress: resolved 0, reused 0, downloaded 36, added 0
+#27 41.43 Progress: resolved 0, reused 0, downloaded 37, added 0
+#27 45.24 Progress: resolved 0, reused 0, downloaded 38, added 0
+#27 46.45 Progress: resolved 0, reused 0, downloaded 39, added 0
+#27 48.98 Progress: resolved 0, reused 0, downloaded 40, added 0
+#27 51.11 Progress: resolved 0, reused 0, downloaded 41, added 0
+#27 52.11 Progress: resolved 0, reused 0, downloaded 42, added 0
+#27 53.12 Progress: resolved 0, reused 0, downloaded 43, added 0
+#27 54.12 Progress: resolved 0, reused 0, downloaded 45, added 0
+#27 55.12 Progress: resolved 0, reused 0, downloaded 46, added 0
+#27 57.95 Progress: resolved 0, reused 0, downloaded 47, added 0
+#27 58.95 Progress: resolved 0, reused 0, downloaded 48, added 0
+#27 59.95 Progress: resolved 0, reused 0, downloaded 52, added 0
+#27 60.96 Progress: resolved 0, reused 0, downloaded 53, added 0
+#27 62.35 Progress: resolved 0, reused 0, downloaded 54, added 0
+#27 63.37 Progress: resolved 0, reused 0, downloaded 58, added 0
+#27 64.37 Progress: resolved 0, reused 0, downloaded 60, added 0
+#27 65.37 Progress: resolved 0, reused 0, downloaded 65, added 0
+#27 67.34 Progress: resolved 0, reused 0, downloaded 66, added 0
+#27 69.65 Progress: resolved 0, reused 0, downloaded 67, added 0
+#27 71.86 Progress: resolved 0, reused 0, downloaded 68, added 0
+#27 72.86 Progress: resolved 0, reused 0, downloaded 71, added 0
+#27 75.25 Progress: resolved 0, reused 0, downloaded 72, added 0
+#27 76.94 Progress: resolved 0, reused 0, downloaded 73, added 0
+#27 77.95 Progress: resolved 0, reused 0, downloaded 77, added 0
+#27 79.63 Progress: resolved 0, reused 0, downloaded 78, added 0
+#27 80.63 Progress: resolved 0, reused 0, downloaded 79, added 0
+#27 81.63 Progress: resolved 0, reused 0, downloaded 82, added 0
+#27 82.86 Progress: resolved 0, reused 0, downloaded 83, added 0
+#27 83.86 Progress: resolved 0, reused 0, downloaded 85, added 0
+#27 84.86 Progress: resolved 0, reused 0, downloaded 87, added 0
+#27 85.86 Progress: resolved 0, reused 0, downloaded 90, added 0
+#27 86.87 Progress: resolved 0, reused 0, downloaded 92, added 0
+#27 89.86 Progress: resolved 0, reused 0, downloaded 93, added 0
+#27 90.86 Progress: resolved 0, reused 0, downloaded 94, added 0
+#27 93.71 Progress: resolved 0, reused 0, downloaded 95, added 0
+#27 97.22 Progress: resolved 0, reused 0, downloaded 96, added 0
+#27 98.22 Progress: resolved 0, reused 0, downloaded 97, added 0
+#27 100.9 Progress: resolved 0, reused 0, downloaded 98, added 0
+#27 105.0 Progress: resolved 0, reused 0, downloaded 99, added 0
+#27 106.0 Progress: resolved 0, reused 0, downloaded 102, added 0
+#27 107.0 Progress: resolved 0, reused 0, downloaded 103, added 0
+#27 108.0 Progress: resolved 0, reused 0, downloaded 105, added 0
+#27 109.1 Progress: resolved 0, reused 0, downloaded 107, added 0
+#27 110.2 Progress: resolved 0, reused 0, downloaded 108, added 0
+#27 111.2 Progress: resolved 0, reused 0, downloaded 109, added 0
+#27 112.2 Progress: resolved 0, reused 0, downloaded 111, added 0
+#27 113.2 Progress: resolved 0, reused 0, downloaded 114, added 0
+#27 114.2 Progress: resolved 0, reused 0, downloaded 118, added 0
+#27 115.2 Progress: resolved 0, reused 0, downloaded 119, added 0
+#27 117.3 Progress: resolved 0, reused 0, downloaded 120, added 0
+#27 118.3 Progress: resolved 0, reused 0, downloaded 121, added 0
+#27 119.3 Progress: resolved 0, reused 0, downloaded 122, added 0
+#27 120.3 Progress: resolved 0, reused 0, downloaded 123, added 0
+#27 121.3 Progress: resolved 0, reused 0, downloaded 125, added 0
+#27 122.3 Progress: resolved 0, reused 0, downloaded 128, added 0
+#27 123.3 Progress: resolved 0, reused 0, downloaded 132, added 0
+#27 124.3 Progress: resolved 0, reused 0, downloaded 138, added 0
+#27 125.3 Progress: resolved 0, reused 0, downloaded 144, added 0
+#27 126.3 Progress: resolved 0, reused 0, downloaded 152, added 0
+#27 127.3 Progress: resolved 0, reused 0, downloaded 155, added 0
+#27 128.4 Progress: resolved 0, reused 0, downloaded 156, added 0
+#27 131.2 Progress: resolved 0, reused 0, downloaded 157, added 0
+#27 133.7 Progress: resolved 0, reused 0, downloaded 158, added 0
+#27 134.7 Progress: resolved 0, reused 0, downloaded 162, added 0
+#27 135.7 Progress: resolved 0, reused 0, downloaded 163, added 0
+#27 136.7 Progress: resolved 0, reused 0, downloaded 164, added 0
+#27 137.7 Progress: resolved 0, reused 0, downloaded 166, added 0
+#27 139.2 Progress: resolved 0, reused 0, downloaded 167, added 0
+ERROR: failed to build: failed to solve: Canceled: context canceled

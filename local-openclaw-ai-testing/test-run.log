@@ -1,0 +1,27 @@
+
+[0;34m==========================================[0m
+[0;34mOpenClaw Local Performance Testing[0m
+[0;34m==========================================[0m
+
+OpenClaw directory: /home/techie/devtools/github-repos/openclaw
+Results directory: /home/techie/devtools/github-repos/depot-railway-build/local-openclaw-ai-testing
+
+This will run 6 test cases. Each test builds OpenClaw from scratch.
+Estimated total time: 30-60 minutes
+
+Starting tests automatically...
+
+[0;34m==========================================[0m
+[0;34mTest: Baseline[0m
+[0;34m==========================================[0m
+
+[1;33mTest Case: Baseline[0m
+[1;33mDescription: No changes[0m
+[1;33mExpected Cache: 100%[0m
+
+[0;34m==========================================[0m
+[0;34mResetting OpenClaw to clean state[0m
+[0;34m==========================================[0m
+
+OpenClaw reset to clean state
+Applying test case changes...
