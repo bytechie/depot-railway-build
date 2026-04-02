@@ -324,7 +324,7 @@ After the demo, provide:
 | Setup guide | [docs/setup-guide.md](./setup-guide.md) |
 | GitHub secrets | [docs/github-secrets.md](./github-secrets.md) |
 | Pricing | [depot.dev/pricing](https://depot.dev/pricing) |
-| Video demo | [railway-cost-video-script.md](./railway-cost-video-script.md) |
+| Video demo | [video-script.md](./video-script.md) |
 
 ---
 

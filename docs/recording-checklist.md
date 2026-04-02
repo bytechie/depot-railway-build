@@ -309,7 +309,7 @@ Frame Rate: 30fps
 - [ ] Both side-by-side with timers
 - [ ] Final comparison visible
 
-### Railway Cost Video (railway-cost-video-script.md)
+### Depot CI vs GitHub Actions Video (video-script.md)
 
 | Scene | What to Record | Duration |
 |-------|----------------|----------|
