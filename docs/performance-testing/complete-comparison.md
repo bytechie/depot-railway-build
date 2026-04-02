@@ -14,7 +14,7 @@ Final performance comparison of all 4 Docker build flows with 5 test cases each.
 |------|----------------|-------------------|------------------|----------------|--------|
 | **Baseline** | 162s | **34.20s** 🏆 | 141s | 31s | Railway/Depot |
 | **Comment** | **14s** 🏆 | **23.60s** | 65s | 23s | Local |
-| **Function** | 17s | **15.02s** 🏆 | 64s | 23s | Railway |
+| **Function** | 17s | **18.02s** 🏆 | 64s | 23s | Railway |
 | **Dependency** | 143s | **25.32s** 🏆 | 193s | 31s | Railway |
 | **Major** | 206s | **27.91s** 🏆 | 133s | **26s** 🏆 | Railway/Depot |
 
@@ -46,7 +46,7 @@ Final performance comparison of all 4 Docker build flows with 5 test cases each.
 
 | Flow | Time | vs Flow 1 | vs Flow 3 |
 |------|------|-----------|-----------|
-| **Flow 2 (Railway)** | **15.02s** | Similar | 4.3x faster |
+| **Flow 2 (Railway)** | **18.02s** | Similar | 4.3x faster |
 | Flow 4 (Depot CI) | 23s | 1.3x slower | 2.8x faster |
 | Flow 1 (Local) | 17s | baseline | 3.8x faster |
 
