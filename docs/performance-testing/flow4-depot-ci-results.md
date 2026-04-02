@@ -1,11 +1,14 @@
 # Flow 4: Depot CI Performance Results
 
-Performance test results for Flow 4 (Depot CI).
+Performance test results for Flow 4 (Depot CI with depot/build-push-action).
 
+**Deployment Target:** Railway (via GitHub Container Registry)
 **Test Date:** 2026-04-01
-**Workflow:** Build & Deploy with Depot CI
+**Workflow:** Build Docker image with Depot CI, push to GHCR
 **Depot Project:** d0dfxb1xmf
 **Test Case:** baseline (no changes)
+
+> **Note:** These results measure Docker **build time only** - the time to create and push the image to GHCR. Railway deployment time is not included.
 
 ---
 

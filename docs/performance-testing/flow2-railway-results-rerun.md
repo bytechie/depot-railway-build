@@ -2,9 +2,12 @@
 
 Performance test results for Flow 2 (Railway Auto-Build) on `flow2-retest` branch.
 
+**Deployment Target:** Railway (native auto-build)
 **Test Date:** 2026-04-02
 **Branch:** flow2-retest
 **Railway Region:** us-east4
+
+> **Note:** These results measure Railway's Docker **build time only**. Railway automatically builds and deploys the image when you push to the connected branch.
 
 ---
 

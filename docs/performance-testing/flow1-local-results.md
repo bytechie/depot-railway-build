@@ -1,10 +1,13 @@
 # Flow 1: Local Docker Build Performance Results
 
-Performance test results for Flow 1 (Local → Railway) Docker builds.
+Performance test results for Flow 1 (Local Docker builds for Railway deployment).
 
+**Deployment Target:** Railway (manual deploy after local build)
 **Test Date:** 2026-03-31
 **Platform:** WSL2 on Windows
 **Docker:** Docker Desktop
+
+> **Note:** These results measure local Docker **build time only**. The image is built locally and then manually deployed to Railway.
 
 ---
 

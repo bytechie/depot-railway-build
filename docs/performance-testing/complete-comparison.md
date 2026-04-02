@@ -2,9 +2,12 @@
 
 Final performance comparison of all 4 Docker build flows with 5 test cases each.
 
+**Deployment Target:** Railway (us-east4)
 **Test Period:** 2026-03-31 to 2026-04-02
 **Branches:** performance-testing, main, flow2-retest
 **Organization:** sbtechpal
+
+> **Note:** All flows build Docker images and deploy to the same Railway project. This comparison measures **build time only** - the time to create the Docker image, not deployment or runtime.
 
 ---
 

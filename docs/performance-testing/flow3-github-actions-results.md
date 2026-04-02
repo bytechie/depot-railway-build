@@ -1,10 +1,13 @@
 # Flow 3: GitHub Actions (Baseline) Performance Results
 
-Performance test results for Flow 3 (GitHub Actions → GHCR → Railway).
+Performance test results for Flow 3 (GitHub Actions with docker/build-push-action).
 
+**Deployment Target:** Railway (via GitHub Container Registry)
 **Test Date:** 2026-03-31
-**Workflow:** Build & Deploy to Railway (Baseline)
+**Workflow:** Build Docker image, push to GHCR, deploy to Railway
 **Test Case:** baseline (no changes)
+
+> **Note:** These results measure Docker **build time only** - the time to create and push the image to GHCR. Railway deployment time is not included.
 
 ---
 
