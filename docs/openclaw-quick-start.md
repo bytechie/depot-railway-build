@@ -42,18 +42,24 @@ git push
 
 ## Running Tests
 
+### Test Cases Overview
+
+| Test | Description | Expected Cache | Speedup |
+|------|-------------|----------------|---------|
+| **baseline** | No changes - fully cached | ~100% | 4-7x |
+| **test-2-docs** | README comment change | ~95% | 4-7x |
+| **test-3-source** | New TypeScript source file | ~75% | 5-8x |
+| **test-4-ui** | New UI component | ~50% | 5-8x |
+| **test-5-dependency** | Add @types/node package | ~25% | 5-7x |
+| **test-6-major** | Multiple file types + dep | ~10% | 5-8x |
+
 ### Option A: GitHub Actions Baseline
 
 1. Go to **Actions** → **GitHub Actions Baseline - OpenClaw**
 2. Click **Run workflow**
-3. Select test case from dropdown:
-   - `baseline` - No changes (fully cached)
-   - `test-2-comment` - Comment change
-   - `test-3-function` - New source file
-   - `test-4-dependency` - New npm package
-   - `test-5-major` - Multiple changes
+3. Select test case from dropdown
 4. Click **Run workflow**
-5. Wait for completion (3-15 minutes)
+5. Wait for completion (3-20 minutes depending on test)
 6. Note the total time from workflow run
 
 ### Option B: Depot CI
@@ -62,18 +68,19 @@ git push
 2. Click **Run workflow**
 3. Select the same test case
 4. Click **Run workflow**
-5. Wait for completion (30-180 seconds)
+5. Wait for completion (30 sec - 4 min depending on test)
 6. Note the total time
 
 ## Expected Results
 
-| Test Case | GitHub Actions | Depot CI | Speedup |
-|-----------|----------------|----------|---------|
+| Test | GitHub Actions | Depot CI | Speedup |
+|------|----------------|----------|---------|
 | Baseline | 3-5 min | 30-45s | **4-7x** |
-| Comment | 3-5 min | 35-50s | **4-7x** |
-| Function | 4-6 min | 45-60s | **4-7x** |
-| Dependency | 6-10 min | 60-90s | **5-8x** |
-| Major | 8-15 min | 2-3 min | **3-5x** |
+| Docs | 3-5 min | 35-50s | **4-7x** |
+| Source | 5-8 min | 60-90s | **5-8x** |
+| UI | 7-12 min | 90-120s | **5-8x** |
+| Dependency | 10-15 min | 2-3 min | **5-7x** |
+| Major | 12-20 min | 2-4 min | **5-8x** |
 
 ## Why OpenClaw?
 
@@ -83,9 +90,42 @@ OpenClaw is a **real-world application** with:
 - **Multi-stage** Docker build (265 lines)
 - **Bun + pnpm** dual build system
 - **50+ source** directories
+- **Separate UI build** step
 - **Extension system** for plugins
 
-This complexity makes it perfect for demonstrating Depot CI's advantages.
+This complexity makes it perfect for demonstrating Depot CI's advantages over traditional CI systems.
+
+## Test Case Details
+
+### 1. Baseline (No Changes)
+- **What:** Clean build with all layers cached
+- **Why:** Best-case scenario for both systems
+- **Cache:** ~100%
+
+### 2. Documentation Change
+- **What:** Add comment to README.md
+- **Why:** Trivial change that shouldn't affect build
+- **Cache:** ~95%
+
+### 3. Source File Addition
+- **What:** Create new TypeScript file in src/
+- **Why:** Typical code addition
+- **Cache:** ~75%
+
+### 4. UI Component Change
+- **What:** Create new component in ui/
+- **Why:** Frontend development workflow
+- **Cache:** ~50%
+
+### 5. New Dependency
+- **What:** Add @types/node to devDependencies
+- **Why:** Adding a new library
+- **Cache:** ~25%
+
+### 6. Major Changes
+- **What:** Dependency + source + UI + docs
+- **Why:** Worst-case rebuild scenario
+- **Cache:** ~10%
 
 ## Recording Your Results
 
@@ -94,30 +134,36 @@ OpenClaw Performance Test Results
 ==================================
 
 Baseline (100% cache):
-  GitHub Actions: ___ minutes ___ seconds
-  Depot CI:       ___ minutes ___ seconds
+  GitHub Actions: ___ min ___ sec
+  Depot CI:       ___ min ___ sec
   Speedup:        ___x
 
-Comment (~90% cache):
-  GitHub Actions: ___ minutes ___ seconds
-  Depot CI:       ___ minutes ___ seconds
+Docs (95% cache):
+  GitHub Actions: ___ min ___ sec
+  Depot CI:       ___ min ___ sec
   Speedup:        ___x
 
-Function (~70% cache):
-  GitHub Actions: ___ minutes ___ seconds
-  Depot CI:       ___ minutes ___ seconds
+Source (75% cache):
+  GitHub Actions: ___ min ___ sec
+  Depot CI:       ___ min ___ sec
   Speedup:        ___x
 
-Dependency (~30% cache):
-  GitHub Actions: ___ minutes ___ seconds
-  Depot CI:       ___ minutes ___ seconds
+UI (50% cache):
+  GitHub Actions: ___ min ___ sec
+  Depot CI:       ___ min ___ sec
   Speedup:        ___x
 
-Major (~10% cache):
-  GitHub Actions: ___ minutes ___ seconds
-  Depot CI:       ___ minutes ___ seconds
+Dependency (25% cache):
+  GitHub Actions: ___ min ___ sec
+  Depot CI:       ___ min ___ sec
   Speedup:        ___x
 
+Major (10% cache):
+  GitHub Actions: ___ min ___ sec
+  Depot CI:       ___ min ___ sec
+  Speedup:        ___x
+
+─────────────────────────────────────
 Average Speedup: ___x
 ```
 
@@ -132,11 +178,16 @@ A: First builds warm the cache - run baseline twice
 **Q: pnpm install fails**
 A: OpenClaw uses pnpm 9.x - the workflow handles this
 
+**Q: UI build fails**
+A: May fail under cross-compilation - workflow creates stub (non-fatal)
+
 ## Next Steps
 
-1. Run all 5 test cases
+1. Run all 6 test cases
 2. Record your results
 3. Calculate average speedup
 4. Share findings with team
 
 **Full Guide:** [openclaw-performance-guide.md](./openclaw-performance-guide.md)
+
+**Real OpenClaw:** [github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)

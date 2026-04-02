@@ -34,31 +34,39 @@ openclaw/
 
 ## Build Pipeline
 
-### Stage 1: ext-deps
-- Extract extension dependencies
-- Prepare for optional plugin builds
+### OpenClaw Dockerfile Stages
 
-### Stage 2: build
 ```
-1. Install Bun (for build scripts)
-2. pnpm install --frozen-lockfile  ← Cache-critical
-3. pnpm build:docker               ← TypeScript compilation
-4. pnpm ui:build                   ← UI bundling
+Stage 1: ext-deps
+  └── Extract extension dependencies
+
+Stage 2: build
+  ├── Install Bun (for build scripts)
+  ├── COPY package.json, pnpm-lock.yaml ← Cache Layer 1
+  ├── pnpm install --frozen-lockfile  ← Cache Layer 2 (CRITICAL)
+  ├── COPY . . ← Cache Layer 3
+  ├── pnpm build:docker ← TypeScript compilation
+  └── pnpm ui:build ← UI bundling
+
+Stage 3: runtime-assets
+  ├── pnpm prune --prod
+  └── Strip .d.ts, .map files
+
+Stage 4: Runtime
+  ├── Install system packages
+  ├── Copy production artifacts
+  └── Setup non-root user
 ```
 
-### Stage 3: runtime-assets
-```
-5. pnpm prune --prod               ← Remove dev deps
-6. Strip .d.ts, .map files
-```
+### Cache Layer Analysis
 
-### Stage 4: Runtime
-```
-7. Install system packages
-8. Copy production artifacts
-9. Setup pnpm/Corepack
-10. Configure non-root user
-```
+| Layer | What Changes Affect It | Rebuild Time |
+|-------|------------------------|--------------|
+| **L1: package.json copy** | package.json, pnpm-lock.yaml changes | 30-60s (pnpm install) |
+| **L2: pnpm install** | Dependency changes | 45-90s |
+| **L3: Source copy** | Any file in src/, ui/, etc. | 10-30s |
+| **L4: build:docker** | TypeScript source files | 60-120s |
+| **L5: ui:build** | UI source files | 30-90s |
 
 ## Workflows
 
@@ -98,85 +106,255 @@ openclaw/
 ## Test Cases
 
 ### Test 1: Baseline (No Changes)
-- **Purpose:** Measure fully cached build
-- **Changes:** None
-- **Expected:** All layers cached (~100%)
-- **Depot CI:** ~30-45 seconds (after initial warm-up)
-- **GitHub Actions:** ~3-5 minutes (even with cache)
 
-### Test 2: Comment Change
-- **Purpose:** Measure trivial source change impact
-- **Changes:** Add comment to README.md
-- **Layers affected:** COPY README only
-- **Expected Cache:** ~90%
-- **Depot CI:** ~35-50 seconds
-- **GitHub Actions:** ~3-5 minutes
+**Purpose:** Measure fully cached build performance
 
-### Test 3: New Function
-- **Purpose:** Measure small code addition impact
-- **Changes:** Add `src/test-perf.ts` with simple function
-- **Layers affected:** COPY src, build stage
-- **Expected Cache:** ~70%
-- **Depot CI:** ~45-60 seconds
-- **GitHub Actions:** ~4-6 minutes
+**What changes:** Nothing - clean baseline
 
-### Test 4: New Dependency
-- **Purpose:** Measure package.json change impact
-- **Changes:** Add `tsup` to devDependencies
-- **Layers affected:** pnpm install, build, runtime
-- **Expected Cache:** ~30%
-- **Depot CI:** ~60-90 seconds
-- **GitHub Actions:** ~6-10 minutes
+**Docker layers affected:** None (all cached)
 
-### Test 5: Major Changes
-- **Purpose:** Measure significant changes impact
-- **Changes:** Multiple packages + new files + comment
-- **Layers affected:** All stages (near-full rebuild)
-- **Expected Cache:** ~10%
-- **Depot CI:** ~2-3 minutes (optimized infrastructure)
-- **GitHub Actions:** ~8-15 minutes
+**Expected Cache:** ~100%
 
-## Expected Results
+**Expected Times:**
+- Depot CI: 30-45 seconds
+- GitHub Actions: 3-5 minutes
 
-### Performance Comparison
+**Why this tests:** Full cache hit scenario - best case for both systems
 
-| Test Case | GitHub Actions | Depot CI | Speedup |
-|-----------|----------------|----------|---------|
-| Baseline (cached) | 3-5 min | 30-45s | **4-7x** |
-| Comment | 3-5 min | 35-50s | **4-7x** |
-| New Function | 4-6 min | 45-60s | **4-7x** |
-| New Dependency | 6-10 min | 60-90s | **5-8x** |
-| Major Changes | 8-15 min | 2-3 min | **3-5x** |
+---
 
-### Why Depot CI is Faster
+### Test 2: Documentation Change
 
-1. **Distributed Layer Caching**
-   - Global cache shared across all builds
-   - Intelligent cache pre-fetching
-   - Parallel layer downloads
+**Purpose:** Measure performance with trivial documentation change
 
-2. **Optimized Infrastructure**
-   - Faster CPUs (dedicated build runners)
-   - Better networking (faster package downloads)
-   - SSD storage with optimized I/O
+**What changes:** Add HTML comment to README.md
 
-3. **Smart Build Orchestration**
-   - Parallel dependency resolution
-   - Incremental compilation optimization
-   - Build stage parallelization
+**Docker layers affected:**
+- `COPY . .` layer only
+
+**Expected Cache:** ~95%
+
+**Code change:**
+```markdown
+<!-- Performance test: [timestamp] -->
+```
+
+**Expected Times:**
+- Depot CI: 35-50 seconds
+- GitHub Actions: 3-5 minutes
+
+**Why this tests:** Minimal change - README doesn't affect build output, so most layers stay cached. Tests how efficiently each system handles "no-op" changes.
+
+---
+
+### Test 3: Source File Addition
+
+**Purpose:** Measure performance with new TypeScript source file
+
+**What changes:** Create `src/perf-test.ts` with utility functions
+
+**Docker layers affected:**
+- `COPY . .` layer
+- `pnpm build:docker` step
+
+**Expected Cache:** ~75%
+
+**Code change:**
+```typescript
+// src/perf-test.ts
+export interface PerfMetrics {
+  startTime: number;
+  endTime: number;
+  duration: number;
+}
+
+export function measurePerf(label: string): PerfMetrics {
+  const startTime = Date.now();
+  const result = { startTime, endTime: startTime, duration: 0 };
+  result.endTime = Date.now();
+  result.duration = result.endTime - result.startTime;
+  return result;
+}
+```
+
+**Expected Times:**
+- Depot CI: 60-90 seconds
+- GitHub Actions: 5-8 minutes
+
+**Why this tests:** Typical development change - adding new source code. Invalidates source cache but keeps dependency cache. Tests TypeScript compilation performance.
+
+---
+
+### Test 4: UI File Change
+
+**Purpose:** Measure performance with UI component changes
+
+**What changes:** Create new component in `ui/src/components/test/`
+
+**Docker layers affected:**
+- `COPY . .` layer
+- `pnpm build:docker` step
+- `pnpm ui:build` step
+
+**Expected Cache:** ~50%
+
+**Code change:**
+```typescript
+// ui/src/components/test/PerfTest.tsx
+import { css } from 'lit';
+
+export class PerfTestComponent extends HTMLElement {
+  static styles = css`
+    :host {
+      display: block;
+      padding: 1rem;
+    }
+  `;
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.innerHTML = '<p>Performance Test Component</p>';
+  }
+}
+```
+
+**Expected Times:**
+- Depot CI: 90-120 seconds
+- GitHub Actions: 7-12 minutes
+
+**Why this tests:** Frontend development change - affects both main build and UI build. Tests bundling performance for UI assets.
+
+---
+
+### Test 5: New Dependency
+
+**Purpose:** Measure performance with package.json change
+
+**What changes:** Add `@types/node@^20.0.0` to devDependencies
+
+**Docker layers affected:**
+- `COPY package.json` layer
+- Full `pnpm install` step
+- All subsequent steps
+
+**Expected Cache:** ~25%
+
+**Code change:**
+```bash
+npm pkg set devDependencies.@types-node="^20.0.0"
+```
+
+**Expected Times:**
+- Depot CI: 120-180 seconds
+- GitHub Actions: 10-15 minutes
+
+**Why this tests:** Dependency addition - common when adding new libraries. pnpm must fetch and install new package, but existing packages remain cached. Tests dependency resolution and download performance.
+
+---
+
+### Test 6: Major Changes
+
+**Purpose:** Measure performance with significant changes across multiple areas
+
+**What changes:**
+- New dependency (@types/node)
+- New source file (src/major-test.ts)
+- New UI component (ui/src/components/major/)
+- Documentation change (README.md)
+
+**Docker layers affected:**
+- All layers (near-full rebuild)
+
+**Expected Cache:** ~10%
+
+**Code changes:**
+```bash
+# Dependency
+npm pkg set devDependencies.@types-node="^20.0.0"
+
+# Source
+cat > src/major-test.ts << 'EOF'
+export function majorTest(): string {
+  return "Major performance test";
+}
+EOF
+
+# UI
+mkdir -p ui/src/components/major
+cat > ui/src/components/major/MajorTest.tsx << 'EOF'
+export const MajorTest = () => 'Major Test';
+EOF
+
+# Docs
+echo "<!-- Major test -->" >> README.md
+```
+
+**Expected Times:**
+- Depot CI: 2-4 minutes
+- GitHub Actions: 12-20 minutes
+
+**Why this tests:** Worst-case scenario - full rebuild. Shows maximum performance difference between Depot CI and GitHub Actions.
+
+---
+
+## Test Case Comparison
+
+| Test | Description | Layers Affected | Cache Hit | Depot CI | GitHub Actions | Speedup |
+|------|-------------|-----------------|-----------|----------|----------------|---------|
+| **1. Baseline** | No changes | None | ~100% | 30-45s | 3-5 min | **4-7x** |
+| **2. Docs** | README comment | COPY . . | ~95% | 35-50s | 3-5 min | **4-7x** |
+| **3. Source** | New TS file | COPY, build | ~75% | 60-90s | 5-8 min | **5-8x** |
+| **4. UI** | New component | COPY, build, UI | ~50% | 90-120s | 7-12 min | **5-8x** |
+| **5. Dependency** | New package | package, install, all | ~25% | 2-3 min | 10-15 min | **5-7x** |
+| **6. Major** | All changes | All layers | ~10% | 2-4 min | 12-20 min | **5-8x** |
+
+## Why Depot CI is Faster
+
+### 1. Distributed Layer Caching
+
+```
+GitHub Actions:
+├── Cache per workflow run
+├── Limited to runner's local storage
+└── Cold start on new runners
+
+Depot CI:
+├── Global cache shared across all builds
+├── Pre-fetches layers in parallel
+└── Persistent across runs
+```
+
+### 2. Optimized Infrastructure
+
+| Resource | GitHub Actions | Depot CI |
+|----------|----------------|----------|
+| **CPU** | 2-core shared | 4-8 core dedicated |
+| **Network** | Standard | Optimized for package downloads |
+| **Storage** | EBS backed | SSD with optimized I/O |
+| **Parallelism** | Limited per runner | Distributed build stages |
+
+### 3. Smart Build Orchestration
+
+```
+OpenClaw build with Depot CI:
+├── pnpm install (cached layers)      ← 5-10s (vs 45-60s)
+├── TypeScript compilation            ← 15-30s (vs 60-90s)
+├── UI bundling                       ← 10-20s (vs 30-60s)
+└── Image assembly                    ← 5-10s (vs 20-30s)
+```
 
 ## Setup Instructions
 
-### 1. Fork OpenClaw Repository
+### 1. Clone This Repository
 
 ```bash
-# Optional: Fork to your own GitHub account for testing
-# Or use the official openclaw/openclaw directly
+git clone https://github.com/YOUR_ORG/depot-railway-build.git
+cd depot-railway-build
 ```
 
 ### 2. Configure GitHub Secrets
 
-In your depot-railway-build repository, add these secrets:
+In your repository settings, add these secrets:
 
 | Secret | Value | How to Get |
 |--------|-------|------------|
@@ -186,23 +364,38 @@ In your depot-railway-build repository, add these secrets:
 ### 3. Copy Workflows
 
 ```bash
-# Copy workflows to your .github/workflows directory
+# Copy workflows to active directory
 cp .github/workflows-openclaw/*.yml .github/workflows/
+
+# Commit and push
+git add .github/workflows/
+git commit -m "Enable OpenClaw performance workflows"
+git push
 ```
 
-### 4. Run Workflows
+### 4. Run Tests
 
 #### Depot CI Build:
 1. Go to **Actions** → **Depot CI - OpenClaw**
 2. Click **Run workflow**
-3. Select test case
+3. Select test case from dropdown:
+   - `baseline` - No changes
+   - `test-2-docs` - Documentation change
+   - `test-3-source` - New source file
+   - `test-4-ui` - New UI component
+   - `test-5-dependency` - New dependency
+   - `test-6-major` - Multiple changes
 4. Click **Run workflow**
+5. Wait for completion
+6. Note total time from workflow run summary
 
 #### GitHub Actions Baseline:
 1. Go to **Actions** → **GitHub Actions Baseline - OpenClaw**
 2. Click **Run workflow**
-3. Select test case
+3. Select the same test case
 4. Click **Run workflow**
+5. Wait for completion
+6. Note total time
 
 ## Recording Results
 
@@ -212,64 +405,87 @@ Use this template to record your results:
 OpenClaw Performance Test Results
 ==================================
 
-Test 1 (Baseline):
-  GitHub Actions: ___ seconds
-  Depot CI:       ___ seconds
+Test 1 - Baseline (100% cache):
+  GitHub Actions: ___ minutes ___ seconds
+  Depot CI:       ___ minutes ___ seconds
   Speedup:        ___x
 
-Test 2 (Comment):
-  GitHub Actions: ___ seconds
-  Depot CI:       ___ seconds
+Test 2 - Documentation (~95% cache):
+  GitHub Actions: ___ minutes ___ seconds
+  Depot CI:       ___ minutes ___ seconds
   Speedup:        ___x
 
-Test 3 (New Function):
-  GitHub Actions: ___ seconds
-  Depot CI:       ___ seconds
+Test 3 - Source File (~75% cache):
+  GitHub Actions: ___ minutes ___ seconds
+  Depot CI:       ___ minutes ___ seconds
   Speedup:        ___x
 
-Test 4 (New Dependency):
-  GitHub Actions: ___ seconds
-  Depot CI:       ___ seconds
+Test 4 - UI Change (~50% cache):
+  GitHub Actions: ___ minutes ___ seconds
+  Depot CI:       ___ minutes ___ seconds
   Speedup:        ___x
 
-Test 5 (Major Changes):
-  GitHub Actions: ___ seconds
-  Depot CI:       ___ seconds
+Test 5 - New Dependency (~25% cache):
+  GitHub Actions: ___ minutes ___ seconds
+  Depot CI:       ___ minutes ___ seconds
   Speedup:        ___x
 
+Test 6 - Major Changes (~10% cache):
+  GitHub Actions: ___ minutes ___ seconds
+  Depot CI:       ___ minutes ___ seconds
+  Speedup:        ___x
+
+─────────────────────────────────────
 Average Speedup: ___x
 ```
 
 ## Key Differences from Sample App
 
-| Aspect | Sample App | OpenClaw |
-|--------|-----------|----------|
-| Dependencies | ~50 packages | ~500+ packages |
-| Build Time | 20-60 seconds | 2-15 minutes |
-| Cache Impact | Moderate | Significant |
-| Real-World | Simplified | Production-grade |
+| Aspect | Sample App | Real OpenClaw |
+|--------|-----------|---------------|
+| Dependencies | ~50 packages | 500+ packages |
+| pnpm-lock.yaml | ~300 lines | 13,301 lines |
+| Build Time | 20-60 seconds | 2-20 minutes |
+| Cache Impact | Moderate | **Significant** |
+| Build Stages | 3 stages | 4+ stages |
+| UI Build | None | Separate ui:build step |
+| Test Relevance | Educational | Production-accurate |
 
 ## Troubleshooting
 
-### Workflow fails with "repository not found"
-- Ensure OpenClaw repository is accessible
-- Check token permissions
+### Workflow fails with "project not found"
+- Verify `DEPOT_PROJECT_ID` is correct in secrets
+- Check project exists in your Depot dashboard
+- Ensure you have permissions to access it
 
-### Build takes longer than expected on first run
-- First builds are slower (cache warming)
+### Workflow fails with "authentication failed"
+- Verify `DEPOT_TOKEN` is valid and not expired
+- Regenerate token if needed
+- Check secret names match exactly (case-sensitive)
+
+### First run is slow
+- First builds are always slower (cache warming)
 - Run baseline test twice for accurate results
+- Subsequent runs show full caching benefit
 
 ### pnpm install fails
-- Check pnpm version (should be 9.x)
-- Verify pnpm-lock.yaml is intact
+- OpenClaw uses pnpm 9.x - workflow handles this
+- Check pnpm-lock.yaml is intact
+- Verify network connectivity for package downloads
+
+### UI build fails
+- OpenClaw's UI build uses Lit and Web Components
+- May fail under QEMU cross-compilation (non-fatal)
+- Workflow creates stub in this case
 
 ### Out of memory during build
 - OpenClaw build is resource-intensive
-- Consider increasing runner resources
+- GitHub Actions runners may be constrained
+- Depot CI has more resources available
 
 ## Next Steps
 
-1. **Run all 5 test cases** for both workflows
+1. **Run all 6 test cases** for both workflows
 2. **Record actual times** from workflow logs
 3. **Calculate speedup** for each test case
 4. **Create comparison chart** for presentation
@@ -281,7 +497,7 @@ Average Speedup: ___x
 - [OpenClaw Documentation](https://docs.openclaw.ai)
 - [Depot Documentation](https://depot.dev/docs)
 - [Depot CI Overview](./depot-summary.md)
-- [Sample App Testing Guide](./performance-testing/comparison-summary.md)
+- [Quick Start Guide](./openclaw-quick-start.md)
 
 ---
 
