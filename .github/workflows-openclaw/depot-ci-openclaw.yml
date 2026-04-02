@@ -1,0 +1,109 @@
+name: Depot CI - OpenClaw Performance Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_case:
+        description: 'Performance test case'
+        required: true
+        default: 'baseline'
+        type: choice
+        options:
+          - baseline
+          - test-2-comment
+          - test-3-function
+          - test-4-dependency
+          - test-5-major
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  DEPOT_PROJECT_ID: ${{ secrets.DEPOT_PROJECT_ID }}
+
+jobs:
+  depot-ci-build:
+    name: Depot CI Build - OpenClaw
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout OpenClaw
+        uses: actions/checkout@v4
+        with:
+          repository: openclaw/openclaw
+          ref: main
+
+      - name: Install Depot CLI
+        run: |
+          curl -fsSL https://depot.dev/install.sh | sh
+          echo "$HOME/bin" >> $GITHUB_PATH
+
+      - name: Apply test case
+        run: |
+          case "${{ github.event.inputs.test_case }}" in
+            baseline)
+              echo "Test Case: Baseline (no changes)"
+              echo "expected_cache=100%" >> $GITHUB_ENV
+              ;;
+            test-2-comment)
+              echo "Test Case: Comment change"
+              echo "expected_cache=80%" >> $GITHUB_ENV
+              echo "// Performance test comment - $(date)" >> README.md
+              ;;
+            test-3-function)
+              echo "Test Case: New function"
+              echo "expected_cache=60%" >> $GITHUB_ENV
+              cat > src/test-perf.ts << 'EOF'
+              export function perfTest(): string {
+                return "Performance test function";
+              }
+              EOF
+              ;;
+            test-4-dependency)
+              echo "Test Case: New dependency"
+              echo "expected_cache=40%" >> $GITHUB_ENV
+              npm pkg set devDependencies.tsup@~8.3.0
+              ;;
+            test-5-major)
+              echo "Test Case: Major changes"
+              echo "expected_cache=10%" >> $GITHUB_ENV
+              npm pkg set devDependencies.tsup@~8.3.0
+              npm pkg set devDependencies.eslint@~9.0.0
+              echo "// Major test change $(date)" >> README.md
+              mkdir -p src/test-major
+              echo "export const test = 'major';" > src/test-major/index.ts
+              ;;
+          esac
+
+      - name: Display test info
+        run: |
+          echo "=========================================="
+          echo "Depot CI Performance Test - OpenClaw"
+          echo "=========================================="
+          echo "Test Case: ${{ github.event.inputs.test_case }}"
+          echo "Expected Cache Hit: ${{ env.expected_cache }}"
+          echo "=========================================="
+
+      - name: Configure pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Build with Depot CI
+        run: |
+          echo "Starting Depot CI build..."
+          depot build -t openclaw:test-${{ github.event.inputs.test_case }} .
+        env:
+          DEPOT_TOKEN: ${{ secrets.DEPOT_TOKEN }}
+
+      - name: Display build results
+        run: |
+          echo "=========================================="
+          echo "Build Complete!"
+          echo "=========================================="
+          echo "Image: openclaw:test-${{ github.event.inputs.test_case }}"
+          echo "Test Case: ${{ github.event.inputs.test_case }}"
+          echo "Expected Cache: ${{ env.expected_cache }}"
+          echo "=========================================="

@@ -52,6 +52,10 @@ depot-railway-build/
 │   ├── depot-ci-azure.yml   # Depot CI → Azure ACI
 │   └── depot-ci-fly.yml     # Depot CI → Fly.io
 │
+├── .github/workflows-openclaw/  # Real OpenClaw testing 🦞
+│   ├── depot-ci-openclaw.yml    # Depot CI + OpenClaw
+│   └── github-actions-baseline-openclaw.yml  # Baseline for comparison
+│
 ├── scripts/                 # Automation scripts
 │   ├── setup.sh             # Automated setup
 │   └── benchmark.sh         # Local benchmarking
@@ -63,6 +67,7 @@ depot-railway-build/
 │   ├── faq.md               # Common questions
 │   ├── api-endpoints.md     # REST API reference
 │   ├── openclaw-analysis.md # OpenClaw deep dive
+│   ├── openclaw-performance-guide.md  # Real OpenClaw testing 🦞
 │   ├── depot-summary.md     # Depot CI overview
 │   ├── performance-test-guide.md  # Flow measurement guide
 │   ├── live-demo-walkthrough.md   # Live presentation guide
@@ -87,6 +92,41 @@ depot-railway-build/
 
 **📊 Full comparison:** See [comparison-summary.md](./docs/performance-testing/comparison-summary.md)
 | **5. Depot CI → AWS/GCP/Azure/Fly** | Multi-platform deployments | ✅ Implemented |
+
+## Real OpenClaw Performance Testing 🦞
+
+**NEW: Test with the actual OpenClaw application!**
+
+OpenClaw is a production-grade personal AI assistant with a complex build pipeline:
+- **13,301-line** pnpm-lock.yaml
+- **Multi-stage** Docker build (265 lines)
+- **Bun + pnpm** build system
+- **50+ source** directories
+
+### Why Test Real OpenClaw?
+
+| Sample App | Real OpenClaw |
+|------------|---------------|
+| ~50 dependencies | 500+ dependencies |
+| 20-60s build time | 2-15 min build time |
+| Simplified for demo | Production-grade complexity |
+| Good for basics | **Real-world results** |
+
+### OpenClaw Performance Testing
+
+| Test Case | Changes | Expected Cache |
+|-----------|---------|----------------|
+| **Baseline** | None | ~100% |
+| **Comment** | README comment | ~90% |
+| **Function** | New source file | ~70% |
+| **Dependency** | New npm package | ~30% |
+| **Major** | Multiple changes | ~10% |
+
+**Expected Performance:**
+- **GitHub Actions:** 3-15 minutes (depending on cache)
+- **Depot CI:** 30-180 seconds (4-7x faster)
+
+**Get Started:** [openclaw-performance-guide.md](./docs/openclaw-performance-guide.md)
 
 ## Quick Start
 
@@ -182,6 +222,7 @@ Depot CI supports deployment to multiple platforms. Choose your target:
 | Document | Description |
 |----------|-------------|
 | [Comparison Summary](./docs/performance-testing/comparison-summary.md) | Complete performance test results ⭐ |
+| [OpenClaw Performance Guide](./docs/openclaw-performance-guide.md) | Real OpenClaw testing 🦞 |
 | [API Endpoints](./docs/api-endpoints.md) | REST API reference |
 | [OpenClaw Analysis](./docs/openclaw-analysis.md) | OpenClaw deep dive |
 | [Depot Summary](./docs/depot-summary.md) | Depot CI overview and features |
