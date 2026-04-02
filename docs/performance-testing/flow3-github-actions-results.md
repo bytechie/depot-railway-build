@@ -12,11 +12,11 @@ Performance test results for Flow 3 (GitHub Actions → GHCR → Railway).
 
 | Test Case | Description | Time | vs Flow 1 | vs Flow 2 |
 |-----------|-------------|------|-----------|-----------|
-| **1. Baseline** | No changes, first build | **48s** | 3.4x slower | 1.7x slower |
-| **2. Comment Change** | Source comment modified | **47s** | 2.8x slower | 2.8x slower |
-| **3. New Function** | New utils.ts file | **43s** | 2.5x slower | 2.9x slower |
-| **4. New Dependency** | Package.json change | **139s** | Similar | 5.5x slower |
-| **5. Major Changes** | Multiple new packages | **190s** | Similar | 6.8x slower |
+| **1. Baseline** | No changes, cold build | **141s** | Similar | 4.9x slower |
+| **2. Comment Change** | Source comment modified | **65s** | 4.6x slower | 3.9x slower |
+| **3. New Function** | New utils.ts file | **64s** 3.8x slower | 4.3x slower |
+| **4. New Dependency** | Package.json change | **193s** | 1.3x slower | 7.6x slower |
+| **5. Major Changes** | Multiple new packages | **133s** | **1.5x faster** | 4.8x slower |
 
 ---
 
@@ -26,24 +26,26 @@ Performance test results for Flow 3 (GitHub Actions → GHCR → Railway).
 
 **Log:** `flow3-github-action-logs/flow3-Build-Deploy-to-Railway-Baseline-logs_62758802965.log`
 
-**Time:** **48 seconds**
+**Time:** **141 seconds (2m 21s)**
 
 **Build Breakdown:**
 - Workflow setup: ~15s (actions download, cache setup)
-- Docker build: ~41s (11:44:33 → 11:45:22)
+- Docker build: ~126s (cold build, all layers from scratch)
 - Image push to GHCR: included in build time
 
 **Cache Behavior:**
-- First build on GitHub Actions (no prior cache)
-- GitHub Actions cache: type=gha, mode=max
+- Cold build after cache was cleared
+- GitHub Actions cache: type=gha, mode=max (but cache was empty)
 - All layers built from scratch
+
+**Note:** First run showed 48s due to residual cache. After clearing cache, true cold build time is 141s.
 
 **Comparison to other flows:**
 | Flow | Time | vs Flow 3 |
 |------|------|-----------|
-| Flow 1 (Local) | 162s | 3.4x slower |
-| Flow 2 (Railway) | 29s | **1.7x faster** |
-| Flow 3 (GitHub Actions) | 48s | baseline |
+| Flow 1 (Local) | 162s | Similar |
+| Flow 2 (Railway) | 29s | **Railway 4.9x faster** |
+| Flow 3 (GitHub Actions) | 141s | baseline |
 
 **Why GitHub Actions is slower than Railway:**
 1. Runner startup overhead (~15s)

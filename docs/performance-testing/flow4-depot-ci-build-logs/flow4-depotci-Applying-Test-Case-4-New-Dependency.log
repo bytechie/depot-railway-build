@@ -1,0 +1,739 @@
+2026-04-01T23:58:40.9487407Z Current runner version: '2.331.0'
+2026-04-01T23:58:40.9572357Z Runner name: 'depot-sjqbw7fss4'
+2026-04-01T23:58:40.9573369Z Runner group name: 'default'
+2026-04-01T23:58:40.9574301Z Machine name: 'depot-machine'
+2026-04-01T23:58:40.9576089Z ##[group]GITHUB_TOKEN Permissions
+2026-04-01T23:58:40.9577667Z Contents: read
+2026-04-01T23:58:40.9578180Z Metadata: read
+2026-04-01T23:58:40.9578619Z Packages: write
+2026-04-01T23:58:40.9579051Z ##[endgroup]
+2026-04-01T23:58:40.9579499Z Secret source: Actions
+2026-04-01T23:58:40.9581711Z Prepare workflow directory
+2026-04-01T23:58:41.0174399Z Prepare all required actions
+2026-04-01T23:58:41.0202585Z Getting action download info
+2026-04-01T23:58:41.3144566Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-04-01T23:58:41.9693065Z Download action repository 'depot/setup-action@v1' (SHA:15c09a5f77a0840ad4bce955686522a257853461)
+2026-04-01T23:58:42.2040736Z Download action repository 'docker/login-action@v3' (SHA:c94ce9fb468520275223c153574b00df6fe4bcc9)
+2026-04-01T23:58:42.4211329Z Download action repository 'depot/build-push-action@v1' (SHA:5f3b3c2e5a00f0093de47f657aeaefcedff27d18)
+2026-04-01T23:58:42.7211687Z Complete job name: Build with Depot CI
+2026-04-01T23:58:42.8006998Z ##[group]Run actions/checkout@v4
+2026-04-01T23:58:42.8008467Z with:
+2026-04-01T23:58:42.8008957Z   repository: sbtechpal/depot-railway-build
+2026-04-01T23:58:42.8009600Z   token: ***
+2026-04-01T23:58:42.8009961Z   ssh-strict: true
+2026-04-01T23:58:42.8010317Z   ssh-user: git
+2026-04-01T23:58:42.8010683Z   persist-credentials: true
+2026-04-01T23:58:42.8011079Z   clean: true
+2026-04-01T23:58:42.8011446Z   sparse-checkout-cone-mode: true
+2026-04-01T23:58:42.8011858Z   fetch-depth: 1
+2026-04-01T23:58:42.8012265Z   fetch-tags: false
+2026-04-01T23:58:42.8012652Z   show-progress: true
+2026-04-01T23:58:42.8013015Z   lfs: false
+2026-04-01T23:58:42.8013360Z   submodules: false
+2026-04-01T23:58:42.8013718Z   set-safe-directory: true
+2026-04-01T23:58:42.8014459Z env:
+2026-04-01T23:58:42.8014873Z   NODE_VERSION: 18
+2026-04-01T23:58:42.8015229Z   DEPOT_PROJECT_ID: d0dfxb1xmf
+2026-04-01T23:58:42.8015684Z   RAILWAY_PROJECT_ID: ***
+2026-04-01T23:58:42.8016115Z   RAILWAY_SERVICE_ID: ***
+2026-04-01T23:58:42.8016555Z   GHCR_IMAGE: ghcr.io/sbtechpal/openclaw-demo
+2026-04-01T23:58:42.8016989Z ##[endgroup]
+2026-04-01T23:58:44.7846369Z Syncing repository: sbtechpal/depot-railway-build
+2026-04-01T23:58:44.7850345Z ##[group]Getting Git version info
+2026-04-01T23:58:44.7851815Z Working directory is '/home/runner/work/depot-railway-build/depot-railway-build'
+2026-04-01T23:58:44.7853635Z [command]/usr/bin/git version
+2026-04-01T23:58:45.0943231Z git version 2.52.0
+2026-04-01T23:58:45.0977535Z ##[endgroup]
+2026-04-01T23:58:45.0995662Z Temporarily overriding HOME='/home/runner/work/_temp/73c45aaa-eb8c-440b-bd41-a56fc65ab77d' before making global git config changes
+2026-04-01T23:58:45.0998020Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-01T23:58:45.1014286Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/depot-railway-build/depot-railway-build
+2026-04-01T23:58:45.1039942Z Deleting the contents of '/home/runner/work/depot-railway-build/depot-railway-build'
+2026-04-01T23:58:45.1043783Z ##[group]Initializing the repository
+2026-04-01T23:58:45.1046387Z [command]/usr/bin/git init /home/runner/work/depot-railway-build/depot-railway-build
+2026-04-01T23:58:45.2476379Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-04-01T23:58:45.2479094Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-04-01T23:58:45.2479908Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-04-01T23:58:45.2480679Z hint: call:
+2026-04-01T23:58:45.2481165Z hint:
+2026-04-01T23:58:45.2482629Z hint: 	git config --global init.defaultBranch <name>
+2026-04-01T23:58:45.2483603Z hint:
+2026-04-01T23:58:45.2484206Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-04-01T23:58:45.2485093Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-04-01T23:58:45.2485590Z hint:
+2026-04-01T23:58:45.2486014Z hint: 	git branch -m <name>
+2026-04-01T23:58:45.2486441Z hint:
+2026-04-01T23:58:45.2486922Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-04-01T23:58:45.2487646Z Initialized empty Git repository in /home/runner/work/depot-railway-build/depot-railway-build/.git/
+2026-04-01T23:58:45.2491074Z [command]/usr/bin/git remote add origin https://github.com/sbtechpal/depot-railway-build
+2026-04-01T23:58:45.2521100Z ##[endgroup]
+2026-04-01T23:58:45.2522285Z ##[group]Disabling automatic garbage collection
+2026-04-01T23:58:45.2523530Z [command]/usr/bin/git config --local gc.auto 0
+2026-04-01T23:58:45.2539580Z ##[endgroup]
+2026-04-01T23:58:45.2540382Z ##[group]Setting up auth
+2026-04-01T23:58:45.2542398Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-01T23:58:45.2557272Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-01T23:58:45.6371806Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-01T23:58:45.6391471Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-01T23:58:45.6512796Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-01T23:58:45.6535727Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-01T23:58:45.6639647Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-04-01T23:58:45.6664741Z ##[endgroup]
+2026-04-01T23:58:45.6666035Z ##[group]Fetching the repository
+2026-04-01T23:58:45.6672980Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +689b8a5eabbace3e0c211ad690cb9432a5547970:refs/remotes/origin/main
+2026-04-01T23:58:46.0509929Z From https://github.com/sbtechpal/depot-railway-build
+2026-04-01T23:58:46.0510949Z  * [new ref]         689b8a5eabbace3e0c211ad690cb9432a5547970 -> origin/main
+2026-04-01T23:58:46.0565094Z ##[endgroup]
+2026-04-01T23:58:46.0566231Z ##[group]Determining the checkout info
+2026-04-01T23:58:46.0566633Z ##[endgroup]
+2026-04-01T23:58:46.0566894Z [command]/usr/bin/git sparse-checkout disable
+2026-04-01T23:58:46.0785022Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-04-01T23:58:46.0788140Z ##[group]Checking out the ref
+2026-04-01T23:58:46.0791555Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-04-01T23:58:46.0898577Z Switched to a new branch 'main'
+2026-04-01T23:58:46.0914784Z branch 'main' set up to track 'origin/main'.
+2026-04-01T23:58:46.0917189Z ##[endgroup]
+2026-04-01T23:58:46.0932113Z [command]/usr/bin/git log -1 --format=%H
+2026-04-01T23:58:46.0945227Z 689b8a5eabbace3e0c211ad690cb9432a5547970
+2026-04-01T23:58:46.1100475Z ##[group]Run ./scripts/apply-test-case-4.sh
+2026-04-01T23:58:46.1101192Z [36;1m./scripts/apply-test-case-4.sh[0m
+2026-04-01T23:58:46.1156409Z shell: /usr/bin/bash -e {0}
+2026-04-01T23:58:46.1157024Z env:
+2026-04-01T23:58:46.1157196Z   NODE_VERSION: 18
+2026-04-01T23:58:46.1157370Z   DEPOT_PROJECT_ID: d0dfxb1xmf
+2026-04-01T23:58:46.1157812Z   RAILWAY_PROJECT_ID: ***
+2026-04-01T23:58:46.1158040Z   RAILWAY_SERVICE_ID: ***
+2026-04-01T23:58:46.1158360Z   GHCR_IMAGE: ghcr.io/sbtechpal/openclaw-demo
+2026-04-01T23:58:46.1158558Z ##[endgroup]
+2026-04-01T23:58:46.1234607Z 📝 Applying Test Case 4: New Dependency
+2026-04-01T23:58:57.2134248Z ✅ Test Case 4 applied: Added ESLint dependency
+2026-04-01T23:58:57.2139673Z 📊 Expected: ~40% cache hit (dependency layers rebuild)
+2026-04-01T23:58:57.2162727Z ##[group]Run echo "📊 Running Test Case: test-4-dependency"
+2026-04-01T23:58:57.2163719Z [36;1mecho "📊 Running Test Case: test-4-dependency"[0m
+2026-04-01T23:58:57.2163974Z [36;1mcase "test-4-dependency" in[0m
+2026-04-01T23:58:57.2164149Z [36;1m  baseline)[0m
+2026-04-01T23:58:57.2164351Z [36;1m    echo "Baseline: No changes (fully cached)"[0m
+2026-04-01T23:58:57.2164528Z [36;1m    ;;[0m
+2026-04-01T23:58:57.2164685Z [36;1m  test-2-comment)[0m
+2026-04-01T23:58:57.2164868Z [36;1m    echo "Test 2: Comment Change (~80% cache expected)"[0m
+2026-04-01T23:58:57.2165056Z [36;1m    ;;[0m
+2026-04-01T23:58:57.2165197Z [36;1m  test-3-function)[0m
+2026-04-01T23:58:57.2165377Z [36;1m    echo "Test 3: New Function (~60% cache expected)"[0m
+2026-04-01T23:58:57.2165558Z [36;1m    ;;[0m
+2026-04-01T23:58:57.2165693Z [36;1m  test-4-dependency)[0m
+2026-04-01T23:58:57.2165872Z [36;1m    echo "Test 4: New Dependency (~40% cache expected)"[0m
+2026-04-01T23:58:57.2176530Z [36;1m    ;;[0m
+2026-04-01T23:58:57.2176805Z [36;1m  test-5-major)[0m
+2026-04-01T23:58:57.2176997Z [36;1m    echo "Test 5: Major Changes (~10% cache expected)"[0m
+2026-04-01T23:58:57.2177247Z [36;1m    ;;[0m
+2026-04-01T23:58:57.2177392Z [36;1mesac[0m
+2026-04-01T23:58:57.2198536Z shell: /usr/bin/bash -e {0}
+2026-04-01T23:58:57.2198761Z env:
+2026-04-01T23:58:57.2198887Z   NODE_VERSION: 18
+2026-04-01T23:58:57.2199033Z   DEPOT_PROJECT_ID: d0dfxb1xmf
+2026-04-01T23:58:57.2199335Z   RAILWAY_PROJECT_ID: ***
+2026-04-01T23:58:57.2199534Z   RAILWAY_SERVICE_ID: ***
+2026-04-01T23:58:57.2199697Z   GHCR_IMAGE: ghcr.io/sbtechpal/openclaw-demo
+2026-04-01T23:58:57.2199882Z ##[endgroup]
+2026-04-01T23:58:57.2245428Z 📊 Running Test Case: test-4-dependency
+2026-04-01T23:58:57.2246699Z Test 4: New Dependency (~40% cache expected)
+2026-04-01T23:58:57.2266237Z ##[group]Run depot/setup-action@v1
+2026-04-01T23:58:57.2266516Z with:
+2026-04-01T23:58:57.2266775Z   version: latest
+2026-04-01T23:58:57.2266940Z   oidc: false
+2026-04-01T23:58:57.2267085Z env:
+2026-04-01T23:58:57.2267205Z   NODE_VERSION: 18
+2026-04-01T23:58:57.2267343Z   DEPOT_PROJECT_ID: d0dfxb1xmf
+2026-04-01T23:58:57.2267610Z   RAILWAY_PROJECT_ID: ***
+2026-04-01T23:58:57.2267787Z   RAILWAY_SERVICE_ID: ***
+2026-04-01T23:58:57.2267957Z   GHCR_IMAGE: ghcr.io/sbtechpal/openclaw-demo
+2026-04-01T23:58:57.2268146Z ##[endgroup]
+2026-04-01T23:59:01.8052399Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/5ea6bd7d-3335-4bf3-9576-eeb9cfd2dd4e -f /home/runner/work/_temp/67999e6b-9e4d-45a8-8ddb-6f58e16a5146
+2026-04-01T23:59:02.0156040Z depot latest is installed
+2026-04-01T23:59:02.2128801Z ##[group]Run docker/login-action@v3
+2026-04-01T23:59:02.2129352Z with:
+2026-04-01T23:59:02.2129498Z   registry: ghcr.io
+2026-04-01T23:59:02.2129633Z   username: bytechie
+2026-04-01T23:59:02.2130030Z   password: ***
+2026-04-01T23:59:02.2130169Z   logout: true
+2026-04-01T23:59:02.2130294Z env:
+2026-04-01T23:59:02.2130413Z   NODE_VERSION: 18
+2026-04-01T23:59:02.2130561Z   DEPOT_PROJECT_ID: d0dfxb1xmf
+2026-04-01T23:59:02.2130757Z   RAILWAY_PROJECT_ID: ***
+2026-04-01T23:59:02.2130944Z   RAILWAY_SERVICE_ID: ***
+2026-04-01T23:59:02.2131257Z   GHCR_IMAGE: ghcr.io/sbtechpal/openclaw-demo
+2026-04-01T23:59:02.2131432Z ##[endgroup]
+2026-04-01T23:59:02.3952437Z Logging into ghcr.io...
+2026-04-01T23:59:02.4924194Z Login Succeeded!
+2026-04-01T23:59:02.5051369Z ##[group]Run depot/build-push-action@v1
+2026-04-01T23:59:02.5051785Z with:
+2026-04-01T23:59:02.5051938Z   project: d0dfxb1xmf
+2026-04-01T23:59:02.5052234Z   token: ***
+2026-04-01T23:59:02.5052387Z   context: ./sample-app
+2026-04-01T23:59:02.5052688Z   tags: ghcr.io/sbtechpal/openclaw-demo:689b8a5eabbace3e0c211ad690cb9432a5547970
+ghcr.io/sbtechpal/openclaw-demo:depot-latest
+
+2026-04-01T23:59:02.5053005Z   push: true
+2026-04-01T23:59:02.5053132Z   cache-from: type=gha
+2026-04-01T23:59:02.5053367Z   cache-to: type=gha,mode=max
+2026-04-01T23:59:02.5053534Z   buildx-fallback: false
+2026-04-01T23:59:02.5053851Z   github-token: ***
+2026-04-01T23:59:02.5053990Z   lint: false
+2026-04-01T23:59:02.5054113Z   load: false
+2026-04-01T23:59:02.5054238Z   no-cache: false
+2026-04-01T23:59:02.5054377Z   pull: false
+2026-04-01T23:59:02.5054497Z   save: false
+2026-04-01T23:59:02.5054620Z env:
+2026-04-01T23:59:02.5054739Z   NODE_VERSION: 18
+2026-04-01T23:59:02.5054886Z   DEPOT_PROJECT_ID: d0dfxb1xmf
+2026-04-01T23:59:02.5055095Z   RAILWAY_PROJECT_ID: ***
+2026-04-01T23:59:02.5055269Z   RAILWAY_SERVICE_ID: ***
+2026-04-01T23:59:02.5055428Z   GHCR_IMAGE: ghcr.io/sbtechpal/openclaw-demo
+2026-04-01T23:59:02.5055599Z ##[endgroup]
+2026-04-01T23:59:02.5870250Z ##[group]Depot version
+2026-04-01T23:59:02.5876367Z [command]/opt/hostedtoolcache/depot/latest/x64/depot version
+2026-04-01T23:59:02.5935432Z depot version 2.101.36 (2026-03-31)
+2026-04-01T23:59:02.5936115Z https://github.com/depot/cli/releases/tag/v2.101.36
+2026-04-01T23:59:02.5941581Z ##[endgroup]
+2026-04-01T23:59:02.5990338Z [command]/opt/hostedtoolcache/depot/latest/x64/depot build --cache-from type=gha --cache-to type=gha,mode=max --iidfile /tmp/depot-build-push-TpRYIt/iidfile --metadata-file /tmp/depot-build-push-TpRYIt/metadata-file --push --tag ghcr.io/sbtechpal/openclaw-demo:689b8a5eabbace3e0c211ad690cb9432a5547970 --tag ghcr.io/sbtechpal/openclaw-demo:depot-latest --provenance mode=min,inline-only=true,builder-id=https://github.com/sbtechpal/depot-railway-build/actions/runs/23876755187 --project d0dfxb1xmf ./sample-app
+2026-04-01T23:59:02.6063911Z WARNING: Ignoring --cache-from with type=gha: GitHub Actions cache is redundant with Depot's built-in caching
+2026-04-01T23:59:02.6066667Z WARNING: Ignoring --cache-to with type=gha: GitHub Actions cache is redundant with Depot's built-in caching
+2026-04-01T23:59:02.6483945Z #1 [depot] build: https://depot.dev/orgs/xqmz2w73qz/projects/d0dfxb1xmf/builds/2pgtvtfjct
+2026-04-01T23:59:02.7986798Z #1 DONE 0.0s
+2026-04-01T23:59:02.7987821Z 
+2026-04-01T23:59:02.7988007Z #2 [depot] launching amd64 machine
+2026-04-01T23:59:15.9864681Z #2 DONE 13.2s
+2026-04-01T23:59:15.9865947Z 
+2026-04-01T23:59:15.9866250Z #3 [depot] connecting to amd64 machine
+2026-04-01T23:59:15.9878867Z #3 DONE 0.0s
+2026-04-01T23:59:15.9879222Z 
+2026-04-01T23:59:15.9879354Z #4 [internal] fetching git attributes
+2026-04-01T23:59:15.9879582Z #4 DONE 0.0s
+2026-04-01T23:59:15.9879681Z 
+2026-04-01T23:59:15.9879793Z #5 [internal] load build definition from Dockerfile
+2026-04-01T23:59:16.1368077Z #5 transferring dockerfile: 1.04kB done
+2026-04-01T23:59:16.1369962Z #5 DONE 0.1s
+2026-04-01T23:59:16.1370101Z 
+2026-04-01T23:59:16.1370244Z #6 [internal] load metadata for docker.io/library/node:18-alpine
+2026-04-01T23:59:16.2625003Z #6 DONE 0.2s
+2026-04-01T23:59:16.2626433Z 
+2026-04-01T23:59:16.2626642Z #7 [internal] load .dockerignore
+2026-04-01T23:59:16.2626844Z #7 transferring context: 134B done
+2026-04-01T23:59:16.2627013Z #7 DONE 0.0s
+2026-04-01T23:59:16.2627226Z 
+2026-04-01T23:59:16.2627307Z #8 [internal] load build context
+2026-04-01T23:59:16.2627471Z #8 DONE 0.0s
+2026-04-01T23:59:16.2627581Z 
+2026-04-01T23:59:16.2627827Z #9 [base 1/2] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2026-04-01T23:59:16.2628275Z #9 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
+2026-04-01T23:59:16.4131287Z #9 DONE 0.0s
+2026-04-01T23:59:16.4135073Z 
+2026-04-01T23:59:16.4135247Z #8 [internal] load build context
+2026-04-01T23:59:16.4135455Z #8 transferring context: 193.62kB done
+2026-04-01T23:59:16.4135625Z #8 DONE 0.0s
+2026-04-01T23:59:16.4135747Z 
+2026-04-01T23:59:16.4135829Z #10 [base 2/2] WORKDIR /app
+2026-04-01T23:59:16.4135982Z #10 CACHED
+2026-04-01T23:59:16.4136070Z 
+2026-04-01T23:59:16.4136214Z #11 [production-deps 1/2] COPY package.json package-lock.json ./
+2026-04-01T23:59:16.4136419Z #11 DONE 0.1s
+2026-04-01T23:59:16.4136511Z 
+2026-04-01T23:59:16.4136662Z #12 [production-deps 2/2] RUN npm ci --omit=dev &&     npm cache clean --force
+2026-04-01T23:59:18.2170477Z #12 1.956 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2172830Z #12 1.956 npm warn EBADENGINE   package: '@eslint/config-array@0.23.3',
+2026-04-01T23:59:18.2173346Z #12 1.956 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2194485Z #12 1.956 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2194822Z #12 1.956 npm warn EBADENGINE }
+2026-04-01T23:59:18.2195114Z #12 1.956 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2195360Z #12 1.956 npm warn EBADENGINE   package: '@eslint/config-helpers@0.5.3',
+2026-04-01T23:59:18.2195650Z #12 1.956 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2195926Z #12 1.956 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2196159Z #12 1.956 npm warn EBADENGINE }
+2026-04-01T23:59:18.2196350Z #12 1.957 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2196581Z #12 1.957 npm warn EBADENGINE   package: '@eslint/core@1.1.1',
+2026-04-01T23:59:18.2196847Z #12 1.957 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2197127Z #12 1.957 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2197357Z #12 1.957 npm warn EBADENGINE }
+2026-04-01T23:59:18.2197543Z #12 1.957 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2197774Z #12 1.957 npm warn EBADENGINE   package: '@eslint/object-schema@3.0.3',
+2026-04-01T23:59:18.2198047Z #12 1.957 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2198320Z #12 1.957 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2198548Z #12 1.957 npm warn EBADENGINE }
+2026-04-01T23:59:18.2198725Z #12 1.957 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2198952Z #12 1.957 npm warn EBADENGINE   package: '@eslint/plugin-kit@0.6.1',
+2026-04-01T23:59:18.2199220Z #12 1.957 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2199507Z #12 1.957 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2199729Z #12 1.957 npm warn EBADENGINE }
+2026-04-01T23:59:18.2199908Z #12 1.958 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2200149Z #12 1.958 npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+2026-04-01T23:59:18.2200417Z #12 1.958 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2200732Z #12 1.958 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2200950Z #12 1.958 npm warn EBADENGINE }
+2026-04-01T23:59:18.2201131Z #12 1.958 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2201345Z #12 1.958 npm warn EBADENGINE   package: 'eslint@10.1.0',
+2026-04-01T23:59:18.2201607Z #12 1.958 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2201879Z #12 1.958 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2202110Z #12 1.958 npm warn EBADENGINE }
+2026-04-01T23:59:18.2202285Z #12 1.959 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2202521Z #12 1.959 npm warn EBADENGINE   package: 'eslint-scope@9.1.2',
+2026-04-01T23:59:18.2202777Z #12 1.959 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2203151Z #12 1.959 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2203449Z #12 1.959 npm warn EBADENGINE }
+2026-04-01T23:59:18.2203632Z #12 1.959 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2203874Z #12 1.959 npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+2026-04-01T23:59:18.2204138Z #12 1.959 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2204414Z #12 1.959 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2204632Z #12 1.959 npm warn EBADENGINE }
+2026-04-01T23:59:18.2204885Z #12 1.959 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2205097Z #12 1.959 npm warn EBADENGINE   package: 'espree@11.2.0',
+2026-04-01T23:59:18.2205347Z #12 1.959 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2205618Z #12 1.959 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2205847Z #12 1.959 npm warn EBADENGINE }
+2026-04-01T23:59:18.2206029Z #12 1.959 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:18.2206249Z #12 1.959 npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+2026-04-01T23:59:18.2206497Z #12 1.959 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:18.2206757Z #12 1.959 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:18.2206971Z #12 1.959 npm warn EBADENGINE }
+2026-04-01T23:59:19.2123045Z #12 2.991 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2026-04-01T23:59:19.3610630Z #12 3.096 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-04-01T23:59:19.3613744Z #12 3.123 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-04-01T23:59:19.4645145Z #12 3.363 npm warn deprecated fstream@1.0.12: This package is no longer supported.
+2026-04-01T23:59:19.4646488Z #12 3.367 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+2026-04-01T23:59:19.9071834Z #12 3.846 npm warn deprecated fluent-ffmpeg@2.1.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2026-04-01T23:59:23.8165863Z #12 7.913 
+2026-04-01T23:59:23.8167955Z #12 7.913 added 302 packages, and audited 303 packages in 7s
+2026-04-01T23:59:23.8168400Z #12 7.913 
+2026-04-01T23:59:23.8168611Z #12 7.913 31 packages are looking for funding
+2026-04-01T23:59:23.8168910Z #12 7.913   run `npm fund` for details
+2026-04-01T23:59:23.8169125Z #12 7.915 
+2026-04-01T23:59:23.8169365Z #12 7.915 2 vulnerabilities (1 moderate, 1 high)
+2026-04-01T23:59:23.8169604Z #12 7.915 
+2026-04-01T23:59:23.8169785Z #12 7.915 To address all issues, run:
+2026-04-01T23:59:23.8170007Z #12 7.915   npm audit fix
+2026-04-01T23:59:23.8170201Z #12 7.915 
+2026-04-01T23:59:23.8170399Z #12 7.915 Run `npm audit` for details.
+2026-04-01T23:59:23.8170615Z #12 7.916 npm notice
+2026-04-01T23:59:23.8170881Z #12 7.916 npm notice New major version of npm available! 10.8.2 -> 11.12.1
+2026-04-01T23:59:23.8171276Z #12 7.916 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.12.1
+2026-04-01T23:59:23.8171658Z #12 7.916 npm notice To update run: npm install -g npm@11.12.1
+2026-04-01T23:59:23.8171932Z #12 7.916 npm notice
+2026-04-01T23:59:23.9668416Z #12 8.034 npm warn using --force Recommended protections disabled.
+2026-04-01T23:59:25.2331519Z #12 ...
+2026-04-01T23:59:25.2335918Z 
+2026-04-01T23:59:25.2336384Z #13 [deps 2/2] RUN npm ci &&     npm cache clean --force
+2026-04-01T23:59:25.2336895Z #0 1.950 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2337199Z #0 1.950 npm warn EBADENGINE   package: '@eslint/config-array@0.23.3',
+2026-04-01T23:59:25.2337523Z #0 1.950 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2337867Z #0 1.950 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2338131Z #0 1.950 npm warn EBADENGINE }
+2026-04-01T23:59:25.2338347Z #0 1.950 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2338621Z #0 1.950 npm warn EBADENGINE   package: '@eslint/config-helpers@0.5.3',
+2026-04-01T23:59:25.2338949Z #0 1.950 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2339356Z #0 1.950 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2339616Z #0 1.950 npm warn EBADENGINE }
+2026-04-01T23:59:25.2339822Z #0 1.951 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2340078Z #0 1.951 npm warn EBADENGINE   package: '@eslint/core@1.1.1',
+2026-04-01T23:59:25.2340394Z #0 1.951 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2340711Z #0 1.951 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2340968Z #0 1.951 npm warn EBADENGINE }
+2026-04-01T23:59:25.2341173Z #0 1.951 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2341459Z #0 1.951 npm warn EBADENGINE   package: '@eslint/object-schema@3.0.3',
+2026-04-01T23:59:25.2341768Z #0 1.951 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2342084Z #0 1.951 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2342346Z #0 1.951 npm warn EBADENGINE }
+2026-04-01T23:59:25.2342553Z #0 1.951 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2342839Z #0 1.951 npm warn EBADENGINE   package: '@eslint/plugin-kit@0.6.1',
+2026-04-01T23:59:25.2343148Z #0 1.951 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2343577Z #0 1.951 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2343841Z #0 1.951 npm warn EBADENGINE }
+2026-04-01T23:59:25.2344065Z #0 1.952 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2344336Z #0 1.952 npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+2026-04-01T23:59:25.2344640Z #0 1.952 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2350490Z #0 1.952 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2350753Z #0 1.952 npm warn EBADENGINE }
+2026-04-01T23:59:25.2350956Z #0 1.952 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2351164Z #0 1.952 npm warn EBADENGINE   package: 'eslint@10.1.0',
+2026-04-01T23:59:25.2351398Z #0 1.952 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2351658Z #0 1.952 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2351881Z #0 1.952 npm warn EBADENGINE }
+2026-04-01T23:59:25.2352051Z #0 1.953 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2352261Z #0 1.953 npm warn EBADENGINE   package: 'eslint-scope@9.1.2',
+2026-04-01T23:59:25.2352505Z #0 1.953 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2352758Z #0 1.953 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2352981Z #0 1.953 npm warn EBADENGINE }
+2026-04-01T23:59:25.2353147Z #0 1.953 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2353480Z #0 1.953 npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+2026-04-01T23:59:25.2353745Z #0 1.953 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2354012Z #0 1.953 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2354217Z #0 1.953 npm warn EBADENGINE }
+2026-04-01T23:59:25.2354383Z #0 1.953 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2354614Z #0 1.953 npm warn EBADENGINE   package: 'espree@11.2.0',
+2026-04-01T23:59:25.2354846Z #0 1.953 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2355111Z #0 1.953 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2355321Z #0 1.953 npm warn EBADENGINE }
+2026-04-01T23:59:25.2355484Z #0 1.953 npm warn EBADENGINE Unsupported engine {
+2026-04-01T23:59:25.2355699Z #0 1.953 npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+2026-04-01T23:59:25.2355960Z #0 1.953 npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-04-01T23:59:25.2356244Z #0 1.953 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-04-01T23:59:25.2356452Z #0 1.953 npm warn EBADENGINE }
+2026-04-01T23:59:25.2356682Z #0 2.941 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2026-04-01T23:59:25.2357270Z #0 3.094 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-04-01T23:59:25.2358314Z #0 3.148 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-04-01T23:59:25.2358955Z #0 3.177 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+2026-04-01T23:59:25.2359287Z #0 3.255 npm warn deprecated fstream@1.0.12: This package is no longer supported.
+2026-04-01T23:59:25.2359698Z #0 4.214 npm warn deprecated fluent-ffmpeg@2.1.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2026-04-01T23:59:25.2360024Z #0 8.405 
+2026-04-01T23:59:25.2360188Z #0 8.405 added 410 packages, and audited 411 packages in 8s
+2026-04-01T23:59:25.2360398Z #0 8.405 
+2026-04-01T23:59:25.2360551Z #0 8.405 59 packages are looking for funding
+2026-04-01T23:59:25.2360737Z #0 8.405   run `npm fund` for details
+2026-04-01T23:59:25.2360890Z #0 8.407 
+2026-04-01T23:59:25.2361035Z #0 8.407 2 vulnerabilities (1 moderate, 1 high)
+2026-04-01T23:59:25.2361201Z #0 8.407 
+2026-04-01T23:59:25.2362788Z #0 8.407 To address all issues, run:
+2026-04-01T23:59:25.2362971Z #0 8.407   npm audit fix
+2026-04-01T23:59:25.2363114Z #0 8.407 
+2026-04-01T23:59:25.2363321Z #0 8.407 Run `npm audit` for details.
+2026-04-01T23:59:25.2363489Z #0 8.408 npm notice
+2026-04-01T23:59:25.2363696Z #0 8.408 npm notice New major version of npm available! 10.8.2 -> 11.12.1
+2026-04-01T23:59:25.2363965Z #0 8.408 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.12.1
+2026-04-01T23:59:25.2364228Z #0 8.408 npm notice To update run: npm install -g npm@11.12.1
+2026-04-01T23:59:25.2364417Z #0 8.408 npm notice
+2026-04-01T23:59:25.2364600Z #0 8.558 npm warn using --force Recommended protections disabled.
+2026-04-01T23:59:25.2364804Z #13 DONE 9.4s
+2026-04-01T23:59:25.3839480Z 
+2026-04-01T23:59:25.3841188Z #12 [production-deps 2/2] RUN npm ci --omit=dev &&     npm cache clean --force
+2026-04-01T23:59:25.3841503Z #12 DONE 9.4s
+2026-04-01T23:59:25.9416945Z 
+2026-04-01T23:59:25.9418786Z #14 [build 1/3] COPY --from=deps /app/node_modules ./node_modules
+2026-04-01T23:59:27.5511503Z #14 DONE 1.6s
+2026-04-01T23:59:27.6795871Z 
+2026-04-01T23:59:27.6797547Z #15 [build 2/3] COPY . .
+2026-04-01T23:59:27.6797906Z #15 DONE 0.1s
+2026-04-01T23:59:27.8306057Z 
+2026-04-01T23:59:27.8307763Z #16 [build 3/3] RUN npm run build
+2026-04-01T23:59:28.2819565Z #16 0.451 
+2026-04-01T23:59:28.2821211Z #16 0.451 > openclaw-demo@1.0.0 build
+2026-04-01T23:59:28.2821462Z #16 0.451 > tsc
+2026-04-01T23:59:28.2821620Z #16 0.451 
+2026-04-01T23:59:29.0334038Z #16 1.278 npm notice
+2026-04-01T23:59:29.0335922Z #16 1.278 npm notice New major version of npm available! 10.8.2 -> 11.12.1
+2026-04-01T23:59:29.0360926Z #16 1.278 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.12.1
+2026-04-01T23:59:29.0361276Z #16 1.278 npm notice To update run: npm install -g npm@11.12.1
+2026-04-01T23:59:29.0361519Z #16 1.278 npm notice
+2026-04-01T23:59:29.0361681Z #16 DONE 1.3s
+2026-04-01T23:59:29.3048247Z 
+2026-04-01T23:59:29.3049655Z #17 [production 1/4] COPY --from=build /app/dist ./dist
+2026-04-01T23:59:29.4554392Z #17 CACHED
+2026-04-01T23:59:29.4555603Z 
+2026-04-01T23:59:29.4555839Z #18 [production 2/4] COPY --from=production-deps /app/node_modules ./node_modules
+2026-04-01T23:59:30.6390655Z #18 DONE 1.2s
+2026-04-01T23:59:30.6392301Z 
+2026-04-01T23:59:30.6392728Z #19 [production 3/4] COPY package.json ./
+2026-04-01T23:59:30.6393177Z #19 DONE 0.1s
+2026-04-01T23:59:30.7894164Z 
+2026-04-01T23:59:30.7898434Z #20 [production 4/4] RUN addgroup -g 1001 -S nodejs &&     adduser -S openclaw -u 1001
+2026-04-01T23:59:30.9403536Z #20 DONE 0.2s
+2026-04-01T23:59:30.9405093Z 
+2026-04-01T23:59:30.9405258Z #21 exporting to image
+2026-04-01T23:59:30.9405557Z #21 exporting layers
+2026-04-01T23:59:31.4960405Z #21 exporting layers 0.6s done
+2026-04-01T23:59:31.4962122Z #21 exporting manifest sha256:d39b43af477cd2eac3bcfb585db948db74d0f30bfb4a1303216a05ecdb057f12 0.0s done
+2026-04-01T23:59:31.4962597Z #21 exporting config sha256:7eb2a8d4a2b85943db4667df483aeb8277bf07e768a455d3fdf375baebf91500 0.0s done
+2026-04-01T23:59:31.4963029Z #21 exporting attestation manifest sha256:ae8dc1927f7cb322a78ea84b117b04029edd64c9d0030bccd226727b12332d0f
+2026-04-01T23:59:31.6470682Z #21 exporting attestation manifest sha256:ae8dc1927f7cb322a78ea84b117b04029edd64c9d0030bccd226727b12332d0f 0.0s done
+2026-04-01T23:59:31.6472440Z #21 exporting manifest list sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460 0.0s done
+2026-04-01T23:59:31.6472928Z #21 pushing layers for ghcr.io/sbtechpal/openclaw-demo:depot-latest@sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460
+2026-04-01T23:59:31.6473570Z #21 pushing layers for ghcr.io/sbtechpal/openclaw-demo:689b8a5eabbace3e0c211ad690cb9432a5547970@sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460
+2026-04-01T23:59:31.6474127Z #21 pushing layer sha256:5ca52629369b5714349ea7feac150795d1cfd428665bdf28f04dff4dc50e10ea
+2026-04-01T23:59:31.6474451Z #21 pushing layer sha256:b29cb2c37d56df727c34f238f1cf232580294e48fa0c28a658a9c870e4461d77
+2026-04-01T23:59:31.6474767Z #21 pushing layer sha256:d5d70414c70207378f1ba712ea3dfc8924cf914eb28cb76c5c119521861a2eab
+2026-04-01T23:59:31.6475076Z #21 pushing layer sha256:87f54ef58153a4da2dc79f46a45454d9115b61380135fd0a1a5fae1c917da5cd
+2026-04-01T23:59:31.6475408Z #21 pushing layer sha256:3eaf23a874a7cf3ec9cba46ca1b355ef340df16f4c504d1b3bd45fd5bab9eaea
+2026-04-01T23:59:31.6475723Z #21 pushing layer sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e
+2026-04-01T23:59:31.6476031Z #21 pushing layer sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870
+2026-04-01T23:59:31.6476344Z #21 pushing layer sha256:b6c5e47a719c6fdacead372e1cab755e14e59d3415ddb4edfb8e738148473546
+2026-04-01T23:59:31.6476658Z #21 pushing layer sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549
+2026-04-01T23:59:31.6476984Z #21 pushing layer sha256:d957105d2784387afd35b2396316b06864eaf4a728f333555e251dfaffa6601e
+2026-04-01T23:59:31.6477291Z #21 pushing layer sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3
+2026-04-01T23:59:31.6477602Z #21 pushing layer sha256:7eb2a8d4a2b85943db4667df483aeb8277bf07e768a455d3fdf375baebf91500
+2026-04-01T23:59:31.7973068Z #21 pushing layer sha256:87f54ef58153a4da2dc79f46a45454d9115b61380135fd0a1a5fae1c917da5cd 0.2s done
+2026-04-01T23:59:31.7974862Z #21 pushing layer sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0.2s done
+2026-04-01T23:59:31.7975341Z #21 pushing layer sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.2s done
+2026-04-01T23:59:31.7975928Z #21 pushing layer sha256:b6c5e47a719c6fdacead372e1cab755e14e59d3415ddb4edfb8e738148473546 0.2s done
+2026-04-01T23:59:31.7976358Z #21 pushing layer sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 0.2s done
+2026-04-01T23:59:31.7976806Z #21 pushing layer sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.2s done
+2026-04-01T23:59:31.9478171Z #21 pushing layer sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0.3s done
+2026-04-01T23:59:31.9479435Z #21 pushing layer sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.3s done
+2026-04-01T23:59:31.9479822Z #21 pushing layer sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.3s done
+2026-04-01T23:59:32.0493884Z #21 pushing layer sha256:87f54ef58153a4da2dc79f46a45454d9115b61380135fd0a1a5fae1c917da5cd 0.4s done
+2026-04-01T23:59:32.0494976Z #21 pushing layer sha256:b6c5e47a719c6fdacead372e1cab755e14e59d3415ddb4edfb8e738148473546 0.5s done
+2026-04-01T23:59:32.1537641Z #21 pushing layer sha256:b29cb2c37d56df727c34f238f1cf232580294e48fa0c28a658a9c870e4461d77 0.6s done
+2026-04-01T23:59:32.1539264Z #21 pushing layer sha256:d5d70414c70207378f1ba712ea3dfc8924cf914eb28cb76c5c119521861a2eab 0.6s done
+2026-04-01T23:59:32.3046011Z #21 pushing layer sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 0.6s done
+2026-04-01T23:59:32.3047944Z #21 pushing layer sha256:d957105d2784387afd35b2396316b06864eaf4a728f333555e251dfaffa6601e 0.7s done
+2026-04-01T23:59:32.4556808Z #21 pushing layer sha256:3eaf23a874a7cf3ec9cba46ca1b355ef340df16f4c504d1b3bd45fd5bab9eaea 0.8s done
+2026-04-01T23:59:32.5847966Z #21 pushing layer sha256:5ca52629369b5714349ea7feac150795d1cfd428665bdf28f04dff4dc50e10ea 1.0s done
+2026-04-01T23:59:32.6977256Z #21 pushing layers for ghcr.io/sbtechpal/openclaw-demo:689b8a5eabbace3e0c211ad690cb9432a5547970@sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460 1.1s done
+2026-04-01T23:59:32.6978902Z #21 pushing layer sha256:5ca52629369b5714349ea7feac150795d1cfd428665bdf28f04dff4dc50e10ea 1.1s done
+2026-04-01T23:59:32.6979347Z #21 pushing layer sha256:b29cb2c37d56df727c34f238f1cf232580294e48fa0c28a658a9c870e4461d77 1.1s done
+2026-04-01T23:59:32.6979746Z #21 pushing layer sha256:d5d70414c70207378f1ba712ea3dfc8924cf914eb28cb76c5c119521861a2eab 1.1s done
+2026-04-01T23:59:32.6980130Z #21 pushing layer sha256:d957105d2784387afd35b2396316b06864eaf4a728f333555e251dfaffa6601e 1.0s done
+2026-04-01T23:59:32.6980521Z #21 pushing layer sha256:7eb2a8d4a2b85943db4667df483aeb8277bf07e768a455d3fdf375baebf91500 1.1s done
+2026-04-01T23:59:32.6981049Z #21 pushing manifest for ghcr.io/sbtechpal/openclaw-demo:689b8a5eabbace3e0c211ad690cb9432a5547970@sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460
+2026-04-01T23:59:32.8292553Z #21 pushing layers for ghcr.io/sbtechpal/openclaw-demo:depot-latest@sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460 1.3s done
+2026-04-01T23:59:32.8294367Z #21 pushing layer sha256:3eaf23a874a7cf3ec9cba46ca1b355ef340df16f4c504d1b3bd45fd5bab9eaea 1.3s done
+2026-04-01T23:59:32.8294995Z #21 pushing layer sha256:7eb2a8d4a2b85943db4667df483aeb8277bf07e768a455d3fdf375baebf91500 1.1s done
+2026-04-01T23:59:32.9800176Z #21 pushing manifest for ghcr.io/sbtechpal/openclaw-demo:depot-latest@sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460
+2026-04-01T23:59:33.8818791Z #21 pushing manifest for ghcr.io/sbtechpal/openclaw-demo:689b8a5eabbace3e0c211ad690cb9432a5547970@sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460 1.1s done
+2026-04-01T23:59:33.9826056Z #21 pushing manifest for ghcr.io/sbtechpal/openclaw-demo:depot-latest@sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460 1.2s done
+2026-04-01T23:59:33.9896537Z #21 DONE 3.1s
+2026-04-01T23:59:34.0399193Z 
+2026-04-01T23:59:34.0399838Z Build Summary: https://depot.dev/orgs/xqmz2w73qz/projects/d0dfxb1xmf/builds/2pgtvtfjct
+2026-04-01T23:59:34.0421558Z ##[group]ImageID
+2026-04-01T23:59:34.0424117Z sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460
+2026-04-01T23:59:34.0424500Z ##[endgroup]
+2026-04-01T23:59:34.0424777Z ##[group]Digest
+2026-04-01T23:59:34.0424967Z sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460
+2026-04-01T23:59:34.0425252Z ##[endgroup]
+2026-04-01T23:59:34.0425457Z ##[group]Metadata
+2026-04-01T23:59:34.0425591Z {
+2026-04-01T23:59:34.0425727Z   "containerimage.descriptor": {
+2026-04-01T23:59:34.0425936Z     "mediaType": "application/vnd.oci.image.index.v1+json",
+2026-04-01T23:59:34.0426217Z     "digest": "sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460",
+2026-04-01T23:59:34.0426460Z     "size": 856
+2026-04-01T23:59:34.0426667Z   },
+2026-04-01T23:59:34.0426889Z   "containerimage.digest": "sha256:c7a0887db3d212e517e15b4565bdabcb01183497338078745d4a1101c6ef9460",
+2026-04-01T23:59:34.0427155Z   "depot.build": {
+2026-04-01T23:59:34.0427305Z     "buildID": "2pgtvtfjct",
+2026-04-01T23:59:34.0427467Z     "projectID": "d0dfxb1xmf"
+2026-04-01T23:59:34.0427611Z   },
+2026-04-01T23:59:34.0427961Z   "image.name": "ghcr.io/sbtechpal/openclaw-demo:689b8a5eabbace3e0c211ad690cb9432a5547970,ghcr.io/sbtechpal/openclaw-demo:depot-latest",
+2026-04-01T23:59:34.0428295Z   "imageConfigs": [
+2026-04-01T23:59:34.0428435Z     {
+2026-04-01T23:59:34.0428578Z       "created": "2026-04-01T23:59:30.845828324Z",
+2026-04-01T23:59:34.0428756Z       "architecture": "amd64",
+2026-04-01T23:59:34.0428909Z       "os": "linux",
+2026-04-01T23:59:34.0429043Z       "config": {
+2026-04-01T23:59:34.0429191Z         "User": "openclaw",
+2026-04-01T23:59:34.0429341Z         "ExposedPorts": {
+2026-04-01T23:59:34.0429489Z           "3000/tcp": {}
+2026-04-01T23:59:34.0429637Z         },
+2026-04-01T23:59:34.0429767Z         "Env": [
+2026-04-01T23:59:34.0429952Z           "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+2026-04-01T23:59:34.0430168Z           "NODE_VERSION=18.20.8",
+2026-04-01T23:59:34.0430329Z           "YARN_VERSION=1.22.22",
+2026-04-01T23:59:34.0430483Z           "NODE_ENV=production"
+2026-04-01T23:59:34.0430645Z         ],
+2026-04-01T23:59:34.0430768Z         "Entrypoint": [
+2026-04-01T23:59:34.0430917Z           "docker-entrypoint.sh"
+2026-04-01T23:59:34.0431069Z         ],
+2026-04-01T23:59:34.0431216Z         "Cmd": [
+2026-04-01T23:59:34.0431348Z           "node",
+2026-04-01T23:59:34.0431480Z           "dist/index.js"
+2026-04-01T23:59:34.0431623Z         ],
+2026-04-01T23:59:34.0431751Z         "WorkingDir": "/app",
+2026-04-01T23:59:34.0431917Z         "ArgsEscaped": true
+2026-04-01T23:59:34.0432062Z       },
+2026-04-01T23:59:34.0432182Z       "rootfs": {
+2026-04-01T23:59:34.0432319Z         "type": "layers",
+2026-04-01T23:59:34.0432465Z         "diff_ids": [
+2026-04-01T23:59:34.0432682Z           "sha256:08000c18d16dadf9553d747a58cf44023423a9ab010aab96cf263d2216b8b350",
+2026-04-01T23:59:34.0432975Z           "sha256:0b1f26057bd0491a50f56fd7f2983bd3ad478511f12fff2b361a97c50cb5828b",
+2026-04-01T23:59:34.0433364Z           "sha256:f3b40b0cdb1caad1db11b8589c814f85b3e69f3ed33f64a686e465e74a47c9f0",
+2026-04-01T23:59:34.0433665Z           "sha256:82140d9a70a706b719632fec8e4d083419fc62159f94afec80dcabc52e0ed0d2",
+2026-04-01T23:59:34.0433956Z           "sha256:355910733e401925d81f01282f8b02ae0e947b42be017f3a698fd65ce8054e64",
+2026-04-01T23:59:34.0434235Z           "sha256:0d6a1db169376e72f21c567c0d7db644413ba20b9d1d85efe432a7576c3be290",
+2026-04-01T23:59:34.0434519Z           "sha256:2205f86a6eca92a2259123c4c8963b0cf6ae9401107346ef81b796ea66364348",
+2026-04-01T23:59:34.0434799Z           "sha256:2986ff139ca12d17ba2e2e073c92f34b78d6a0674bbcd44a9fdd4624e6799800",
+2026-04-01T23:59:34.0435101Z           "sha256:e2ba7d521a5bb6fa1fb0b764de135a2da04c819e44e46472d36bac50dc2b5e90"
+2026-04-01T23:59:34.0435323Z         ]
+2026-04-01T23:59:34.0435443Z       },
+2026-04-01T23:59:34.0435561Z       "history": [
+2026-04-01T23:59:34.0435693Z         {
+2026-04-01T23:59:34.0435834Z           "created": "2025-02-14T03:28:36Z",
+2026-04-01T23:59:34.0436059Z           "created_by": "ADD alpine-minirootfs-3.21.3-x86_64.tar.gz / # buildkit",
+2026-04-01T23:59:34.0436330Z           "comment": "buildkit.dockerfile.v0"
+2026-04-01T23:59:34.0436491Z         },
+2026-04-01T23:59:34.0436619Z         {
+2026-04-01T23:59:34.0436748Z           "created": "2025-02-14T03:28:36Z",
+2026-04-01T23:59:34.0436921Z           "created_by": "CMD [\"/bin/sh\"]",
+2026-04-01T23:59:34.0437097Z           "comment": "buildkit.dockerfile.v0",
+2026-04-01T23:59:34.0437272Z           "empty_layer": true
+2026-04-01T23:59:34.0437423Z         },
+2026-04-01T23:59:34.0437543Z         {
+2026-04-01T23:59:34.0437668Z           "created": "2025-03-27T14:23:08Z",
+2026-04-01T23:59:34.0437841Z           "created_by": "ENV NODE_VERSION=18.20.8",
+2026-04-01T23:59:34.0438062Z           "comment": "buildkit.dockerfile.v0",
+2026-04-01T23:59:34.0438237Z           "empty_layer": true
+2026-04-01T23:59:34.0438385Z         },
+2026-04-01T23:59:34.0438502Z         {
+2026-04-01T23:59:34.0438636Z           "created": "2025-03-27T14:23:08Z",
+2026-04-01T23:59:34.0444087Z           "created_by": "RUN /bin/sh -c addgroup -g 1000 node     \u0026\u0026 adduser -u 1000 -G node -s /bin/sh -D node     \u0026\u0026 apk add --no-cache         libstdc++     \u0026\u0026 apk add --no-cache --virtual .build-deps         curl     \u0026\u0026 ARCH= OPENSSL_ARCH='linux*' \u0026\u0026 alpineArch=\"$(apk --print-arch)\"       \u0026\u0026 case \"${alpineArch##*-}\" in         x86_64) ARCH='x64' CHECKSUM=\"2c75d5d562d3ffc049ca1bbea65b68ae6bd0ec50ed04b1f606e065eaf35e8599\" OPENSSL_ARCH=linux-x86_64;;         x86) OPENSSL_ARCH=linux-elf;;         aarch64) OPENSSL_ARCH=linux-aarch64;;         arm*) OPENSSL_ARCH=linux-armv4;;         ppc64le) OPENSSL_ARCH=linux-ppc64le;;         s390x) OPENSSL_ARCH=linux-s390x;;         *) ;;       esac   \u0026\u0026 if [ -n \"${CHECKSUM}\" ]; then     set -eu;     curl -fsSLO --compressed \"https://unofficial-builds.nodejs.org/download/release/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\";     echo \"$CHECKSUM  node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\" | sha256sum -c -       \u0026\u0026 tar -xJf \"node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\" -C /usr/local --strip-components=1 --no-same-owner       \u0026\u0026 ln -s /usr/local/bin/node /usr/local/bin/nodejs;   else     echo \"Building from source\"     \u0026\u0026 apk add --no-cache --virtual .build-deps-full         binutils-gold         g++         gcc         gnupg         libgcc         linux-headers         make         python3         py-setuptools     \u0026\u0026 export GNUPGHOME=\"$(mktemp -d)\"     \u0026\u0026 for key in       C0D6248439F1D5604AAFFB4021D900FFDB233756       DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7       CC68F5A3106FF448322E48ED27F5E38D5B0A215F       8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600       890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4       C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C       108F52B48DB57BB0CC439B2997B01419BD92F80A       A363A499291CBBC940DD62E41F10027AF002F8B0     ; do       gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys \"$key\" ||       gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\" ;     done     \u0026\u0026 curl -fsSLO --compressed \"https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz\"     \u0026\u0026 curl -fsSLO --compressed \"https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc\"     \u0026\u0026 gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc     \u0026\u0026 gpgconf --kill all     \u0026\u0026 rm -rf \"$GNUPGHOME\"     \u0026\u0026 grep \" node-v$NODE_VERSION.tar.xz\\$\" SHASUMS256.txt | sha256sum -c -     \u0026\u0026 tar -xf \"node-v$NODE_VERSION.tar.xz\"     \u0026\u0026 cd \"node-v$NODE_VERSION\"     \u0026\u0026 ./configure     \u0026\u0026 make -j$(getconf _NPROCESSORS_ONLN) V=     \u0026\u0026 make install     \u0026\u0026 apk del .build-deps-full     \u0026\u0026 cd ..     \u0026\u0026 rm -Rf \"node-v$NODE_VERSION\"     \u0026\u0026 rm \"node-v$NODE_VERSION.tar.xz\" SHASUMS256.txt.asc SHASUMS256.txt;   fi   \u0026\u0026 rm -f \"node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\"   \u0026\u0026 find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name \"$OPENSSL_ARCH\" -exec rm -rf {} \\;   \u0026\u0026 apk del .build-deps   \u0026\u0026 node --version   \u0026\u0026 npm --version # buildkit",
+2026-04-01T23:59:34.0449358Z           "comment": "buildkit.dockerfile.v0"
+2026-04-01T23:59:34.0449529Z         },
+2026-04-01T23:59:34.0449648Z         {
+2026-04-01T23:59:34.0449776Z           "created": "2025-03-27T14:23:08Z",
+2026-04-01T23:59:34.0449950Z           "created_by": "ENV YARN_VERSION=1.22.22",
+2026-04-01T23:59:34.0450141Z           "comment": "buildkit.dockerfile.v0",
+2026-04-01T23:59:34.0450312Z           "empty_layer": true
+2026-04-01T23:59:34.0450484Z         },
+2026-04-01T23:59:34.0450600Z         {
+2026-04-01T23:59:34.0450749Z           "created": "2025-03-27T14:23:08Z",
+2026-04-01T23:59:34.0453030Z           "created_by": "RUN /bin/sh -c apk add --no-cache --virtual .build-deps-yarn curl gnupg tar   \u0026\u0026 export GNUPGHOME=\"$(mktemp -d)\"   \u0026\u0026 for key in     6A010C5166006599AA17F08146C2130DFD2497F5   ; do     gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys \"$key\" ||     gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\" ;   done   \u0026\u0026 curl -fsSLO --compressed \"https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz\"   \u0026\u0026 curl -fsSLO --compressed \"https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz.asc\"   \u0026\u0026 gpg --batch --verify yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz   \u0026\u0026 gpgconf --kill all   \u0026\u0026 rm -rf \"$GNUPGHOME\"   \u0026\u0026 mkdir -p /opt   \u0026\u0026 tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/   \u0026\u0026 ln -s /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn   \u0026\u0026 ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg   \u0026\u0026 rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz   \u0026\u0026 apk del .build-deps-yarn   \u0026\u0026 yarn --version   \u0026\u0026 rm -rf /tmp/* # buildkit",
+2026-04-01T23:59:34.0455491Z           "comment": "buildkit.dockerfile.v0"
+2026-04-01T23:59:34.0455688Z         },
+2026-04-01T23:59:34.0455805Z         {
+2026-04-01T23:59:34.0455931Z           "created": "2025-03-27T14:23:08Z",
+2026-04-01T23:59:34.0456148Z           "created_by": "COPY docker-entrypoint.sh /usr/local/bin/ # buildkit",
+2026-04-01T23:59:34.0456376Z           "comment": "buildkit.dockerfile.v0"
+2026-04-01T23:59:34.0456544Z         },
+2026-04-01T23:59:34.0456662Z         {
+2026-04-01T23:59:34.0456786Z           "created": "2025-03-27T14:23:08Z",
+2026-04-01T23:59:34.0456979Z           "created_by": "ENTRYPOINT [\"docker-entrypoint.sh\"]",
+2026-04-01T23:59:34.0457192Z           "comment": "buildkit.dockerfile.v0",
+2026-04-01T23:59:34.0457361Z           "empty_layer": true
+2026-04-01T23:59:34.0457504Z         },
+2026-04-01T23:59:34.0457621Z         {
+2026-04-01T23:59:34.0457747Z           "created": "2025-03-27T14:23:08Z",
+2026-04-01T23:59:34.0457919Z           "created_by": "CMD [\"node\"]",
+2026-04-01T23:59:34.0458096Z           "comment": "buildkit.dockerfile.v0",
+2026-04-01T23:59:34.0458263Z           "empty_layer": true
+2026-04-01T23:59:34.0458404Z         },
+2026-04-01T23:59:34.0458519Z         {
+2026-04-01T23:59:34.0458665Z           "created": "2026-04-01T23:42:45.067253842Z",
+2026-04-01T23:59:34.0458840Z           "created_by": "WORKDIR /app",
+2026-04-01T23:59:34.0459015Z           "comment": "buildkit.dockerfile.v0"
+2026-04-01T23:59:34.0459337Z         },
+2026-04-01T23:59:34.0459465Z         {
+2026-04-01T23:59:34.0459600Z           "created": "2026-04-01T23:42:56.476033536Z",
+2026-04-01T23:59:34.0459863Z           "created_by": "ENV NODE_ENV=production",
+2026-04-01T23:59:34.0460047Z           "comment": "buildkit.dockerfile.v0",
+2026-04-01T23:59:34.0460212Z           "empty_layer": true
+2026-04-01T23:59:34.0460365Z         },
+2026-04-01T23:59:34.0460479Z         {
+2026-04-01T23:59:34.0460614Z           "created": "2026-04-01T23:42:56.476033536Z",
+2026-04-01T23:59:34.0460842Z           "created_by": "COPY /app/dist ./dist # buildkit",
+2026-04-01T23:59:34.0461048Z           "comment": "buildkit.dockerfile.v0"
+2026-04-01T23:59:34.0461207Z         },
+2026-04-01T23:59:34.0461355Z         {
+2026-04-01T23:59:34.0461494Z           "created": "2026-04-01T23:59:30.535675001Z",
+2026-04-01T23:59:34.0461705Z           "created_by": "COPY /app/node_modules ./node_modules # buildkit",
+2026-04-01T23:59:34.0461931Z           "comment": "buildkit.dockerfile.v0"
+2026-04-01T23:59:34.0462091Z         },
+2026-04-01T23:59:34.0462205Z         {
+2026-04-01T23:59:34.0462339Z           "created": "2026-04-01T23:59:30.637768848Z",
+2026-04-01T23:59:34.0462588Z           "created_by": "COPY package.json ./ # buildkit",
+2026-04-01T23:59:34.0462777Z           "comment": "buildkit.dockerfile.v0"
+2026-04-01T23:59:34.0467826Z         },
+2026-04-01T23:59:34.0468016Z         {
+2026-04-01T23:59:34.0468159Z           "created": "2026-04-01T23:59:30.845828324Z",
+2026-04-01T23:59:34.0468489Z           "created_by": "RUN /bin/sh -c addgroup -g 1001 -S nodejs \u0026\u0026     adduser -S openclaw -u 1001 # buildkit",
+2026-04-01T23:59:34.0468775Z           "comment": "buildkit.dockerfile.v0"
+2026-04-01T23:59:34.0468932Z         },
+2026-04-01T23:59:34.0469048Z         {
+2026-04-01T23:59:34.0469195Z           "created": "2026-04-01T23:59:30.845828324Z",
+2026-04-01T23:59:34.0469369Z           "created_by": "USER openclaw",
+2026-04-01T23:59:34.0469549Z           "comment": "buildkit.dockerfile.v0",
+2026-04-01T23:59:34.0469720Z           "empty_layer": true
+2026-04-01T23:59:34.0469864Z         },
+2026-04-01T23:59:34.0469991Z         {
+2026-04-01T23:59:34.0470125Z           "created": "2026-04-01T23:59:30.845828324Z",
+2026-04-01T23:59:34.0470314Z           "created_by": "EXPOSE map[3000/tcp:{}]",
+2026-04-01T23:59:34.0470496Z           "comment": "buildkit.dockerfile.v0",
+2026-04-01T23:59:34.0470677Z           "empty_layer": true
+2026-04-01T23:59:34.0470823Z         },
+2026-04-01T23:59:34.0470942Z         {
+2026-04-01T23:59:34.0471079Z           "created": "2026-04-01T23:59:30.845828324Z",
+2026-04-01T23:59:34.0471268Z           "created_by": "CMD [\"node\" \"dist/index.js\"]",
+2026-04-01T23:59:34.0471474Z           "comment": "buildkit.dockerfile.v0",
+2026-04-01T23:59:34.0471641Z           "empty_layer": true
+2026-04-01T23:59:34.0471786Z         }
+2026-04-01T23:59:34.0471904Z       ]
+2026-04-01T23:59:34.0472025Z     }
+2026-04-01T23:59:34.0472153Z   ],
+2026-04-01T23:59:34.0472275Z   "manifests": [
+2026-04-01T23:59:34.0472409Z     {
+2026-04-01T23:59:34.0472531Z       "schemaVersion": 2,
+2026-04-01T23:59:34.0472733Z       "mediaType": "application/vnd.oci.image.manifest.v1+json",
+2026-04-01T23:59:34.0472933Z       "config": {
+2026-04-01T23:59:34.0473105Z         "mediaType": "application/vnd.oci.image.config.v1+json",
+2026-04-01T23:59:34.0473489Z         "digest": "sha256:7eb2a8d4a2b85943db4667df483aeb8277bf07e768a455d3fdf375baebf91500",
+2026-04-01T23:59:34.0473739Z         "size": 7921
+2026-04-01T23:59:34.0473881Z       },
+2026-04-01T23:59:34.0474003Z       "layers": [
+2026-04-01T23:59:34.0474132Z         {
+2026-04-01T23:59:34.0474304Z           "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+2026-04-01T23:59:34.0474600Z           "digest": "sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870",
+2026-04-01T23:59:34.0474836Z           "size": 3642247
+2026-04-01T23:59:34.0474975Z         },
+2026-04-01T23:59:34.0475091Z         {
+2026-04-01T23:59:34.0475258Z           "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+2026-04-01T23:59:34.0475543Z           "digest": "sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e",
+2026-04-01T23:59:34.0475789Z           "size": 40013340
+2026-04-01T23:59:34.0475926Z         },
+2026-04-01T23:59:34.0476043Z         {
+2026-04-01T23:59:34.0476211Z           "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+2026-04-01T23:59:34.0476492Z           "digest": "sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3",
+2026-04-01T23:59:34.0476764Z           "size": 1260576
+2026-04-01T23:59:34.0476902Z         },
+2026-04-01T23:59:34.0477012Z         {
+2026-04-01T23:59:34.0477179Z           "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+2026-04-01T23:59:34.0477458Z           "digest": "sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549",
+2026-04-01T23:59:34.0477692Z           "size": 446
+2026-04-01T23:59:34.0477827Z         },
+2026-04-01T23:59:34.0477946Z         {
+2026-04-01T23:59:34.0478120Z           "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+2026-04-01T23:59:34.0478399Z           "digest": "sha256:b6c5e47a719c6fdacead372e1cab755e14e59d3415ddb4edfb8e738148473546",
+2026-04-01T23:59:34.0478666Z           "size": 99
+2026-04-01T23:59:34.0478793Z         },
+2026-04-01T23:59:34.0478914Z         {
+2026-04-01T23:59:34.0479073Z           "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+2026-04-01T23:59:34.0479347Z           "digest": "sha256:87f54ef58153a4da2dc79f46a45454d9115b61380135fd0a1a5fae1c917da5cd",
+2026-04-01T23:59:34.0479580Z           "size": 5456
+2026-04-01T23:59:34.0479713Z         },
+2026-04-01T23:59:34.0479835Z         {
+2026-04-01T23:59:34.0479996Z           "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+2026-04-01T23:59:34.0480280Z           "digest": "sha256:3eaf23a874a7cf3ec9cba46ca1b355ef340df16f4c504d1b3bd45fd5bab9eaea",
+2026-04-01T23:59:34.0480520Z           "size": 19939008
+2026-04-01T23:59:34.0480667Z         },
+2026-04-01T23:59:34.0480782Z         {
+2026-04-01T23:59:34.0480942Z           "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+2026-04-01T23:59:34.0481212Z           "digest": "sha256:d957105d2784387afd35b2396316b06864eaf4a728f333555e251dfaffa6601e",
+2026-04-01T23:59:34.0481447Z           "size": 657
+2026-04-01T23:59:34.0481592Z         },
+2026-04-01T23:59:34.0481708Z         {
+2026-04-01T23:59:34.0481867Z           "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+2026-04-01T23:59:34.0482146Z           "digest": "sha256:d5d70414c70207378f1ba712ea3dfc8924cf914eb28cb76c5c119521861a2eab",
+2026-04-01T23:59:34.0482391Z           "size": 1005
+2026-04-01T23:59:34.0482522Z         }
+2026-04-01T23:59:34.0482636Z       ]
+2026-04-01T23:59:34.0482748Z     }
+2026-04-01T23:59:34.0482864Z   ]
+2026-04-01T23:59:34.0482987Z }
+2026-04-01T23:59:34.0483201Z ##[endgroup]
+2026-04-01T23:59:34.0527879Z Post job cleanup.
+2026-04-01T23:59:34.1220637Z ##[group]Removing temp folder /tmp/depot-build-push-TpRYIt
+2026-04-01T23:59:34.1222498Z ##[endgroup]
+2026-04-01T23:59:34.1276585Z Post job cleanup.
+2026-04-01T23:59:34.2939853Z ##[group]Logout from ghcr.io
+2026-04-01T23:59:34.2961181Z [command]/usr/bin/docker logout ghcr.io
+2026-04-01T23:59:34.3044204Z Removing login credentials for ghcr.io
+2026-04-01T23:59:34.3066985Z ##[endgroup]
+2026-04-01T23:59:34.3076908Z ##[group]Post cache
+2026-04-01T23:59:34.3077516Z State not set
+2026-04-01T23:59:34.3078077Z ##[endgroup]
+2026-04-01T23:59:34.3144292Z Post job cleanup.
+2026-04-01T23:59:34.3689942Z [command]/usr/bin/git version
+2026-04-01T23:59:34.3711465Z git version 2.52.0
+2026-04-01T23:59:34.3740463Z Temporarily overriding HOME='/home/runner/work/_temp/d956a19b-ea73-4185-afc9-0219d3fa4b9a' before making global git config changes
+2026-04-01T23:59:34.3742332Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-01T23:59:34.3752033Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/depot-railway-build/depot-railway-build
+2026-04-01T23:59:34.3775966Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-01T23:59:34.3788973Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-01T23:59:34.3889387Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-01T23:59:34.3900241Z http.https://github.com/.extraheader
+2026-04-01T23:59:34.3906873Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-04-01T23:59:34.3920295Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-01T23:59:34.4009092Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-01T23:59:34.4025324Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-01T23:59:34.4175060Z Cleaning up orphan processes
