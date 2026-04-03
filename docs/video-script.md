@@ -91,31 +91,28 @@ Time elapsed: 2:15
 
 ---
 
-### 1:00 - 1:15 | The Simple Switch
+### 1:00 - 1:15 | Getting Started with Depot CI
 
-**[VISUAL]** GitHub Actions workflow transforms to Depot CI:
+**[VISUAL]** Terminal showing migration process:
 
-```yaml
-# BEFORE: GitHub Actions (same old workflow)
-- uses: docker/build-push-action@v5
-  with:
-    context: .
-    push: true
-    tags: myapp:latest
+```bash
+# Step 1: Install Depot CLI
+npm install -g @depot/cli
 
-# AFTER: Depot CI (just change ONE line!)
-- uses: depot/build-push-action@v1
-  with:
-    project: ${{ secrets.DEPOT_PROJECT_ID }}  # ← Only add this
-    context: .
-    push: true
-    tags: myapp:latest
+# Step 2: Login to Depot
+depot login
+
+# Step 3: Initialize Depot in your project
+depot init
+
+# Step 4: Migrate your workflows
+depot ci migrate
 ```
 
 **[SOUND]** Satisfying "click" or "snap" sound
 
 **[VOICEOVER]**
-"The switch is incredibly simple. One line change. Literally. Just replace `docker/build-push-action` with `depot/build-push-action` and add your project ID. Everything else stays exactly the same."
+"Getting started with Depot CI is straightforward. Install the CLI. Login to your account. Initialize your project. Then run the migrate command - it automatically copies your GitHub Actions workflows and handles all the compatibility fixes for you. Your existing workflows are converted to run on Depot's optimized infrastructure."
 
 ---
 
@@ -454,37 +451,35 @@ depot init
 
 ---
 
-### 5:20 - 5:40 | The One-Line Change
+### 5:20 - 5:40 | The Migration Process
 
-**[SCREEN]** Cursor highlights the exact line to change in a GitHub workflow file:
+**[SCREEN]** Terminal showing the complete migration:
 
-```yaml
-# .github/workflows/docker-build.yml
+```bash
+# In your project directory:
 
-# STEP 1: Find this line in your workflow ───────────┐
-- uses: docker/build-push-action@v5  ← CHANGE THIS │
-  with:                                         │
-    context: .                                  │
-    push: true                                   │
-    tags: myapp:latest                          │
-─────────────────────────────────────────────────┘
+$ npm install -g @depot/cli
+✔ Installed successfully
 
-# STEP 2: Replace with Depot CI ─────────────────────┐
-- uses: depot/build-push-action@v1   ← TO THIS     │
-  with:                                         │
-    project: ${{ secrets.DEPOT_PROJECT_ID }}      │
-    context: .                                   │
-    push: true                                   │
-    tags: myapp:latest                           │
-─────────────────────────────────────────────────┘
+$ depot login
+✔ Logged in as your-account
 
-# That's it! Everything else stays the same.
+$ depot init
+✔ Created Depot project
+
+$ depot ci migrate
+✔ Analyzing workflows...
+✔ Converting .github/workflows/ → .depot/workflows/
+✔ Applying compatibility fixes...
+✔ Migration complete!
+
+Your workflows are now ready to run on Depot CI.
 ```
 
-**[SOUND]** Subtle "ding" when showing the before/after
+**[SOUND]** Satisfying "ding" when migration completes
 
 **[VOICEOVER]**
-"In your workflow file, find the Docker build action line. Change `docker/build-push-action@v5` to `depot/build-push-action@v1`. Add your project ID. That's it. One line. One minute. You're done."
+"The migration process handles everything automatically. The migrate command analyzes your existing GitHub Actions workflows, converts them to run on Depot CI infrastructure, applies any necessary compatibility fixes, and creates new workflow files in the `.depot/workflows/` directory. Your original workflows stay untouched - so you can easily compare or rollback if needed."
 
 ---
 

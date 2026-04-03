@@ -298,28 +298,41 @@ Savings: 50% reduction in CI build costs
 
 ## Migration: From GitHub Actions to Depot CI
 
-### The One-Line Swap ✨
+### The Migration Process
 
-**Literally change ONE line in your workflow:**
+Depot CI uses a CLI-based migration that automatically converts your GitHub Actions workflows:
 
-```yaml
-# BEFORE ──────────────────────────────────────────
-- uses: docker/build-push-action@v5
-  with:
-    context: .
-    push: true
-    tags: ghcr.io/${{ github.repository }}/app:latest
+```bash
+# Step 1: Install Depot CLI
+npm install -g @depot/cli
 
-# AFTER ───────────────────────────────────────────
-- uses: depot/build-push-action@v1        # ← Changed!
-  with:
-    project: ${{ secrets.DEPOT_PROJECT_ID }}  # ← Added!
-    context: .
-    push: true
-    tags: ghcr.io/${{ github.repository }}/app:latest
+# Step 2: Login to Depot
+depot login
+
+# Step 3: Initialize your project
+depot init
+
+# Step 4: Migrate your workflows
+depot ci migrate
 ```
 
-**That's it!** One line to change. One line to add. Everything else works exactly the same.
+**What `depot ci migrate` does:**
+- Analyzes your `.github/workflows/` files
+- Converts workflows to run on Depot CI infrastructure
+- Copies workflows to `.depot/workflows/`
+- Applies compatibility fixes automatically
+- Your original workflows are preserved
+
+### Key Requirements
+
+| Requirement | Description |
+|-------------|-------------|
+| **Depot CLI** | Install via `npm install -g @depot/cli` |
+| **Depot Project** | Created via `depot init` or in Depot dashboard |
+| **OIDC Setup** | Configure trust relationship in Depot project settings |
+| **Permissions** | Add `id-token: write` to your workflow permissions |
+
+> **Note:** The original `.github/workflows/` files are preserved, making it easy to rollback or compare.
 
 ---
 
