@@ -18,7 +18,7 @@ on:
       cleanup_disk:
         description: 'Free up disk space before build (recommended for large builds)'
         required: false
-        default: false
+        default: true
         type: boolean
 
 permissions:
@@ -40,53 +40,6 @@ jobs:
         with:
           repository: openclaw/openclaw
           ref: main
-
-      - name: Install Depot CLI (BEFORE cleanup - npm still available)
-        run: |
-          echo "Installing Depot CLI..."
-
-          # Install using npm (available before cleanup)
-          echo "Installing via npm..."
-          npm install -g @depot/cli
-
-          echo "Searching for depot binary..."
-          DEPOT_FOUND=""
-
-          # Try common locations where npm installs global binaries
-          for LOCATION in \
-            "/usr/local/bin/depot" \
-            "/usr/bin/depot" \
-            "$HOME/.npm-global/bin/depot" \
-            "/opt/homebrew/bin/depot" \
-            "$NVM_BIN/depot" \
-            "/usr/local/lib/node_modules/.bin/depot" \
-            "/usr/share/npm/bin/depot"
-          do
-            if [ -f "$LOCATION" ]; then
-              echo "Found depot at: $LOCATION"
-              DEPOT_FOUND="$LOCATION"
-              break
-            fi
-          done
-
-          if [ -n "$DEPOT_FOUND" ]; then
-            # Only copy if not already in /usr/local/bin
-            if [ "$DEPOT_FOUND" != "/usr/local/bin/depot" ]; then
-              echo "Copying to /usr/local/bin/depot..."
-              sudo cp "$DEPOT_FOUND" /usr/local/bin/depot
-              sudo chmod +x /usr/local/bin/depot
-            fi
-            echo "=========================================="
-            echo "Depot CLI installed successfully:"
-            which depot
-            depot --version
-            echo "=========================================="
-          else
-            echo "ERROR: Could not find depot binary"
-            echo "Search results:"
-            find /usr -name "depot" -type f 2>/dev/null | head -10
-            exit 1
-          fi
 
       - name: Free up disk space
         if: ${{ github.event.inputs.cleanup_disk != 'false' }}
@@ -144,44 +97,53 @@ jobs:
           # Show disk space breakdown
           echo "Disk usage by directory:"
           sudo du -sh /* 2>/dev/null | sort -hr | head -20
-              depot --version
-              exit 0
+
+      - name: Install Depot CLI
+        run: |
+          echo "Installing Depot CLI..."
+
+          # Install using npm (still available because we didn't remove $AGENT_TOOLSDIRECTORY)
+          echo "Installing via npm..."
+          npm install -g @depot/cli
+
+          echo "Searching for depot binary..."
+          DEPOT_FOUND=""
+
+          # Try common locations where npm installs global binaries
+          for LOCATION in \
+            "/usr/local/bin/depot" \
+            "/usr/bin/depot" \
+            "$HOME/.npm-global/bin/depot" \
+            "/opt/homebrew/bin/depot" \
+            "$NVM_BIN/depot" \
+            "/usr/local/lib/node_modules/.bin/depot" \
+            "/usr/share/npm/bin/depot"
+          do
+            if [ -f "$LOCATION" ]; then
+              echo "Found depot at: $LOCATION"
+              DEPOT_FOUND="$LOCATION"
+              break
             fi
-          fi
+          done
 
-          echo "npm not available or failed, trying direct download..."
-
-          # Method 2: Direct download from official Depot CDN
-          sudo rm -f /usr/local/bin/depot /tmp/depot
-
-          # Try official Depot download URL first
-          if curl -fL https://dl.depot.dev/cli/linux/amd64/depot -o /tmp/depot; then
-            if file /tmp/depot | grep -q "ELF"; then
-              sudo mv /tmp/depot /usr/local/bin/depot
+          if [ -n "$DEPOT_FOUND" ]; then
+            # Only copy if not already in /usr/local/bin
+            if [ "$DEPOT_FOUND" != "/usr/local/bin/depot" ]; then
+              echo "Copying to /usr/local/bin/depot..."
+              sudo cp "$DEPOT_FOUND" /usr/local/bin/depot
               sudo chmod +x /usr/local/bin/depot
-              echo "Depot CLI downloaded from official CDN"
-              depot --version
-              exit 0
             fi
+            echo "=========================================="
+            echo "Depot CLI installed successfully:"
+            which depot
+            depot --version
+            echo "=========================================="
+          else
+            echo "ERROR: Could not find depot binary"
+            echo "Search results:"
+            find /usr -name "depot" -type f 2>/dev/null | head -10
+            exit 1
           fi
-
-          # Method 3: Try GitHub with specific version
-          echo "Trying GitHub releases..."
-          VERSION="1.29.0"
-          if curl -fL "https://github.com/depot/cli/releases/download/v${VERSION}/depot-linux-amd64" -o /tmp/depot; then
-            if file /tmp/depot | grep -q "ELF"; then
-              sudo mv /tmp/depot /usr/local/bin/depot
-              sudo chmod +x /usr/local/bin/depot
-              echo "Depot CLI downloaded from GitHub releases"
-              depot --version
-              exit 0
-            fi
-          fi
-
-          # All methods failed
-          echo "ERROR: All Depot CLI installation methods failed"
-          echo "This may be due to network issues or Depot service being unavailable"
-          exit 1
 
       - name: Apply test case
         run: |
