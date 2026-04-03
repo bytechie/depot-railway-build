@@ -302,8 +302,9 @@ GitHub Actions              Depot CI
 GitHub Actions Cache:
 ├── Stored remotely (Azure Blob)
 ├── Persists across jobs
-├── Limited to ~10 GB
-└── 7-day retention
+├── 10 GB default (paid plans can exceed)
+├── 7-day retention
+└── Pay-as-you-go for additional storage
 
 Depot CI Cache:
 ├── Distributed global storage
@@ -314,7 +315,7 @@ Depot CI Cache:
 ```
 
 **[VOICEOVER]**
-"Both platforms use remote cache storage that persists across jobs. But there are key differences. GitHub Actions cache is limited to 10 gigabytes with 7-day retention. Depot CI offers configurable cache sizes with 14-day default retention and options up to 30 days. That means your cache stays available longer between builds."
+"Both platforms use remote cache storage that persists across jobs. But there are key differences. GitHub Actions cache provides 10 gigabytes by default with 7-day retention, and you can exceed that with paid plans at an additional cost. Depot CI offers configurable cache sizes with 14-day default retention and options up to 30 days — built in, with no extra charges."
 
 ---
 
