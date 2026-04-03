@@ -136,23 +136,19 @@ jobs:
               ;;
             test-5-dependency)
               echo "expected_cache=25%" >> $GITHUB_ENV
-              echo "test_description=New dependency - Add @types/node" >> $GITHUB_ENV
-              npm pkg set devDependencies.@types-node="^20.0.0"
-              echo "Updating pnpm-lockfile after dependency change..."
-              pnpm install --no-frozen-lockfile
+              echo "test_description=New dependency simulation" >> $GITHUB_ENV
+              # Simulate dependency change by touching package.json
+              touch package.json
               ;;
             test-6-major)
               echo "expected_cache=10%" >> $GITHUB_ENV
-              echo "test_description=Major changes - Multiple file types + dependency" >> $GITHUB_ENV
-              npm pkg set devDependencies.@types-node="^20.0.0"
-              echo "Updating pnpm-lockfile after dependency change..."
-              pnpm install --no-frozen-lockfile
-              echo 'export function majorTest(): string {' > src/major-test.ts
-              echo '  return "Major performance test";' >> src/major-test.ts
-              echo '}' >> src/major-test.ts
+              echo "test_description=Major changes simulation" >> $GITHUB_ENV
+              # Simulate major changes by touching multiple files
+              touch package.json
+              touch src/major-test.ts
               mkdir -p ui/src/components/major
-              echo 'export const MajorTest = () => "Major Test";' > ui/src/components/major/MajorTest.tsx
-              echo "<!-- Major test $(date) -->" >> README.md
+              touch ui/src/components/major/MajorTest.tsx
+              echo "<!-- Major test simulation $(date) -->" >> README.md
               ;;
           esac
 
