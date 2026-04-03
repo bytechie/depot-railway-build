@@ -44,7 +44,7 @@ The connection is immediate and compelling.
 | Many dependencies | Demonstrates Depot's intelligent caching |
 | Active development | Frequent releases = more CI runs |
 | Docker-ready | Native container deployment |
-| Cloud-deployable | Perfect Railway integration target |
+| Cloud-deployable | Easy container registry deployment |
 
 ### 3. Viral Factor
 
@@ -72,7 +72,7 @@ Since OpenClaw's repository is private, we created a **simulation demo app** tha
    - Docker multi-stage builds
    - Caching optimization
 
-3. **Ready for Railway deployment**
+3. **Ready for deployment**
    - Optimized Dockerfile
    - Health check endpoints
    - Environment variable configuration
@@ -126,22 +126,22 @@ Since OpenClaw's repository is private, we created a **simulation demo app** tha
 
 | Metric | GitHub Actions | Depot CI | Improvement |
 |--------|----------------|----------|-------------|
-| Dependencies install | ~45s | ~5s | **9x faster** |
-| TypeScript build | ~30s | ~3s | **10x faster** |
-| Docker build | ~90s | ~8s | **11x faster** |
-| Total workflow | ~4-7 min | ~20-60s | **5-10x faster** |
+| Average build time | 3m 43s | 1m 59s | **1.9x faster** |
+| Baseline (cold) | 3m 4s | 1m 51s | **1.7x faster** |
+| Documentation change | 2m 39s | 1m 50s | **1.4x faster** |
+| New dependency | 6m 3s | 1m 53s | **3.3x faster** |
+| Major changes | 5m 25s | 2m 36s | **2.1x faster** |
 
 ## Next Steps
 
 1. ✅ Demo application created
 2. ✅ Depot account setup
-3. ✅ Railway project configuration
-4. ✅ Run baseline benchmarks
-5. ✅ Run Depot CI benchmarks
-6. ✅ Create comparison documentation → **[comparison-summary.md](./performance-testing/comparison-summary.md)**
-7. ⏳ Produce demo video
+3. ✅ Run baseline benchmarks
+4. ✅ Run Depot CI benchmarks
+5. ✅ Create comparison documentation → **[OPENCLAW-FINAL-RESULTS.md](./performance-testing/openclaw-ai-testing/OPENCLAW-FINAL-RESULTS.md)**
+6. ⏳ Produce demo video
 
-> **Note:** Comprehensive performance testing completed March 31 - April 2, 2026. See [comparison-summary.md](./performance-testing/comparison-summary.md) for complete results showing Depot CI averaging 27s vs GitHub Actions 134s (5x faster).
+> **Note:** Comprehensive performance testing completed April 2-3, 2026. See [OPENCLAW-FINAL-RESULTS.md](./performance-testing/openclaw-ai-testing/OPENCLAW-FINAL-RESULTS.md) for complete results showing Depot CI averaging 1m 59s vs GitHub Actions 3m 43s (1.9x faster).
 
 ---
 

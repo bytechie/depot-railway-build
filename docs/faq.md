@@ -26,7 +26,6 @@ Not necessarily — it's compatible with GitHub Actions. You can bring your exis
 - Docker 20+
 - Git 2.x+
 - A Depot account (free during beta)
-- A Railway account (free tier available)
 
 ### How much does Depot CI cost?
 
@@ -34,10 +33,9 @@ During beta: **Free**
 
 After GA: $0.0001 per second for base runners (approximately $0.36/hour)
 
-### Does Depot CI work with other platforms besides Railway?
+### Does Depot CI work with other platforms?
 
 Yes! Depot CI can deploy to:
-- Railway
 - AWS (ECS, EKS, Lambda)
 - Google Cloud (Run, GKE)
 - Azure (Container Instances, AKS)
@@ -67,13 +65,10 @@ This analyzes your workflows and creates Depot CI equivalents.
 |--------|---------|
 | `DEPOT_TOKEN` | Authenticate with Depot |
 | `DEPOT_PROJECT_ID` | Identify your Depot project |
-| `RAILWAY_TOKEN` | Authenticate with Railway |
-| `RAILWAY_PROJECT_ID` | Identify your Railway project |
-| `RAILWAY_SERVICE_ID` | Identify your Railway service |
 
 See [github-secrets.md](./github-secrets.md) for detailed instructions.
 
-### Can I run this locally without Depot/Railway?
+### Can I run this locally without Depot CI?
 
 Yes! The sample app works locally:
 ```bash
@@ -93,21 +88,18 @@ docker run -p 3000:3000 openclaw-demo
 
 ### How much faster is Depot CI really?
 
-Based on our comprehensive performance testing with 5 test cases:
+Based on our comprehensive performance testing with OpenClaw AI (500+ dependencies):
 
 **vs GitHub Actions:**
-- **Average: 5x faster** (27s vs 134s)
-- Baseline (cold): 4.5x faster
-- Comment change: 2.8x faster
-- New dependency: 6.2x faster
-- Major changes: 5.1x faster
+- **Average: 1.9x faster** (1m 59s vs 3m 43s)
+- Baseline (cold): 1.7x faster
+- Documentation change: 1.4x faster
+- New source file: 1.4x faster
+- UI component: 1.3x faster
+- New dependency: 3.3x faster
+- Major changes: 2.1x faster
 
-**vs Railway Auto-Build:**
-- **Average: Similar** (27s vs 29s)
-- Depot wins 4 out of 5 test cases
-- Railway wins only for new function additions
-
-See [comparison-summary.md](./performance-testing/comparison-summary.md) for complete results.
+See [OPENCLAW-FINAL-RESULTS.md](./performance-testing/openclaw-ai-testing/OPENCLAW-FINAL-RESULTS.md) for complete results.
 
 ### Will my results vary?
 
@@ -117,14 +109,14 @@ Yes, actual performance depends on:
 - Cache hit rates
 - Concurrent workflows
 
-However, most teams see **at least 3-5x improvement** vs GitHub Actions, with even greater gains for dependency-heavy builds.
+However, most teams see **at least 1.5-2x improvement** vs GitHub Actions, with even greater gains for dependency-heavy builds.
 
 ### What about first-time builds?
 
 First builds (cold cache) still benefit from:
 - Optimized infrastructure (faster CPUs, better networking)
 - Better layer caching than GitHub Actions
-- Depot CI: 31s cold build vs GitHub Actions: 141s (4.5x faster)
+- Depot CI: 1m 51s cold build vs GitHub Actions: 3m 4s (1.7x faster)
 
 Subsequent builds see the full benefit of distributed caching.
 
@@ -149,54 +141,6 @@ Subsequent builds see the full benefit of distributed caching.
 - Verify multi-stage build is being used
 - Review Dockerfile for optimization opportunities
 
-## Railway Questions
-
-### Why Railway for this demo?
-
-Railway is:
-- Developer-friendly (simple deployment)
-- Container-native (works with Docker)
-- Has visible build costs (shows Depot's value)
-- Growing in popularity for AI/ML projects
-
-### Will this work with Railway's free tier?
-
-Yes! The sample app is designed to work within Railway's free tier:
-- Small container size
-- Efficient resource usage
-- Minimal runtime costs
-
-### Can I deploy elsewhere?
-
-Absolutely. The Docker image can be deployed to:
-- AWS ECS
-- Google Cloud Run
-- Azure Container Instances
-- DigitalOcean App Platform
-- Fly.io
-- Render
-- Any platform that supports Docker
-
-### What are Railway's build costs?
-
-Running builds on Railway can impact your monthly costs depending on your plan and build intensity.
-
-**Key Cost Factors:**
-- **Build Usage Costs**: Railway charges for CPU/memory consumption during builds
-- **Hobby Plan**: $5/month includes $5 of resource credits
-- **Usage-Based Billing**: Costs scale with build frequency and intensity
-- **Disk Usage**: Up to 0.5 GB volume storage is free
-
-**Tips to Keep Costs Low:**
-1. **Use Depot CI** - Build externally, deploy only the final image
-2. **Enable Caching** - Reduces build time and resource consumption
-3. **Optimize Builds** - Smaller images = faster builds = lower costs
-4. **Reduce Deploy Frequency** - Batch changes when possible
-
-**Comparison:**
-- Railway auto-build: ~$0.05/build (uses Railway compute)
-- Depot CI + Railway deploy: ~$0.01/build (uses Depot compute, deploys fast)
-
 ## Demo Questions
 
 ### Can I customize the demo app?
@@ -211,11 +155,11 @@ Yes! The sample app is open-source (MIT license). You can:
 ### How do I run performance tests?
 
 Complete performance test results are available at:
-**[comparison-summary.md](./performance-testing/comparison-summary.md)**
+**[OPENCLAW-FINAL-RESULTS.md](./performance-testing/openclaw-ai-testing/OPENCLAW-FINAL-RESULTS.md)**
 
 For testing setup and instructions, see:
-- **[performance-test-guide.md](./performance-test-guide.md)** — How to run all 4 flows
-- **[test-case-instructions.md](./performance-testing/test-case-instructions.md)** — Progressive test scenarios
+- **[OpenClaw Comparison Guide](./performance-testing/openclaw-ai-testing/OPENCLAW-COMPARISON-GUIDE.md)** — How to run CI tests
+- **[COMPREHENSIVE-ANALYSIS.md](./performance-testing/openclaw-ai-testing/COMPREHENSIVE-ANALYSIS.md)** — Complete 30-test analysis
 
 ### Can I use this for my own projects?
 
@@ -223,14 +167,13 @@ Yes! The patterns demonstrated here apply to any Node.js/TypeScript project:
 - Multi-stage Docker builds
 - GitHub Actions workflows
 - Depot CI integration
-- Railway deployment
+- Container registry deployment
 
 ## Support
 
 ### Where can I get help?
 
 - **Depot Documentation**: [depot.dev/docs](https://depot.dev/docs)
-- **Railway Documentation**: [docs.railway.app](https://docs.railway.app)
 - **Depot Discord**: [discord.gg/depot](https://discord.gg/depot)
 - **GitHub Issues**: [github.com/depot/depot-ci](https://github.com/depot/depot-ci/issues)
 

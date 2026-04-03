@@ -1,6 +1,6 @@
 # Depot CI vs GitHub Actions: Performance Comparison Video Script
 
-**Title**: "Depot CI vs GitHub Actions: 5x Faster Docker Builds"
+**Title**: "Depot CI vs GitHub Actions: Nearly 2x Faster Docker Builds"
 **Duration**: ~6 minutes
 **Format**: 16:9 (1920x1080)
 **Style**: Screen recording + voiceover with motion graphics overlays
@@ -159,20 +159,21 @@ Test Environment:
 │                                                             │
 │  Test Case           GitHub    Depot    Depot Speedup       │
 │  ─────────────────────────────────────────────────────────  │
-│  Baseline (cold)     141s      31s      4.5x faster       │
-│  Comment change       65s      23s      2.8x faster       │
-│  New function         64s      23s      2.8x faster       │
-│  New dependency      193s      31s      6.2x faster       │
-│  Major changes       133s      26s      5.1x faster       │
+│  Baseline (cold)     3m 4s    1m 51s   1.9x faster       │
+│  Comment change       2m 39s    1m 50s   1.4x faster       │
+│  New source file     2m 37s    1m 51s   1.4x faster       │
+│  UI component        2m 30s    1m 52s   1.3x faster       │
+│  New dependency     6m 3s    1m 53s   3.3x faster       │
+│  Major changes       5m 25s    2m 36s   2.1x faster       │
 │                                                             │
-│  AVERAGE              134s      27s      5.0x faster       │
+│  AVERAGE              3m 43s    1m 59s   1.9x faster       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 **[SOUND]** Subtle "whoosh" as each row animates in
 
 **[VOICEOVER]**
-"Here are the results. GitHub Actions averaged 134 seconds per build. Depot CI averaged 27 seconds. That's a 5x speedup."
+"Here are the results from testing OpenClaw AI - a complex personal AI assistant with 500+ dependencies. GitHub Actions averaged 3 minutes 43 seconds per build. Depot CI averaged just under 2 minutes. That's a 1.9x speedup."
 
 **[PAUSE - 2 seconds]**
 
@@ -414,20 +415,22 @@ depot init
 
 ## Test Data Summary
 
-### Real Performance Results
+### Real Performance Results - OpenClaw AI
 
-Tests conducted: 2026-03-31 to 2026-04-02
+Tests conducted: 2026-04-02 to 2026-04-03
 Organization: sbtechpal
 Repository: depot-railway-build
+Test Application: OpenClaw AI (500+ dependencies, multi-stage Docker build)
 
 | Test Case | GitHub Actions | Depot CI | Speedup |
 |-----------|----------------|----------|---------|
-| Baseline (cold) | 141s | 31s | 4.5x |
-| Comment change | 65s | 23s | 2.8x |
-| New function | 64s | 23s | 2.8x |
-| New dependency | 193s | 31s | 6.2x |
-| Major changes | 133s | 26s | 5.1x |
-| **Average** | **134s** | **27s** | **5.0x** |
+| Baseline (cold) | 3m 4s | 1m 51s | 1.7x |
+| Documentation change | 2m 39s | 1m 50s | 1.4x |
+| New source file | 2m 37s | 1m 51s | 1.4x |
+| UI component | 2m 30s | 1m 52s | 1.3x |
+| New dependency | 6m 3s | 1m 53s | 3.3x |
+| Major changes | 5m 25s | 2m 36s | 2.1x |
+| **Average** | **3m 43s** | **1m 59s** | **1.9x** |
 
 ### Test Environment
 
@@ -440,10 +443,10 @@ Repository: depot-railway-build
 
 ### Key Findings
 
-1. **Depot CI wins every test case** - 5/5 victories
-2. **Biggest win: Dependency changes** - 6.2x faster
-3. **Consistent performance** - 23-31s across all tests
-4. **GitHub Actions variability** - 64-193s depending on test
+1. **Depot CI wins every test case** - 6/6 victories
+2. **Biggest win: Dependency changes** - 3.3x faster
+3. **Consistent performance** - 1m 50s-2m 36s across all tests
+4. **GitHub Actions variability** - 2m 30s-6m 3s depending on test
 
 ---
 
