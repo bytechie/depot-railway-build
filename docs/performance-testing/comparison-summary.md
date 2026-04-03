@@ -185,14 +185,14 @@ Annual savings: ~3.3 million fewer seconds of compute
 GitHub Actions (per-minute billing, rounded up):
 - 3m 53s → rounds up to 4 minutes per build
 - 2,000 builds × 4 minutes = 8,000 minutes
-- Cost: $0.008/minute → ~$64/month
+- Cost: $0.006/minute (2026 pricing) → ~$48/month
 
 Depot CI (per-second billing, exact):
 - 2m 18s = 138 seconds billed exactly
 - 2,000 builds × 138 seconds = 276,000 seconds = 4,600 minutes
 - Cost: $0.007/minute → ~$32/month
 
-Savings: 50% reduction in CI build costs
+Savings: ~33% reduction in CI build costs
 ```
 
 ---
