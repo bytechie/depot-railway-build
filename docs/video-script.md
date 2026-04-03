@@ -96,15 +96,26 @@ Time elapsed: 2:15
 **[VISUAL]** GitHub Actions workflow transforms to Depot CI:
 
 ```yaml
-# Before: GitHub Actions
+# BEFORE: GitHub Actions (same old workflow)
 - uses: docker/build-push-action@v5
+  with:
+    context: .
+    push: true
+    tags: myapp:latest
 
-# After: Depot CI
+# AFTER: Depot CI (just change ONE line!)
 - uses: depot/build-push-action@v1
+  with:
+    project: ${{ secrets.DEPOT_PROJECT_ID }}  # ← Only add this
+    context: .
+    push: true
+    tags: myapp:latest
 ```
 
+**[SOUND]** Satisfying "click" or "snap" sound
+
 **[VOICEOVER]**
-"The switch is simple. One line change. Replace `docker/build-push-action` with `depot/build-push-action`. Same YAML. Same configuration. Just faster."
+"The switch is incredibly simple. One line change. Literally. Just replace `docker/build-push-action` with `depot/build-push-action` and add your project ID. Everything else stays exactly the same."
 
 ---
 
@@ -379,20 +390,35 @@ depot init
 
 ### 5:20 - 5:40 | The One-Line Change
 
-**[SCREEN]** GitHub workflow file:
+**[SCREEN]** Cursor highlights the exact line to change in a GitHub workflow file:
 
 ```yaml
-# Before
-- uses: docker/build-push-action@v5
+# .github/workflows/docker-build.yml
 
-# After
-- uses: depot/build-push-action@v1
-  with:
-    project: your-project-id
+# STEP 1: Find this line in your workflow ───────────┐
+- uses: docker/build-push-action@v5  ← CHANGE THIS │
+  with:                                         │
+    context: .                                  │
+    push: true                                   │
+    tags: myapp:latest                          │
+─────────────────────────────────────────────────┘
+
+# STEP 2: Replace with Depot CI ─────────────────────┐
+- uses: depot/build-push-action@v1   ← TO THIS     │
+  with:                                         │
+    project: ${{ secrets.DEPOT_PROJECT_ID }}      │
+    context: .                                   │
+    push: true                                   │
+    tags: myapp:latest                           │
+─────────────────────────────────────────────────┘
+
+# That's it! Everything else stays the same.
 ```
 
+**[SOUND]** Subtle "ding" when showing the before/after
+
 **[VOICEOVER]**
-"In your workflow file, change one line. Replace the Docker build action with Depot's build action. Same configuration. Same behavior. Just faster."
+"In your workflow file, find the Docker build action line. Change `docker/build-push-action@v5` to `depot/build-push-action@v1`. Add your project ID. That's it. One line. One minute. You're done."
 
 ---
 

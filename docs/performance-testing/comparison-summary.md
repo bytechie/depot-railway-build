@@ -298,30 +298,28 @@ Savings: 50% reduction in CI build costs
 
 ## Migration: From GitHub Actions to Depot CI
 
-### Current (GitHub Actions)
+### The One-Line Swap ✨
+
+**Literally change ONE line in your workflow:**
 
 ```yaml
-# .github/workflows/build.yml
+# BEFORE ──────────────────────────────────────────
 - uses: docker/build-push-action@v5
   with:
     context: .
     push: true
     tags: ghcr.io/${{ github.repository }}/app:latest
-```
 
-### After (Depot CI)
-
-```yaml
-# .github/workflows/build.yml
-- uses: depot/build-push-action@v1
+# AFTER ───────────────────────────────────────────
+- uses: depot/build-push-action@v1        # ← Changed!
   with:
-    project: ${{ env.DEPOT_PROJECT_ID }}
+    project: ${{ secrets.DEPOT_PROJECT_ID }}  # ← Added!
     context: .
     push: true
     tags: ghcr.io/${{ github.repository }}/app:latest
 ```
 
-**That's it.** One line change. Everything else works the same.
+**That's it!** One line to change. One line to add. Everything else works exactly the same.
 
 ---
 
