@@ -213,11 +213,48 @@ Test Environment:
 "Look at the dependency test. When adding a new package to a project with 500+ dependencies, GitHub Actions took just under 4 minutes. Depot CI took just over 3 minutes. Even on similar times, Depot CI maintains the edge."
 
 **[VISUAL]** Animation showing why:
-- GitHub Actions: Re-downloads everything
-- Depot CI: Uses smart cache, only downloads new packages
+
+```
+GITHUB ACTIONS - Every build starts from scratch:
+┌─────────────────────────────────────┐
+│ New VM (ephemeral)                  │ ← Fresh runner, no cache
+│ Downloads 500+ packages again       │ ← Re-downloads everything
+│ Install time: 2-3 minutes           │
+└─────────────────────────────────────┘
+↓ Build completes
+VM destroyed → Cache gone forever
+
+DEPOT CI - Distributed cache persists:
+┌─────────────────────────────────────┐
+│ Optimized infrastructure            │ ← Pre-warmed, ready
+│ Distributed global cache            │ ← Persists across builds
+│ Only downloads NEW packages         │ ← Smart caching
+│ Install time: 30-60 seconds         │
+└─────────────────────────────────────┘
+Cache shared across all builds
+```
 
 **[VOICEOVER]**
-"Depot CI's intelligent caching means it only downloads what's new. GitHub Actions re-downloads everything from scratch."
+"Here's the key difference. GitHub Actions runners are ephemeral - meaning every build gets a brand new virtual machine that's destroyed after the job finishes. No cache survives between builds. You're downloading 500+ packages from scratch every single time."
+
+**[VISUAL]** Simple diagram showing Depot's distributed cache:
+
+```
+┌────────────────────┐
+│  Build 1          │ → Cache saved globally
+├────────────────────┤
+│  Build 2          │ → Reuses Build 1 cache
+├────────────────────┤
+│  Build 3          │ → Reuses Build 1+2 cache
+├────────────────────┤
+│  Build 100        │ → Reuses all prior cache
+└────────────────────┘
+      ↓
+Depot's distributed cache learns from every build
+```
+
+**[VOICEOVER]**
+"Depot CI uses a distributed global cache that persists across all builds. It learns from every previous build - yours and everyone else's. You only download what's actually new. That's the power of persistent, distributed caching versus starting from scratch every time."
 
 ---
 
