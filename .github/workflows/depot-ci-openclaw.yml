@@ -41,6 +41,27 @@ jobs:
           curl -fsSL https://depot.dev/install.sh | sh
           echo "$HOME/bin" >> $GITHUB_PATH
 
+      - name: Free up disk space
+        run: |
+          echo "Initial disk usage:"
+          df -h
+
+          # Remove unnecessary software
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/google
+          sudo rm -rf /opt/microsoft
+          sudo rm -rf /opt/hostedtoolcache
+
+          # Clean Docker system
+          docker system prune -af --volumes || true
+
+          echo "Disk usage after cleanup:"
+          df -h
+
       - name: Apply test case
         run: |
           case "${{ github.event.inputs.test_case }}" in
@@ -132,6 +153,8 @@ jobs:
         run: |
           echo "Starting Depot CI build..."
           echo "Test: ${{ github.event.inputs.test_case }}"
+          echo "Disk space before build:"
+          df -h
           depot build -t openclaw:test-${{ github.event.inputs.test_case }} .
         env:
           DEPOT_TOKEN: ${{ secrets.DEPOT_TOKEN }}
