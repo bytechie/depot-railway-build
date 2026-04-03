@@ -282,15 +282,15 @@ You save over 2 minutes on your very first build.
 ```
 GitHub Actions              Depot CI
 ┌─────────────┐            ┌─────────────┐
-│ Generic VM  │            │ BuildKit    │
-│ + Docker    │            │ Optimized   │
-│             │            │ + Advanced  │
-│ Cold start  │            │ Cache       │
+│ Generic VM  │            │ Pre-warmed  │
+│ Cold start  │            │ Sandboxes   │
+│ No shared   │            │ + Depot     │
+│ state       │            │ Cache       │
 └─────────────┘            └─────────────┘
 ```
 
 **[VOICEOVER]**
-"The difference comes down to architecture. GitHub Actions uses generic runners that have to set up Docker from scratch. Depot CI uses Docker-optimized infrastructure with BuildKit built in."
+"The difference comes down to architecture. GitHub Actions spins up a fresh generic VM for every job — no pre-warming, no shared state. Depot CI uses pre-warmed sandboxes on performance-tuned compute, with Depot Cache built in and no configuration required. The result is jobs that start in 2–3 seconds instead of waiting for a cold VM to boot."
 
 ---
 
