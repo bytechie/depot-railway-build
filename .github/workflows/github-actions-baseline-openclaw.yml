@@ -111,11 +111,15 @@ jobs:
               echo "expected_cache=25%" >> $GITHUB_ENV
               echo "test_description=New dependency - Add @types/node" >> $GITHUB_ENV
               npm pkg set devDependencies.@types-node="^20.0.0"
+              echo "Updating pnpm-lockfile after dependency change..."
+              pnpm install --no-frozen-lockfile
               ;;
             test-6-major)
               echo "expected_cache=10%" >> $GITHUB_ENV
               echo "test_description=Major changes - Multiple file types + dependency" >> $GITHUB_ENV
               npm pkg set devDependencies.@types-node="^20.0.0"
+              echo "Updating pnpm-lockfile after dependency change..."
+              pnpm install --no-frozen-lockfile
               echo 'export function majorTest(): string {' > src/major-test.ts
               echo '  return "Major performance test";' >> src/major-test.ts
               echo '}' >> src/major-test.ts
