@@ -49,7 +49,11 @@ jobs:
           echo "Installing via npm..."
           if npm install -g @depot/cli; then
             echo "Finding depot installation..."
-            DEPOT_PATH=$(npm root -g)/../bin/depot
+            # Find the bin directory where npm puts executables
+            NPM_BIN=$(npm bin -g)
+            echo "npm bin -g: $NPM_BIN"
+            DEPOT_PATH="$NPM_BIN/depot"
+
             if [ -f "$DEPOT_PATH" ]; then
               echo "Found depot at: $DEPOT_PATH"
               # Copy to /usr/local/bin so it persists across shell sessions
@@ -62,8 +66,8 @@ jobs:
               echo "=========================================="
             else
               echo "ERROR: Could not find depot after npm install"
-              echo "npm root -g: $(npm root -g)"
-              ls -la $(npm root -g)/../bin/ || echo "bin directory not found"
+              echo "Searching for depot..."
+              find /usr -name depot -type f 2>/dev/null || true
               exit 1
             fi
           else
