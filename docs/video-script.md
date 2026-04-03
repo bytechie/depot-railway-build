@@ -84,7 +84,7 @@ Time elapsed: 2:15
 
 **[SOUND]** Subtle "whoosh" logo sound, music becomes more optimistic
 
-**[VISUAL]** Tagline appears: *"5x Faster Docker Builds"*
+**[VISUAL]** Tagline appears: *"Nearly 2x Faster Docker Builds"*
 
 **[VOICEOVER]**
 "This is Depot CI. It's a drop-in replacement for GitHub Actions that's specifically optimized for Docker builds."
@@ -119,12 +119,12 @@ Time elapsed: 2:15
 │  Generic runners    │  Docker-optimized   │
 │  Basic caching      │  Advanced caching   │
 │  Cold starts        │  Pre-warmed pool    │
-│  ~134s average      │  ~27s average       │
+│  ~3m 43s average    │  ~1m 59s average    │
 └─────────────────────┴─────────────────────┘
 ```
 
 **[VOICEOVER]**
-"Depot CI uses Docker-optimized runners with intelligent caching and pre-warmed build pools. The result? Builds that are 5 times faster."
+"Depot CI uses Docker-optimized runners with intelligent caching and pre-warmed build pools. The result? Builds that are nearly 2 times faster."
 
 ---
 
@@ -296,18 +296,18 @@ Depot CI Features (Not in GitHub Actions):
 
 ```
 Your Current Setup:
-10 builds/day × 2 min = 20 min/day
-20 min/day × 5 days = 100 min/week
+100 builds/day × 3.7 min = 370 min/day
+370 min/day × 5 days = 1,850 min/week
 
 With Depot CI:
-10 builds/day × 0.5 min = 5 min/day
-5 min/day × 5 days = 25 min/week
+100 builds/day × 2 min = 200 min/day
+200 min/day × 5 days = 1,000 min/week
 
-TIME SAVED: 75 minutes per week
+TIME SAVED: 850 minutes per week (~14 hours/week)
 ```
 
 **[VOICEOVER]**
-"If you do 10 builds a day, GitHub Actions costs you about 20 minutes. With Depot CI? That's 5 minutes. You save over an hour every week."
+"If you do 100 builds a day, GitHub Actions costs you over 6 hours. With Depot CI? That's about 3.5 hours. You save nearly an hour every single day."
 
 **[VISUAL]** Calendar showing freed-up time
 
@@ -322,20 +322,20 @@ TIME SAVED: 75 minutes per week
 
 ```
 GitHub Actions:
-134 seconds/build × 500 builds/month = 18,700 seconds
+223 seconds/build × 1,000 builds/month = 223,000 seconds
 Cost per minute: $0.008
-Monthly: ~$250
+Monthly: ~$30
 
 Depot CI:
-27 seconds/build × 500 builds/month = 3,750 seconds
+119 seconds/build × 1,000 builds/month = 119,000 seconds
 Cost per minute: $0.007
-Monthly: ~$44
+Monthly: ~$14
 
-SAVINGS: 80% reduction
+SAVINGS: 55% reduction
 ```
 
 **[VOICEOVER]**
-"Because Depot CI is 5x faster, you use 5x less compute. That's about $200 saved every month for a typical team. That adds up."
+"Because Depot CI is 1.9x faster, you use 47% less compute. That translates to real cost savings on CI operations."
 
 ---
 
@@ -459,7 +459,7 @@ Test Application: OpenClaw AI (500+ dependencies, multi-stage Docker build)
 | **Resolution** | Record at 1080p or higher |
 | **Timing** | Let the results table breathe - let viewers absorb the numbers |
 | **Comparison** | Use actual screen recordings of real builds when possible |
-| **Emphasis** | Highlight the 5x number - that's the key takeaway |
+| **Emphasis** | Highlight the 1.9x number - that's the key takeaway |
 
 ### Voiceover Guidelines
 
@@ -467,7 +467,7 @@ Test Application: OpenClaw AI (500+ dependencies, multi-stage Docker build)
 |---------|----------|
 | **Tone** | Professional but approachable |
 | **Pace** | 140-150 words per minute |
-| **Emphasis** | Emphasize: "5x faster", "every test", "27 seconds" |
+| **Emphasis** | Emphasize: "1.9x faster", "every test", "1m 59s" |
 | **Pauses** | Pause after key statistics |
 
 ### Production Notes
