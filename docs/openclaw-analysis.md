@@ -41,10 +41,11 @@ The connection is immediate and compelling.
 | Aspect | Why It Matters for Depot CI |
 |--------|----------------------------|
 | Node.js/TypeScript | Shows Depot's JavaScript build optimization |
-| Many dependencies | Demonstrates Depot's intelligent caching |
+| 500+ dependencies | Demonstrates Depot's intelligent caching at scale |
 | Active development | Frequent releases = more CI runs |
 | Docker-ready | Native container deployment |
 | Cloud-deployable | Easy container registry deployment |
+| Multi-stage build | Complex build pipeline benefits from optimization |
 
 ### 3. Viral Factor
 

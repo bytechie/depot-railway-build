@@ -11,6 +11,22 @@ Complete performance comparison of GitHub Actions vs Depot CI for Docker builds.
 
 ---
 
+## Why OpenClaw AI?
+
+We chose to test with **OpenClaw AI** - a production-grade personal AI assistant - because it represents the type of complex, real-world application where CI performance matters most.
+
+| Complexity Factor | OpenClaw AI | Impact on Build Performance |
+|-------------------|-------------|------------------------------|
+| **Dependencies** | 500+ npm packages | Longer install times, more cache layers |
+| **Build Stages** | Multi-stage Docker build | More steps to optimize |
+| **TypeScript** | Full codebase compilation | Significant compile time |
+| **Monorepo** | Multiple packages (ui, src, skills) | Complex build orchestration |
+| **Real-world** | Production application | Accurate performance representation |
+
+This complexity makes OpenClaw AI an ideal test subject - it demonstrates how Depot CI's intelligent caching and Docker-optimized infrastructure provide real advantages for demanding build scenarios.
+
+---
+
 ## Quick Summary
 
 | Platform | Wins | Average Time (with cleanup) | Average Time (no cleanup) | Rank |

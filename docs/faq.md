@@ -9,10 +9,14 @@ Depot CI is a programmable CI engine built with performance as a first-class cit
 ### Why did you choose OpenClaw for the demo?
 
 OpenClaw is the perfect showcase because:
+- It's a production-grade AI application with 500+ npm dependencies
+- It has a complex multi-stage Docker build (real-world complexity)
 - It's a viral AI project with massive buzz
 - It represents the future of personal AI agents
 - It has a real-world tech stack (Node.js/TypeScript)
 - It tells a compelling story about AI development velocity
+
+The complexity of OpenClaw (500+ dependencies, multi-stage builds, TypeScript compilation) makes it an ideal test subject - it demonstrates where Depot CI's advantages really matter.
 
 ### Is Depot CI a replacement for GitHub Actions?
 

@@ -137,14 +137,14 @@ Time elapsed: 2:15
 ```
 Test Environment:
 ├── Same Dockerfile (multi-stage build)
-├── Same Node.js application
-├── Same dependencies
+├── OpenClaw AI (500+ dependencies)
+├── Real-world complexity
 ├── 6 test scenarios
 └── Fair comparison
 ```
 
 **[VOICEOVER]**
-"We wanted to see the real difference, so we ran a fair comparison. Same Dockerfile. Same application. Six different test scenarios. From builds without cache to dependency changes."
+"We wanted to see the real difference, so we ran a fair comparison. We tested with OpenClaw AI - a complex application with over 500 dependencies. This is the kind of real-world project where CI performance really matters. Same Dockerfile. Same application. Six different test scenarios. From builds without cache to dependency changes."
 
 ---
 
