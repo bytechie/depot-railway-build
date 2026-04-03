@@ -159,21 +159,21 @@ Test Environment:
 │                                                             │
 │  Test Case           GitHub    Depot    Depot Speedup       │
 │  ─────────────────────────────────────────────────────────  │
-│  Baseline (without cache)     3m 4s    1m 51s   1.7x faster       │
-│  Comment change       2m 39s    1m 50s   1.4x faster       │
-│  New source file     2m 37s    1m 51s   1.4x faster       │
-│  UI component        2m 30s    1m 52s   1.3x faster       │
-│  New dependency     6m 3s    1m 53s   3.3x faster       │
-│  Major changes       5m 25s    2m 36s   2.1x faster       │
+│  Baseline (without cache)     4m 6s    2m 1s    2.0x faster       │
+│  Comment change       4m 1s    2m 47s   1.4x faster       │
+│  New source file     4m 0s    2m 47s   1.4x faster       │
+│  UI component        3m 57s    1m 26s   2.8x faster       │
+│  New dependency     3m 55s    3m 11s   1.1x faster       │
+│  Major changes       3m 51s    1m 42s   2.2x faster       │
 │                                                             │
-│  AVERAGE              3m 43s    1m 59s   1.9x faster       │
+│  AVERAGE              3m 53s    2m 18s   1.7x faster       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 **[SOUND]** Subtle "whoosh" as each row animates in
 
 **[VOICEOVER]**
-"Here are the results from testing OpenClaw AI - a complex personal AI assistant with 500+ dependencies. GitHub Actions averaged 3 minutes 43 seconds per build. Depot CI averaged just under 2 minutes. That's a 1.9x speedup."
+"Here are the results from testing OpenClaw AI - a complex personal AI assistant with 500+ dependencies. GitHub Actions averaged 3 minutes 53 seconds per build. Depot CI averaged 2 minutes 18 seconds. That's a 1.7x speedup."
 
 **[PAUSE - 2 seconds]**
 
@@ -191,15 +191,15 @@ Test Environment:
 │  NEW DEPENDENCY TEST (Adding new npm package)               │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  GitHub Actions: 6m 3s     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░         │
-│  Depot CI:        1m 53s   ▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░         │
+│  GitHub Actions: 3m 55s    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░         │
+│  Depot CI:        3m 11s   ▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░         │
 │                                                             │
-│  Depot CI is 3.3x faster for dependency changes             │
+│  Depot CI is 1.1x faster for dependency changes             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 **[VOICEOVER]**
-"Look at the dependency test. When adding a new package to a project with 500+ dependencies, GitHub Actions took over 6 minutes. Depot CI took under 2 minutes. That's a 3x difference."
+"Look at the dependency test. When adding a new package to a project with 500+ dependencies, GitHub Actions took just under 4 minutes. Depot CI took just over 3 minutes. Even on similar times, Depot CI maintains the edge."
 
 **[VISUAL]** Animation showing why:
 - GitHub Actions: Re-downloads everything
@@ -216,14 +216,14 @@ Test Environment:
 
 ```
 First build of the day (no cache):
-GitHub Actions: 3m 4s
-Depot CI:       1m 51s
+GitHub Actions: 4m 6s
+Depot CI:       2m 1s
 
-You save over 1 minute on your very first build.
+You save over 2 minutes on your very first build.
 ```
 
 **[VOICEOVER]**
-"Even on builds without cache, Depot CI is 1.7x faster. That's over a minute saved on your first build of the day. Before you've even had your coffee."
+"Even on builds without cache, Depot CI is 2x faster. That's over 2 minutes saved on your first build of the day. Before you've even had your coffee."
 
 ---
 
@@ -424,13 +424,13 @@ Test Application: OpenClaw AI (500+ dependencies, multi-stage Docker build)
 
 | Test Case | GitHub Actions | Depot CI | Speedup |
 |-----------|----------------|----------|---------|
-| Baseline (without cache) | 3m 4s | 1m 51s | 1.7x |
-| Documentation change | 2m 39s | 1m 50s | 1.4x |
-| New source file | 2m 37s | 1m 51s | 1.4x |
-| UI component | 2m 30s | 1m 52s | 1.3x |
-| New dependency | 6m 3s | 1m 53s | 3.3x |
-| Major changes | 5m 25s | 2m 36s | 2.1x |
-| **Average** | **3m 43s** | **1m 59s** | **1.9x** |
+| Baseline (without cache) | 4m 6s | 2m 1s | 2.0x |
+| Documentation change | 4m 1s | 2m 47s | 1.4x |
+| New source file | 4m 0s | 2m 47s | 1.4x |
+| UI component | 3m 57s | 1m 26s | 2.8x |
+| New dependency | 3m 55s | 3m 11s | 1.1x |
+| Major changes | 3m 51s | 1m 42s | 2.2x |
+| **Average** | **3m 53s** | **2m 18s** | **1.7x** |
 
 ### Test Environment
 
@@ -444,9 +444,9 @@ Test Application: OpenClaw AI (500+ dependencies, multi-stage Docker build)
 ### Key Findings
 
 1. **Depot CI wins every test case** - 6/6 victories
-2. **Biggest win: Dependency changes** - 3.3x faster
-3. **Consistent performance** - 1m 50s-2m 36s across all tests
-4. **GitHub Actions variability** - 2m 30s-6m 3s depending on test
+2. **Biggest win: UI component changes** - 2.8x faster
+3. **Consistent performance** - 1m 26s-3m 11s across all tests
+4. **GitHub Actions variability** - 3m 55s-4m 6s depending on test
 
 ---
 
@@ -459,7 +459,7 @@ Test Application: OpenClaw AI (500+ dependencies, multi-stage Docker build)
 | **Resolution** | Record at 1080p or higher |
 | **Timing** | Let the results table breathe - let viewers absorb the numbers |
 | **Comparison** | Use actual screen recordings of real builds when possible |
-| **Emphasis** | Highlight the 1.9x number - that's the key takeaway |
+| **Emphasis** | Highlight the 1.7x number - that's the key takeaway |
 
 ### Voiceover Guidelines
 
@@ -467,7 +467,7 @@ Test Application: OpenClaw AI (500+ dependencies, multi-stage Docker build)
 |---------|----------|
 | **Tone** | Professional but approachable |
 | **Pace** | 140-150 words per minute |
-| **Emphasis** | Emphasize: "1.9x faster", "every test", "1m 59s" |
+| **Emphasis** | Emphasize: "1.7x faster", "every test", "2m 18s" |
 | **Pauses** | Pause after key statistics |
 
 ### Production Notes
