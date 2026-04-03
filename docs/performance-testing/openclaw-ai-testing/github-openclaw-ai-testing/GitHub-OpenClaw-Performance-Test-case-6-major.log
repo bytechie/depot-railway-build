@@ -1,0 +1,1300 @@
+2026-04-03T12:46:23.6299165Z Current runner version: '2.333.1'
+2026-04-03T12:46:23.6333996Z ##[group]Runner Image Provisioner
+2026-04-03T12:46:23.6335102Z Hosted Compute Agent
+2026-04-03T12:46:23.6335909Z Version: 20260213.493
+2026-04-03T12:46:23.6336814Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-04-03T12:46:23.6337851Z Build Date: 2026-02-13T00:28:41Z
+2026-04-03T12:46:23.6339397Z Worker ID: {b68af5db-0781-4a90-ba31-710575b303bc}
+2026-04-03T12:46:23.6341474Z Azure Region: northcentralus
+2026-04-03T12:46:23.6342315Z ##[endgroup]
+2026-04-03T12:46:23.6344752Z ##[group]Operating System
+2026-04-03T12:46:23.6345620Z Ubuntu
+2026-04-03T12:46:23.6346315Z 24.04.4
+2026-04-03T12:46:23.6346910Z LTS
+2026-04-03T12:46:23.6347628Z ##[endgroup]
+2026-04-03T12:46:23.6348391Z ##[group]Runner Image
+2026-04-03T12:46:23.6350962Z Image: ubuntu-24.04
+2026-04-03T12:46:23.6351890Z Version: 20260323.65.1
+2026-04-03T12:46:23.6353830Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260323.65/images/ubuntu/Ubuntu2404-Readme.md
+2026-04-03T12:46:23.6356151Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260323.65
+2026-04-03T12:46:23.6357511Z ##[endgroup]
+2026-04-03T12:46:23.6359265Z ##[group]GITHUB_TOKEN Permissions
+2026-04-03T12:46:23.6362061Z Contents: read
+2026-04-03T12:46:23.6362850Z Metadata: read
+2026-04-03T12:46:23.6363642Z ##[endgroup]
+2026-04-03T12:46:23.6366709Z Secret source: Actions
+2026-04-03T12:46:23.6368299Z Prepare workflow directory
+2026-04-03T12:46:23.7341851Z Prepare all required actions
+2026-04-03T12:46:23.7460530Z Getting action download info
+2026-04-03T12:46:24.1055228Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-04-03T12:46:24.2151347Z Download action repository 'docker/setup-buildx-action@v3' (SHA:8d2750c68a42422c14e847fe6c8ac0403b4cbd6f)
+2026-04-03T12:46:24.7421924Z Download action repository 'pnpm/action-setup@v2' (SHA:eae0cfeb286e66ffb5155f1a79b90583a127a68b)
+2026-04-03T12:46:25.3419408Z Complete job name: GitHub Actions Build - OpenClaw (Baseline)
+2026-04-03T12:46:25.4106639Z ##[group]Run actions/checkout@v4
+2026-04-03T12:46:25.4107680Z with:
+2026-04-03T12:46:25.4108301Z   repository: openclaw/openclaw
+2026-04-03T12:46:25.4109256Z   ref: main
+2026-04-03T12:46:25.4110195Z   token: ***
+2026-04-03T12:46:25.4110800Z   ssh-strict: true
+2026-04-03T12:46:25.4111410Z   ssh-user: git
+2026-04-03T12:46:25.4112029Z   persist-credentials: true
+2026-04-03T12:46:25.4112685Z   clean: true
+2026-04-03T12:46:25.4113312Z   sparse-checkout-cone-mode: true
+2026-04-03T12:46:25.4114021Z   fetch-depth: 1
+2026-04-03T12:46:25.4114622Z   fetch-tags: false
+2026-04-03T12:46:25.4115244Z   show-progress: true
+2026-04-03T12:46:25.4115878Z   lfs: false
+2026-04-03T12:46:25.4116481Z   submodules: false
+2026-04-03T12:46:25.4117105Z   set-safe-directory: true
+2026-04-03T12:46:25.4118060Z ##[endgroup]
+2026-04-03T12:46:25.5212862Z Syncing repository: openclaw/openclaw
+2026-04-03T12:46:25.5216675Z ##[group]Getting Git version info
+2026-04-03T12:46:25.5218696Z Working directory is '/home/runner/work/depot-railway-build/depot-railway-build'
+2026-04-03T12:46:25.5221646Z [command]/usr/bin/git version
+2026-04-03T12:46:25.5257560Z git version 2.53.0
+2026-04-03T12:46:25.5286258Z ##[endgroup]
+2026-04-03T12:46:25.5301118Z Temporarily overriding HOME='/home/runner/work/_temp/a51e4614-8cd1-41f5-b377-c836f0911588' before making global git config changes
+2026-04-03T12:46:25.5305030Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T12:46:25.5321439Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/depot-railway-build/depot-railway-build
+2026-04-03T12:46:25.5353101Z Deleting the contents of '/home/runner/work/depot-railway-build/depot-railway-build'
+2026-04-03T12:46:25.5357502Z ##[group]Initializing the repository
+2026-04-03T12:46:25.5362972Z [command]/usr/bin/git init /home/runner/work/depot-railway-build/depot-railway-build
+2026-04-03T12:46:25.5469493Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-04-03T12:46:25.5473417Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-04-03T12:46:25.5475872Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-04-03T12:46:25.5477536Z hint: call:
+2026-04-03T12:46:25.5478665Z hint:
+2026-04-03T12:46:25.5480130Z hint: 	git config --global init.defaultBranch <name>
+2026-04-03T12:46:25.5481782Z hint:
+2026-04-03T12:46:25.5483272Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-04-03T12:46:25.5485276Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-04-03T12:46:25.5486928Z hint:
+2026-04-03T12:46:25.5487936Z hint: 	git branch -m <name>
+2026-04-03T12:46:25.5489359Z hint:
+2026-04-03T12:46:25.5491057Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-04-03T12:46:25.5493025Z Initialized empty Git repository in /home/runner/work/depot-railway-build/depot-railway-build/.git/
+2026-04-03T12:46:25.5498450Z [command]/usr/bin/git remote add origin https://github.com/openclaw/openclaw
+2026-04-03T12:46:25.5522318Z ##[endgroup]
+2026-04-03T12:46:25.5524178Z ##[group]Disabling automatic garbage collection
+2026-04-03T12:46:25.5527057Z [command]/usr/bin/git config --local gc.auto 0
+2026-04-03T12:46:25.5555694Z ##[endgroup]
+2026-04-03T12:46:25.5557514Z ##[group]Setting up auth
+2026-04-03T12:46:25.5563244Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T12:46:25.5591893Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-03T12:46:25.5901000Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T12:46:25.5930762Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-03T12:46:25.6773764Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T12:46:25.6776131Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-03T12:46:25.6778552Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-04-03T12:46:25.6781014Z ##[endgroup]
+2026-04-03T12:46:25.6782101Z ##[group]Fetching the repository
+2026-04-03T12:46:25.6783691Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main*:refs/remotes/origin/main* +refs/tags/main*:refs/tags/main*
+2026-04-03T12:46:27.3483252Z From https://github.com/openclaw/openclaw
+2026-04-03T12:46:27.3499427Z  * [new branch]      main       -> origin/main
+2026-04-03T12:46:27.3512411Z ##[endgroup]
+2026-04-03T12:46:27.3515085Z ##[group]Determining the checkout info
+2026-04-03T12:46:27.3518418Z [command]/usr/bin/git branch --list --remote origin/main
+2026-04-03T12:46:27.3538979Z   origin/main
+2026-04-03T12:46:27.3546579Z ##[endgroup]
+2026-04-03T12:46:27.3549881Z [command]/usr/bin/git sparse-checkout disable
+2026-04-03T12:46:27.3581256Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-04-03T12:46:27.3606878Z ##[group]Checking out the ref
+2026-04-03T12:46:27.3610899Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-04-03T12:46:27.9563254Z Switched to a new branch 'main'
+2026-04-03T12:46:27.9568177Z branch 'main' set up to track 'origin/main'.
+2026-04-03T12:46:27.9584151Z ##[endgroup]
+2026-04-03T12:46:27.9656462Z [command]/usr/bin/git log -1 --format=%H
+2026-04-03T12:46:27.9679066Z da1980b9234da1354c52f53e2085e27667e7ae62
+2026-04-03T12:46:27.9856302Z ##[group]Run echo "Initial disk usage:"
+2026-04-03T12:46:27.9856881Z [36;1mecho "Initial disk usage:"[0m
+2026-04-03T12:46:27.9857286Z [36;1mdf -h[0m
+2026-04-03T12:46:27.9857688Z [36;1m[0m
+2026-04-03T12:46:27.9858012Z [36;1m# Remove unnecessary software[0m
+2026-04-03T12:46:27.9858363Z [36;1msudo rm -rf /usr/share/dotnet[0m
+2026-04-03T12:46:27.9858729Z [36;1msudo rm -rf /opt/ghc[0m
+2026-04-03T12:46:27.9859283Z [36;1msudo rm -rf "/usr/local/share/boost"[0m
+2026-04-03T12:46:27.9859699Z [36;1msudo rm -rf "$AGENT_TOOLSDIRECTORY"[0m
+2026-04-03T12:46:27.9860113Z [36;1msudo rm -rf /usr/local/lib/android[0m
+2026-04-03T12:46:27.9860474Z [36;1msudo rm -rf /opt/google[0m
+2026-04-03T12:46:27.9860826Z [36;1msudo rm -rf /opt/microsoft[0m
+2026-04-03T12:46:27.9861169Z [36;1msudo rm -rf /opt/hostedtoolcache[0m
+2026-04-03T12:46:27.9861528Z [36;1m[0m
+2026-04-03T12:46:27.9861855Z [36;1m# Clean Docker system[0m
+2026-04-03T12:46:27.9862249Z [36;1mdocker system prune -af --volumes || true[0m
+2026-04-03T12:46:27.9862591Z [36;1m[0m
+2026-04-03T12:46:27.9862853Z [36;1mecho "Disk usage after cleanup:"[0m
+2026-04-03T12:46:27.9863152Z [36;1mdf -h[0m
+2026-04-03T12:46:27.9882599Z shell: /usr/bin/bash -e {0}
+2026-04-03T12:46:27.9882965Z ##[endgroup]
+2026-04-03T12:46:27.9959586Z Initial disk usage:
+2026-04-03T12:46:28.0162528Z Filesystem      Size  Used Avail Use% Mounted on
+2026-04-03T12:46:28.0165020Z /dev/root        72G   55G   17G  77% /
+2026-04-03T12:46:28.0166581Z tmpfs           3.9G   84K  3.9G   1% /dev/shm
+2026-04-03T12:46:28.0167231Z tmpfs           1.6G 1012K  1.6G   1% /run
+2026-04-03T12:46:28.0167813Z tmpfs           5.0M     0  5.0M   0% /run/lock
+2026-04-03T12:46:28.0168358Z efivarfs        128M   26K  128M   1% /sys/firmware/efi/efivars
+2026-04-03T12:46:28.0169086Z /dev/sda16      881M   64M  756M   8% /boot
+2026-04-03T12:46:28.0169508Z /dev/sda15      105M  6.2M   99M   6% /boot/efi
+2026-04-03T12:46:28.0170048Z tmpfs           795M   12K  795M   1% /run/user/1001
+2026-04-03T12:48:05.5905462Z Deleted Images:
+2026-04-03T12:48:05.5908632Z untagged: ghcr.io/github/gh-aw-firewall/agent:latest
+2026-04-03T12:48:05.5914080Z untagged: ghcr.io/github/gh-aw-firewall/agent@sha256:8ad51f216a9a0d9b2f782bfabf6a4f8f958d46eaf7de04066c548fd26ef4634a
+2026-04-03T12:48:05.5916741Z deleted: sha256:a8a8e3e3e311d9eec13b8a7f39bd9d41684be748dab70cef467c07f21cb7576f
+2026-04-03T12:48:05.5917721Z deleted: sha256:1ca21a70083a944c0797d300d889d4afcf65d641fe1c5e72f378e4359558cce7
+2026-04-03T12:48:05.5918759Z deleted: sha256:f1bc8319f262882e1d0bdcf1bf4f5d8a75b9da08acc66300ec271b5c8f960d54
+2026-04-03T12:48:05.5922330Z deleted: sha256:e71899845183f24c2df2d3a17debbf5252f024d6d84cd86811b06b0b959d4a88
+2026-04-03T12:48:05.5923233Z deleted: sha256:ced2cee0bb849eaf4dd47caf7586789d50ce89e54eaf8899723c7dcb0e95b27b
+2026-04-03T12:48:05.5924271Z deleted: sha256:6f5081e2b6f06382da9fec964b00bce50d74d0b4edd45551b96b0647239669b4
+2026-04-03T12:48:05.5925100Z deleted: sha256:92c5875c1f15de5be169a38ff6006d8686be55255fed55e8ebf22ab0e73a7eda
+2026-04-03T12:48:05.5925904Z deleted: sha256:3aef1be5d8392b0910b83e3509906d12d265f488dc029e37e492d62dfcdab0b1
+2026-04-03T12:48:05.5926570Z deleted: sha256:21dcb0f39d62c61db6b0d23bde83c46613e174636f34173735beb1ceb02728ee
+2026-04-03T12:48:05.5927122Z deleted: sha256:4348ad80ca09ae8baa9d25f8d57651df956066d40bf2c32ae49e6074f6e8c3e3
+2026-04-03T12:48:05.5927655Z deleted: sha256:390af352600c1f585e17e7a318fb87462753d8654eee403d8a58c809669c3fb1
+2026-04-03T12:48:05.5928204Z deleted: sha256:3da0c404b5fc9e46979371cd6f763a88f5f2c724127ac0db4ac7b4cb97bb1958
+2026-04-03T12:48:05.5928748Z deleted: sha256:3bea5f1500cf444875866a1152c42e7867a1422cb8a6eb83706a6e0c3f90cfa2
+2026-04-03T12:48:05.5930356Z deleted: sha256:af42bf3e6500489e4e432e92214d888950e6cb725b7bccd8bb7ea630042374d0
+2026-04-03T12:48:05.5931243Z deleted: sha256:aa7b1bd2454a7c55ec875c057b8f86fedb03adbcaa7c9042675a26d4c506bae0
+2026-04-03T12:48:05.5932221Z deleted: sha256:fd7b85c1b84e3dcd6e601489a9676aeb7126f78d71babf9637fab93280660536
+2026-04-03T12:48:05.5933145Z untagged: ghcr.io/dependabot/dependabot-updater-core:latest
+2026-04-03T12:48:05.5934233Z untagged: ghcr.io/dependabot/dependabot-updater-core@sha256:885891fcaacaf5357b85c68a48298155f123a68728f152329c3f4da71bb68bbc
+2026-04-03T12:48:05.5935448Z deleted: sha256:abab895e44d8b8a3a228c51bc83a24c3fd62b7cb9ac3bbe83b464b476ce7bbbb
+2026-04-03T12:48:05.5936132Z deleted: sha256:05bd3c96063e169d7098529ffe43bd11fe437dcc65bdcdb8f390ebdc3552d9f9
+2026-04-03T12:48:05.5936846Z deleted: sha256:33f06f9c8fec195b41d6ed39c22282c62493040a6bf9568e60c5a28420e081d9
+2026-04-03T12:48:05.5937432Z deleted: sha256:b790f77a6800395969fe6b6b4cff73101081a8b0fe3bc96eca4b303712a40be8
+2026-04-03T12:48:05.5938088Z deleted: sha256:eaa4d1360f2b43b7513f750dcc9290350eff04488a0446a355a79c73f373fe5b
+2026-04-03T12:48:05.5941047Z deleted: sha256:b56fa8ea8ef36b0e81615de7c4d8a4f30b8eecfb193325d65ac8fc54bf11b9f7
+2026-04-03T12:48:05.5942096Z deleted: sha256:cefbe86dfdfb58022f1fef99b507b72c45e556d2eac09455c7547ba9c3140d9e
+2026-04-03T12:48:05.5943087Z deleted: sha256:f3b2df75047f791953646965e6051e3afc98b07472c5e3d9b0779e20efac009f
+2026-04-03T12:48:05.5944034Z deleted: sha256:e3e1cc6aa517b118e7693d103dc63cf3b86d018b6cdcd77d761208fd4d1f32ae
+2026-04-03T12:48:05.5944698Z deleted: sha256:d9c6441367188bcc5478663aa102bb92c3d431f4237c93dc80f3ab6155d8cad7
+2026-04-03T12:48:05.5945407Z deleted: sha256:eb414b03d0b4b918b468e0ebb525ec777dec2b00d7dd67ba2f8dda819d03b1e8
+2026-04-03T12:48:05.5946072Z deleted: sha256:fbf2e7954ab6f62fa0b212fb50236728418d70224172ad76160f137db6ebeaa4
+2026-04-03T12:48:05.5946828Z deleted: sha256:f2a7f072635332d307212e318e07284948b89f4167fce5c4d7c9cfb7590b74b6
+2026-04-03T12:48:05.5947310Z untagged: ghcr.io/github/gh-aw-firewall/api-proxy:latest
+2026-04-03T12:48:05.5948087Z untagged: ghcr.io/github/gh-aw-firewall/api-proxy@sha256:7a0e22937109d4c2889cf19fb49ed7fef4d00f1aa00650ebe012e1b418103840
+2026-04-03T12:48:05.5949445Z deleted: sha256:c1a6161143801484b1880c03838452b837c0bc7c5773bb45ce85657237d3a835
+2026-04-03T12:48:05.5950326Z deleted: sha256:a380c8a629603ecad5e490150314c69851e01f88bb229465eb69d66edeba7af4
+2026-04-03T12:48:05.5951178Z deleted: sha256:8d27de0f2a9deb7de14783f24d5c6d6e6ee014ff3b628a9728b602e2cf3645db
+2026-04-03T12:48:05.5952185Z deleted: sha256:13081044fc0e93ac6db516a247fee66b6e8de0158a69a2656eeac8c5275759d3
+2026-04-03T12:48:05.5953145Z deleted: sha256:2aa09d14ae89fe03d5d92c543ff30ef33ff746c0fde3e87ff819915993e2a227
+2026-04-03T12:48:05.5953995Z deleted: sha256:82bc90d3336a93aefdecdf8b4f46b61b6541882a896ac19ae3a5e2d97b75679a
+2026-04-03T12:48:05.5955081Z deleted: sha256:6b893d5805dc69db8d8bd2d926fec7bfae10617e0559a2a42409ae1ae9833467
+2026-04-03T12:48:05.5955982Z deleted: sha256:7f47328f1b714441dd5bc327da3fd3115a08a04f9fe6f71f5d380c325c960dcc
+2026-04-03T12:48:05.5956820Z deleted: sha256:5287269d034920c9c320d6d3e881f96b7a80692d421f3c811a8ccc0b6546fddf
+2026-04-03T12:48:05.5957781Z deleted: sha256:f8f51f1ec6f0dedbdb0e8ef1e3b0428701067e008677561bb95ecc7832c07095
+2026-04-03T12:48:05.5958559Z untagged: ghcr.io/github/gh-aw-mcpg:latest
+2026-04-03T12:48:05.5959588Z untagged: ghcr.io/github/gh-aw-mcpg@sha256:9946c54a5924a351644349a048f448f23497d66d4c97025565eff00afa6ecb75
+2026-04-03T12:48:05.5961004Z deleted: sha256:f78ae3da9bfd595d482dd1440f9aae53a3755cc52503451959fe2eadacfe01be
+2026-04-03T12:48:05.5961862Z deleted: sha256:8683bb98bb8e711bbb3d0c8941fdbb57a882934815fa8d99959411d3cb0f8a7d
+2026-04-03T12:48:05.5962787Z deleted: sha256:4de94811bafbecd27e7c46fedb0d7df4aab099b925d2a3d7bd09da1a0683eb33
+2026-04-03T12:48:05.5963705Z deleted: sha256:6d1be3c255139e2de5e2918c11a1b69a75fc29780cdae95ac44f3e5e60d6e98e
+2026-04-03T12:48:05.5964540Z deleted: sha256:afc8a35a8d22237d5475c94f44ea5084d6eadd74f8375321a623261d2713312b
+2026-04-03T12:48:05.5965285Z deleted: sha256:f469c2dae2f91a2d0d1fe5caf4376d293a59df23632c7b4b40954c0634047474
+2026-04-03T12:48:05.5966381Z deleted: sha256:353d7bf12b2cbf38077480084210b0e65fc633d387acb793c6febae74dd22230
+2026-04-03T12:48:05.5967295Z deleted: sha256:84e5e31e54e04f72948b352568654cc1fa0b9aecb1cfc352adc2b8402f38302d
+2026-04-03T12:48:05.5968328Z deleted: sha256:989e799e634906e94dc9a5ee2ee26fc92ad260522990f26e707861a5f52bf64e
+2026-04-03T12:48:05.5969357Z untagged: ghcr.io/github/gh-aw-firewall/squid:latest
+2026-04-03T12:48:05.5970445Z untagged: ghcr.io/github/gh-aw-firewall/squid@sha256:118f238e49fd04100b1fb4ae9edf50f9a4e98492887a1a45b070571516d67760
+2026-04-03T12:48:05.5971539Z deleted: sha256:53e4356ca7b15cfe5f0440928bf80fa4104a6f4558daf81fd3690f820599cf3f
+2026-04-03T12:48:05.5972484Z deleted: sha256:ccd8ab195661cbe8c9c0ceea97b4fa94821ee3309838bd94827f6a12ddd3b962
+2026-04-03T12:48:05.5973361Z deleted: sha256:0b03b76941bb1f0bdd20c527cfbf4ddae28def00abded3da6abb0630ced4b236
+2026-04-03T12:48:05.5974285Z deleted: sha256:f75e0b2c478a926c6de2439e148f47cd8d4662f32a538dea81bd40da3fd168ee
+2026-04-03T12:48:05.5977433Z deleted: sha256:01a0aa32ba968c9ea31b1504ae9ba7e9b449b6b06f0a1793c5c58f3c4dd07380
+2026-04-03T12:48:05.5978479Z deleted: sha256:0f7aceedbeef2527fd8b8cb81c5e0ebbb3032d42cbd0847080e679dfa6deb274
+2026-04-03T12:48:05.5979587Z deleted: sha256:7b26b80c1cff713367db892365d8d1227498773be6690e7a39165099060acef2
+2026-04-03T12:48:05.5980631Z deleted: sha256:e8bce0aabd687e9ee90e0bada33884f40b277196f72aac9934357472863a80ae
+2026-04-03T12:48:05.5981474Z untagged: ghcr.io/github/github-mcp-server:latest
+2026-04-03T12:48:05.5983597Z untagged: ghcr.io/github/github-mcp-server@sha256:a9dd39eec67f09ded51631c79641dd72acb4945c6391df47824fa2d508b5431b
+2026-04-03T12:48:05.5985488Z deleted: sha256:5b7da589d1109592cda422730f4c7df372bbc22fbaf889f95f495765b0808e82
+2026-04-03T12:48:05.5986122Z deleted: sha256:0f9ae5e0fe8973b13e82dfba98abdfda56d7062b88709cab1f8f254baf2f3649
+2026-04-03T12:48:05.5986822Z deleted: sha256:3844b00e5d867b3b3810bfeb53b81e36d4ecc46847a0d8cbb20577f0ae62af40
+2026-04-03T12:48:05.5987542Z deleted: sha256:8621c8b1fc5e2a8bd8db5ad518bb3d4dd069f3be3a961aa0fceae4d619557539
+2026-04-03T12:48:05.5988224Z deleted: sha256:44d0cb736798a30817877c6c37ceb891f91d581279d51d962c38d0b7d3cefb1f
+2026-04-03T12:48:05.5989155Z deleted: sha256:3e005f61e911be389b7090ab5e7dac5c293012172a91dceec6ec3cb008877589
+2026-04-03T12:48:05.5989965Z deleted: sha256:447769e80022d633258a358a32ec185c08acf39d52ff7992a62465580862727b
+2026-04-03T12:48:05.5990838Z deleted: sha256:7d2cd16d5223db171e85e78e005304348a2972c71f63003a0b491ed077558d11
+2026-04-03T12:48:05.5991557Z deleted: sha256:52c4df99df6b16bf709a7d57852c4baa88cca6daddf8e1380b1cb965b246a531
+2026-04-03T12:48:05.5992210Z deleted: sha256:d4bd505626ba298bdb5a4d594c55bbd659d6e7e53569dc80083d82a5775526b8
+2026-04-03T12:48:05.5992896Z deleted: sha256:7c60cb27043e7c7917a896b67c0653fa29fedc90f2dce187dce8e22e9bb1d560
+2026-04-03T12:48:05.5993592Z deleted: sha256:b8997b2eca37711a7ca830639978654ebc5a0e1f13f7e3af8f992b895f1550d3
+2026-04-03T12:48:05.5994226Z deleted: sha256:0020b32e5a73ed88fe2de1c7889a43bdfc9541a7145fbb48ec6147dcc01da62f
+2026-04-03T12:48:05.5994838Z deleted: sha256:bd59e7e428c9e76bc724f38578c163243152a507a5da6e0f63c0d61da952ba5b
+2026-04-03T12:48:05.5995455Z deleted: sha256:34165fb0807042c1f8ed197fd1ea5a031ca3e27e6e3fba9fbcf49a20052d19b7
+2026-04-03T12:48:05.5996190Z deleted: sha256:3bd325ec8c2d0894ea95758a6b235d7e2da1cb28f1cc2b76aeede98d5f8f425a
+2026-04-03T12:48:05.5996850Z deleted: sha256:a33ba213ad26a605d904a741f67154f3904c74a43182c872c35f36b10fa005e0
+2026-04-03T12:48:05.5997247Z 
+2026-04-03T12:48:05.5997482Z Total reclaimed space: 1.766GB
+2026-04-03T12:48:05.5997862Z Disk usage after cleanup:
+2026-04-03T12:48:05.5998225Z Filesystem      Size  Used Avail Use% Mounted on
+2026-04-03T12:48:05.5998675Z /dev/root        72G   32G   40G  45% /
+2026-04-03T12:48:05.5999308Z tmpfs           3.9G   84K  3.9G   1% /dev/shm
+2026-04-03T12:48:05.5999641Z tmpfs           1.6G 1012K  1.6G   1% /run
+2026-04-03T12:48:05.6000120Z tmpfs           5.0M     0  5.0M   0% /run/lock
+2026-04-03T12:48:05.6000485Z efivarfs        128M   26K  128M   1% /sys/firmware/efi/efivars
+2026-04-03T12:48:05.6001031Z /dev/sda16      881M   64M  756M   8% /boot
+2026-04-03T12:48:05.6001396Z /dev/sda15      105M  6.2M   99M   6% /boot/efi
+2026-04-03T12:48:05.6002130Z tmpfs           795M   12K  795M   1% /run/user/1001
+2026-04-03T12:48:05.6072740Z ##[group]Run case "test-6-major" in
+2026-04-03T12:48:05.6073263Z [36;1mcase "test-6-major" in[0m
+2026-04-03T12:48:05.6073625Z [36;1m  baseline)[0m
+2026-04-03T12:48:05.6073990Z [36;1m    echo "expected_cache=100%" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6074456Z [36;1m    echo "test_description=Baseline - Fully cached build" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6075031Z [36;1m    ;;[0m
+2026-04-03T12:48:05.6075455Z [36;1m  test-2-docs)[0m
+2026-04-03T12:48:05.6075832Z [36;1m    echo "expected_cache=95%" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6076317Z [36;1m    echo "test_description=Documentation change - README comment" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6076975Z [36;1m    echo "" >> README.md[0m
+2026-04-03T12:48:05.6077397Z [36;1m    echo "<!-- Performance test: $(date) -->" >> README.md[0m
+2026-04-03T12:48:05.6077741Z [36;1m    ;;[0m
+2026-04-03T12:48:05.6078204Z [36;1m  test-3-source)[0m
+2026-04-03T12:48:05.6078639Z [36;1m    echo "expected_cache=75%" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6079375Z [36;1m    echo "test_description=New source file - perf-test.ts in src/" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6079917Z [36;1m    echo '/**' > src/perf-test.ts[0m
+2026-04-03T12:48:05.6080272Z [36;1m    echo ' * Performance test utility' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6080761Z [36;1m    echo ' */' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6081189Z [36;1m    echo 'export interface PerfMetrics {' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6081587Z [36;1m    echo '  startTime: number;' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6082043Z [36;1m    echo '  endTime: number;' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6082500Z [36;1m    echo '  duration: number;' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6082858Z [36;1m    echo '}' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6083341Z [36;1m    echo 'export function measurePerf(label: string): PerfMetrics {' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6084028Z [36;1m    echo '  const startTime = Date.now();' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6084572Z [36;1m    echo '  const result = { startTime, endTime: startTime, duration: 0 };' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6085068Z [36;1m    echo '  result.endTime = Date.now();' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6085625Z [36;1m    echo '  result.duration = result.endTime - result.startTime;' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6086118Z [36;1m    echo '  return result;' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6086439Z [36;1m    echo '}' >> src/perf-test.ts[0m
+2026-04-03T12:48:05.6086785Z [36;1m    ;;[0m
+2026-04-03T12:48:05.6087004Z [36;1m  test-4-ui)[0m
+2026-04-03T12:48:05.6087355Z [36;1m    echo "expected_cache=50%" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6087838Z [36;1m    echo "test_description=UI change - New component in ui/" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6088288Z [36;1m    mkdir -p ui/src/components/test[0m
+2026-04-03T12:48:05.6088656Z [36;1m    echo '/**' > ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6089473Z [36;1m    echo ' * Performance test component' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6089962Z [36;1m    echo ' */' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6090375Z [36;1m    echo "import { css } from 'lit';" >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6091107Z [36;1m    echo 'export class PerfTestComponent extends HTMLElement {' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6091712Z [36;1m    echo '  static styles = css`' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6092247Z [36;1m    echo '    :host {' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6092834Z [36;1m    echo '      display: block;' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6093304Z [36;1m    echo '      padding: 1rem;' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6093825Z [36;1m    echo '    }' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6094505Z [36;1m    echo '  `;' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6095077Z [36;1m    echo '  connectedCallback(): void {' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6095776Z [36;1m    echo '    super.connectedCallback();' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6096432Z [36;1m    echo "    this.innerHTML = '<p>Performance Test Component</p>';" >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6096947Z [36;1m    echo '  }' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6097340Z [36;1m    echo '}' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6097866Z [36;1m    echo 'customElements.define("perf-test", PerfTestComponent);' >> ui/src/components/test/PerfTest.tsx[0m
+2026-04-03T12:48:05.6098543Z [36;1m    ;;[0m
+2026-04-03T12:48:05.6098824Z [36;1m  test-5-dependency)[0m
+2026-04-03T12:48:05.6099504Z [36;1m    echo "expected_cache=25%" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6099963Z [36;1m    echo "test_description=New dependency simulation" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6100454Z [36;1m    # Simulate dependency change by touching package.json[0m
+2026-04-03T12:48:05.6100968Z [36;1m    touch package.json[0m
+2026-04-03T12:48:05.6101341Z [36;1m    ;;[0m
+2026-04-03T12:48:05.6102009Z [36;1m  test-6-major)[0m
+2026-04-03T12:48:05.6102421Z [36;1m    echo "expected_cache=10%" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6102950Z [36;1m    echo "test_description=Major changes simulation" >> $GITHUB_ENV[0m
+2026-04-03T12:48:05.6103494Z [36;1m    # Simulate major changes by touching multiple files[0m
+2026-04-03T12:48:05.6103891Z [36;1m    touch package.json[0m
+2026-04-03T12:48:05.6104340Z [36;1m    touch src/major-test.ts[0m
+2026-04-03T12:48:05.6104784Z [36;1m    mkdir -p ui/src/components/major[0m
+2026-04-03T12:48:05.6105201Z [36;1m    touch ui/src/components/major/MajorTest.tsx[0m
+2026-04-03T12:48:05.6105916Z [36;1m    echo "<!-- Major test simulation $(date) -->" >> README.md[0m
+2026-04-03T12:48:05.6106366Z [36;1m    ;;[0m
+2026-04-03T12:48:05.6106658Z [36;1mesac[0m
+2026-04-03T12:48:05.6127088Z shell: /usr/bin/bash -e {0}
+2026-04-03T12:48:05.6127412Z ##[endgroup]
+2026-04-03T12:48:05.6247130Z ##[group]Run echo "=========================================="
+2026-04-03T12:48:05.6247612Z [36;1mecho "=========================================="[0m
+2026-04-03T12:48:05.6247975Z [36;1mecho "GitHub Actions Baseline - OpenClaw"[0m
+2026-04-03T12:48:05.6248349Z [36;1mecho "=========================================="[0m
+2026-04-03T12:48:05.6248654Z [36;1mecho "Test Case: test-6-major"[0m
+2026-04-03T12:48:05.6249352Z [36;1mecho "Description: Major changes simulation"[0m
+2026-04-03T12:48:05.6249754Z [36;1mecho "Expected Cache Hit: 10%"[0m
+2026-04-03T12:48:05.6250075Z [36;1mecho "=========================================="[0m
+2026-04-03T12:48:05.6265043Z shell: /usr/bin/bash -e {0}
+2026-04-03T12:48:05.6265409Z env:
+2026-04-03T12:48:05.6265639Z   expected_cache: 10%
+2026-04-03T12:48:05.6265949Z   test_description: Major changes simulation
+2026-04-03T12:48:05.6266259Z ##[endgroup]
+2026-04-03T12:48:05.6299668Z ==========================================
+2026-04-03T12:48:05.6301008Z GitHub Actions Baseline - OpenClaw
+2026-04-03T12:48:05.6301483Z ==========================================
+2026-04-03T12:48:05.6302026Z Test Case: test-6-major
+2026-04-03T12:48:05.6302527Z Description: Major changes simulation
+2026-04-03T12:48:05.6302993Z Expected Cache Hit: 10%
+2026-04-03T12:48:05.6303432Z ==========================================
+2026-04-03T12:48:05.6468449Z ##[group]Run docker/setup-buildx-action@v3
+2026-04-03T12:48:05.6469069Z with:
+2026-04-03T12:48:05.6469337Z   driver: docker-container
+2026-04-03T12:48:05.6469677Z   use: true
+2026-04-03T12:48:05.6469970Z   keep-state: false
+2026-04-03T12:48:05.6470289Z   cache-binary: true
+2026-04-03T12:48:05.6470598Z   cleanup: true
+2026-04-03T12:48:05.6470876Z   install: false
+2026-04-03T12:48:05.6471161Z env:
+2026-04-03T12:48:05.6471423Z   expected_cache: 10%
+2026-04-03T12:48:05.6471759Z   test_description: Major changes simulation
+2026-04-03T12:48:05.6472182Z ##[endgroup]
+2026-04-03T12:48:05.9392557Z ##[group]Docker info
+2026-04-03T12:48:05.9417653Z [command]/usr/bin/docker version
+2026-04-03T12:48:05.9683157Z Client: Docker Engine - Community
+2026-04-03T12:48:05.9702045Z  Version:           28.0.4
+2026-04-03T12:48:05.9704453Z  API version:       1.48
+2026-04-03T12:48:05.9705948Z  Go version:        go1.23.7
+2026-04-03T12:48:05.9708573Z  Git commit:        b8034c0
+2026-04-03T12:48:05.9709165Z  Built:             Tue Mar 25 15:07:16 2025
+2026-04-03T12:48:05.9709534Z  OS/Arch:           linux/amd64
+2026-04-03T12:48:05.9709862Z  Context:           default
+2026-04-03T12:48:05.9710074Z 
+2026-04-03T12:48:05.9710237Z Server: Docker Engine - Community
+2026-04-03T12:48:05.9710601Z  Engine:
+2026-04-03T12:48:05.9710852Z   Version:          28.0.4
+2026-04-03T12:48:05.9711220Z   API version:      1.48 (minimum version 1.24)
+2026-04-03T12:48:05.9711650Z   Go version:       go1.23.7
+2026-04-03T12:48:05.9711997Z   Git commit:       6430e49
+2026-04-03T12:48:05.9712350Z   Built:            Tue Mar 25 15:07:16 2025
+2026-04-03T12:48:05.9712768Z   OS/Arch:          linux/amd64
+2026-04-03T12:48:05.9713134Z   Experimental:     false
+2026-04-03T12:48:05.9713439Z  containerd:
+2026-04-03T12:48:05.9713715Z   Version:          v2.2.2
+2026-04-03T12:48:05.9714121Z   GitCommit:        301b2dac98f15c27117da5c8af12118a041a31d9
+2026-04-03T12:48:05.9714561Z  runc:
+2026-04-03T12:48:05.9714822Z   Version:          1.3.4
+2026-04-03T12:48:05.9715153Z   GitCommit:        v1.3.4-0-gd6d73eb8
+2026-04-03T12:48:05.9715512Z  docker-init:
+2026-04-03T12:48:05.9715791Z   Version:          0.19.0
+2026-04-03T12:48:05.9716101Z   GitCommit:        de40ad0
+2026-04-03T12:48:05.9751686Z [command]/usr/bin/docker info
+2026-04-03T12:48:06.4341425Z Client: Docker Engine - Community
+2026-04-03T12:48:06.4341845Z  Version:    28.0.4
+2026-04-03T12:48:06.4342158Z  Context:    default
+2026-04-03T12:48:06.4342452Z  Debug Mode: false
+2026-04-03T12:48:06.4342750Z  Plugins:
+2026-04-03T12:48:06.4343067Z   buildx: Docker Buildx (Docker Inc.)
+2026-04-03T12:48:06.4343493Z     Version:  v0.32.1
+2026-04-03T12:48:06.4343927Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2026-04-03T12:48:06.4344451Z   compose: Docker Compose (Docker Inc.)
+2026-04-03T12:48:06.4344865Z     Version:  v2.38.2
+2026-04-03T12:48:06.4345291Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2026-04-03T12:48:06.4345695Z 
+2026-04-03T12:48:06.4345812Z Server:
+2026-04-03T12:48:06.4346098Z  Containers: 0
+2026-04-03T12:48:06.4346393Z   Running: 0
+2026-04-03T12:48:06.4346698Z   Paused: 0
+2026-04-03T12:48:06.4347245Z   Stopped: 0
+2026-04-03T12:48:06.4358183Z  Images: 0
+2026-04-03T12:48:06.4361378Z  Server Version: 28.0.4
+2026-04-03T12:48:06.4362541Z  Storage Driver: overlay2
+2026-04-03T12:48:06.4363063Z   Backing Filesystem: extfs
+2026-04-03T12:48:06.4363398Z   Supports d_type: true
+2026-04-03T12:48:06.4363734Z   Using metacopy: false
+2026-04-03T12:48:06.4364053Z   Native Overlay Diff: false
+2026-04-03T12:48:06.4364398Z   userxattr: false
+2026-04-03T12:48:06.4364713Z  Logging Driver: json-file
+2026-04-03T12:48:06.4365048Z  Cgroup Driver: systemd
+2026-04-03T12:48:06.4365342Z  Cgroup Version: 2
+2026-04-03T12:48:06.4365604Z  Plugins:
+2026-04-03T12:48:06.4365839Z   Volume: local
+2026-04-03T12:48:06.4366155Z   Network: bridge host ipvlan macvlan null overlay
+2026-04-03T12:48:06.4366738Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2026-04-03T12:48:06.4367688Z  Swarm: inactive
+2026-04-03T12:48:06.4367987Z  Runtimes: io.containerd.runc.v2 runc
+2026-04-03T12:48:06.4368353Z  Default Runtime: runc
+2026-04-03T12:48:06.4368683Z  Init Binary: docker-init
+2026-04-03T12:48:06.4369341Z  containerd version: 301b2dac98f15c27117da5c8af12118a041a31d9
+2026-04-03T12:48:06.4369851Z  runc version: v1.3.4-0-gd6d73eb8
+2026-04-03T12:48:06.4370226Z  init version: de40ad0
+2026-04-03T12:48:06.4370505Z  Security Options:
+2026-04-03T12:48:06.4370754Z   apparmor
+2026-04-03T12:48:06.4370995Z   seccomp
+2026-04-03T12:48:06.4371242Z    Profile: builtin
+2026-04-03T12:48:06.4371682Z   cgroupns
+2026-04-03T12:48:06.4371963Z  Kernel Version: 6.17.0-1008-azure
+2026-04-03T12:48:06.4372354Z  Operating System: Ubuntu 24.04.4 LTS
+2026-04-03T12:48:06.4372720Z  OSType: linux
+2026-04-03T12:48:06.4372959Z  Architecture: x86_64
+2026-04-03T12:48:06.4373221Z  CPUs: 2
+2026-04-03T12:48:06.4373493Z  Total Memory: 7.755GiB
+2026-04-03T12:48:06.4373814Z  Name: runnervmrg6be
+2026-04-03T12:48:06.4374163Z  ID: 26c853c4-ebf5-403c-a446-44e39e017c08
+2026-04-03T12:48:06.4374569Z  Docker Root Dir: /var/lib/docker
+2026-04-03T12:48:06.4374946Z  Debug Mode: false
+2026-04-03T12:48:06.4375220Z  Username: githubactions
+2026-04-03T12:48:06.4375520Z  Experimental: false
+2026-04-03T12:48:06.4375778Z  Insecure Registries:
+2026-04-03T12:48:06.4393069Z   ::1/128
+2026-04-03T12:48:06.4393254Z   127.0.0.0/8
+2026-04-03T12:48:06.4393455Z  Live Restore Enabled: false
+2026-04-03T12:48:06.4393606Z 
+2026-04-03T12:48:06.4393943Z ##[endgroup]
+2026-04-03T12:48:06.5016006Z ##[group]Buildx version
+2026-04-03T12:48:06.5037167Z [command]/usr/bin/docker buildx version
+2026-04-03T12:48:06.5621419Z github.com/docker/buildx v0.32.1 d3bfb3f4e48a67dda56e957a6636f4fab6c5fcb2
+2026-04-03T12:48:06.5634600Z ##[endgroup]
+2026-04-03T12:48:06.5788714Z ##[group]Inspecting default docker context
+2026-04-03T12:48:06.5930851Z [
+2026-04-03T12:48:06.5931153Z   {
+2026-04-03T12:48:06.5931372Z     "Name": "default",
+2026-04-03T12:48:06.5931678Z     "Metadata": {},
+2026-04-03T12:48:06.5931980Z     "Endpoints": {
+2026-04-03T12:48:06.5932423Z       "docker": {
+2026-04-03T12:48:06.5932737Z         "Host": "unix:///var/run/docker.sock",
+2026-04-03T12:48:06.5933167Z         "SkipTLSVerify": false
+2026-04-03T12:48:06.5933484Z       }
+2026-04-03T12:48:06.5933724Z     },
+2026-04-03T12:48:06.5933994Z     "TLSMaterial": {},
+2026-04-03T12:48:06.5934318Z     "Storage": {
+2026-04-03T12:48:06.5934641Z       "MetadataPath": "<IN MEMORY>",
+2026-04-03T12:48:06.5934996Z       "TLSPath": "<IN MEMORY>"
+2026-04-03T12:48:06.5935303Z     }
+2026-04-03T12:48:06.5935549Z   }
+2026-04-03T12:48:06.5935791Z ]
+2026-04-03T12:48:06.5936368Z ##[endgroup]
+2026-04-03T12:48:06.5936883Z ##[group]Creating a new builder instance
+2026-04-03T12:48:06.7705505Z [command]/usr/bin/docker buildx create --name builder-5e6bd632-6121-45f7-b432-41ddee5e0f80 --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+2026-04-03T12:48:06.8336118Z builder-5e6bd632-6121-45f7-b432-41ddee5e0f80
+2026-04-03T12:48:06.8360301Z ##[endgroup]
+2026-04-03T12:48:06.8361807Z ##[group]Booting builder
+2026-04-03T12:48:06.8392316Z [command]/usr/bin/docker buildx inspect --bootstrap --builder builder-5e6bd632-6121-45f7-b432-41ddee5e0f80
+2026-04-03T12:48:06.8977582Z #1 [internal] booting buildkit
+2026-04-03T12:48:07.0484819Z #1 pulling image moby/buildkit:buildx-stable-1
+2026-04-03T12:48:10.6882172Z #1 pulling image moby/buildkit:buildx-stable-1 3.8s done
+2026-04-03T12:48:10.8382152Z #1 creating container buildx_buildkit_builder-5e6bd632-6121-45f7-b432-41ddee5e0f800
+2026-04-03T12:48:11.0570643Z #1 creating container buildx_buildkit_builder-5e6bd632-6121-45f7-b432-41ddee5e0f800 0.4s done
+2026-04-03T12:48:11.0594055Z #1 DONE 4.2s
+2026-04-03T12:48:11.0982640Z Name:          builder-5e6bd632-6121-45f7-b432-41ddee5e0f80
+2026-04-03T12:48:11.0986518Z Driver:        docker-container
+2026-04-03T12:48:11.0990448Z Last Activity: 2026-04-03 12:48:06 +0000 UTC
+2026-04-03T12:48:11.0991686Z 
+2026-04-03T12:48:11.0997383Z Nodes:
+2026-04-03T12:48:11.0997718Z Name:                  builder-5e6bd632-6121-45f7-b432-41ddee5e0f800
+2026-04-03T12:48:11.0998063Z Endpoint:              unix:///var/run/docker.sock
+2026-04-03T12:48:11.0998352Z Status:                running
+2026-04-03T12:48:11.0999151Z BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+2026-04-03T12:48:11.0999650Z BuildKit version:      v0.28.1
+2026-04-03T12:48:11.0999991Z Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/amd64/v4, linux/386
+2026-04-03T12:48:11.1000511Z Labels:
+2026-04-03T12:48:11.1000740Z  org.mobyproject.buildkit.worker.executor:         oci
+2026-04-03T12:48:11.1001123Z  org.mobyproject.buildkit.worker.hostname:         2aaf8b565e8e
+2026-04-03T12:48:11.1001492Z  org.mobyproject.buildkit.worker.network:          host
+2026-04-03T12:48:11.1001865Z  org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+2026-04-03T12:48:11.1002247Z  org.mobyproject.buildkit.worker.selinux.enabled:  false
+2026-04-03T12:48:11.1002627Z  org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+2026-04-03T12:48:11.1002929Z GC Policy rule#0:
+2026-04-03T12:48:11.1003102Z  All:            false
+2026-04-03T12:48:11.1003412Z  Filters:        type==source.local,type==exec.cachemount,type==source.git.checkout
+2026-04-03T12:48:11.1003758Z  Keep Duration:  48h0m0s
+2026-04-03T12:48:11.1003963Z  Max Used Space: 488.3MiB
+2026-04-03T12:48:11.1004154Z GC Policy rule#1:
+2026-04-03T12:48:11.1004326Z  All:            false
+2026-04-03T12:48:11.1004508Z  Keep Duration:  1440h0m0s
+2026-04-03T12:48:11.1004717Z  Reserved Space: 7.451GiB
+2026-04-03T12:48:11.1004906Z  Max Used Space: 54.02GiB
+2026-04-03T12:48:11.1005098Z  Min Free Space: 13.97GiB
+2026-04-03T12:48:11.1005289Z GC Policy rule#2:
+2026-04-03T12:48:11.1005454Z  All:            false
+2026-04-03T12:48:11.1005638Z  Reserved Space: 7.451GiB
+2026-04-03T12:48:11.1005823Z  Max Used Space: 54.02GiB
+2026-04-03T12:48:11.1006027Z  Min Free Space: 13.97GiB
+2026-04-03T12:48:11.1006207Z GC Policy rule#3:
+2026-04-03T12:48:11.1006380Z  All:            true
+2026-04-03T12:48:11.1018244Z  Reserved Space: 7.451GiB
+2026-04-03T12:48:11.1023345Z  Max Used Space: 54.02GiB
+2026-04-03T12:48:11.1023682Z  Min Free Space: 13.97GiB
+2026-04-03T12:48:11.1063527Z ##[endgroup]
+2026-04-03T12:48:11.1989587Z ##[group]Inspect builder
+2026-04-03T12:48:11.1999743Z {
+2026-04-03T12:48:11.2003545Z   "nodes": [
+2026-04-03T12:48:11.2003807Z     {
+2026-04-03T12:48:11.2004180Z       "name": "builder-5e6bd632-6121-45f7-b432-41ddee5e0f800",
+2026-04-03T12:48:11.2004698Z       "endpoint": "unix:///var/run/docker.sock",
+2026-04-03T12:48:11.2005088Z       "status": "running",
+2026-04-03T12:48:11.2006310Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+2026-04-03T12:48:11.2008142Z       "buildkit": "v0.28.1",
+2026-04-03T12:48:11.2008675Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/amd64/v4,linux/386",
+2026-04-03T12:48:11.2010006Z       "features": {
+2026-04-03T12:48:11.2010456Z         "Automatically load images to the Docker Engine image store": true,
+2026-04-03T12:48:11.2011026Z         "Cache export": true,
+2026-04-03T12:48:11.2011371Z         "Direct push": true,
+2026-04-03T12:48:11.2011731Z         "Docker exporter": true,
+2026-04-03T12:48:11.2012112Z         "Multi-platform build": true,
+2026-04-03T12:48:11.2012517Z         "OCI exporter": true
+2026-04-03T12:48:11.2012880Z       },
+2026-04-03T12:48:11.2013133Z       "labels": {
+2026-04-03T12:48:11.2013538Z         "org.mobyproject.buildkit.worker.executor": "oci",
+2026-04-03T12:48:11.2014211Z         "org.mobyproject.buildkit.worker.hostname": "2aaf8b565e8e",
+2026-04-03T12:48:11.2014894Z         "org.mobyproject.buildkit.worker.network": "host",
+2026-04-03T12:48:11.2015598Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+2026-04-03T12:48:11.2016384Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+2026-04-03T12:48:11.2018553Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+2026-04-03T12:48:11.2019311Z       },
+2026-04-03T12:48:11.2019540Z       "gcPolicy": [
+2026-04-03T12:48:11.2019784Z         {
+2026-04-03T12:48:11.2020008Z           "all": false,
+2026-04-03T12:48:11.2020246Z           "filter": [
+2026-04-03T12:48:11.2020564Z             "type==source.local",
+2026-04-03T12:48:11.2020945Z             "type==exec.cachemount",
+2026-04-03T12:48:11.2021352Z             "type==source.git.checkout"
+2026-04-03T12:48:11.2021746Z           ],
+2026-04-03T12:48:11.2022059Z           "keepDuration": "48h0m0s",
+2026-04-03T12:48:11.2022648Z           "maxUsedSpace": "488.3MiB"
+2026-04-03T12:48:11.2023043Z         },
+2026-04-03T12:48:11.2023313Z         {
+2026-04-03T12:48:11.2023589Z           "all": false,
+2026-04-03T12:48:11.2023948Z           "keepDuration": "1440h0m0s",
+2026-04-03T12:48:11.2024383Z           "reservedSpace": "7.451GiB",
+2026-04-03T12:48:11.2024838Z           "maxUsedSpace": "54.02GiB",
+2026-04-03T12:48:11.2025237Z           "minFreeSpace": "13.97GiB"
+2026-04-03T12:48:11.2025655Z         },
+2026-04-03T12:48:11.2025919Z         {
+2026-04-03T12:48:11.2026192Z           "all": false,
+2026-04-03T12:48:11.2026555Z           "reservedSpace": "7.451GiB",
+2026-04-03T12:48:11.2026976Z           "maxUsedSpace": "54.02GiB",
+2026-04-03T12:48:11.2027416Z           "minFreeSpace": "13.97GiB"
+2026-04-03T12:48:11.2027811Z         },
+2026-04-03T12:48:11.2028085Z         {
+2026-04-03T12:48:11.2028402Z           "all": true,
+2026-04-03T12:48:11.2028782Z           "reservedSpace": "7.451GiB",
+2026-04-03T12:48:11.2029306Z           "maxUsedSpace": "54.02GiB",
+2026-04-03T12:48:11.2029746Z           "minFreeSpace": "13.97GiB"
+2026-04-03T12:48:11.2030160Z         }
+2026-04-03T12:48:11.2030438Z       ]
+2026-04-03T12:48:11.2030695Z     }
+2026-04-03T12:48:11.2030954Z   ],
+2026-04-03T12:48:11.2031324Z   "name": "builder-5e6bd632-6121-45f7-b432-41ddee5e0f80",
+2026-04-03T12:48:11.2031896Z   "driver": "docker-container",
+2026-04-03T12:48:11.2032358Z   "lastActivity": "2026-04-03T12:48:06.000Z"
+2026-04-03T12:48:11.2032781Z }
+2026-04-03T12:48:11.2033429Z ##[endgroup]
+2026-04-03T12:48:11.2033991Z ##[group]BuildKit version
+2026-04-03T12:48:11.2034461Z builder-5e6bd632-6121-45f7-b432-41ddee5e0f800: v0.28.1
+2026-04-03T12:48:11.2035192Z ##[endgroup]
+2026-04-03T12:48:11.2119312Z ##[group]Run pnpm/action-setup@v2
+2026-04-03T12:48:11.2119555Z with:
+2026-04-03T12:48:11.2119724Z   version: 9
+2026-04-03T12:48:11.2119892Z   dest: ~/setup-pnpm
+2026-04-03T12:48:11.2120074Z   run_install: null
+2026-04-03T12:48:11.2120264Z   package_json_file: package.json
+2026-04-03T12:48:11.2120480Z   standalone: false
+2026-04-03T12:48:11.2120641Z env:
+2026-04-03T12:48:11.2120801Z   expected_cache: 10%
+2026-04-03T12:48:11.2121010Z   test_description: Major changes simulation
+2026-04-03T12:48:11.2121243Z ##[endgroup]
+2026-04-03T12:48:11.2933951Z ##[group]Running self-installer...
+2026-04-03T12:48:11.9098580Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-04-03T12:48:11.9181164Z Packages: +1
+2026-04-03T12:48:11.9182417Z +
+2026-04-03T12:48:12.6956826Z Packages are hard linked from the content-addressable store to the virtual store.
+2026-04-03T12:48:12.6957761Z   Content-addressable store is at: /home/runner/.local/share/pnpm/store/v3
+2026-04-03T12:48:12.6958681Z   Virtual store is at:             node_modules/.pnpm
+2026-04-03T12:48:12.7140316Z 
+2026-04-03T12:48:12.7140920Z dependencies:
+2026-04-03T12:48:12.7146515Z + pnpm 9.15.9 (10.33.0 is available)
+2026-04-03T12:48:12.7147159Z 
+2026-04-03T12:48:12.7169548Z Done in 1.2s
+2026-04-03T12:48:12.9109432Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2026-04-03T12:48:12.9208481Z ##[endgroup]
+2026-04-03T12:48:12.9212866Z Installation Completed!
+2026-04-03T12:48:12.9276605Z ##[group]Run echo "Starting GitHub Actions Docker build..."
+2026-04-03T12:48:12.9276995Z [36;1mecho "Starting GitHub Actions Docker build..."[0m
+2026-04-03T12:48:12.9277291Z [36;1mecho "Test: test-6-major"[0m
+2026-04-03T12:48:12.9277530Z [36;1mecho "Disk space before build:"[0m
+2026-04-03T12:48:12.9277769Z [36;1mdf -h[0m
+2026-04-03T12:48:12.9277949Z [36;1mdocker buildx build \[0m
+2026-04-03T12:48:12.9278157Z [36;1m  --load \[0m
+2026-04-03T12:48:12.9278382Z [36;1m  -t openclaw:gha-test-test-6-major \[0m
+2026-04-03T12:48:12.9278642Z [36;1m  --progress=plain \[0m
+2026-04-03T12:48:12.9279264Z [36;1m  .[0m
+2026-04-03T12:48:12.9296997Z shell: /usr/bin/bash -e {0}
+2026-04-03T12:48:12.9297225Z env:
+2026-04-03T12:48:12.9297409Z   expected_cache: 10%
+2026-04-03T12:48:12.9297632Z   test_description: Major changes simulation
+2026-04-03T12:48:12.9298176Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-04-03T12:48:12.9298447Z ##[endgroup]
+2026-04-03T12:48:12.9333890Z Starting GitHub Actions Docker build...
+2026-04-03T12:48:12.9334762Z Test: test-6-major
+2026-04-03T12:48:12.9335446Z Disk space before build:
+2026-04-03T12:48:12.9348458Z Filesystem      Size  Used Avail Use% Mounted on
+2026-04-03T12:48:12.9350410Z /dev/root        72G   33G   40G  45% /
+2026-04-03T12:48:12.9352019Z tmpfs           3.9G   84K  3.9G   1% /dev/shm
+2026-04-03T12:48:12.9352471Z tmpfs           1.6G  1.1M  1.6G   1% /run
+2026-04-03T12:48:12.9352901Z tmpfs           5.0M     0  5.0M   0% /run/lock
+2026-04-03T12:48:12.9353423Z efivarfs        128M   26K  128M   1% /sys/firmware/efi/efivars
+2026-04-03T12:48:12.9353921Z /dev/sda16      881M   64M  756M   8% /boot
+2026-04-03T12:48:12.9354337Z /dev/sda15      105M  6.2M   99M   6% /boot/efi
+2026-04-03T12:48:12.9354778Z tmpfs           795M   12K  795M   1% /run/user/1001
+2026-04-03T12:48:13.1574438Z #0 building with "builder-5e6bd632-6121-45f7-b432-41ddee5e0f80" instance using docker-container driver
+2026-04-03T12:48:13.1576751Z 
+2026-04-03T12:48:13.1577800Z #1 [internal] load build definition from Dockerfile
+2026-04-03T12:48:13.1578389Z #1 transferring dockerfile: 13.45kB done
+2026-04-03T12:48:13.1578623Z #1 DONE 0.0s
+2026-04-03T12:48:13.1578914Z 
+2026-04-03T12:48:13.1580790Z #2 [auth] docker/dockerfile:pull token for registry-1.docker.io
+2026-04-03T12:48:13.3077720Z #2 DONE 0.0s
+2026-04-03T12:48:13.3077979Z 
+2026-04-03T12:48:13.3078511Z #3 resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+2026-04-03T12:48:13.5802956Z #3 DONE 0.5s
+2026-04-03T12:48:13.6829613Z 
+2026-04-03T12:48:13.6832073Z #4 docker-image://docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
+2026-04-03T12:48:13.6833290Z #4 resolve docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e done
+2026-04-03T12:48:13.6834480Z #4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 11.98MB / 11.98MB 0.1s done
+2026-04-03T12:48:13.8052241Z #4 extracting sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 0.1s done
+2026-04-03T12:48:13.8053199Z #4 DONE 0.2s
+2026-04-03T12:48:14.0333902Z 
+2026-04-03T12:48:14.0334996Z #5 [auth] library/node:pull token for registry-1.docker.io
+2026-04-03T12:48:14.0336003Z #5 DONE 0.0s
+2026-04-03T12:48:14.0336214Z 
+2026-04-03T12:48:14.0336871Z #6 [internal] load metadata for docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+2026-04-03T12:48:14.2396227Z #6 DONE 0.4s
+2026-04-03T12:48:14.3620873Z 
+2026-04-03T12:48:14.3621344Z #7 [internal] load .dockerignore
+2026-04-03T12:48:14.3621832Z #7 transferring context: 1.29kB done
+2026-04-03T12:48:14.3622240Z #7 DONE 0.0s
+2026-04-03T12:48:14.3622420Z 
+2026-04-03T12:48:14.3623131Z #8 [base-default 1/1] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+2026-04-03T12:48:14.3624886Z #8 resolve docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b done
+2026-04-03T12:48:14.3625808Z #8 DONE 0.0s
+2026-04-03T12:48:14.3626041Z 
+2026-04-03T12:48:14.3626188Z #9 [internal] load build context
+2026-04-03T12:48:18.7368968Z #9 transferring context: 89.76MB 4.4s done
+2026-04-03T12:48:19.2163353Z #9 DONE 4.7s
+2026-04-03T12:48:19.2163885Z 
+2026-04-03T12:48:19.2164681Z #8 [base-default 1/1] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+2026-04-03T12:48:19.2167737Z #8 sha256:0594f60e91c58a9c1a2505ed11f0823eaf05c52be0b49ceaffdf389d066d1441 450B / 450B 0.1s done
+2026-04-03T12:48:19.2168958Z #8 sha256:3dea9ce2fc4a195a1cf8db2fb69c1cfb7c817a9248d4d6bc0ddcb1f701d3ef0d 1.25MB / 1.25MB 0.1s done
+2026-04-03T12:48:19.2170085Z #8 sha256:03bbf11124abb071f8b8551ed5e778f07f76a9e24319be963961391a69306787 3.32kB / 3.32kB 0.1s done
+2026-04-03T12:48:19.2183464Z #8 sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 57.86MB / 57.86MB 1.0s done
+2026-04-03T12:48:19.2186271Z #8 sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 211.51MB / 211.51MB 4.6s done
+2026-04-03T12:48:19.2188303Z #8 sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 64.40MB / 64.40MB 0.9s done
+2026-04-03T12:48:19.2191084Z #8 sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 24.04MB / 24.04MB 0.4s done
+2026-04-03T12:48:19.2193252Z #8 sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 48.49MB / 48.49MB 0.3s done
+2026-04-03T12:48:19.2195970Z #8 extracting sha256:6a7e0620566c7dfbe5d3c9a7601d116556ec17a021b3e824f8ab09d12b0c25c6 3.4s done
+2026-04-03T12:48:19.2198062Z #8 extracting sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94
+2026-04-03T12:48:19.4273641Z #8 extracting sha256:aab3b37e4807fe48145826511e16a527bbc4695222ceb966669a4d16729b3b94 0.4s done
+2026-04-03T12:48:19.4274481Z #8 DONE 5.1s
+2026-04-03T12:48:19.5782827Z 
+2026-04-03T12:48:19.5784479Z #8 [base-default 1/1] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+2026-04-03T12:48:19.5786249Z #8 extracting sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601
+2026-04-03T12:48:20.6923949Z #8 extracting sha256:fa27031269f0a970255d56a9e793fc2a9d6bb091463cd5e632af4ae274881601 1.3s done
+2026-04-03T12:48:20.6925509Z #8 DONE 6.4s
+2026-04-03T12:48:20.8433752Z 
+2026-04-03T12:48:20.8435726Z #8 [base-default 1/1] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+2026-04-03T12:48:20.8442737Z #8 extracting sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884
+2026-04-03T12:48:24.3932369Z #8 extracting sha256:c032818082ff938f43355abf00f71e5531be197952a109867259ad63a917c884 3.7s done
+2026-04-03T12:48:24.3932996Z #8 DONE 10.1s
+2026-04-03T12:48:24.5489129Z 
+2026-04-03T12:48:24.5492517Z #8 [base-default 1/1] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+2026-04-03T12:48:24.5493889Z #8 extracting sha256:03bbf11124abb071f8b8551ed5e778f07f76a9e24319be963961391a69306787 done
+2026-04-03T12:48:24.5498990Z #8 extracting sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f
+2026-04-03T12:48:25.8181312Z #8 extracting sha256:5922d70a72a7dbc04fdfb5146bf8dbbea0ea381fb2d02fe2da881bdfdb4e138f 1.4s done
+2026-04-03T12:48:25.8182640Z #8 DONE 11.5s
+2026-04-03T12:48:26.0026380Z 
+2026-04-03T12:48:26.0027327Z #8 [base-default 1/1] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+2026-04-03T12:48:26.0028627Z #8 extracting sha256:3dea9ce2fc4a195a1cf8db2fb69c1cfb7c817a9248d4d6bc0ddcb1f701d3ef0d 0.0s done
+2026-04-03T12:48:26.0029324Z #8 extracting sha256:0594f60e91c58a9c1a2505ed11f0823eaf05c52be0b49ceaffdf389d066d1441 done
+2026-04-03T12:48:26.0029752Z #8 DONE 11.5s
+2026-04-03T12:48:26.0029860Z 
+2026-04-03T12:48:26.1119978Z #10 [build  2/15] RUN set -eux;     for attempt in 1 2 3 4 5; do       if curl --retry 5 --retry-all-errors --retry-delay 2 -fsSL https://bun.sh/install | bash; then         break;       fi;       if [ "$attempt" -eq 5 ]; then         exit 1;       fi;       sleep $((attempt * 2));     done
+2026-04-03T12:48:26.2465080Z #10 0.393 + + curl --retry 5 --retry-all-errors --retry-delay 2 -fsSL https://bun.sh/install
+2026-04-03T12:48:26.3973393Z #10 0.393 bash
+2026-04-03T12:48:27.0672183Z #10 1.114 #=#=#                                                                         
+2026-04-03T12:48:27.0672589Z 
+2026-04-03T12:48:27.2713970Z ##############################                                            41.8%
+2026-04-03T12:48:27.2723625Z ######################################################################## 100.0%
+2026-04-03T12:48:27.8461367Z #10 1.993 bun was installed successfully to ~/.bun/bin/bun 
+2026-04-03T12:48:27.9972425Z #10 1.994 
+2026-04-03T12:48:28.3003839Z #10 2.448 Added "~/.bun/bin" to $PATH in "~/.bashrc" 
+2026-04-03T12:48:28.3005631Z #10 2.448 
+2026-04-03T12:48:28.3005950Z #10 2.448 To get started, run: 
+2026-04-03T12:48:28.3006503Z #10 2.448 
+2026-04-03T12:48:28.3006787Z #10 2.448   source /root/.bashrc 
+2026-04-03T12:48:28.3007190Z #10 2.448   bun --help 
+2026-04-03T12:48:28.4511689Z #10 2.448 + break
+2026-04-03T12:48:29.4267094Z #10 ...
+2026-04-03T12:48:29.4272110Z 
+2026-04-03T12:48:29.4273032Z #11 [stage-5  1/15] WORKDIR /app
+2026-04-03T12:48:29.4275276Z #11 DONE 3.6s
+2026-04-03T12:48:29.5785568Z 
+2026-04-03T12:48:29.5786700Z #12 [ext-deps 2/3] COPY extensions /tmp/extensions
+2026-04-03T12:48:29.5787790Z #12 DONE 3.6s
+2026-04-03T12:48:29.5787969Z 
+2026-04-03T12:48:29.5789472Z #10 [build  2/15] RUN set -eux;     for attempt in 1 2 3 4 5; do       if curl --retry 5 --retry-all-errors --retry-delay 2 -fsSL https://bun.sh/install | bash; then         break;       fi;       if [ "$attempt" -eq 5 ]; then         exit 1;       fi;       sleep $((attempt * 2));     done
+2026-04-03T12:48:29.5791399Z #10 DONE 3.6s
+2026-04-03T12:48:29.5791577Z 
+2026-04-03T12:48:29.5791744Z #13 [build  3/15] RUN corepack enable
+2026-04-03T12:48:29.7136963Z #13 ...
+2026-04-03T12:48:29.7137400Z 
+2026-04-03T12:48:29.7139532Z #14 [ext-deps 3/3] RUN mkdir -p /out &&     for ext in ; do       if [ -f "/tmp/extensions/$ext/package.json" ]; then         mkdir -p "/out/$ext" &&         cp "/tmp/extensions/$ext/package.json" "/out/$ext/package.json";       fi;     done
+2026-04-03T12:48:29.7141220Z #14 DONE 0.3s
+2026-04-03T12:48:29.8139722Z 
+2026-04-03T12:48:29.8150178Z #13 [build  3/15] RUN corepack enable
+2026-04-03T12:48:29.8151391Z #13 DONE 0.3s
+2026-04-03T12:48:29.8152241Z 
+2026-04-03T12:48:29.8153031Z #15 [build  4/15] WORKDIR /app
+2026-04-03T12:48:29.8155915Z #15 DONE 0.0s
+2026-04-03T12:48:29.8156112Z 
+2026-04-03T12:48:29.8157555Z #16 [build  5/15] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+2026-04-03T12:48:29.8158358Z #16 DONE 0.0s
+2026-04-03T12:48:29.8158533Z 
+2026-04-03T12:48:29.8159546Z #17 [build  6/15] COPY ui/package.json ./ui/package.json
+2026-04-03T12:48:29.8160015Z #17 DONE 0.0s
+2026-04-03T12:48:29.8160182Z 
+2026-04-03T12:48:29.8166430Z #18 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+2026-04-03T12:48:29.8172652Z #18 0.298 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+2026-04-03T12:48:29.8173870Z #18 0.344 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+2026-04-03T12:48:29.8176121Z #18 0.344 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+2026-04-03T12:48:30.0193853Z #18 ...
+2026-04-03T12:48:30.0199776Z 
+2026-04-03T12:48:30.0201620Z #19 [build  7/15] COPY patches ./patches
+2026-04-03T12:48:30.0203958Z #19 DONE 0.0s
+2026-04-03T12:48:30.0206621Z 
+2026-04-03T12:48:30.0207115Z #20 [build  8/15] COPY scripts/postinstall-bundled-plugins.mjs scripts/npm-runner.mjs ./scripts/
+2026-04-03T12:48:30.0207864Z #20 DONE 0.0s
+2026-04-03T12:48:30.0208028Z 
+2026-04-03T12:48:30.0220757Z #18 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+2026-04-03T12:48:30.0223782Z #18 0.444 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8792 kB]
+2026-04-03T12:48:30.3440506Z #18 0.916 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+2026-04-03T12:48:30.7852619Z #18 ...
+2026-04-03T12:48:30.7857827Z 
+2026-04-03T12:48:30.7858444Z #21 [build  9/15] COPY --from=ext-deps /out/ ./extensions/
+2026-04-03T12:48:30.7864778Z #21 DONE 0.0s
+2026-04-03T12:48:30.7864982Z 
+2026-04-03T12:48:30.7867430Z #18 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+2026-04-03T12:48:30.7880739Z #18 1.361 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [294 kB]
+2026-04-03T12:48:32.0525799Z #18 2.629 Fetched 9347 kB in 2s (3942 kB/s)
+2026-04-03T12:48:32.7644641Z #18 2.629 Reading package lists...
+2026-04-03T12:48:33.7547193Z #18 3.370 Reading package lists...
+2026-04-03T12:48:33.7593641Z #18 4.146 Building dependency tree...
+2026-04-03T12:48:33.9946641Z #18 4.368 Calculating upgrade...
+2026-04-03T12:48:33.9947821Z #18 4.571 The following packages will be upgraded:
+2026-04-03T12:48:34.2269882Z #18 4.572   imagemagick imagemagick-6-common imagemagick-6.q16
+2026-04-03T12:48:34.2270789Z #18 4.572   libmagickcore-6-arch-config libmagickcore-6-headers libmagickcore-6.q16-6
+2026-04-03T12:48:34.2293429Z #18 4.572   libmagickcore-6.q16-6-extra libmagickcore-6.q16-dev libmagickcore-dev
+2026-04-03T12:48:34.2294377Z #18 4.572   libmagickwand-6-headers libmagickwand-6.q16-6 libmagickwand-6.q16-dev
+2026-04-03T12:48:34.2295247Z #18 4.574   libmagickwand-dev libpng-dev libpng16-16 linux-libc-dev
+2026-04-03T12:48:34.2295983Z #18 4.609 16 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2026-04-03T12:48:34.2296610Z #18 4.609 Need to get 7636 kB of archives.
+2026-04-03T12:48:34.2297223Z #18 4.609 After this operation, 39.9 kB of additional disk space will be used.
+2026-04-03T12:48:34.2298486Z #18 4.609 Get:1 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickwand-6.q16-dev amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [412 kB]
+2026-04-03T12:48:34.2300249Z #18 4.619 Get:2 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickwand-dev all 8:6.9.11.60+dfsg-1.6+deb12u7 [1336 B]
+2026-04-03T12:48:34.2301719Z #18 4.620 Get:3 http://deb.debian.org/debian-security bookworm-security/main amd64 libpng-dev amd64 1.6.39-2+deb12u4 [360 kB]
+2026-04-03T12:48:34.2303080Z #18 4.622 Get:4 http://deb.debian.org/debian-security bookworm-security/main amd64 libpng16-16 amd64 1.6.39-2+deb12u4 [276 kB]
+2026-04-03T12:48:34.2304557Z #18 4.624 Get:5 http://deb.debian.org/debian-security bookworm-security/main amd64 imagemagick-6.q16 amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [344 kB]
+2026-04-03T12:48:34.2306185Z #18 4.629 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-6.q16-dev amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [1118 kB]
+2026-04-03T12:48:34.2308236Z #18 4.637 Get:7 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-6.q16-6 amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [1798 kB]
+2026-04-03T12:48:34.2309996Z #18 4.641 Get:8 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickwand-6.q16-6 amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [414 kB]
+2026-04-03T12:48:34.2311600Z #18 4.643 Get:9 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-dev all 8:6.9.11.60+dfsg-1.6+deb12u7 [1344 B]
+2026-04-03T12:48:34.2313262Z #18 4.645 Get:10 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-6-arch-config amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [135 kB]
+2026-04-03T12:48:34.2314948Z #18 4.646 Get:11 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickwand-6-headers all 8:6.9.11.60+dfsg-1.6+deb12u7 [10.5 kB]
+2026-04-03T12:48:34.2316756Z #18 4.646 Get:12 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-6-headers all 8:6.9.11.60+dfsg-1.6+deb12u7 [50.9 kB]
+2026-04-03T12:48:34.2318395Z #18 4.647 Get:13 http://deb.debian.org/debian-security bookworm-security/main amd64 imagemagick-6-common all 8:6.9.11.60+dfsg-1.6+deb12u7 [171 kB]
+2026-04-03T12:48:34.2320137Z #18 4.648 Get:14 http://deb.debian.org/debian-security bookworm-security/main amd64 libmagickcore-6.q16-6-extra amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [177 kB]
+2026-04-03T12:48:34.2321751Z #18 4.650 Get:15 http://deb.debian.org/debian-security bookworm-security/main amd64 imagemagick amd64 8:6.9.11.60+dfsg-1.6+deb12u7 [127 kB]
+2026-04-03T12:48:34.2323185Z #18 4.653 Get:16 http://deb.debian.org/debian-security bookworm-security/main amd64 linux-libc-dev amd64 6.1.164-1 [2240 kB]
+2026-04-03T12:48:34.2586430Z #18 4.835 debconf: delaying package configuration, since apt-utils is not installed
+2026-04-03T12:48:34.4207565Z #18 4.863 Fetched 7636 kB in 0s (97.1 MB/s)
+2026-04-03T12:48:34.4208294Z #18 4.882 (Reading database ... 
+2026-04-03T12:48:34.4208812Z (Reading database ... 5%
+2026-04-03T12:48:34.4210825Z (Reading database ... 10%
+2026-04-03T12:48:34.4211174Z (Reading database ... 15%
+2026-04-03T12:48:34.4211477Z (Reading database ... 20%
+2026-04-03T12:48:34.4211790Z (Reading database ... 25%
+2026-04-03T12:48:34.4212116Z (Reading database ... 30%
+2026-04-03T12:48:34.4212420Z (Reading database ... 35%
+2026-04-03T12:48:34.4214017Z (Reading database ... 40%
+2026-04-03T12:48:34.4214363Z (Reading database ... 45%
+2026-04-03T12:48:34.4214683Z (Reading database ... 50%
+2026-04-03T12:48:34.4214991Z (Reading database ... 55%
+2026-04-03T12:48:34.4215313Z (Reading database ... 60%
+2026-04-03T12:48:34.4215622Z (Reading database ... 65%
+2026-04-03T12:48:34.4215948Z (Reading database ... 70%
+2026-04-03T12:48:34.4216307Z (Reading database ... 75%
+2026-04-03T12:48:34.4216633Z (Reading database ... 80%
+2026-04-03T12:48:34.4216961Z (Reading database ... 85%
+2026-04-03T12:48:34.4217325Z (Reading database ... 90%
+2026-04-03T12:48:34.4217671Z (Reading database ... 95%
+2026-04-03T12:48:34.4218029Z (Reading database ... 100%
+2026-04-03T12:48:34.4218553Z (Reading database ... 23258 files and directories currently installed.)
+2026-04-03T12:48:34.4220495Z #18 4.907 Preparing to unpack .../00-libmagickwand-6.q16-dev_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+2026-04-03T12:48:34.4221707Z #18 4.912 Unpacking libmagickwand-6.q16-dev:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:34.5398747Z #18 4.997 Preparing to unpack .../01-libmagickwand-dev_8%3a6.9.11.60+dfsg-1.6+deb12u7_all.deb ...
+2026-04-03T12:48:34.5401997Z #18 5.014 Unpacking libmagickwand-dev (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:34.5402952Z #18 5.045 Preparing to unpack .../02-libpng-dev_1.6.39-2+deb12u4_amd64.deb ...
+2026-04-03T12:48:34.5403804Z #18 5.049 Unpacking libpng-dev:amd64 (1.6.39-2+deb12u4) over (1.6.39-2+deb12u3) ...
+2026-04-03T12:48:34.6973221Z #18 5.116 Preparing to unpack .../03-libpng16-16_1.6.39-2+deb12u4_amd64.deb ...
+2026-04-03T12:48:34.6974921Z #18 5.125 Unpacking libpng16-16:amd64 (1.6.39-2+deb12u4) over (1.6.39-2+deb12u3) ...
+2026-04-03T12:48:34.6976824Z #18 5.179 Preparing to unpack .../04-imagemagick-6.q16_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+2026-04-03T12:48:34.6977852Z #18 5.186 Unpacking imagemagick-6.q16 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:34.6980522Z #18 5.273 Preparing to unpack .../05-libmagickcore-6.q16-dev_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+2026-04-03T12:48:34.8531294Z #18 5.279 Unpacking libmagickcore-6.q16-dev:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:34.8759692Z #18 5.452 Preparing to unpack .../06-libmagickcore-6.q16-6_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+2026-04-03T12:48:35.0306842Z #18 5.456 Unpacking libmagickcore-6.q16-6:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:35.3845220Z #18 5.961 Preparing to unpack .../07-libmagickwand-6.q16-6_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+2026-04-03T12:48:35.5172698Z #18 5.982 Unpacking libmagickwand-6.q16-6:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:35.5173576Z #18 6.093 Preparing to unpack .../08-libmagickcore-dev_8%3a6.9.11.60+dfsg-1.6+deb12u7_all.deb ...
+2026-04-03T12:48:35.6633303Z #18 6.135 Unpacking libmagickcore-dev (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:35.6634427Z #18 6.239 Preparing to unpack .../09-libmagickcore-6-arch-config_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+2026-04-03T12:48:35.7712269Z #18 6.244 Unpacking libmagickcore-6-arch-config:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:35.7713597Z #18 6.305 Preparing to unpack .../10-libmagickwand-6-headers_8%3a6.9.11.60+dfsg-1.6+deb12u7_all.deb ...
+2026-04-03T12:48:35.7714675Z #18 6.347 Unpacking libmagickwand-6-headers (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:35.8867386Z #18 6.463 Preparing to unpack .../11-libmagickcore-6-headers_8%3a6.9.11.60+dfsg-1.6+deb12u7_all.deb ...
+2026-04-03T12:48:36.0406674Z #18 6.479 Unpacking libmagickcore-6-headers (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:36.0409538Z #18 6.617 Preparing to unpack .../12-imagemagick-6-common_8%3a6.9.11.60+dfsg-1.6+deb12u7_all.deb ...
+2026-04-03T12:48:36.2146882Z #18 6.621 Unpacking imagemagick-6-common (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:36.2148751Z #18 6.672 Preparing to unpack .../13-libmagickcore-6.q16-6-extra_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+2026-04-03T12:48:36.2151111Z #18 6.676 Unpacking libmagickcore-6.q16-6-extra:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:36.2152195Z #18 6.791 Preparing to unpack .../14-imagemagick_8%3a6.9.11.60+dfsg-1.6+deb12u7_amd64.deb ...
+2026-04-03T12:48:36.4520644Z #18 6.815 Unpacking imagemagick (8:6.9.11.60+dfsg-1.6+deb12u7) over (8:6.9.11.60+dfsg-1.6+deb12u6) ...
+2026-04-03T12:48:36.4521898Z #18 6.870 Preparing to unpack .../15-linux-libc-dev_6.1.164-1_amd64.deb ...
+2026-04-03T12:48:36.4523032Z #18 6.876 Unpacking linux-libc-dev:amd64 (6.1.164-1) over (6.1.162-1) ...
+2026-04-03T12:48:37.3746520Z #18 7.951 Setting up imagemagick-6-common (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.5136203Z #18 7.974 Setting up linux-libc-dev:amd64 (6.1.164-1) ...
+2026-04-03T12:48:37.5137050Z #18 7.978 Setting up libpng16-16:amd64 (1.6.39-2+deb12u4) ...
+2026-04-03T12:48:37.5139495Z #18 7.981 Setting up libmagickcore-6-headers (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.5140289Z #18 7.989 Setting up libmagickcore-6-arch-config:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.5143161Z #18 7.993 Setting up libmagickwand-6-headers (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.5143646Z #18 8.001 Setting up libpng-dev:amd64 (1.6.39-2+deb12u4) ...
+2026-04-03T12:48:37.5144343Z #18 8.004 Setting up libmagickcore-6.q16-6:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.5145469Z #18 8.008 Setting up libmagickwand-6.q16-6:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.5146051Z #18 8.013 Setting up libmagickcore-6.q16-6-extra:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.5146614Z #18 8.016 Setting up libmagickcore-6.q16-dev:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.5147045Z #18 8.019 Setting up imagemagick-6.q16 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.7622438Z #18 8.090 Setting up libmagickwand-6.q16-dev:amd64 (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.7623325Z #18 8.096 Setting up libmagickcore-dev (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.7624011Z #18 8.108 Setting up imagemagick (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.7624916Z #18 8.116 Setting up libmagickwand-dev (8:6.9.11.60+dfsg-1.6+deb12u7) ...
+2026-04-03T12:48:37.7625588Z #18 8.128 Processing triggers for libc-bin (2.36-9+deb12u13) ...
+2026-04-03T12:48:37.7626260Z #18 8.149 Processing triggers for hicolor-icon-theme (0.17-2) ...
+2026-04-03T12:48:38.2847551Z #18 8.182 Reading package lists...
+2026-04-03T12:48:38.4801315Z #18 8.878 Building dependency tree...
+2026-04-03T12:48:38.4801966Z #18 9.056 Reading state information...
+2026-04-03T12:48:38.8416780Z #18 9.242 procps is already the newest version (2:4.0.2-3).
+2026-04-03T12:48:38.8417430Z #18 9.242 hostname is already the newest version (3.23+nmu1).
+2026-04-03T12:48:38.8418066Z #18 9.242 curl is already the newest version (7.88.1-10+deb12u14).
+2026-04-03T12:48:38.8418694Z #18 9.242 git is already the newest version (1:2.39.5-0+deb12u3).
+2026-04-03T12:48:38.8419590Z #18 9.242 openssl is already the newest version (3.0.18-1~deb12u2).
+2026-04-03T12:48:38.8420210Z #18 9.242 The following NEW packages will be installed:
+2026-04-03T12:48:38.8420718Z #18 9.243   lsof
+2026-04-03T12:48:38.8421185Z #18 9.268 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+2026-04-03T12:48:38.8421751Z #18 9.268 Need to get 318 kB of archives.
+2026-04-03T12:48:38.8422339Z #18 9.268 After this operation, 494 kB of additional disk space will be used.
+2026-04-03T12:48:38.8423218Z #18 9.268 Get:1 http://deb.debian.org/debian bookworm/main amd64 lsof amd64 4.95.0-1 [318 kB]
+2026-04-03T12:48:38.8601580Z #18 9.436 debconf: delaying package configuration, since apt-utils is not installed
+2026-04-03T12:48:39.0088394Z #18 9.460 Fetched 318 kB in 0s (12.5 MB/s)
+2026-04-03T12:48:39.0091043Z #18 9.491 Selecting previously unselected package lsof.
+2026-04-03T12:48:39.0091757Z #18 9.491 (Reading database ... 
+2026-04-03T12:48:39.0092162Z (Reading database ... 5%
+2026-04-03T12:48:39.0092485Z (Reading database ... 10%
+2026-04-03T12:48:39.0092796Z (Reading database ... 15%
+2026-04-03T12:48:39.0093095Z (Reading database ... 20%
+2026-04-03T12:48:39.0093403Z (Reading database ... 25%
+2026-04-03T12:48:39.0093721Z (Reading database ... 30%
+2026-04-03T12:48:39.0094030Z (Reading database ... 35%
+2026-04-03T12:48:39.0094352Z (Reading database ... 40%
+2026-04-03T12:48:39.0094665Z (Reading database ... 45%
+2026-04-03T12:48:39.0096892Z (Reading database ... 50%
+2026-04-03T12:48:39.0097302Z (Reading database ... 55%
+2026-04-03T12:48:39.0097736Z (Reading database ... 60%
+2026-04-03T12:48:39.0098285Z (Reading database ... 65%
+2026-04-03T12:48:39.0098617Z (Reading database ... 70%
+2026-04-03T12:48:39.0099254Z (Reading database ... 75%
+2026-04-03T12:48:39.0099457Z (Reading database ... 80%
+2026-04-03T12:48:39.0099648Z (Reading database ... 85%
+2026-04-03T12:48:39.0099849Z (Reading database ... 90%
+2026-04-03T12:48:39.0100043Z (Reading database ... 95%
+2026-04-03T12:48:39.0100609Z (Reading database ... 100%
+2026-04-03T12:48:39.0101095Z (Reading database ... 23258 files and directories currently installed.)
+2026-04-03T12:48:39.0101923Z #18 9.519 Preparing to unpack .../lsof_4.95.0-1_amd64.deb ...
+2026-04-03T12:48:39.0103183Z #18 9.525 Unpacking lsof (4.95.0-1) ...
+2026-04-03T12:48:40.2092140Z #18 9.585 Setting up lsof (4.95.0-1) ...
+2026-04-03T12:48:40.2093801Z #18 DONE 10.8s
+2026-04-03T12:48:40.2093962Z 
+2026-04-03T12:48:40.2094731Z #22 [build 10/15] RUN --mount=type=cache,id=openclaw-pnpm-store,target=/root/.local/share/pnpm/store,sharing=locked     NODE_OPTIONS=--max-old-space-size=2048 pnpm install --frozen-lockfile
+2026-04-03T12:48:40.2095743Z #22 0.216 ! Corepack is about to download https://registry.npmjs.org/pnpm/-/pnpm-10.32.1.tgz
+2026-04-03T12:48:40.2096237Z #22 1.996 Scope: all 2 workspace projects
+2026-04-03T12:48:40.2096544Z #22 2.221 Lockfile is up to date, resolution step is skipped
+2026-04-03T12:48:40.2096899Z #22 2.592 Packages: +1200
+2026-04-03T12:48:40.2097171Z #22 2.592 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-04-03T12:48:40.2097464Z #22 2.892 
+2026-04-03T12:48:40.2098138Z #22 2.892    ╭───────────────────────────────────────────────╮
+2026-04-03T12:48:40.2098820Z #22 2.892    │                                               │
+2026-04-03T12:48:40.2099746Z #22 2.892    │     Update available! 10.32.1 → 10.33.0.      │
+2026-04-03T12:48:40.2100329Z #22 2.892    │     Changelog: https://pnpm.io/v/10.33.0      │
+2026-04-03T12:48:40.2100896Z #22 2.892    │   To update, run: corepack use pnpm@10.33.0   │
+2026-04-03T12:48:40.2101449Z #22 2.892    │                                               │
+2026-04-03T12:48:40.2101991Z #22 2.892    ╰───────────────────────────────────────────────╯
+2026-04-03T12:48:40.2102387Z #22 2.892 
+2026-04-03T12:48:40.2102703Z #22 2.954 Progress: resolved 0, reused 0, downloaded 1, added 0
+2026-04-03T12:48:40.2103210Z #22 3.956 Progress: resolved 0, reused 0, downloaded 19, added 2
+2026-04-03T12:48:40.2103716Z #22 4.958 Progress: resolved 0, reused 0, downloaded 36, added 7
+2026-04-03T12:48:40.2104244Z #22 5.961 Progress: resolved 0, reused 0, downloaded 50, added 10
+2026-04-03T12:48:40.2104805Z #22 6.962 Progress: resolved 0, reused 0, downloaded 63, added 14
+2026-04-03T12:48:40.2105392Z #22 7.963 Progress: resolved 0, reused 0, downloaded 90, added 22
+2026-04-03T12:48:40.2106011Z #22 8.965 Progress: resolved 0, reused 0, downloaded 139, added 38
+2026-04-03T12:48:40.3625484Z #22 ...
+2026-04-03T12:48:40.3625744Z 
+2026-04-03T12:48:40.3626038Z #23 [stage-5  3/15] RUN chown node:node /app
+2026-04-03T12:48:40.8064284Z #23 DONE 0.4s
+2026-04-03T12:48:40.8064520Z 
+2026-04-03T12:48:40.8065442Z #22 [build 10/15] RUN --mount=type=cache,id=openclaw-pnpm-store,target=/root/.local/share/pnpm/store,sharing=locked     NODE_OPTIONS=--max-old-space-size=2048 pnpm install --frozen-lockfile
+2026-04-03T12:48:40.8066834Z #22 9.966 Progress: resolved 0, reused 0, downloaded 149, added 41
+2026-04-03T12:48:41.6253314Z #22 10.97 Progress: resolved 0, reused 0, downloaded 183, added 50
+2026-04-03T12:48:42.6270708Z #22 11.98 Progress: resolved 0, reused 0, downloaded 219, added 63
+2026-04-03T12:48:43.6345695Z #22 12.98 Progress: resolved 0, reused 0, downloaded 290, added 88
+2026-04-03T12:48:44.6411558Z #22 13.99 Progress: resolved 0, reused 0, downloaded 302, added 93
+2026-04-03T12:48:45.6443033Z #22 14.99 Progress: resolved 0, reused 0, downloaded 309, added 93
+2026-04-03T12:48:46.6450428Z #22 15.99 Progress: resolved 0, reused 0, downloaded 315, added 97
+2026-04-03T12:48:47.6452578Z #22 16.99 Progress: resolved 0, reused 0, downloaded 323, added 97
+2026-04-03T12:48:49.8816188Z #22 19.23 Progress: resolved 0, reused 0, downloaded 324, added 97
+2026-04-03T12:48:50.8815213Z #22 20.23 Progress: resolved 0, reused 0, downloaded 324, added 98
+2026-04-03T12:48:51.8826942Z #22 21.23 Progress: resolved 0, reused 0, downloaded 334, added 101
+2026-04-03T12:48:52.8825560Z #22 22.23 Progress: resolved 0, reused 0, downloaded 385, added 115
+2026-04-03T12:48:53.8819317Z #22 23.23 Progress: resolved 0, reused 0, downloaded 422, added 127
+2026-04-03T12:48:54.8832567Z #22 24.23 Progress: resolved 0, reused 0, downloaded 475, added 144
+2026-04-03T12:48:55.8833811Z #22 25.23 Progress: resolved 0, reused 0, downloaded 562, added 183
+2026-04-03T12:48:56.8874168Z #22 26.24 Progress: resolved 0, reused 0, downloaded 649, added 217
+2026-04-03T12:48:57.8896135Z #22 27.24 Progress: resolved 0, reused 0, downloaded 665, added 221
+2026-04-03T12:48:58.8883124Z #22 28.24 Progress: resolved 0, reused 0, downloaded 712, added 238
+2026-04-03T12:48:59.1670648Z #22 28.52 Packages are hard linked from the content-addressable store to the virtual store.
+2026-04-03T12:48:59.1672907Z #22 28.52   Content-addressable store is at: /root/.local/share/pnpm/store/v10
+2026-04-03T12:48:59.1674083Z #22 28.52   Virtual store is at:             node_modules/.pnpm
+2026-04-03T12:48:59.8882046Z #22 29.24 Progress: resolved 0, reused 0, downloaded 829, added 296
+2026-04-03T12:49:00.8892672Z #22 30.24 Progress: resolved 0, reused 0, downloaded 866, added 308
+2026-04-03T12:49:05.4535680Z #22 34.80 Progress: resolved 0, reused 0, downloaded 866, added 309
+2026-04-03T12:49:06.4526872Z #22 35.80 Progress: resolved 0, reused 0, downloaded 897, added 319
+2026-04-03T12:49:07.4534420Z #22 36.80 Progress: resolved 0, reused 0, downloaded 907, added 321
+2026-04-03T12:49:08.4530469Z #22 37.80 Progress: resolved 0, reused 0, downloaded 1027, added 364
+2026-04-03T12:49:09.4540216Z #22 38.80 Progress: resolved 0, reused 0, downloaded 1083, added 383
+2026-04-03T12:49:10.4543938Z #22 39.80 Progress: resolved 0, reused 0, downloaded 1127, added 394
+2026-04-03T12:49:11.4539602Z #22 40.80 Progress: resolved 0, reused 0, downloaded 1145, added 399
+2026-04-03T12:49:12.4545290Z #22 41.80 Progress: resolved 0, reused 0, downloaded 1156, added 416
+2026-04-03T12:49:13.4548638Z #22 42.81 Progress: resolved 0, reused 0, downloaded 1156, added 564
+2026-04-03T12:49:14.4563077Z #22 43.81 Progress: resolved 0, reused 0, downloaded 1156, added 638
+2026-04-03T12:49:15.4561828Z #22 44.81 Progress: resolved 0, reused 0, downloaded 1156, added 642
+2026-04-03T12:49:16.4571321Z #22 45.81 Progress: resolved 0, reused 0, downloaded 1156, added 680
+2026-04-03T12:49:17.4564682Z #22 46.81 Progress: resolved 0, reused 0, downloaded 1156, added 781
+2026-04-03T12:49:18.4570900Z #22 47.81 Progress: resolved 0, reused 0, downloaded 1156, added 893
+2026-04-03T12:49:19.4579978Z #22 48.81 Progress: resolved 0, reused 0, downloaded 1156, added 1057
+2026-04-03T12:49:20.4581495Z #22 49.81 Progress: resolved 0, reused 0, downloaded 1156, added 1155
+2026-04-03T12:49:21.4577606Z #22 50.81 Progress: resolved 0, reused 0, downloaded 1156, added 1168
+2026-04-03T12:49:22.3623842Z #22 51.71 Progress: resolved 0, reused 0, downloaded 1156, added 1200, done
+2026-04-03T12:49:22.4996150Z #22 51.72 node_modules/protobufjs postinstall$ node scripts/postinstall
+2026-04-03T12:49:22.4997538Z #22 51.75 node_modules/sharp install$ node install/check.js || npm run build
+2026-04-03T12:49:22.4999319Z #22 51.75 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall$ node download-lib.js
+2026-04-03T12:49:22.5000080Z #22 51.75 node_modules/esbuild postinstall$ node install.js
+2026-04-03T12:49:22.5000640Z #22 51.85 node_modules/protobufjs postinstall: Done
+2026-04-03T12:49:22.6518441Z #22 51.86 node_modules/@tloncorp/tlon-skill postinstall$ node scripts/postinstall.js
+2026-04-03T12:49:22.6521603Z #22 51.91 node_modules/sharp install: Done
+2026-04-03T12:49:22.6522303Z #22 51.94 node_modules/node-llama-cpp postinstall$ node ./dist/cli/cli.js postinstall
+2026-04-03T12:49:22.6524251Z #22 52.00 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: Downloading lib matrix-sdk-crypto.linux-x64-gnu.node from https://github.com/matrix-org/matrix-rust-sdk-crypto-nodejs/releases/download/v0.4.0/matrix-sdk-crypto.linux-x64-gnu.node
+2026-04-03T12:49:22.7755092Z #22 52.01 node_modules/@tloncorp/tlon-skill postinstall: [tlon-skill] Binary ready: /app/node_modules/@tloncorp/tlon-skill-linux-x64/tlon
+2026-04-03T12:49:22.7756753Z #22 52.01 node_modules/esbuild postinstall: Done
+2026-04-03T12:49:22.7757192Z #22 52.01 node_modules/@tloncorp/tlon-skill postinstall: Done
+2026-04-03T12:49:22.7757612Z #22 52.02 .../libsignal/node_modules/protobufjs postinstall$ node scripts/postinstall
+2026-04-03T12:49:22.7758342Z #22 52.13 .../libsignal/node_modules/protobufjs postinstall: Done
+2026-04-03T12:49:22.9622731Z #22 52.31 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: Download Completed
+2026-04-03T12:49:23.1188758Z #22 52.32 .../@matrix-org/matrix-sdk-crypto-nodejs postinstall: Done
+2026-04-03T12:49:23.5918018Z #22 52.94 node_modules/node-llama-cpp postinstall: Done
+2026-04-03T12:49:23.8475852Z #22 53.20 node_modules/@whiskeysockets/baileys preinstall$ node ./engine-requirements.js
+2026-04-03T12:49:24.0400099Z #22 53.24 node_modules/@whiskeysockets/baileys preinstall: Done
+2026-04-03T12:49:24.1295117Z #22 53.48 
+2026-04-03T12:49:24.2436066Z #22 53.59 . postinstall$ node scripts/postinstall-bundled-plugins.mjs
+2026-04-03T12:49:24.4790816Z #22 53.64 . postinstall: Done
+2026-04-03T12:49:24.4791733Z #22 53.64 . prepare$ command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git config core.hooksPath git-hooks || exit 0
+2026-04-03T12:49:24.4792970Z #22 53.66 . prepare: Done
+2026-04-03T12:49:24.4793298Z #22 53.68 Done in 52.2s using pnpm v10.32.1
+2026-04-03T12:49:25.3673261Z #22 DONE 54.7s
+2026-04-03T12:49:25.5199104Z 
+2026-04-03T12:49:25.5200097Z #24 [build 11/15] COPY . .
+2026-04-03T12:49:29.4617004Z #24 DONE 4.1s
+2026-04-03T12:49:29.6134904Z 
+2026-04-03T12:49:29.6135943Z #25 [build 12/15] RUN for dir in /app/extensions /app/.agent /app/.agents; do       if [ -d "$dir" ]; then         find "$dir" -type d -exec chmod 755 {} +;         find "$dir" -type f -exec chmod 644 {} +;       fi;     done
+2026-04-03T12:49:32.8838100Z #25 DONE 3.4s
+2026-04-03T12:49:33.0347595Z 
+2026-04-03T12:49:33.0350415Z #26 [build 13/15] RUN pnpm canvas:a2ui:bundle ||     (echo "A2UI bundle: creating stub (non-fatal)" &&      mkdir -p src/canvas-host/a2ui &&      echo "/* A2UI bundle unavailable in this build */" > src/canvas-host/a2ui/a2ui.bundle.js &&      echo "stub" > src/canvas-host/a2ui/.bundle.hash &&      rm -rf vendor/a2ui apps/shared/OpenClawKit/Tools/CanvasA2UI)
+2026-04-03T12:49:33.2447934Z #26 0.360 
+2026-04-03T12:49:33.2451830Z #26 0.360 > openclaw@2026.4.3 canvas:a2ui:bundle /app
+2026-04-03T12:49:33.2452516Z #26 0.360 > bash scripts/bundle-a2ui.sh
+2026-04-03T12:49:33.2453034Z #26 0.360 
+2026-04-03T12:49:36.2530374Z #26 3.369 <DIR>/a2ui.bundle.js  chunk │ size: 486.00 kB
+2026-04-03T12:49:36.4285539Z #26 3.369 
+2026-04-03T12:49:36.4286784Z #26 3.370 ✔ rolldown v1.0.0-rc.12 Finished in 83.84 ms
+2026-04-03T12:49:36.4287966Z #26 DONE 3.4s
+2026-04-03T12:49:36.4288150Z 
+2026-04-03T12:49:36.4288316Z #27 [build 14/15] RUN pnpm build:docker
+2026-04-03T12:49:36.6536989Z #27 0.375 
+2026-04-03T12:49:36.6538102Z #27 0.375 > openclaw@2026.4.3 build:docker /app
+2026-04-03T12:49:36.6543887Z #27 0.375 > node scripts/tsdown-build.mjs && node scripts/runtime-postbuild.mjs && node scripts/build-stamp.mjs && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/copy-export-html-templates.ts && node --import tsx scripts/write-build-info.ts && node --import tsx scripts/write-cli-startup-metadata.ts && node --import tsx scripts/write-cli-compat.ts
+2026-04-03T12:49:36.6546430Z #27 0.375 
+2026-04-03T12:50:04.2587356Z #27 27.98 [copy-hook-metadata] Copied 4 hook metadata files.
+2026-04-03T12:50:04.4191336Z #27 28.14 [copy-export-html-templates] Copied 5 export-html assets.
+2026-04-03T12:50:15.7979193Z #27 DONE 39.5s
+2026-04-03T12:50:15.9493732Z 
+2026-04-03T12:50:15.9494292Z #28 [build 15/15] RUN pnpm ui:build
+2026-04-03T12:50:16.2481291Z #28 0.449 
+2026-04-03T12:50:16.2482159Z #28 0.449 > openclaw@2026.4.3 ui:build /app
+2026-04-03T12:50:16.2483237Z #28 0.449 > node scripts/ui.js build
+2026-04-03T12:50:16.2483610Z #28 0.449 
+2026-04-03T12:50:16.6021451Z #28 0.803 
+2026-04-03T12:50:16.6024932Z #28 0.803 > openclaw-control-ui@ build /app/ui
+2026-04-03T12:50:16.6025410Z #28 0.803 > vite build
+2026-04-03T12:50:16.6025697Z #28 0.803 
+2026-04-03T12:50:16.8053790Z #28 1.006 vite v8.0.3 building client environment for production...
+2026-04-03T12:50:16.9694938Z #28 1.020 [2K
+2026-04-03T12:50:17.0992261Z transforming...[plugin rolldown:vite-resolve] Module "node:module" has been externalized for browser compatibility, imported by "/app/src/version.ts". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.
+2026-04-03T12:50:17.7350503Z #28 1.936 ✓ 1626 modules transformed.
+2026-04-03T12:50:17.9066052Z #28 2.107 rendering chunks...
+2026-04-03T12:50:18.8227695Z #28 3.024 computing gzip size...
+2026-04-03T12:50:19.0690384Z #28 3.052 ../dist/control-ui/index.html                                    2.98 kB │ gzip:   1.08 kB
+2026-04-03T12:50:19.0692240Z #28 3.052 ../dist/control-ui/assets/index-D-SPkk8b.css                   196.47 kB │ gzip:  32.30 kB
+2026-04-03T12:50:19.0693377Z #28 3.052 ../dist/control-ui/assets/directive-C6NBp6xJ.js                  0.36 kB │ gzip:   0.27 kB │ map:     1.03 kB
+2026-04-03T12:50:19.0694528Z #28 3.052 ../dist/control-ui/assets/hash-Bt1aVMQ3.js                       0.38 kB │ gzip:   0.26 kB │ map:     1.19 kB
+2026-04-03T12:50:19.0696271Z #28 3.052 ../dist/control-ui/assets/github-copilot-headers-CrI0CIJ7.js     0.46 kB │ gzip:   0.31 kB │ map:     1.80 kB
+2026-04-03T12:50:19.0697655Z #28 3.052 ../dist/control-ui/assets/channel-config-extras-DNCeHtEf.js      0.50 kB │ gzip:   0.32 kB │ map:     2.16 kB
+2026-04-03T12:50:19.0699052Z #28 3.052 ../dist/control-ui/assets/preload-helper-xBbMyY7u.js             1.20 kB │ gzip:   0.68 kB
+2026-04-03T12:50:19.0700230Z #28 3.052 ../dist/control-ui/assets/skills-shared-DJsJP4-4.js              1.50 kB │ gzip:   0.69 kB │ map:     4.49 kB
+2026-04-03T12:50:19.0701348Z #28 3.052 ../dist/control-ui/assets/transform-messages-XKqwKV3D.js         2.17 kB │ gzip:   0.97 kB │ map:    12.71 kB
+2026-04-03T12:50:19.0702398Z #28 3.052 ../dist/control-ui/assets/instances-0ROMgAP-.js                  2.79 kB │ gzip:   1.07 kB │ map:     5.53 kB
+2026-04-03T12:50:19.0703408Z #28 3.052 ../dist/control-ui/assets/logs-vVeVJ0CI.js                       3.12 kB │ gzip:   1.15 kB │ map:     6.45 kB
+2026-04-03T12:50:19.0704530Z #28 3.052 ../dist/control-ui/assets/openai-responses-CdufBx8D.js           3.18 kB │ gzip:   1.53 kB │ map:    10.61 kB
+2026-04-03T12:50:19.0705600Z #28 3.052 ../dist/control-ui/assets/azure-openai-responses-R9EiQb2K.js     3.32 kB │ gzip:   1.57 kB │ map:    10.55 kB
+2026-04-03T12:50:19.0706324Z #28 3.052 ../dist/control-ui/assets/format-nUIQxx1z.js                     3.73 kB │ gzip:   1.61 kB │ map:    19.64 kB
+2026-04-03T12:50:19.0706983Z #28 3.052 ../dist/control-ui/assets/debug-BhSaC48t.js                      4.17 kB │ gzip:   1.27 kB │ map:     7.15 kB
+2026-04-03T12:50:19.0707671Z #28 3.052 ../dist/control-ui/assets/de-DU-XmSEb.js                         4.32 kB │ gzip:   2.11 kB │ map:     6.89 kB
+2026-04-03T12:50:19.0708323Z #28 3.052 ../dist/control-ui/assets/zh-TW-CCgwa2eS.js                      4.69 kB │ gzip:   2.67 kB │ map:     8.08 kB
+2026-04-03T12:50:19.0709296Z #28 3.052 ../dist/control-ui/assets/pt-BR-RqwUvKTB.js                      5.15 kB │ gzip:   2.41 kB │ map:     8.62 kB
+2026-04-03T12:50:19.0710453Z #28 3.052 ../dist/control-ui/assets/google-C6cVCnOQ.js                     5.65 kB │ gzip:   2.06 kB │ map:    23.08 kB
+2026-04-03T12:50:19.0711725Z #28 3.052 ../dist/control-ui/assets/google-vertex-lQwbjEII.js              6.37 kB │ gzip:   2.32 kB │ map:    25.43 kB
+2026-04-03T12:50:19.0713113Z #28 3.052 ../dist/control-ui/assets/openai-responses-shared-DGSt2tWf.js    7.35 kB │ gzip:   2.39 kB │ map:    28.57 kB
+2026-04-03T12:50:19.0714453Z #28 3.052 ../dist/control-ui/assets/zh-CN-CUzhgfRs.js                     10.95 kB │ gzip:   5.25 kB │ map:    18.70 kB
+2026-04-03T12:50:19.0715800Z #28 3.052 ../dist/control-ui/assets/openai-codex-responses-CdLfkNBF.js    11.00 kB │ gzip:   4.30 kB │ map:    41.96 kB
+2026-04-03T12:50:19.0717182Z #28 3.052 ../dist/control-ui/assets/google-gemini-cli-BpxbH95Q.js         11.18 kB │ gzip:   4.32 kB │ map:    49.77 kB
+2026-04-03T12:50:19.0718511Z #28 3.052 ../dist/control-ui/assets/sessions-qKVFJW-w.js                  11.49 kB │ gzip:   3.20 kB │ map:    27.51 kB
+2026-04-03T12:50:19.0720225Z #28 3.052 ../dist/control-ui/assets/openai-completions-Dzzq5l94.js        11.88 kB │ gzip:   3.93 kB │ map:    46.60 kB
+2026-04-03T12:50:19.0721573Z #28 3.052 ../dist/control-ui/assets/es-Be891ZDf.js                        11.93 kB │ gzip:   4.83 kB │ map:    19.08 kB
+2026-04-03T12:50:19.0722816Z #28 3.052 ../dist/control-ui/assets/skills-DmoVJPpm.js                    13.93 kB │ gzip:   3.47 kB │ map:    26.49 kB
+2026-04-03T12:50:19.0723989Z #28 3.052 ../dist/control-ui/assets/lit-zdTgzAJI.js                       15.03 kB │ gzip:   5.87 kB │ map:    34.52 kB
+2026-04-03T12:50:19.0725152Z #28 3.052 ../dist/control-ui/assets/nodes-CeaJKODa.js                     21.99 kB │ gzip:   5.01 kB │ map:    53.05 kB
+2026-04-03T12:50:19.0726383Z #28 3.052 ../dist/control-ui/assets/channels-DUs2vbiB.js                  22.18 kB │ gzip:   4.93 kB │ map:    59.83 kB
+2026-04-03T12:50:19.0727904Z #28 3.052 ../dist/control-ui/assets/dist-D8DZLmCF.js                      22.50 kB │ gzip:   6.69 kB │ map:    75.94 kB
+2026-04-03T12:50:19.0729432Z #28 3.052 ../dist/control-ui/assets/agents-B-vwGmYZ.js                    46.25 kB │ gzip:  11.07 kB │ map:   130.21 kB
+2026-04-03T12:50:19.0730746Z #28 3.052 ../dist/control-ui/assets/cron-DkmBPwi-.js                      49.18 kB │ gzip:   8.47 kB │ map:    95.70 kB
+2026-04-03T12:50:19.0731916Z #28 3.052 ../dist/control-ui/assets/anthropic-DaI0eHEd.js                 82.58 kB │ gzip:  22.67 kB │ map:   361.40 kB
+2026-04-03T12:50:19.0733180Z #28 3.052 ../dist/control-ui/assets/openai-Cn7eGqwa.js                   105.20 kB │ gzip:  28.25 kB │ map:   473.47 kB
+2026-04-03T12:50:19.0734489Z #28 3.052 ../dist/control-ui/assets/event-stream-B8X6sYaV.js             247.22 kB │ gzip:  20.77 kB │ map:   634.65 kB
+2026-04-03T12:50:19.0735846Z #28 3.052 ../dist/control-ui/assets/google-shared-CbPHVnPr.js            263.21 kB │ gzip:  52.59 kB │ map: 1,177.12 kB
+2026-04-03T12:50:19.0737195Z #28 3.052 ../dist/control-ui/assets/index-BJNZBTNc.js                    798.71 kB │ gzip: 216.60 kB │ map: 2,559.08 kB
+2026-04-03T12:50:19.0738436Z #28 3.052 ../dist/control-ui/assets/mistral-CZr3rin0.js                  803.00 kB │ gzip:  82.83 kB │ map: 2,513.35 kB
+2026-04-03T12:50:19.0739343Z #28 3.052 
+2026-04-03T12:50:19.0739717Z #28 3.053 ✓ built in 2.04s
+2026-04-03T12:50:19.0740055Z #28 DONE 3.1s
+2026-04-03T12:50:19.0740234Z 
+2026-04-03T12:50:19.0740969Z #29 [runtime-assets 1/1] RUN CI=true pnpm prune --prod &&     find dist -type f ( -name '*.d.ts' -o -name '*.d.mts' -o -name '*.d.cts' -o -name '*.map' ) -delete
+2026-04-03T12:50:19.7248429Z #29 0.807 Lockfile is up to date, resolution step is skipped
+2026-04-03T12:50:20.9876082Z #29 2.070 Packages: +18
+2026-04-03T12:50:20.9876599Z #29 2.070 ++++++++++++++++++
+2026-04-03T12:50:21.6753914Z #29 2.758 Progress: resolved 0, reused 0, downloaded 1, added 0
+2026-04-03T12:50:22.7143460Z #29 3.797 Progress: resolved 0, reused 0, downloaded 6, added 0
+2026-04-03T12:50:23.7169358Z #29 4.800 Progress: resolved 0, reused 0, downloaded 10, added 0
+2026-04-03T12:50:24.7178122Z #29 5.801 Progress: resolved 0, reused 0, downloaded 15, added 0
+2026-04-03T12:50:25.7186981Z #29 6.801 Progress: resolved 0, reused 0, downloaded 19, added 0
+2026-04-03T12:50:26.7191752Z #29 7.802 Progress: resolved 0, reused 0, downloaded 23, added 0
+2026-04-03T12:50:29.5834729Z #29 10.66 Progress: resolved 0, reused 0, downloaded 24, added 0
+2026-04-03T12:50:30.5840077Z #29 11.67 Progress: resolved 0, reused 0, downloaded 39, added 0
+2026-04-03T12:50:31.5884564Z #29 12.67 Progress: resolved 0, reused 0, downloaded 49, added 0
+2026-04-03T12:50:32.5851397Z #29 13.67 Progress: resolved 0, reused 0, downloaded 65, added 0
+2026-04-03T12:50:33.5848554Z #29 14.67 Progress: resolved 0, reused 0, downloaded 78, added 0
+2026-04-03T12:50:34.5882103Z #29 15.67 Progress: resolved 0, reused 0, downloaded 86, added 0
+2026-04-03T12:50:35.5855234Z #29 16.67 Progress: resolved 0, reused 0, downloaded 94, added 0
+2026-04-03T12:50:36.5852911Z #29 17.67 Progress: resolved 0, reused 0, downloaded 107, added 0
+2026-04-03T12:50:37.5868398Z #29 18.67 Progress: resolved 0, reused 0, downloaded 115, added 0
+2026-04-03T12:50:38.5859353Z #29 19.67 Progress: resolved 0, reused 0, downloaded 125, added 0
+2026-04-03T12:50:39.5992529Z #29 20.68 Progress: resolved 0, reused 0, downloaded 141, added 0
+2026-04-03T12:50:40.6135416Z #29 21.70 Progress: resolved 0, reused 0, downloaded 150, added 0
+2026-04-03T12:50:41.6142515Z #29 22.70 Progress: resolved 0, reused 0, downloaded 152, added 0
+2026-04-03T12:50:42.6135511Z #29 23.70 Progress: resolved 0, reused 0, downloaded 158, added 0
+2026-04-03T12:50:43.6144082Z #29 24.70 Progress: resolved 0, reused 0, downloaded 162, added 0
+2026-04-03T12:50:44.6144366Z #29 25.70 Progress: resolved 0, reused 0, downloaded 164, added 0
+2026-04-03T12:50:45.6148567Z #29 26.70 Progress: resolved 0, reused 0, downloaded 167, added 0
+2026-04-03T12:50:46.6139740Z #29 27.70 Progress: resolved 0, reused 0, downloaded 176, added 0
+2026-04-03T12:50:47.6150288Z #29 28.70 Progress: resolved 0, reused 0, downloaded 184, added 0
+2026-04-03T12:50:48.6149566Z #29 29.70 Progress: resolved 0, reused 0, downloaded 192, added 0
+2026-04-03T12:50:49.6152847Z #29 30.70 Progress: resolved 0, reused 0, downloaded 210, added 6
+2026-04-03T12:50:50.6162641Z #29 31.70 Progress: resolved 0, reused 0, downloaded 215, added 8
+2026-04-03T12:50:51.6169066Z #29 32.70 Progress: resolved 0, reused 0, downloaded 215, added 18
+2026-04-03T12:50:52.3492259Z #29 33.43 Progress: resolved 0, reused 0, downloaded 215, added 18, done
+2026-04-03T12:50:52.5808345Z #29 33.66 
+2026-04-03T12:50:52.5808692Z #29 33.66 devDependencies: skipped
+2026-04-03T12:50:52.5809201Z #29 33.66 
+2026-04-03T12:50:52.7485570Z #29 33.75 . postinstall$ node scripts/postinstall-bundled-plugins.mjs
+2026-04-03T12:50:52.7490644Z #29 33.83 . postinstall: Done
+2026-04-03T12:50:52.9288058Z #29 33.83 . prepare$ command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git config core.hooksPath git-hooks || exit 0
+2026-04-03T12:50:52.9288687Z #29 33.86 . prepare: Done
+2026-04-03T12:50:55.9045422Z #29 DONE 37.0s
+2026-04-03T12:51:23.4740981Z 
+2026-04-03T12:51:23.4742099Z #30 [stage-5  4/15] COPY --from=runtime-assets --chown=node:node /app/dist ./dist
+2026-04-03T12:51:25.1932618Z #30 DONE 1.7s
+2026-04-03T12:51:25.3432474Z 
+2026-04-03T12:51:25.3433756Z #31 [stage-5  5/15] COPY --from=runtime-assets --chown=node:node /app/node_modules ./node_modules
+2026-04-03T12:51:37.9227131Z #31 DONE 12.7s
+2026-04-03T12:51:38.0766685Z 
+2026-04-03T12:51:38.0767782Z #32 [stage-5  6/15] COPY --from=runtime-assets --chown=node:node /app/package.json .
+2026-04-03T12:51:38.2989236Z #32 DONE 0.4s
+2026-04-03T12:51:38.4650612Z 
+2026-04-03T12:51:38.4652155Z #33 [stage-5  7/15] COPY --from=runtime-assets --chown=node:node /app/openclaw.mjs .
+2026-04-03T12:51:38.4653917Z #33 DONE 0.0s
+2026-04-03T12:51:38.4654102Z 
+2026-04-03T12:51:38.4654617Z #34 [stage-5  8/15] COPY --from=runtime-assets --chown=node:node /app/extensions ./extensions
+2026-04-03T12:51:39.1783583Z #34 DONE 0.9s
+2026-04-03T12:51:39.3850299Z 
+2026-04-03T12:51:39.3851192Z #35 [stage-5  9/15] COPY --from=runtime-assets --chown=node:node /app/skills ./skills
+2026-04-03T12:51:39.3852380Z #35 DONE 0.1s
+2026-04-03T12:51:39.3853008Z 
+2026-04-03T12:51:39.3855978Z #36 [stage-5 10/15] COPY --from=runtime-assets --chown=node:node /app/docs ./docs
+2026-04-03T12:51:39.4804050Z #36 DONE 0.2s
+2026-04-03T12:51:39.6330235Z 
+2026-04-03T12:51:39.6333319Z #37 [stage-5 11/15] RUN install -d -m 0755 "/usr/local/share/corepack" &&     corepack enable &&     for attempt in 1 2 3 4 5; do       if corepack prepare "$(node -p "require('./package.json').packageManager")" --activate; then         break;       fi;       if [ "$attempt" -eq 5 ]; then         exit 1;       fi;       sleep $((attempt * 2));     done &&     chmod -R a+rX "/usr/local/share/corepack"
+2026-04-03T12:51:39.6799453Z #37 0.197 Preparing pnpm@10.32.1 for immediate activation...
+2026-04-03T12:51:40.4961025Z #37 DONE 1.0s
+2026-04-03T12:51:40.6418381Z 
+2026-04-03T12:51:40.6422025Z #38 [stage-5 12/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     if [ -n "" ]; then       apt-get update &&       DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ;     fi
+2026-04-03T12:51:40.6423762Z #38 DONE 0.1s
+2026-04-03T12:51:40.6424001Z 
+2026-04-03T12:51:40.6426790Z #39 [stage-5 13/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     if [ -n "" ]; then       apt-get update &&       DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb &&       mkdir -p /home/node/.cache/ms-playwright &&       PLAYWRIGHT_BROWSERS_PATH=/home/node/.cache/ms-playwright       node /app/node_modules/playwright-core/cli.js install --with-deps chromium &&       chown -R node:node /home/node/.cache/ms-playwright;     fi
+2026-04-03T12:51:40.6429595Z #39 DONE 0.0s
+2026-04-03T12:51:40.6429765Z 
+2026-04-03T12:51:40.6435947Z #40 [stage-5 14/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     if [ -n "" ]; then       apt-get update &&       DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends         ca-certificates curl gnupg &&       install -m 0755 -d /etc/apt/keyrings &&       curl -fsSL https://download.docker.com/linux/debian/gpg -o /tmp/docker.gpg.asc &&       expected_fingerprint="$(printf '%s' "9DC858229FC7DD38854AE2D88D81803C0EBFCD88" | tr '[:lower:]' '[:upper:]' | tr -d '[:space:]')" &&       actual_fingerprint="$(gpg --batch --show-keys --with-colons /tmp/docker.gpg.asc | awk -F: '$1 == "fpr" { print toupper($10); exit }')" &&       if [ -z "$actual_fingerprint" ] || [ "$actual_fingerprint" != "$expected_fingerprint" ]; then         echo "ERROR: Docker apt key fingerprint mismatch (expected $expected_fingerprint, got ${actual_fingerprint:-<empty>})" >&2;         exit 1;       fi &&       gpg --dearmor -o /etc/apt/keyrings/docker.gpg /tmp/docker.gpg.asc &&       rm -f /tmp/docker.gpg.asc &&       chmod a+r /etc/apt/keyrings/docker.gpg &&       printf 'deb [arch=%s signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian bookworm stable\n'         "$(dpkg --print-architecture)" > /etc/apt/sources.list.d/docker.list &&       apt-get update &&       DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends         docker-ce-cli docker-compose-plugin;     fi
+2026-04-03T12:51:40.6442385Z #40 DONE 0.0s
+2026-04-03T12:51:40.8420617Z 
+2026-04-03T12:51:40.8421408Z #41 [stage-5 15/15] RUN ln -sf /app/openclaw.mjs /usr/local/bin/openclaw  && chmod 755 /app/openclaw.mjs
+2026-04-03T12:51:40.8422189Z #41 DONE 0.0s
+2026-04-03T12:51:40.8422365Z 
+2026-04-03T12:51:40.8422664Z #42 exporting to docker image format
+2026-04-03T12:51:40.8423064Z #42 exporting layers
+2026-04-03T12:52:38.0177109Z #42 exporting layers 57.3s done
+2026-04-03T12:52:38.1768056Z #42 exporting manifest sha256:07633b59c7dba71c26fef048a0c729ee466f8b0137f442b42d177516b5705b5e done
+2026-04-03T12:52:38.1772895Z #42 exporting config sha256:78a579c139c4e073d6c4416a6c6ca14023f1a605157b38bca5e4317ad900db1b done
+2026-04-03T12:52:38.1783817Z #42 sending tarball
+2026-04-03T12:52:51.6412485Z #42 ...
+2026-04-03T12:52:51.6419991Z 
+2026-04-03T12:52:51.6420260Z #43 importing to docker
+2026-04-03T12:52:51.7978128Z #43 loading layer ac0b59386af0 491.52kB / 48.49MB
+2026-04-03T12:52:53.0638471Z #43 loading layer 70d26ff9e142 262.14kB / 24.04MB
+2026-04-03T12:52:56.2749212Z #43 loading layer 53cad9b6300b 557.06kB / 64.40MB
+2026-04-03T12:52:58.8675684Z #43 loading layer b55778bc269d 557.06kB / 211.51MB
+2026-04-03T12:53:00.9201863Z #43 loading layer b55778bc269d 85.79MB / 211.51MB 2.1s
+2026-04-03T12:53:02.9751730Z #43 loading layer b55778bc269d 205.55MB / 211.51MB 4.1s
+2026-04-03T12:53:06.3576506Z #43 loading layer 85ac60da2659 3.32kB / 3.32kB
+2026-04-03T12:53:06.5373505Z #43 loading layer c859671ef031 557.06kB / 57.86MB
+2026-04-03T12:53:08.8524696Z #43 loading layer 2d4f60d146d7 32.77kB / 1.25MB
+2026-04-03T12:53:09.0837747Z #43 loading layer 8e22de3f91c0 450B / 450B
+2026-04-03T12:53:09.0839780Z #43 loading layer 950caf1b3c57 93B / 93B
+2026-04-03T12:53:09.0840264Z #43 loading layer 7c100ed16b5f 98.30kB / 8.86MB
+2026-04-03T12:53:09.4313427Z #43 loading layer 578087d068c4 96B / 96B
+2026-04-03T12:53:09.6163180Z #43 loading layer 5c9c62de3c5a 294.91kB / 27.82MB
+2026-04-03T12:53:11.5602939Z #43 loading layer 5c9c62de3c5a 19.46MB / 27.82MB 2.1s
+2026-04-03T12:53:12.6673965Z #43 loading layer 8d82cb0afa70 557.06kB / 670.01MB
+2026-04-03T12:53:16.7422526Z #43 loading layer 8d82cb0afa70 51.25MB / 670.01MB 4.1s
+2026-04-03T12:53:18.7440715Z #43 loading layer 8d82cb0afa70 103.06MB / 670.01MB 6.1s
+2026-04-03T12:53:20.8389796Z #43 loading layer 8d82cb0afa70 299.14MB / 670.01MB 8.2s
+2026-04-03T12:53:22.9209613Z #43 loading layer 8d82cb0afa70 453.44MB / 670.01MB 10.3s
+2026-04-03T12:53:27.1238457Z #43 loading layer 8d82cb0afa70 542.02MB / 670.01MB 14.5s
+2026-04-03T12:53:29.3249646Z #43 loading layer 8d82cb0afa70 579.90MB / 670.01MB 16.7s
+2026-04-03T12:53:31.3936628Z #43 loading layer 8d82cb0afa70 654.54MB / 670.01MB 18.7s
+2026-04-03T12:53:35.4072783Z #43 loading layer d15c9d3461d0 9.32kB / 9.32kB
+2026-04-03T12:53:35.5863881Z #43 loading layer 78c24fced7f8 1.89kB / 1.89kB
+2026-04-03T12:53:35.5864410Z #43 loading layer a58499614dec 98.30kB / 6.95MB
+2026-04-03T12:53:36.5296533Z #43 loading layer ab249a2073a5 32.77kB / 100.38kB
+2026-04-03T12:53:36.7211859Z #43 loading layer 60a713828f75 131.07kB / 10.52MB
+2026-04-03T12:53:36.7854160Z #43 loading layer 49648a2004a4 65.54kB / 4.74MB
+2026-04-03T12:53:37.0850385Z #43 loading layer 5f70bf18a086 32B / 32B
+2026-04-03T12:53:37.3202563Z #43 loading layer ac0b59386af0 48.49MB / 48.49MB 45.5s done
+2026-04-03T12:53:37.3203357Z #43 loading layer 70d26ff9e142 24.04MB / 24.04MB 44.1s done
+2026-04-03T12:53:37.3203926Z #43 loading layer 53cad9b6300b 64.40MB / 64.40MB 40.9s done
+2026-04-03T12:53:37.3204497Z #43 loading layer b55778bc269d 211.51MB / 211.51MB 38.3s done
+2026-04-03T12:53:37.3204957Z #43 loading layer 85ac60da2659 3.32kB / 3.32kB 30.8s done
+2026-04-03T12:53:37.3205504Z #43 loading layer c859671ef031 57.86MB / 57.86MB 30.8s done
+2026-04-03T12:53:37.3205996Z #43 loading layer 2d4f60d146d7 1.25MB / 1.25MB 28.3s done
+2026-04-03T12:53:37.3206445Z #43 loading layer 8e22de3f91c0 450B / 450B 28.3s done
+2026-04-03T12:53:37.3206941Z #43 loading layer 950caf1b3c57 93B / 93B 28.2s done
+2026-04-03T12:53:37.3207459Z #43 loading layer 7c100ed16b5f 8.86MB / 8.86MB 28.2s done
+2026-04-03T12:53:37.3207886Z #43 loading layer 578087d068c4 96B / 96B 27.7s done
+2026-04-03T12:53:37.3208394Z #43 loading layer 5c9c62de3c5a 27.82MB / 27.82MB 27.7s done
+2026-04-03T12:53:37.3209131Z #43 loading layer 8d82cb0afa70 670.01MB / 670.01MB 24.5s done
+2026-04-03T12:53:37.3209737Z #43 loading layer d15c9d3461d0 9.32kB / 9.32kB 1.8s done
+2026-04-03T12:53:37.3210290Z #43 loading layer 78c24fced7f8 1.89kB / 1.89kB 1.7s done
+2026-04-03T12:53:37.3210835Z #43 loading layer a58499614dec 6.95MB / 6.95MB 1.7s done
+2026-04-03T12:53:37.3211441Z #43 loading layer ab249a2073a5 100.38kB / 100.38kB 0.6s done
+2026-04-03T12:53:37.3212098Z #43 loading layer 60a713828f75 10.52MB / 10.52MB 0.6s done
+2026-04-03T12:53:37.3212635Z #43 loading layer 49648a2004a4 4.74MB / 4.74MB 0.4s done
+2026-04-03T12:53:37.3213107Z #43 loading layer 5f70bf18a086 32B / 32B 0.1s done
+2026-04-03T12:53:37.3213590Z #43 loading layer 2e211ea65383 184B / 184B 0.1s done
+2026-04-03T12:53:37.3214034Z #43 DONE 45.5s
+2026-04-03T12:53:37.3214505Z 
+2026-04-03T12:53:37.3215088Z #42 exporting to docker image format
+2026-04-03T12:53:37.3217328Z #42 sending tarball 59.1s done
+2026-04-03T12:53:37.3217718Z #42 DONE 116.5s
+2026-04-03T12:53:37.3493468Z ##[group]Run echo "=========================================="
+2026-04-03T12:53:37.3494190Z [36;1mecho "=========================================="[0m
+2026-04-03T12:53:37.3495512Z [36;1mecho "Build Complete!"[0m
+2026-04-03T12:53:37.3495960Z [36;1mecho "=========================================="[0m
+2026-04-03T12:53:37.3496500Z [36;1mecho "Image: openclaw:gha-test-test-6-major"[0m
+2026-04-03T12:53:37.3496988Z [36;1mecho "Test Case: test-6-major"[0m
+2026-04-03T12:53:37.3497477Z [36;1mecho "Description: Major changes simulation"[0m
+2026-04-03T12:53:37.3498460Z [36;1mecho "Expected Cache: 10%"[0m
+2026-04-03T12:53:37.3499112Z [36;1mecho "=========================================="[0m
+2026-04-03T12:53:37.3687225Z shell: /usr/bin/bash -e {0}
+2026-04-03T12:53:37.3687672Z env:
+2026-04-03T12:53:37.3687948Z   expected_cache: 10%
+2026-04-03T12:53:37.3688311Z   test_description: Major changes simulation
+2026-04-03T12:53:37.3689030Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-04-03T12:53:37.3689973Z ##[endgroup]
+2026-04-03T12:53:37.3811667Z ==========================================
+2026-04-03T12:53:37.3813370Z Build Complete!
+2026-04-03T12:53:37.3814081Z ==========================================
+2026-04-03T12:53:37.3815641Z Image: openclaw:gha-test-test-6-major
+2026-04-03T12:53:37.3818221Z Test Case: test-6-major
+2026-04-03T12:53:37.3818601Z Description: Major changes simulation
+2026-04-03T12:53:37.3828105Z Expected Cache: 10%
+2026-04-03T12:53:37.3828323Z ==========================================
+2026-04-03T12:53:37.3856498Z ##[group]Run docker images openclaw:gha-test-test-6-major
+2026-04-03T12:53:37.3856882Z [36;1mdocker images openclaw:gha-test-test-6-major[0m
+2026-04-03T12:53:37.3873874Z shell: /usr/bin/bash -e {0}
+2026-04-03T12:53:37.3874119Z env:
+2026-04-03T12:53:37.3874285Z   expected_cache: 10%
+2026-04-03T12:53:37.3874520Z   test_description: Major changes simulation
+2026-04-03T12:53:37.3874829Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-04-03T12:53:37.3875107Z ##[endgroup]
+2026-04-03T12:53:37.4061247Z REPOSITORY   TAG                     IMAGE ID       CREATED              SIZE
+2026-04-03T12:53:37.4061965Z openclaw     gha-test-test-6-major   78a579c139c4   About a minute ago   3.11GB
+2026-04-03T12:53:37.4111218Z Post job cleanup.
+2026-04-03T12:53:37.5807370Z Pruning is unnecessary.
+2026-04-03T12:53:37.5936422Z Post job cleanup.
+2026-04-03T12:53:37.9370049Z ##[group]Removing builder
+2026-04-03T12:53:38.1121557Z [command]/usr/bin/docker buildx rm builder-5e6bd632-6121-45f7-b432-41ddee5e0f80
+2026-04-03T12:53:47.4810161Z builder-5e6bd632-6121-45f7-b432-41ddee5e0f80 removed
+2026-04-03T12:53:47.4839204Z ##[endgroup]
+2026-04-03T12:53:47.4839802Z ##[group]Cleaning up certificates
+2026-04-03T12:53:47.4845042Z ##[endgroup]
+2026-04-03T12:53:47.4849913Z ##[group]Post cache
+2026-04-03T12:53:47.4851253Z State not set
+2026-04-03T12:53:47.4852757Z ##[endgroup]
+2026-04-03T12:53:47.5007466Z Post job cleanup.
+2026-04-03T12:53:47.5902032Z [command]/usr/bin/git version
+2026-04-03T12:53:47.5944075Z git version 2.53.0
+2026-04-03T12:53:47.5985407Z Temporarily overriding HOME='/home/runner/work/_temp/a91ca246-fc13-4408-a913-a28a6df25039' before making global git config changes
+2026-04-03T12:53:47.5987087Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-03T12:53:47.5992456Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/depot-railway-build/depot-railway-build
+2026-04-03T12:53:47.6034457Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-03T12:53:47.6068147Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-03T12:53:47.6307993Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-03T12:53:47.6327786Z http.https://github.com/.extraheader
+2026-04-03T12:53:47.6341695Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-04-03T12:53:47.6374236Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-03T12:53:47.6576681Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-03T12:53:47.6606107Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-03T12:53:47.6897597Z Cleaning up orphan processes
+2026-04-03T12:53:47.7172836Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, docker/setup-buildx-action@v3, pnpm/action-setup@v2. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
