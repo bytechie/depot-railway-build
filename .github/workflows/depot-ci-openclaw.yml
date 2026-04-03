@@ -102,45 +102,49 @@ jobs:
         run: |
           echo "Installing Depot CLI..."
 
-          # Method 1: Install using npm (preferred)
-          if npm install -g @depot/cli; then
-            echo "Depot CLI installed via npm"
-          else
-            echo "npm install failed, trying direct download..."
-
-            # Method 2: Direct download with proper error handling
-            # Remove any existing corrupted file
-            sudo rm -f /usr/local/bin/depot
-
-            # Download with curl -f (fail on HTTP errors) and -L (follow redirects)
-            if curl -fL https://github.com/depot/cli/releases/latest/download/depot-linux-amd64 -o /tmp/depot; then
-              # Verify it's a binary file (not HTML error page)
-              if file /tmp/depot | grep -q "ELF"; then
-                sudo mv /tmp/depot /usr/local/bin/depot
-                sudo chmod +x /usr/local/bin/depot
-                echo "Depot CLI downloaded successfully"
-              else
-                echo "ERROR: Downloaded file is not a valid binary"
-                cat /tmp/depot | head -5
-                exit 1
-              fi
-            else
-              echo "ERROR: Failed to download Depot CLI"
-              exit 1
+          # Method 1: Install using npm (may not be available after cleanup)
+          if command -v npm &> /dev/null; then
+            echo "Installing via npm..."
+            if npm install -g @depot/cli; then
+              echo "Depot CLI installed via npm"
+              depot --version
+              exit 0
             fi
           fi
 
-          # Verify installation
-          if command -v depot &> /dev/null; then
-            echo "=========================================="
-            echo "Depot CLI installed successfully:"
-            which depot
-            depot --version
-            echo "=========================================="
-          else
-            echo "ERROR: Depot CLI installation failed"
-            exit 1
+          echo "npm not available or failed, trying direct download..."
+
+          # Method 2: Direct download from official Depot CDN
+          sudo rm -f /usr/local/bin/depot /tmp/depot
+
+          # Try official Depot download URL first
+          if curl -fL https://dl.depot.dev/cli/linux/amd64/depot -o /tmp/depot; then
+            if file /tmp/depot | grep -q "ELF"; then
+              sudo mv /tmp/depot /usr/local/bin/depot
+              sudo chmod +x /usr/local/bin/depot
+              echo "Depot CLI downloaded from official CDN"
+              depot --version
+              exit 0
+            fi
           fi
+
+          # Method 3: Try GitHub with specific version
+          echo "Trying GitHub releases..."
+          VERSION="1.29.0"
+          if curl -fL "https://github.com/depot/cli/releases/download/v${VERSION}/depot-linux-amd64" -o /tmp/depot; then
+            if file /tmp/depot | grep -q "ELF"; then
+              sudo mv /tmp/depot /usr/local/bin/depot
+              sudo chmod +x /usr/local/bin/depot
+              echo "Depot CLI downloaded from GitHub releases"
+              depot --version
+              exit 0
+            fi
+          fi
+
+          # All methods failed
+          echo "ERROR: All Depot CLI installation methods failed"
+          echo "This may be due to network issues or Depot service being unavailable"
+          exit 1
 
       - name: Apply test case
         run: |
