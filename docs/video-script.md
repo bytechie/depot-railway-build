@@ -326,22 +326,22 @@ Depot CI Cache:
 ```
 Depot CI Cache System:
 ┌─────────────────────────────────────┐
-│ Distributed Global Cache Storage     │
+│ Depot Cache — built in, no config   │
 ├─────────────────────────────────────┤
-│ ✓ Multiple regions for low latency   │
-│ ✓ Intelligent cache layering        │
-│ ✓ Longer retention (up to 30 days)  │
-│ ✓ Configurable size options          │
+│ ✓ 14-day default retention          │
+│ ✓ Up to 30-day retention options    │
+│ ✓ Configurable size limits          │
+│ ✓ Repository-scoped isolation       │
 └─────────────────────────────────────┘
           ↓
 Your builds benefit from:
-• Faster cache retrieval
+• Cache that persists longer
 • Higher cache hit rates
 • More reliable cache availability
 ```
 
 **[VOICEOVER]**
-"So how does Depot achieve consistently faster builds? It's their purpose-built cache system. Distributed storage in multiple regions means low latency wherever you build. Intelligent cache layering means faster retrieval. And with configurable cache sizes and longer retention options, your cache is more likely to be there when you need it. It's infrastructure designed specifically for Docker builds."
+"So how does Depot achieve consistently faster builds? It's the built-in Depot Cache — no configuration required. With 14-day default retention that's double GitHub Actions' 7 days, and options up to 30 days. Configurable size limits and repository-scoped isolation mean your cache is more likely to be there when you need it."
 
 ---
 
