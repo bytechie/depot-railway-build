@@ -101,23 +101,44 @@ jobs:
       - name: Install Depot CLI
         run: |
           echo "Installing Depot CLI..."
-          # Install using npm
-          npm install -g @depot/cli || true
 
-          # Alternative: install via direct download
-          if ! command -v depot &> /dev/null; then
+          # Method 1: Install using npm (preferred)
+          if npm install -g @depot/cli; then
+            echo "Depot CLI installed via npm"
+          else
             echo "npm install failed, trying direct download..."
-            curl -L https://github.com/depot/cli/releases/latest/download/depot-linux-amd64 -o /usr/local/bin/depot
-            chmod +x /usr/local/bin/depot
+
+            # Method 2: Direct download with proper error handling
+            # Remove any existing corrupted file
+            sudo rm -f /usr/local/bin/depot
+
+            # Download with curl -f (fail on HTTP errors) and -L (follow redirects)
+            if curl -fL https://github.com/depot/cli/releases/latest/download/depot-linux-amd64 -o /tmp/depot; then
+              # Verify it's a binary file (not HTML error page)
+              if file /tmp/depot | grep -q "ELF"; then
+                sudo mv /tmp/depot /usr/local/bin/depot
+                sudo chmod +x /usr/local/bin/depot
+                echo "Depot CLI downloaded successfully"
+              else
+                echo "ERROR: Downloaded file is not a valid binary"
+                cat /tmp/depot | head -5
+                exit 1
+              fi
+            else
+              echo "ERROR: Failed to download Depot CLI"
+              exit 1
+            fi
           fi
 
           # Verify installation
           if command -v depot &> /dev/null; then
+            echo "=========================================="
             echo "Depot CLI installed successfully:"
             which depot
-            depot --version || true
+            depot --version
+            echo "=========================================="
           else
-            echo "Depot CLI installation failed"
+            echo "ERROR: Depot CLI installation failed"
             exit 1
           fi
 
