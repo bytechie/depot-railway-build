@@ -451,7 +451,7 @@ curl -L https://depot.dev/install-cli.sh | sh
 ```
 
 **[VOICEOVER]**
-"Install the CLI. Login. Initialize your project. That's it."
+"Install the CLI. Login. Connect your GitHub. Run the migration. That's it."
 
 ---
 
