@@ -106,17 +106,12 @@ jobs:
           echo "Installing via curl script..."
           curl -L https://depot.dev/install-cli.sh | sh
 
-          # Add to PATH if not already there
-          if [ -f "$HOME/.depot/bin/depot" ] && [ ":$PATH:" != *":$HOME/.depot/bin:"* ]; then
-            echo "Adding $HOME/.depot/bin to PATH..."
-            export PATH="$HOME/.depot/bin:$PATH"
-            echo "export PATH=\"$HOME/.depot/bin:\$PATH\"" >> $GITHUB_ENV
-          fi
+          # Add to GITHUB_PATH for subsequent steps
+          echo "$HOME/.depot/bin" >> $GITHUB_PATH
 
           echo "=========================================="
           echo "Depot CLI installed successfully:"
-          which depot
-          depot --version
+          $HOME/.depot/bin/depot --version
           echo "=========================================="
 
       - name: Apply test case
@@ -212,25 +207,13 @@ jobs:
           echo "Test: ${{ github.event.inputs.test_case }}"
           echo "Disk space before build:"
           df -h
+          echo "Depot CLI location:"
+          which depot
+          depot --version
+          echo "=========================================="
 
-          # Try different paths for depot
-          if command -v depot &> /dev/null; then
-            echo "Using depot from PATH"
-            depot build -t openclaw:test-${{ github.event.inputs.test_case }} .
-          elif [ -f /usr/local/bin/depot ]; then
-            echo "Using depot from /usr/local/bin"
-            /usr/local/bin/depot build -t openclaw:test-${{ github.event.inputs.test_case }} .
-          elif [ -f "$HOME/bin/depot" ]; then
-            echo "Using depot from \$HOME/bin"
-            $HOME/bin/depot build -t openclaw:test-${{ github.event.inputs.test_case }} .
-          else
-            echo "ERROR: depot command not found in any location"
-            echo "Checking common paths..."
-            ls -la /usr/local/bin/ | grep depot || echo "Not in /usr/local/bin"
-            ls -la $HOME/bin 2>/dev/null || echo "Not in \$HOME/bin"
-            which depot || echo "Not in PATH"
-            exit 1
-          fi
+          # Build with Depot
+          depot build -t openclaw:test-${{ github.event.inputs.test_case }} .
         env:
           DEPOT_TOKEN: ${{ secrets.DEPOT_TOKEN }}
 
