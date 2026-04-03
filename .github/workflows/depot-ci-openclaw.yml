@@ -41,6 +41,23 @@ jobs:
           repository: openclaw/openclaw
           ref: main
 
+      - name: Install Depot CLI (BEFORE cleanup - npm still available)
+        run: |
+          echo "Installing Depot CLI..."
+
+          # Method 1: Install using npm (available before cleanup)
+          echo "Installing via npm..."
+          if npm install -g @depot/cli; then
+            echo "=========================================="
+            echo "Depot CLI installed successfully:"
+            which depot
+            depot --version
+            echo "=========================================="
+          else
+            echo "ERROR: Failed to install Depot CLI via npm"
+            exit 1
+          fi
+
       - name: Free up disk space
         if: ${{ github.event.inputs.cleanup_disk != 'false' }}
         run: |
@@ -49,11 +66,11 @@ jobs:
           df -h
           echo "=========================================="
 
-          # Remove unnecessary software
+          # Remove unnecessary software (but NOT $AGENT_TOOLSDIRECTORY to keep npm/pnpm)
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /opt/ghc
           sudo rm -rf "/usr/local/share/boost"
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          # Note: NOT removing $AGENT_TOOLSDIRECTORY - keeps npm/pnpm working
           sudo rm -rf /usr/local/lib/android
           sudo rm -rf /opt/google
           sudo rm -rf /opt/microsoft
@@ -97,16 +114,6 @@ jobs:
           # Show disk space breakdown
           echo "Disk usage by directory:"
           sudo du -sh /* 2>/dev/null | sort -hr | head -20
-
-      - name: Install Depot CLI
-        run: |
-          echo "Installing Depot CLI..."
-
-          # Method 1: Install using npm (may not be available after cleanup)
-          if command -v npm &> /dev/null; then
-            echo "Installing via npm..."
-            if npm install -g @depot/cli; then
-              echo "Depot CLI installed via npm"
               depot --version
               exit 0
             fi
