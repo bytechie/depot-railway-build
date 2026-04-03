@@ -21,10 +21,10 @@ Go to: **Settings → Secrets and variables → Actions**
 
 Add these secrets:
 
-| Secret Name | Value |
-|-------------|-------|
-| `DEPOT_TOKEN` | Your Depot API token |
-| `DEPOT_PROJECT_ID` | Your Depot project ID |
+| Secret Name | Required | Value |
+|-------------|----------|-------|
+| `DEPOT_PROJECT_ID` | ✅ Yes | Your Depot project ID |
+| `DEPOT_TOKEN` | ⚠️ Optional | Your Depot API token (for OIDC fallback) |
 
 ### Step 2: Copy Workflows (Optional)
 
@@ -46,41 +46,45 @@ git push
 
 | Test | Description | Expected Cache | Speedup |
 |------|-------------|----------------|---------|
-| **baseline** | No changes - fully cached | ~100% | 4-7x |
-| **test-2-docs** | README comment change | ~95% | 4-7x |
-| **test-3-source** | New TypeScript source file | ~75% | 5-8x |
-| **test-4-ui** | New UI component | ~50% | 5-8x |
-| **test-5-dependency** | Add @types/node package | ~25% | 5-7x |
-| **test-6-major** | Multiple file types + dep | ~10% | 5-8x |
+| **baseline** | Build without cache | ~0% | 1.7x |
+| **test-2-docs** | README comment change | ~95% | 1.4x |
+| **test-3-source** | New TypeScript source file | ~75% | 1.4x |
+| **test-4-ui** | New UI component | ~50% | 1.3x |
+| **test-5-dependency** | Touch package.json (new dep) | ~25% | 3.3x |
+| **test-6-major** | Multiple file types + dep | ~10% | 2.1x |
 
 ### Option A: GitHub Actions Baseline
 
 1. Go to **Actions** → **GitHub Actions Baseline - OpenClaw**
 2. Click **Run workflow**
 3. Select test case from dropdown
-4. Click **Run workflow**
-5. Wait for completion (3-20 minutes depending on test)
-6. Note the total time from workflow run
+4. Select cleanup disk option (recommended)
+5. Click **Run workflow**
+6. Wait for completion (2-6 minutes depending on test)
+7. Note the total time from workflow run
 
 ### Option B: Depot CI
 
 1. Go to **Actions** → **Depot CI - OpenClaw**
 2. Click **Run workflow**
 3. Select the same test case
-4. Click **Run workflow**
-5. Wait for completion (30 sec - 4 min depending on test)
-6. Note the total time
+4. Select cleanup disk option (recommended)
+5. Click **Run workflow**
+6. Wait for completion (1-3 minutes depending on test)
+7. Note the total time
 
 ## Expected Results
 
 | Test | GitHub Actions | Depot CI | Speedup |
 |------|----------------|----------|---------|
-| Baseline | 3-5 min | 30-45s | **4-7x** |
-| Docs | 3-5 min | 35-50s | **4-7x** |
-| Source | 5-8 min | 60-90s | **5-8x** |
-| UI | 7-12 min | 90-120s | **5-8x** |
-| Dependency | 10-15 min | 2-3 min | **5-7x** |
-| Major | 12-20 min | 2-4 min | **5-8x** |
+| Baseline | 3m 4s | 1m 51s | **1.7x** |
+| Docs | 2m 39s | 1m 50s | **1.4x** |
+| Source | 2m 37s | 1m 51s | **1.4x** |
+| UI | 2m 30s | 1m 52s | **1.3x** |
+| Dependency | 6m 3s | 1m 53s | **3.3x** |
+| Major | 5m 25s | 2m 36s | **2.1x** |
+
+> **Average:** 1.9x faster (1m 59s vs 3m 43s)
 
 ## Why OpenClaw?
 

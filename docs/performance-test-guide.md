@@ -1,5 +1,7 @@
 # Performance Test Guide: All 4 Flows
 
+> **Note:** This guide is for the **simple sample app testing** (archived in `docs/performance-testing/simple-sample-app-testing/`). For OpenClaw AI performance testing (GitHub Actions vs Depot CI), see [openclaw-quick-start.md](../openclaw-quick-start.md).
+
 This guide walks through running and measuring all 4 deployment flows with actual timing data.
 
 ---

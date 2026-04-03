@@ -1,5 +1,7 @@
 # Depot + Railway Setup Guide
 
+> **Note:** This guide is for the **simple sample app testing** (archived in `docs/performance-testing/simple-sample-app-testing/`). For OpenClaw AI performance testing, see [openclaw-quick-start.md](./openclaw-quick-start.md).
+
 This guide walks you through setting up the complete Depot CI showcase demo.
 
 ## Prerequisites

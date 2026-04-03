@@ -116,8 +116,8 @@ Stage 4: Runtime
 **Expected Cache:** ~100%
 
 **Expected Times:**
-- Depot CI: 30-45 seconds
-- GitHub Actions: 3-5 minutes
+- Depot CI: 1m 51s
+- GitHub Actions: 3m 4s
 
 **Why this tests:** Full cache hit scenario - best case for both systems
 
@@ -140,8 +140,8 @@ Stage 4: Runtime
 ```
 
 **Expected Times:**
-- Depot CI: 35-50 seconds
-- GitHub Actions: 3-5 minutes
+- Depot CI: 1m 50s
+- GitHub Actions: 2m 39s
 
 **Why this tests:** Minimal change - README doesn't affect build output, so most layers stay cached. Tests how efficiently each system handles "no-op" changes.
 
@@ -178,8 +178,8 @@ export function measurePerf(label: string): PerfMetrics {
 ```
 
 **Expected Times:**
-- Depot CI: 60-90 seconds
-- GitHub Actions: 5-8 minutes
+- Depot CI: 1m 51s
+- GitHub Actions: 2m 37s
 
 **Why this tests:** Typical development change - adding new source code. Invalidates source cache but keeps dependency cache. Tests TypeScript compilation performance.
 
@@ -219,8 +219,8 @@ export class PerfTestComponent extends HTMLElement {
 ```
 
 **Expected Times:**
-- Depot CI: 90-120 seconds
-- GitHub Actions: 7-12 minutes
+- Depot CI: 1m 52s
+- GitHub Actions: 2m 30s
 
 **Why this tests:** Frontend development change - affects both main build and UI build. Tests bundling performance for UI assets.
 
@@ -245,8 +245,8 @@ npm pkg set devDependencies.@types-node="^20.0.0"
 ```
 
 **Expected Times:**
-- Depot CI: 120-180 seconds
-- GitHub Actions: 10-15 minutes
+- Depot CI: 1m 53s
+- GitHub Actions: 6m 3s
 
 **Why this tests:** Dependency addition - common when adding new libraries. pnpm must fetch and install new package, but existing packages remain cached. Tests dependency resolution and download performance.
 
@@ -290,8 +290,8 @@ echo "<!-- Major test -->" >> README.md
 ```
 
 **Expected Times:**
-- Depot CI: 2-4 minutes
-- GitHub Actions: 12-20 minutes
+- Depot CI: 2m 36s
+- GitHub Actions: 5m 25s
 
 **Why this tests:** Worst-case scenario - full rebuild. Shows maximum performance difference between Depot CI and GitHub Actions.
 
@@ -301,12 +301,14 @@ echo "<!-- Major test -->" >> README.md
 
 | Test | Description | Layers Affected | Cache Hit | Depot CI | GitHub Actions | Speedup |
 |------|-------------|-----------------|-----------|----------|----------------|---------|
-| **1. Baseline** | No changes | None | ~100% | 30-45s | 3-5 min | **4-7x** |
-| **2. Docs** | README comment | COPY . . | ~95% | 35-50s | 3-5 min | **4-7x** |
-| **3. Source** | New TS file | COPY, build | ~75% | 60-90s | 5-8 min | **5-8x** |
-| **4. UI** | New component | COPY, build, UI | ~50% | 90-120s | 7-12 min | **5-8x** |
-| **5. Dependency** | New package | package, install, all | ~25% | 2-3 min | 10-15 min | **5-7x** |
-| **6. Major** | All changes | All layers | ~10% | 2-4 min | 12-20 min | **5-8x** |
+| **1. Baseline** | Build without cache | None (cold) | ~0% | 1m 51s | 3m 4s | **1.7x** |
+| **2. Docs** | README comment | COPY . . | ~95% | 1m 50s | 2m 39s | **1.4x** |
+| **3. Source** | New TS file | COPY, build | ~75% | 1m 51s | 2m 37s | **1.4x** |
+| **4. UI** | New component | COPY, build, UI | ~50% | 1m 52s | 2m 30s | **1.3x** |
+| **5. Dependency** | New package | package, install, all | ~25% | 1m 53s | 6m 3s | **3.3x** |
+| **6. Major** | All changes | All layers | ~10% | 2m 36s | 5m 25s | **2.1x** |
+
+> **Average Speedup:** 1.9x faster (Depot CI: 1m 59s vs GitHub Actions: 3m 43s)
 
 ## Why Depot CI is Faster
 
@@ -337,10 +339,10 @@ Depot CI:
 
 ```
 OpenClaw build with Depot CI:
-├── pnpm install (cached layers)      ← 5-10s (vs 45-60s)
-├── TypeScript compilation            ← 15-30s (vs 60-90s)
-├── UI bundling                       ← 10-20s (vs 30-60s)
-└── Image assembly                    ← 5-10s (vs 20-30s)
+├── pnpm install (cached layers)      ← 20-30s (vs 45-90s)
+├── TypeScript compilation            ← 30-45s (vs 60-120s)
+├── UI bundling                       ← 20-30s (vs 30-60s)
+└── Image assembly                    ← 10-15s (vs 15-30s)
 ```
 
 ## Setup Instructions
@@ -356,10 +358,12 @@ cd depot-railway-build
 
 In your repository settings, add these secrets:
 
-| Secret | Value | How to Get |
-|--------|-------|------------|
-| `DEPOT_TOKEN` | Your Depot API token | depot.dev/settings/tokens |
-| `DEPOT_PROJECT_ID` | Your Depot project ID | depot.dev/dashboard |
+| Secret | Required | Value | How to Get |
+|--------|----------|-------|------------|
+| `DEPOT_PROJECT_ID` | ✅ Yes | Your Depot project ID | depot.dev/dashboard |
+| `DEPOT_TOKEN` | ⚠️ Optional | Your Depot API token | depot.dev/settings/tokens |
+
+> **Note:** `DEPOT_TOKEN` is optional when using OIDC authentication (recommended). Configure OIDC trust relationship in your Depot project settings.
 
 ### 3. Copy Workflows
 
