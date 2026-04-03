@@ -8,10 +8,32 @@ Test Depot CI against the **actual OpenClaw application** - a production-grade A
 
 | Item | Where to Get |
 |------|--------------|
-| Depot Account | [depot.dev](https://depot.dev) (free during beta) |
+| Depot Account | [depot.dev](https://depot.dev) (free trial available) |
+| Depot CLI | `brew install depot/tap/depot` (macOS) or `curl -L https://depot.dev/install-cli.sh | sh` (Linux) |
+| GitHub App | Install **Depot Code Access** app via Depot dashboard (required for Depot CI) |
 | Depot Token | depot.dev/settings/tokens |
 | Depot Project ID | depot.dev/dashboard |
 | GitHub Repository | This repo or your fork |
+
+## Install Depot CLI (First Time Only)
+
+### macOS
+```bash
+brew install depot/tap/depot
+```
+
+### Linux
+```bash
+curl -L https://depot.dev/install-cli.sh | sh
+```
+
+### Login & Connect
+```bash
+depot login
+# Then install Depot Code Access GitHub App via the Depot dashboard
+```
+
+This one-time setup enables both Depot CI workflows and the Depot CLI.
 
 ## Setup (2 Minutes)
 

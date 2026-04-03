@@ -31,7 +31,7 @@ OpenClaw is a **24/7 personal AI assistant** that:
 
 ```
 OpenClaw = Personal AI agents that need fast iteration
-Depot CI  = 40x faster builds for AI-augmented development
+Depot CI  = Nearly 2x faster builds for AI-augmented development
 ```
 
 The connection is immediate and compelling.
@@ -119,7 +119,7 @@ Since OpenClaw's repository is private, we created a **simulation demo app** tha
 |-------------|------------------|
 | `npm ci` | Layer caching for node_modules |
 | TypeScript compilation | Incremental build caching |
-| Docker build | Distributed layer caching |
+| Docker build | Repository-scoped cache (14-day retention) |
 | Tests | Parallel test execution |
 | Deployment | Faster artifact delivery |
 
@@ -143,6 +143,44 @@ Since OpenClaw's repository is private, we created a **simulation demo app** tha
 6. ⏳ Produce demo video
 
 > **Note:** Comprehensive performance testing completed April 2-3, 2026. See [OPENCLAW-FINAL-RESULTS.md](./performance-testing/openclaw-ai-testing/OPENCLAW-FINAL-RESULTS.md) for complete results showing Depot CI averaging 1m 59s vs GitHub Actions 3m 43s (1.9x faster).
+
+---
+
+## Getting Started with Depot CI
+
+To replicate these results with your own projects:
+
+### 1. Install Depot CLI
+
+**macOS:**
+```bash
+brew install depot/tap/depot
+```
+
+**Linux:**
+```bash
+curl -L https://depot.dev/install-cli.sh | sh
+```
+
+### 2. Login & Connect
+
+```bash
+depot login
+```
+
+Then install the **Depot Code Access** GitHub App via the Depot dashboard at depot.dev. This is required for Depot CI to access your repositories.
+
+### 3. Migrate Your Workflows
+
+```bash
+depot ci migrate
+```
+
+This command automatically:
+- Analyzes your existing GitHub Actions workflows
+- Creates Depot CI equivalents in `.depot/workflows/`
+- Applies compatibility fixes
+- Preserves your original workflows
 
 ---
 
