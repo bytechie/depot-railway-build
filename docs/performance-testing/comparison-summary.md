@@ -159,20 +159,22 @@ This complexity makes OpenClaw AI an ideal test subject - it demonstrates how De
 
 ```
 100 builds/day scenario:
-GitHub Actions: 3m 43s × 100 = 370 minutes/day (~6 hours/day)
-Depot CI:        1m 59s × 100 = 199 minutes/day (~3.3 hours/day)
+GitHub Actions: 3m 53s × 100 = 390 minutes/day (~6.5 hours/day)
+Depot CI:        2m 18s × 100 = 230 minutes/day (~3.8 hours/day)
 
-Time saved: 171 minutes per day = ~14 hours/week
+Time saved: 160 minutes per day = ~13.3 hours/week
+Annual savings: 42,000 minutes = ~700 hours = ~18 full work weeks per year
 ```
 
 ### Compute Savings
 
 ```
 Same 100 builds/day:
-GitHub Actions: 223s × 100 = 22,300 seconds = 372 minutes of compute
-Depot CI:       119s × 100 = 11,900 seconds = 198 minutes of compute
+GitHub Actions: 233s × 100 = 23,300 seconds = 389 minutes of compute
+Depot CI:       138s × 100 = 13,800 seconds = 230 minutes of compute
 
-Compute reduction: 47% less CI/CD compute needed
+Compute reduction: 41% less CI/CD compute needed
+Annual savings: ~3.3 million fewer seconds of compute
 ```
 
 ### Dollar Savings (Approximate)

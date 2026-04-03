@@ -304,15 +304,17 @@ With Depot CI:
 200 min/day × 5 days = 1,000 min/week
 
 TIME SAVED: 850 minutes per week (~14 hours/week)
+
+Over a year: 42,500 minutes = ~700 hours = ~18 full work weeks
 ```
 
 **[VOICEOVER]**
-"If you do 100 builds a day, GitHub Actions costs you over 6 hours. With Depot CI? That's about 3.5 hours. You save nearly an hour every single day."
+"If you do 100 builds a day, GitHub Actions costs you over 6 hours. With Depot CI? That's about 3.5 hours. You save over 2 hours every single day."
 
-**[VISUAL]** Calendar showing freed-up time
+**[VISUAL]** Calendar showing freed-up time, then zooms out to show full year
 
 **[VOICEOVER]**
-"What would you do with an extra hour every week?"
+"Over a year, that adds up to 700 hours. Nearly 18 full work weeks of time saved."
 
 ---
 
