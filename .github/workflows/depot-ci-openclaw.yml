@@ -45,14 +45,27 @@ jobs:
         run: |
           echo "Installing Depot CLI..."
 
-          # Method 1: Install using npm (available before cleanup)
+          # Install using npm (available before cleanup)
           echo "Installing via npm..."
           if npm install -g @depot/cli; then
-            echo "=========================================="
-            echo "Depot CLI installed successfully:"
-            which depot
-            depot --version
-            echo "=========================================="
+            echo "Finding depot installation..."
+            DEPOT_PATH=$(npm root -g)/../bin/depot
+            if [ -f "$DEPOT_PATH" ]; then
+              echo "Found depot at: $DEPOT_PATH"
+              # Copy to /usr/local/bin so it persists across shell sessions
+              sudo cp "$DEPOT_PATH" /usr/local/bin/depot
+              sudo chmod +x /usr/local/bin/depot
+              echo "=========================================="
+              echo "Depot CLI installed and copied to /usr/local/bin:"
+              which depot
+              depot --version
+              echo "=========================================="
+            else
+              echo "ERROR: Could not find depot after npm install"
+              echo "npm root -g: $(npm root -g)"
+              ls -la $(npm root -g)/../bin/ || echo "bin directory not found"
+              exit 1
+            fi
           else
             echo "ERROR: Failed to install Depot CLI via npm"
             exit 1
