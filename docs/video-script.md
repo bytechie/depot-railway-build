@@ -296,24 +296,27 @@ GitHub Actions              Depot CI
 
 ---
 
-### 3:20 - 3:40 | The Cache Advantage
+### 3:20 - 3:35 | The Cache Advantage
 
 **[VISUAL]** Cache comparison animation:
 
 ```
 GitHub Actions Cache:
-├── Limited to GitHub's infrastructure
-├── Basic layer caching
-└── Shared across all users
+├── Stored on runner (ephemeral)
+├── Destroyed after each job
+├── Limited to ~10 GB
+└── 7-day retention
 
 Depot CI Cache:
-├── Distributed global cache
-├── Layer-aware intelligent caching
-└── Per-project optimization
+├── Distributed global storage (S3)
+├── Persists across all builds
+├── No size limit (unlimited)
+├── 30-day retention (4x longer)
+└── Project-isolated (your cache = your cache)
 ```
 
 **[VOICEOVER]**
-"Depot CI's caching is distributed and intelligent. It learns from every build across every project. Your cache benefits from the entire Depot community."
+"Here's the fundamental difference. GitHub Actions stores cache on the runner itself - which gets destroyed after every job. Limited to 10 gigabytes, gone in 7 days. Depot CI uses distributed global storage that persists across all your builds. No size limits, 4 times the retention. Your cache is always there when you need it."
 
 ---
 
