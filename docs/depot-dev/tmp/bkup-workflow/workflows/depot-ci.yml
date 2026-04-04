@@ -1,0 +1,130 @@
+# Flow 4: GitHub Actions → Depot CI → Railway (Showcase)
+# This workflow demonstrates Depot CI's capabilities
+# Expected: 5-10x faster than the baseline workflow
+# Authentication: OIDC (primary) with DEPOT_TOKEN fallback (optional)
+
+name: Build & Deploy with Depot CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_case:
+        description: 'Performance Test Case'
+        required: true
+        type: choice
+        default: 'baseline'
+        options:
+          - baseline
+          - test-2-comment
+          - test-3-function
+          - test-4-dependency
+          - test-5-major
+      skip_deploy:
+        description: 'Skip deployment to Railway'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  NODE_VERSION: '18'
+  DEPOT_PROJECT_ID: d0dfxb1xmf
+  RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
+  RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
+  # GitHub Container Registry
+  GHCR_IMAGE: ghcr.io/${{ github.repository_owner }}/openclaw-demo
+
+jobs:
+  depot-build:
+    name: Build with Depot CI
+    # Use Depot's high-performance runners
+    runs-on: depot-ubuntu-22.04
+    timeout-minutes: 5
+
+    # OIDC permissions (primary) — DEPOT_TOKEN is optional fallback
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: "Apply Test Case 2: Comment Change"
+        if: ${{ inputs.test_case == 'test-2-comment' }}
+        run: ./scripts/apply-test-case-2.sh
+
+      - name: "Apply Test Case 3: New Function"
+        if: ${{ inputs.test_case == 'test-3-function' }}
+        run: ./scripts/apply-test-case-3.sh
+
+      - name: "Apply Test Case 4: New Dependency"
+        if: ${{ inputs.test_case == 'test-4-dependency' }}
+        run: ./scripts/apply-test-case-4.sh
+
+      - name: "Apply Test Case 5: Major Changes"
+        if: ${{ inputs.test_case == 'test-5-major' }}
+        run: ./scripts/apply-test-case-5.sh
+
+      - name: Display Test Case Info
+        run: |
+          echo "📊 Running Test Case: ${{ inputs.test_case }}"
+          case "${{ inputs.test_case }}" in
+            baseline)
+              echo "Baseline: No changes (fully cached)"
+              ;;
+            test-2-comment)
+              echo "Test 2: Comment Change (~80% cache expected)"
+              ;;
+            test-3-function)
+              echo "Test 3: New Function (~60% cache expected)"
+              ;;
+            test-4-dependency)
+              echo "Test 4: New Dependency (~40% cache expected)"
+              ;;
+            test-5-major)
+              echo "Test 5: Major Changes (~10% cache expected)"
+              ;;
+          esac
+
+      - name: Setup Depot CLI
+        uses: depot/setup-action@v1
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image with Depot
+        uses: depot/build-push-action@v1
+        with:
+          project: ${{ env.DEPOT_PROJECT_ID }}
+          token: ${{ secrets.DEPOT_TOKEN }}  # Optional! Falls back to OIDC
+          context: ./sample-app
+          tags: |
+            ${{ env.GHCR_IMAGE }}:${{ github.sha }}
+            ${{ env.GHCR_IMAGE }}:depot-latest
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  benchmark:
+    name: Compare Performance
+    runs-on: ubuntu-latest
+    needs: depot-build
+    if: always()
+
+    steps:
+      - name: Calculate Depot CI metrics
+        run: |
+          echo "📊 Depot CI Performance Metrics"
+          echo "================================"
+          echo "Build job completed in: ${{ needs.depot-build.result }}"
+          echo ""
+          echo "🚀 Fair Comparison: All work inside Docker build"
+          echo "   Flow 3 (GitHub): ubuntu-latest + docker/build-push-action"
+          echo "   Flow 4 (Depot): depot-ubuntu-22.04 + depot/build-push-action"
+          echo ""
+          echo "⚡ Expected Speedup: 5-10x faster"

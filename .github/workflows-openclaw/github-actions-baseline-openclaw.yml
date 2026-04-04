@@ -1,4 +1,4 @@
-name: GitHub Actions Baseline - OpenClaw Performance Test
+name: GitHub Actions Baseline - OpenClaw Performance Test - cleanup_disk option
 
 on:
   workflow_dispatch:

@@ -1,0 +1,194 @@
+# Flow 3: GitHub Actions → Railway (Baseline)
+# This workflow represents the traditional CI/CD approach
+# Builds Docker image in GitHub Actions, pushes to GHCR, deploys to Railway
+# Used as a baseline to compare against Depot CI performance
+
+name: Build & Deploy to Railway (Baseline)
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_case:
+        description: 'Performance Test Case'
+        required: true
+        type: choice
+        default: 'baseline'
+        options:
+          - baseline
+          - test-2-comment
+          - test-3-function
+          - test-4-dependency
+          - test-5-major
+      skip_deploy:
+        description: 'Skip deployment to Railway'
+        required: false
+        type: boolean
+        default: false
+      debug_enabled:
+        description: 'Enable debug mode'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  NODE_VERSION: '18'
+  RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
+  RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
+  # GitHub Container Registry
+  GHCR_IMAGE: ghcr.io/${{ github.repository_owner }}/openclaw-demo
+
+jobs:
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image-tag: ${{ steps.meta.outputs.tags }}
+      image-digest: ${{ steps.build.outputs.digest }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: "Apply Test Case 2: Comment Change"
+        if: ${{ inputs.test_case == 'test-2-comment' }}
+        run: ./scripts/apply-test-case-2.sh
+
+      - name: "Apply Test Case 3: New Function"
+        if: ${{ inputs.test_case == 'test-3-function' }}
+        run: ./scripts/apply-test-case-3.sh
+
+      - name: "Apply Test Case 4: New Dependency"
+        if: ${{ inputs.test_case == 'test-4-dependency' }}
+        run: ./scripts/apply-test-case-4.sh
+
+      - name: "Apply Test Case 5: Major Changes"
+        if: ${{ inputs.test_case == 'test-5-major' }}
+        run: ./scripts/apply-test-case-5.sh
+
+      - name: Display Test Case Info
+        run: |
+          echo "📊 Running Test Case: ${{ inputs.test_case }}"
+          case "${{ inputs.test_case }}" in
+            baseline)
+              echo "Baseline: No changes (fully cached)"
+              ;;
+            test-2-comment)
+              echo "Test 2: Comment Change (~80% cache expected)"
+              ;;
+            test-3-function)
+              echo "Test 3: New Function (~60% cache expected)"
+              ;;
+            test-4-dependency)
+              echo "Test 4: New Dependency (~40% cache expected)"
+              ;;
+            test-5-major)
+              echo "Test 5: Major Changes (~10% cache expected)"
+              ;;
+          esac
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.GHCR_IMAGE }}
+          tags: |
+            type=sha,prefix={{branch}}-
+            type=raw,value=gh-latest,enable={{is_default_branch}}
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+
+      - name: Build Docker image
+        id: build
+        uses: docker/build-push-action@v5
+        with:
+          context: ./sample-app
+          push: true
+          tags: |
+            ${{ env.GHCR_IMAGE }}:${{ github.sha }}
+            ${{ env.GHCR_IMAGE }}:gh-latest
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run tests in Docker image
+        run: |
+          echo "Testing image: ${{ env.GHCR_IMAGE }}:${{ github.sha }}"
+          docker run --rm ${{ env.GHCR_IMAGE }}:${{ github.sha }} npm test
+
+      - name: Image built successfully
+        run: |
+          echo "::notice::Image built and pushed to GHCR"
+          echo "Image: ${{ steps.meta.outputs.tags }}"
+          echo "Digest: ${{ steps.build.outputs.digest }}"
+
+  deploy:
+    name: Deploy to Railway
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 10
+    if: inputs.skip_deploy != true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Railway CLI
+        run: |
+          curl -sSL https://railway.app/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Deploy GHCR image to Railway
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          IMAGE: ${{ env.GHCR_IMAGE }}:gh-latest
+        run: |
+          echo "::group::Deploying GHCR image to Railway"
+          echo "Image: $IMAGE"
+          cd sample-app
+
+          # Deploy using the pre-built GHCR image
+          railway up --service ${{ env.RAILWAY_SERVICE_ID }} --image $IMAGE
+          echo "::endgroup::"
+
+      - name: Verify deployment
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          echo "🚀 Deployment URL:"
+          railway domain --service ${{ env.RAILWAY_SERVICE_ID }}
+
+  benchmark:
+    name: Record Metrics
+    runs-on: ubuntu-latest
+    needs: [build, deploy]
+    if: always()
+
+    steps:
+      - name: Calculate workflow duration
+        run: |
+          echo "📊 GitHub Actions Baseline Metrics"
+          echo "===================================="
+          echo "Build job: ${{ needs.build.result }}"
+          echo "Deploy job: ${{ needs.deploy.result }}"
+          echo ""
+          echo "🐌 Traditional CI:"
+          echo "   - Docker build on ubuntu-latest"
+          echo "   - GitHub Actions cache (layer caching)"
+          echo "   - Image stored in GHCR"
+          echo "   - Railway deploys from GHCR"
+          echo ""
+          echo "⚡ Compare with Depot CI for 5-10x speedup"

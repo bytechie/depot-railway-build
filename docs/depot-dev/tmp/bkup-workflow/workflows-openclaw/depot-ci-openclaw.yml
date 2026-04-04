@@ -1,4 +1,4 @@
-name: Depot CI - OpenClaw Performance Test - cleanup_disk option
+name: Depot CI - OpenClaw Performance Test
 
 on:
   workflow_dispatch:

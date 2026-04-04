@@ -1,0 +1,229 @@
+name: Depot CI - OpenClaw Performance Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_case:
+        description: 'Performance test case'
+        required: true
+        default: 'baseline'
+        type: choice
+        options:
+          - baseline
+          - test-2-docs
+          - test-3-source
+          - test-4-ui
+          - test-5-dependency
+          - test-6-major
+      cleanup_disk:
+        description: 'Free up disk space before build (recommended for large builds)'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  DEPOT_PROJECT_ID: ${{ secrets.DEPOT_PROJECT_ID }}
+
+jobs:
+  depot-ci-build:
+    name: Depot CI Build - OpenClaw
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout OpenClaw
+        uses: actions/checkout@v4
+        with:
+          repository: openclaw/openclaw
+          ref: main
+
+      - name: Free up disk space
+        if: ${{ github.event.inputs.cleanup_disk != 'false' }}
+        run: |
+          echo "=========================================="
+          echo "Initial disk usage:"
+          df -h
+          echo "=========================================="
+
+          # Remove unnecessary software (but NOT $AGENT_TOOLSDIRECTORY to keep npm/pnpm)
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          # Note: NOT removing $AGENT_TOOLSDIRECTORY - keeps npm/pnpm working
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/google
+          sudo rm -rf /opt/microsoft
+          sudo rm -rf /opt/hostedtoolcache
+          sudo rm -rf /usr/local/share/gradle
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo rm -rf /usr/local/heroku
+          sudo rm -rf /usr/local/.heroku
+
+          # Clean package manager caches
+          sudo apt-get clean || true
+          sudo apt-get autoclean || true
+          sudo rm -rf /var/lib/apt/lists/*
+
+          # Clean language package caches
+          rm -rf ~/.npm ~/.yarn ~/.pnpm-store
+          rm -rf ~/.cargo/registry
+          rm -rf ~/.gradle/caches
+          rm -rf ~/.cache/pip
+          rm -rf ~/.cache/bower
+
+          # Clean system caches
+          sudo rm -rf /tmp/*
+          sudo rm -rf /var/tmp/*
+          sudo rm -rf /var/log/*
+          sudo rm -rf /var/cache/*
+
+          # Clean Docker system aggressively
+          docker system prune -af --volumes || true
+          docker builder prune -af || true
+
+          # Remove swap if present (frees ~2-4GB)
+          sudo swapoff -a || true
+          sudo rm -f /swapfile || true
+
+          echo "=========================================="
+          echo "Disk usage after cleanup:"
+          df -h
+          echo "=========================================="
+
+          # Show disk space breakdown
+          echo "Disk usage by directory:"
+          sudo du -sh /* 2>/dev/null | sort -hr | head -20
+
+      - name: Install Depot CLI
+        run: |
+          echo "Installing Depot CLI..."
+
+          # Install using the official Depot install script (Linux)
+          echo "Installing via curl script..."
+          curl -L https://depot.dev/install-cli.sh | sh
+
+          # Add to GITHUB_PATH for subsequent steps
+          echo "$HOME/.depot/bin" >> $GITHUB_PATH
+
+          echo "=========================================="
+          echo "Depot CLI installed successfully:"
+          $HOME/.depot/bin/depot --version
+          echo "=========================================="
+
+      - name: Apply test case
+        run: |
+          case "${{ github.event.inputs.test_case }}" in
+            baseline)
+              echo "expected_cache=100%" >> $GITHUB_ENV
+              echo "test_description=Baseline - Fully cached build" >> $GITHUB_ENV
+              ;;
+            test-2-docs)
+              echo "expected_cache=95%" >> $GITHUB_ENV
+              echo "test_description=Documentation change - README comment" >> $GITHUB_ENV
+              echo "" >> README.md
+              echo "<!-- Performance test: $(date) -->" >> README.md
+              ;;
+            test-3-source)
+              echo "expected_cache=75%" >> $GITHUB_ENV
+              echo "test_description=New source file - perf-test.ts in src/" >> $GITHUB_ENV
+              echo '/**' > src/perf-test.ts
+              echo ' * Performance test utility' >> src/perf-test.ts
+              echo ' */' >> src/perf-test.ts
+              echo 'export interface PerfMetrics {' >> src/perf-test.ts
+              echo '  startTime: number;' >> src/perf-test.ts
+              echo '  endTime: number;' >> src/perf-test.ts
+              echo '  duration: number;' >> src/perf-test.ts
+              echo '}' >> src/perf-test.ts
+              echo 'export function measurePerf(label: string): PerfMetrics {' >> src/perf-test.ts
+              echo '  const startTime = Date.now();' >> src/perf-test.ts
+              echo '  const result = { startTime, endTime: startTime, duration: 0 };' >> src/perf-test.ts
+              echo '  result.endTime = Date.now();' >> src/perf-test.ts
+              echo '  result.duration = result.endTime - result.startTime;' >> src/perf-test.ts
+              echo '  return result;' >> src/perf-test.ts
+              echo '}' >> src/perf-test.ts
+              ;;
+            test-4-ui)
+              echo "expected_cache=50%" >> $GITHUB_ENV
+              echo "test_description=UI change - New component in ui/" >> $GITHUB_ENV
+              mkdir -p ui/src/components/test
+              echo '/**' > ui/src/components/test/PerfTest.tsx
+              echo ' * Performance test component' >> ui/src/components/test/PerfTest.tsx
+              echo ' */' >> ui/src/components/test/PerfTest.tsx
+              echo "import { css } from 'lit';" >> ui/src/components/test/PerfTest.tsx
+              echo 'export class PerfTestComponent extends HTMLElement {' >> ui/src/components/test/PerfTest.tsx
+              echo '  static styles = css`' >> ui/src/components/test/PerfTest.tsx
+              echo '    :host {' >> ui/src/components/test/PerfTest.tsx
+              echo '      display: block;' >> ui/src/components/test/PerfTest.tsx
+              echo '      padding: 1rem;' >> ui/src/components/test/PerfTest.tsx
+              echo '    }' >> ui/src/components/test/PerfTest.tsx
+              echo '  `;' >> ui/src/components/test/PerfTest.tsx
+              echo '  connectedCallback(): void {' >> ui/src/components/test/PerfTest.tsx
+              echo '    super.connectedCallback();' >> ui/src/components/test/PerfTest.tsx
+              echo "    this.innerHTML = '<p>Performance Test Component</p>';" >> ui/src/components/test/PerfTest.tsx
+              echo '  }' >> ui/src/components/test/PerfTest.tsx
+              echo '}' >> ui/src/components/test/PerfTest.tsx
+              echo 'customElements.define("perf-test", PerfTestComponent);' >> ui/src/components/test/PerfTest.tsx
+              ;;
+            test-5-dependency)
+              echo "expected_cache=25%" >> $GITHUB_ENV
+              echo "test_description=New dependency simulation" >> $GITHUB_ENV
+              # Simulate dependency change by touching package.json
+              touch package.json
+              ;;
+            test-6-major)
+              echo "expected_cache=10%" >> $GITHUB_ENV
+              echo "test_description=Major changes simulation" >> $GITHUB_ENV
+              # Simulate major changes by touching multiple files
+              touch package.json
+              touch src/major-test.ts
+              mkdir -p ui/src/components/major
+              touch ui/src/components/major/MajorTest.tsx
+              echo "<!-- Major test simulation $(date) -->" >> README.md
+              ;;
+          esac
+
+      - name: Display test info
+        run: |
+          echo "=========================================="
+          echo "Depot CI Performance Test - OpenClaw"
+          echo "=========================================="
+          echo "Test Case: ${{ github.event.inputs.test_case }}"
+          echo "Description: ${{ env.test_description }}"
+          echo "Expected Cache Hit: ${{ env.expected_cache }}"
+          echo "=========================================="
+
+      - name: Configure pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Build with Depot CI
+        run: |
+          echo "Starting Depot CI build..."
+          echo "Test: ${{ github.event.inputs.test_case }}"
+          echo "Disk space before build:"
+          df -h
+          echo "Depot CLI location:"
+          which depot
+          depot --version
+          echo "=========================================="
+
+          # Build with Depot
+          depot build -t openclaw:test-${{ github.event.inputs.test_case }} .
+        env:
+          DEPOT_TOKEN: ${{ secrets.DEPOT_TOKEN }}
+
+      - name: Display build results
+        run: |
+          echo "=========================================="
+          echo "Build Complete!"
+          echo "=========================================="
+          echo "Image: openclaw:test-${{ github.event.inputs.test_case }}"
+          echo "Test Case: ${{ github.event.inputs.test_case }}"
+          echo "Description: ${{ env.test_description }}"
+          echo "Expected Cache: ${{ env.expected_cache }}"
+          echo "=========================================="
