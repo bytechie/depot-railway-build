@@ -46,7 +46,7 @@ jobs:
           path: _test-scripts
 
       - name: Apply test case
-        run: _test-scripts/scripts/apply-openclaw-test-case.sh "${{ inputs.test_case }}"
+        run: _test-scripts/scripts/apply-openclaw-test-case.sh "${{ inputs.test_case || 'baseline' }}"
 
       - name: Display test info
         run: |
