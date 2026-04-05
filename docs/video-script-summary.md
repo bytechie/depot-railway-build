@@ -56,9 +56,45 @@
    |           v                             |
    | 4. depot ci migrate                     |
    +-----------------------------------------+
+                |
+                v
+   +-----------------------------------------+
+   | What Makes It Different                 |
+   | * 16 CPU, 32 GB RAM remote builders     |
+   | * NVMe SSD cache (automatic)            |
+   | * Pre-warmed pool                       |
+   | * 38% faster builds                     |
+   +-----------------------------------------+
 
 +-----------------------------------------------------------------------------+
-|  SECTION 3: REAL PERFORMANCE DATA (1:30 - 3:00)                              |
+|  SECTION 3: DEPOT CI DEMO (1:30 - 2:30)                                      |
++-----------------------------------------------------------------------------+
+
+   +-----------------------------------------+
+   | Live Demo: Get Started                  |
+   | * Install CLI (brew / curl)             |
+   | * Login + Connect GitHub                |
+   | * depot ci migrate                      |
+   +-----------------------------------------+
+                |
+                v
+   +-----------------------------------------+
+   | Live Demo: The Migration Process        |
+   | * Analyzing workflows...                |
+   | * Converting .github/ → .depot/         |
+   | * Applying compatibility fixes          |
+   | * Migration complete!                   |
+   +-----------------------------------------+
+                |
+                v
+   +-----------------------------------------+
+   | Start Today                             |
+   | depot.dev                               |
+   | Free trial + Plans from $20/month       |
+   +-----------------------------------------+
+
++-----------------------------------------------------------------------------+
+|  SECTION 4: REAL PERFORMANCE DATA (2:30 - 4:00)                              |
 +-----------------------------------------------------------------------------+
 
    +-----------------------------------------+
@@ -94,7 +130,7 @@
    +-----------------------------------------+
 
 +-----------------------------------------------------------------------------+
-|  SECTION 4: WHY DEPOT WINS (3:00 - 4:00)                                      |
+|  SECTION 5: WHY DEPOT WINS (4:00 - 5:00)                                      |
 +-----------------------------------------------------------------------------+
 
    +-----------------------------------------+     +-----------------------------------------+
@@ -129,7 +165,7 @@
    +-----------------------------------------+
 
 +-----------------------------------------------------------------------------+
-|  SECTION 5: THE IMPACT (4:00 - 5:00)                                          |
+|  SECTION 6: THE IMPACT (5:00 - 6:00)                                          |
 +-----------------------------------------------------------------------------+
 
    +-----------------------------------------+
@@ -155,24 +191,8 @@
                 |
                 v
    +-----------------------------------------+
-   | Developer Experience                    |
+   | Developer Experience + Closing          |
    | "Ship faster. Iterate more. Wait less." |
-   +-----------------------------------------+
-
-+-----------------------------------------------------------------------------+
-|  SECTION 6: CALL TO ACTION (5:00 - 6:00)                                      |
-+-----------------------------------------------------------------------------+
-
-   +-----------------------------------------+
-   | Get Started Today                       |
-   |                                         |
-   | 1. brew install depot/tap/depot         |
-   | 2. depot login                          |
-   | 3. Connect GitHub                       |
-   | 4. depot ci migrate                     |
-   |                                         |
-   | Visit: depot.dev                        |
-   | Free trial + Plans from $20/month       |
    +-----------------------------------------+
                 |
                 v
@@ -199,9 +219,20 @@
 | **Average Build Time**   | 3m 47s         | 2m 20s      | 38% faster      |
 | **Fastest Test**         | 3m 21s         | 1m 53s      | 44% faster      |
 | **Slowest Test**         | 3m 59s         | 3m 2s       | 23% faster      |
-| **Cache Retention**      | 7 days         | 14 days      | 2x longer       |
+| **Cache Default Retention** | 7 days      | 14 days      | 2x longer       |
 | **Billing**              | Per-minute     | Per-second  | More accurate   |
 | **Cost (1000 builds/mo)**| ~$24           | ~$16        | 33% savings     |
+
+## Video Flow Summary
+
+| Section | Time | Topic |
+|---------|------|-------|
+| 1. The Problem | 0:00 - 0:45 | CI is slowing you down |
+| 2. The Solution | 0:45 - 1:30 | Depot CI introduction |
+| **3. Depot CI Demo** | **1:30 - 2:30** | **Live demo + migration showcase** |
+| 4. Real Performance Data | 2:30 - 4:00 | Head-to-head test results |
+| 5. Why Depot Wins | 4:00 - 5:00 | Architecture + cache comparison |
+| 6. The Impact | 5:00 - 6:00 | Time/cost savings + closing |
 
 ## Migration Commands
 

@@ -137,9 +137,72 @@ depot ci migrate
 
 ---
 
-## Section 3: Real Performance Data (1:30 - 3:00)
+## Section 3: Depot CI Demo (1:30 - 2:30)
 
-### 1:30 - 1:45 | The Test Setup
+### 1:30 - 1:50 | Live Demo: Get Started
+
+**[VISUAL]** Depot CI interface
+
+**[VOICEOVER]**
+"Ready to speed up your builds? Getting started with Depot CI takes just a few minutes."
+
+**[SCREEN]** Terminal showing:
+
+```bash
+# macOS:
+brew install depot/tap/depot
+
+# Linux:
+curl -L https://depot.dev/install-cli.sh | sh
+```
+
+**[VOICEOVER]**
+"Install the CLI. Login. Connect your GitHub. Run the migration. That's it."
+
+---
+
+### 1:50 - 2:15 | Live Demo: The Migration Process
+
+**[SCREEN]** Terminal showing the complete migration:
+
+```bash
+# In your project directory:
+
+# Install CLI (macOS shown)
+$ brew install depot/tap/depot
+✔ Installed successfully
+
+$ depot login
+✔ Logged in as your-account
+
+$ depot ci migrate
+✔ Analyzing workflows...
+✔ Converting .github/workflows/ → .depot/workflows/
+✔ Applying compatibility fixes...
+✔ Migration complete!
+
+Your workflows are now ready to run on Depot CI.
+```
+
+**[SOUND]** Satisfying "ding" when migration completes
+
+**[VOICEOVER]**
+"The migration process handles everything automatically. The migrate command analyzes your existing GitHub Actions workflows, converts them to run on Depot CI infrastructure, applies any necessary compatibility fixes, and creates new workflow files. Your original workflows stay untouched - so you can easily compare or rollback if needed."
+
+---
+
+### 2:15 - 2:30 | Start Today
+
+**[VISUAL]** Large URL: **depot.dev**
+
+**[VOICEOVER]**
+"Visit depot.dev to get started. Free trial available. Then plans start at just $20 per month."
+
+---
+
+## Section 4: Real Performance Data (2:30 - 4:00)
+
+### 2:30 - 2:45 | The Test Setup
 
 **[VISUAL]** Test setup appears:
 
@@ -157,7 +220,7 @@ Test Environment:
 
 ---
 
-### 1:45 - 2:15 | The Results
+### 2:45 - 3:15 | The Results
 
 **[VISUAL]** Large results table appears:
 
@@ -191,7 +254,7 @@ Test Environment:
 
 ---
 
-### 2:15 - 2:45 | The Dependency Difference
+### 3:15 - 3:45 | The Dependency Difference
 
 **[VISUAL]** Focus on the "New Dependency" row:
 
@@ -260,7 +323,7 @@ Depot's repository-scoped cache persists across all your builds
 
 ---
 
-### 2:45 - 3:00 | The Build Without Cache Reality
+### 3:45 - 4:00 | The Build Without Cache Reality
 
 **[VISUAL]** Baseline comparison:
 
@@ -277,9 +340,9 @@ You save over 1 minute on your very first build.
 
 ---
 
-## Section 4: Why Depot Wins (3:00 - 4:00)
+## Section 5: Why Depot Wins (4:00 - 5:00)
 
-### 3:00 - 3:20 | Architecture Matters
+### 4:00 - 4:20 | Architecture Matters
 
 **[VISUAL]** Simple architecture comparison:
 
@@ -299,7 +362,7 @@ GitHub Actions              Depot CI
 
 ---
 
-### 3:20 - 3:35 | The Cache Advantage
+### 4:20 - 4:35 | The Cache Advantage
 
 **[VISUAL]** Cache comparison animation:
 
@@ -324,7 +387,7 @@ Depot CI Cache:
 
 ---
 
-### 3:35 - 3:50 | How Depot Achieves This
+### 4:35 - 4:50 | How Depot Achieves This
 
 **[VISUAL]** Diagram showing Depot's approach:
 
@@ -350,7 +413,7 @@ Your builds benefit from:
 
 ---
 
-### 3:50 - 4:00 | Additional Features
+### 4:50 - 5:00 | Additional Features
 
 **[VISUAL]** Feature list appears:
 
@@ -369,9 +432,9 @@ Depot CI Features (Not in GitHub Actions):
 
 ---
 
-## Section 5: The Impact (4:00 - 5:00)
+## Section 6: The Impact (5:00 - 6:00)
 
-### 4:00 - 4:20 | Time Savings
+### 5:00 - 5:20 | Time Savings
 
 **[VISUAL]** Calculator animation:
 
@@ -399,7 +462,7 @@ Over a year: 37,500 minutes = ~625 hours = ~16 full work weeks
 
 ---
 
-### 4:20 - 4:40 | Cost Savings
+### 5:20 - 5:40 | Cost Savings
 
 **[VISUAL]** Cost comparison:
 
@@ -422,80 +485,12 @@ SAVINGS: ~33% reduction
 
 ---
 
-### 4:40 - 5:00 | Developer Experience
+### 5:40 - 6:00 | Developer Experience + Closing
 
 **[VISUAL]** Happy developer, fast builds flying by
 
 **[VOICEOVER]**
 "But the real value isn't just time or money. It's how it feels to have fast CI. You push code, seconds later it's built. You make a small change, you don't hesitate to test it."
-
-**[VISUAL]** Text: *"Ship faster. Iterate more. Wait less."*
-
-**[VOICEOVER]**
-"Fast CI changes how you work. You ship faster. You iterate more. You wait less."
-
----
-
-## Section 6: Call to Action (5:00 - 6:00)
-
-### 5:00 - 5:20 | Get Started
-
-**[VISUAL]** Depot CI interface
-
-**[VOICEOVER]**
-"Ready to speed up your builds? Getting started with Depot CI takes just a few minutes."
-
-**[SCREEN]** Terminal showing:
-
-```bash
-# macOS:
-brew install depot/tap/depot
-
-# Linux:
-curl -L https://depot.dev/install-cli.sh | sh
-```
-
-**[VOICEOVER]**
-"Install the CLI. Login. Connect your GitHub. Run the migration. That's it."
-
----
-
-### 5:20 - 5:40 | The Migration Process
-
-**[SCREEN]** Terminal showing the complete migration:
-
-```bash
-# In your project directory:
-
-# Install CLI (macOS shown)
-$ brew install depot/tap/depot
-✔ Installed successfully
-
-$ depot login
-✔ Logged in as your-account
-
-$ depot ci migrate
-✔ Analyzing workflows...
-✔ Converting .github/workflows/ → .depot/workflows/
-✔ Applying compatibility fixes...
-✔ Migration complete!
-
-Your workflows are now ready to run on Depot CI.
-```
-
-**[SOUND]** Satisfying "ding" when migration completes
-
-**[VOICEOVER]**
-"The migration process handles everything automatically. The migrate command analyzes your existing GitHub Actions workflows, converts them to run on Depot CI infrastructure, applies any necessary compatibility fixes, and creates new workflow files. Your original workflows stay untouched - so you can easily compare or rollback if needed."
-
----
-
-### 5:40 - 6:00 | Start Today
-
-**[VISUAL]** Large URL: **depot.dev**
-
-**[VOICEOVER]**
-"Visit depot.dev to get started. Free trial available. Then plans start at just $20 per month."
 
 **[VISUAL]** Final tagline appears:
 
