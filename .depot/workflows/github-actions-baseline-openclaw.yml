@@ -1,0 +1,97 @@
+# Depot CI Migration
+# Source: .github/workflows/github-actions-baseline-openclaw.yml
+#
+# Changes made:
+# - Changed runs-on to Depot runner (4 CPU, 16 GB) for build workloads
+# - Added id-token: write for OIDC auth (no static secrets needed)
+# - Replaced docker/setup-buildx-action + docker buildx with depot/build-push-action
+# - Removed --cache-from/--cache-to type=gha (Depot caches automatically on NVMe SSD)
+# - Added provenance: false to avoid unknown/unknown platform issue
+# - Uses DEPOT_PROJECT_ID secret for project scoping
+
+name: Depot CI - OpenClaw Performance Test
+on:
+  workflow_dispatch:
+    inputs:
+      test_case:
+        description: 'Performance test case'
+        required: true
+        default: 'baseline'
+        type: choice
+        options:
+          - baseline
+          - test-2-docs
+          - test-3-source
+          - test-4-ui
+          - test-5-dependency
+          - test-6-major
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  depot-build:
+    name: Depot Build - OpenClaw (${{ inputs.test_case }})
+    runs-on: depot-ubuntu-24.04-4
+    timeout-minutes: 30
+    steps:
+      - name: Checkout OpenClaw
+        uses: actions/checkout@v4
+        with:
+          repository: openclaw/openclaw
+          ref: f0c970fb43c27232b06fc6a5cdd00e994310486b
+
+      - name: Checkout test scripts
+        uses: actions/checkout@v4
+        with:
+          path: _test-scripts
+
+      - name: Apply test case
+        run: _test-scripts/scripts/apply-openclaw-test-case.sh "${{ inputs.test_case }}"
+
+      - name: Display test info
+        run: |
+          echo "=========================================="
+          echo "Depot CI - OpenClaw Performance Test"
+          echo "=========================================="
+          echo "Test Case: ${{ inputs.test_case }}"
+          echo "Description: ${{ env.test_description }}"
+          echo "Expected Cache Hit: ${{ env.expected_cache }}"
+          echo "=========================================="
+
+      - name: Record build start time
+        run: echo "build_start=$(date +%s)" >> "$GITHUB_ENV"
+
+      - name: Build with Depot
+        uses: depot/build-push-action@v1
+        with:
+          project: ${{ secrets.DEPOT_PROJECT_ID }}
+          load: true
+          tags: openclaw:depot-test-${{ inputs.test_case }}
+          provenance: false
+
+      - name: Display build results
+        run: |
+          echo "=========================================="
+          echo "Build Complete!"
+          echo "=========================================="
+          echo "Image: openclaw:depot-test-${{ inputs.test_case }}"
+          echo "Test Case: ${{ inputs.test_case }}"
+          echo "Description: ${{ env.test_description }}"
+          echo "Expected Cache: ${{ env.expected_cache }}"
+          echo "=========================================="
+
+      - name: Show image size
+        run: |
+          docker images openclaw:depot-test-${{ inputs.test_case }}
+
+      - name: Record build timing
+        if: always()
+        run: |
+          build_end=$(date +%s)
+          duration=$((build_end - build_start))
+          echo "=========================================="
+          echo "Build Timing: ${duration}s"
+          echo "Test Case: ${{ inputs.test_case }}"
+          echo "Description: ${{ env.test_description }}"
+          echo "Expected Cache: ${{ env.expected_cache }}"
+          echo "=========================================="
