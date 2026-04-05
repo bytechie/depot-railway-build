@@ -100,8 +100,9 @@ EOF
     echo "Invalidates: package.json layer, full pnpm install"
     echo "=========================================="
     echo "expected_cache=25%" >> "$GITHUB_ENV"
-    echo "test_description=New dependency - Add perf-test-benchmark" >> "$GITHUB_ENV"
+    echo "test_description=New dependency - Add left-pad" >> "$GITHUB_ENV"
     npm pkg set devDependencies.left-pad="^1.3.0"
+    npx pnpm install --lockfile-only
     ;;
   test-6-major)
     echo "=========================================="
@@ -114,6 +115,7 @@ EOF
     echo "test_description=Major changes - Multiple file types + dependency" >> "$GITHUB_ENV"
     # New dependency
     npm pkg set devDependencies.left-pad="^1.3.0"
+    npx pnpm install --lockfile-only
     # Source file
     cat > src/major-test.ts << 'EOF'
 export function majorTest(): string {
