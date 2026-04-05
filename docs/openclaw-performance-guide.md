@@ -116,8 +116,9 @@ Stage 4: Runtime
 **Expected Cache:** ~100%
 
 **Expected Times:**
-- Depot CI: 1m 51s
-- GitHub Actions: 3m 4s
+- Local Docker: 15m 30s
+- GitHub Actions: 3m 44s
+- Depot CI: 2m 28s (34% faster than GHA, 6.3x faster than Local)
 
 **Why this tests:** Full cache hit scenario - best case for both systems
 
@@ -140,8 +141,9 @@ Stage 4: Runtime
 ```
 
 **Expected Times:**
-- Depot CI: 1m 50s
-- GitHub Actions: 2m 39s
+- Local Docker: 12m 0s
+- GitHub Actions: 3m 56s
+- Depot CI: 3m 2s (23% faster than GHA, 4.0x faster than Local)
 
 **Why this tests:** Minimal change - README doesn't affect build output, so most layers stay cached. Tests how efficiently each system handles "no-op" changes.
 
@@ -178,8 +180,9 @@ export function measurePerf(label: string): PerfMetrics {
 ```
 
 **Expected Times:**
-- Depot CI: 1m 51s
-- GitHub Actions: 2m 37s
+- Local Docker: 11m 56s
+- GitHub Actions: 3m 21s
+- Depot CI: 1m 53s (44% faster than GHA, 6.3x faster than Local)
 
 **Why this tests:** Typical development change - adding new source code. Invalidates source cache but keeps dependency cache. Tests TypeScript compilation performance.
 
@@ -219,8 +222,9 @@ export class PerfTestComponent extends HTMLElement {
 ```
 
 **Expected Times:**
-- Depot CI: 1m 52s
-- GitHub Actions: 2m 30s
+- Local Docker: 9m 59s
+- GitHub Actions: 3m 50s
+- Depot CI: 2m 31s (34% faster than GHA, 4.0x faster than Local)
 
 **Why this tests:** Frontend development change - affects both main build and UI build. Tests bundling performance for UI assets.
 
@@ -245,8 +249,9 @@ npm pkg set devDependencies.@types-node="^20.0.0"
 ```
 
 **Expected Times:**
-- Depot CI: 1m 53s
-- GitHub Actions: 6m 3s
+- Local Docker: ~10m 57s
+- GitHub Actions: 3m 59s
+- Depot CI: 2m 13s (44% faster than GHA, 4.9x faster than Local)
 
 **Why this tests:** Dependency addition - common when adding new libraries. pnpm must fetch and install new package, but existing packages remain cached. Tests dependency resolution and download performance.
 
@@ -290,8 +295,9 @@ echo "<!-- Major test -->" >> README.md
 ```
 
 **Expected Times:**
-- Depot CI: 2m 36s
-- GitHub Actions: 5m 25s
+- Local Docker: ~8m 46s
+- GitHub Actions: 3m 52s
+- Depot CI: 1m 55s (50% faster than GHA, 4.6x faster than Local)
 
 **Why this tests:** Worst-case scenario - full rebuild. Shows maximum performance difference between Depot CI and GitHub Actions.
 
@@ -299,16 +305,16 @@ echo "<!-- Major test -->" >> README.md
 
 ## Test Case Comparison
 
-| Test | Description | Layers Affected | Cache Hit | Depot CI | GitHub Actions | Speedup |
-|------|-------------|-----------------|-----------|----------|----------------|---------|
-| **1. Baseline** | Build without cache | None (cold) | ~0% | 1m 51s | 3m 4s | **1.7x** |
-| **2. Docs** | README comment | COPY . . | ~95% | 1m 50s | 2m 39s | **1.4x** |
-| **3. Source** | New TS file | COPY, build | ~75% | 1m 51s | 2m 37s | **1.4x** |
-| **4. UI** | New component | COPY, build, UI | ~50% | 1m 52s | 2m 30s | **1.3x** |
-| **5. Dependency** | New package | package, install, all | ~25% | 1m 53s | 6m 3s | **3.3x** |
-| **6. Major** | All changes | All layers | ~10% | 2m 36s | 5m 25s | **2.1x** |
+| Test | Description | Layers Affected | Cache Hit | Local Docker | GitHub Actions | Depot CI | Depot vs GHA |
+|------|-------------|-----------------|-----------|-------------|----------------|----------|-------------|
+| **1. Baseline** | Build without cache | None (cold) | ~0% | 15m 30s | 3m 44s | 2m 28s | **34% faster** |
+| **2. Docs** | README comment | COPY . . | ~95% | 12m 0s | 3m 56s | 3m 2s | **23% faster** |
+| **3. Source** | New TS file | COPY, build | ~75% | 11m 56s | 3m 21s | 1m 53s | **44% faster** |
+| **4. UI** | New component | COPY, build, UI | ~50% | 9m 59s | 3m 50s | 2m 31s | **34% faster** |
+| **5. Dependency** | New package | package, install, all | ~25% | ~10m 57s | 3m 59s | 2m 13s | **44% faster** |
+| **6. Major** | All changes | All layers | ~10% | ~8m 46s | 3m 52s | 1m 55s | **50% faster** |
 
-> **Average Speedup:** 1.9x faster (Depot CI: 1m 59s vs GitHub Actions: 3m 43s)
+> **Average:** Depot CI 38% faster than GitHub Actions (2m 20s vs 3m 47s), 5x faster than Local Docker (2m 20s vs ~11m 28s)
 
 ## Why Depot CI is Faster
 

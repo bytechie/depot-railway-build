@@ -66,14 +66,14 @@ git push
 
 ### Test Cases Overview
 
-| Test | Description | Expected Cache | Speedup |
-|------|-------------|----------------|---------|
-| **baseline** | Build without cache | ~0% | 1.7x |
-| **test-2-docs** | README comment change | ~95% | 1.4x |
-| **test-3-source** | New TypeScript source file | ~75% | 1.4x |
-| **test-4-ui** | New UI component | ~50% | 1.3x |
-| **test-5-dependency** | Touch package.json (new dep) | ~25% | 3.3x |
-| **test-6-major** | Multiple file types + dep | ~10% | 2.1x |
+| Test | Description | Expected Cache | Depot vs GHA |
+|------|-------------|----------------|--------------|
+| **baseline** | Build without cache | ~0% | 34% faster |
+| **test-2-docs** | README comment change | ~95% | 23% faster |
+| **test-3-source** | New TypeScript source file | ~75% | 44% faster |
+| **test-4-ui** | New UI component | ~50% | 34% faster |
+| **test-5-dependency** | Touch package.json (new dep) | ~25% | 44% faster |
+| **test-6-major** | Multiple file types + dep | ~10% | 50% faster |
 
 ### Option A: GitHub Actions Baseline
 
@@ -97,16 +97,16 @@ git push
 
 ## Expected Results
 
-| Test | GitHub Actions | Depot CI | Speedup |
-|------|----------------|----------|---------|
-| Baseline | 3m 4s | 1m 51s | **1.7x** |
-| Docs | 2m 39s | 1m 50s | **1.4x** |
-| Source | 2m 37s | 1m 51s | **1.4x** |
-| UI | 2m 30s | 1m 52s | **1.3x** |
-| Dependency | 6m 3s | 1m 53s | **3.3x** |
-| Major | 5m 25s | 2m 36s | **2.1x** |
+| Test | Local Docker | GitHub Actions | Depot CI | Depot vs GHA |
+|------|-------------|----------------|----------|-------------|
+| Baseline | 15m 30s | 3m 44s | 2m 28s | **34% faster** |
+| Docs | 12m 0s | 3m 56s | 3m 2s | **23% faster** |
+| Source | 11m 56s | 3m 21s | 1m 53s | **44% faster** |
+| UI | 9m 59s | 3m 50s | 2m 31s | **34% faster** |
+| Dependency | ~10m 57s | 3m 59s | 2m 13s | **44% faster** |
+| Major | ~8m 46s | 3m 52s | 1m 55s | **50% faster** |
 
-> **Average:** 1.9x faster (1m 59s vs 3m 43s)
+> **Average:** Depot CI 38% faster than GHA (~2m 20s vs ~3m 47s), 5x faster than Local Docker (~2m 20s vs ~11m 28s)
 
 ## Why OpenClaw?
 
@@ -160,37 +160,43 @@ OpenClaw Performance Test Results
 ==================================
 
 Baseline (100% cache):
+  Local Docker:   ___ min ___ sec
   GitHub Actions: ___ min ___ sec
   Depot CI:       ___ min ___ sec
-  Speedup:        ___x
+  Improvement:    ___% faster than GHA
 
 Docs (95% cache):
+  Local Docker:   ___ min ___ sec
   GitHub Actions: ___ min ___ sec
   Depot CI:       ___ min ___ sec
-  Speedup:        ___x
+  Improvement:    ___% faster than GHA
 
 Source (75% cache):
+  Local Docker:   ___ min ___ sec
   GitHub Actions: ___ min ___ sec
   Depot CI:       ___ min ___ sec
-  Speedup:        ___x
+  Improvement:    ___% faster than GHA
 
 UI (50% cache):
+  Local Docker:   ___ min ___ sec
   GitHub Actions: ___ min ___ sec
   Depot CI:       ___ min ___ sec
-  Speedup:        ___x
+  Improvement:    ___% faster than GHA
 
 Dependency (25% cache):
+  Local Docker:   ___ min ___ sec
   GitHub Actions: ___ min ___ sec
   Depot CI:       ___ min ___ sec
-  Speedup:        ___x
+  Improvement:    ___% faster than GHA
 
 Major (10% cache):
+  Local Docker:   ___ min ___ sec
   GitHub Actions: ___ min ___ sec
   Depot CI:       ___ min ___ sec
-  Speedup:        ___x
+  Improvement:    ___% faster than GHA
 
 ─────────────────────────────────────
-Average Speedup: ___x
+Average Improvement: ___% faster than GHA
 ```
 
 ## Troubleshooting

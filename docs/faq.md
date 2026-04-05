@@ -92,18 +92,21 @@ docker run -p 3000:3000 openclaw-demo
 
 ### How much faster is Depot CI really?
 
-Based on our comprehensive performance testing with OpenClaw AI (500+ dependencies):
+Based on our comprehensive performance testing with OpenClaw AI (500+ dependencies) across three environments:
 
 **vs GitHub Actions:**
-- **Average: 1.9x faster** (1m 59s vs 3m 43s)
-- Baseline (cold): 1.7x faster
-- Documentation change: 1.4x faster
-- New source file: 1.4x faster
-- UI component: 1.3x faster
-- New dependency: 3.3x faster
-- Major changes: 2.1x faster
+- **Average: 38% faster** (2m 20s vs 3m 47s)
+- Baseline (cold): 34% faster
+- Documentation change: 23% faster
+- New source file: 44% faster
+- UI component: 34% faster
+- New dependency: 44% faster
+- Major changes: 50% faster
 
-See [OPENCLAW-FINAL-RESULTS.md](./performance-testing/openclaw-ai-testing/OPENCLAW-FINAL-RESULTS.md) for complete results.
+**vs Local Docker:**
+- **Average: 5x faster** (2m 20s vs ~11m 28s)
+
+See [summary.md](./performance-testing/openclaw-ai-testing/summary.md) for complete results.
 
 ### Will my results vary?
 
@@ -113,14 +116,15 @@ Yes, actual performance depends on:
 - Cache hit rates
 - Concurrent workflows
 
-However, most teams see **at least 1.5-2x improvement** vs GitHub Actions, with even greater gains for dependency-heavy builds.
+However, most teams see **at least 23-50% improvement** vs GitHub Actions, with even greater gains for dependency-heavy builds.
 
 ### What about first-time builds?
 
 First builds (cold cache) still benefit from:
-- Optimized infrastructure (faster CPUs, better networking)
-- Better layer caching than GitHub Actions
-- Depot CI: 1m 51s cold build vs GitHub Actions: 3m 4s (1.7x faster)
+- Optimized infrastructure (16 CPU, 32 GB RAM remote builders)
+- NVMe SSD caching built in
+- Depot CI: 2m 28s cold build vs GitHub Actions: 3m 44s (34% faster)
+- Depot CI: 2m 28s cold build vs Local Docker: 15m 30s (6.3x faster)
 
 Subsequent builds see the full benefit of distributed caching.
 
@@ -159,11 +163,11 @@ Yes! The sample app is open-source (MIT license). You can:
 ### How do I run performance tests?
 
 Complete performance test results are available at:
-**[OPENCLAW-FINAL-RESULTS.md](./performance-testing/openclaw-ai-testing/OPENCLAW-FINAL-RESULTS.md)**
+**[summary.md](./performance-testing/openclaw-ai-testing/summary.md)**
 
 For testing setup and instructions, see:
-- **[OpenClaw Comparison Guide](./performance-testing/openclaw-ai-testing/OPENCLAW-COMPARISON-GUIDE.md)** — How to run CI tests
-- **[COMPREHENSIVE-ANALYSIS.md](./performance-testing/openclaw-ai-testing/COMPREHENSIVE-ANALYSIS.md)** — Complete 30-test analysis
+- **[OpenClaw Performance Guide](./openclaw-performance-guide.md)** — How to run CI tests
+- **[OpenClaw Quick Start](./openclaw-quick-start.md)** — Quick start for performance testing
 
 ### Can I use this for my own projects?
 

@@ -31,7 +31,7 @@ OpenClaw is a **24/7 personal AI assistant** that:
 
 ```
 OpenClaw = Personal AI agents that need fast iteration
-Depot CI  = Nearly 2x faster builds for AI-augmented development
+Depot CI  = 38% faster builds than GitHub Actions, 5x faster than local Docker
 ```
 
 The connection is immediate and compelling.
@@ -123,15 +123,17 @@ Since OpenClaw's repository is private, we created a **simulation demo app** tha
 | Tests | Parallel test execution |
 | Deployment | Faster artifact delivery |
 
-## Expected Performance Comparison
+## Performance Comparison (Run 3 Results)
 
-| Metric | GitHub Actions | Depot CI | Improvement |
-|--------|----------------|----------|-------------|
-| Average build time | 3m 43s | 1m 59s | **1.9x faster** |
-| Baseline (cold) | 3m 4s | 1m 51s | **1.7x faster** |
-| Documentation change | 2m 39s | 1m 50s | **1.4x faster** |
-| New dependency | 6m 3s | 1m 53s | **3.3x faster** |
-| Major changes | 5m 25s | 2m 36s | **2.1x faster** |
+| Metric | Local Docker | GitHub Actions | Depot CI | Depot vs GHA |
+|--------|-------------|----------------|----------|-------------|
+| Average build time | ~11m 28s | ~3m 47s (227s) | ~2m 20s (140s) | **38% faster** |
+| Baseline (cold) | 15m 30s | 3m 44s | 2m 28s | **34% faster** |
+| Documentation change | 12m 0s | 3m 56s | 3m 2s | **23% faster** |
+| New source file | 11m 56s | 3m 21s | 1m 53s | **44% faster** |
+| UI component | 9m 59s | 3m 50s | 2m 31s | **34% faster** |
+| New dependency | ~10m 57s | 3m 59s | 2m 13s | **44% faster** |
+| Major changes | ~8m 46s | 3m 52s | 1m 55s | **50% faster** |
 
 ## Next Steps
 
@@ -139,10 +141,10 @@ Since OpenClaw's repository is private, we created a **simulation demo app** tha
 2. ✅ Depot account setup
 3. ✅ Run baseline benchmarks
 4. ✅ Run Depot CI benchmarks
-5. ✅ Create comparison documentation → **[OPENCLAW-FINAL-RESULTS.md](./performance-testing/openclaw-ai-testing/OPENCLAW-FINAL-RESULTS.md)**
+5. ✅ Create comparison documentation → **[summary.md](./performance-testing/openclaw-ai-testing/summary.md)**
 6. ⏳ Produce demo video
 
-> **Note:** Comprehensive performance testing completed April 2-3, 2026. See [OPENCLAW-FINAL-RESULTS.md](./performance-testing/openclaw-ai-testing/OPENCLAW-FINAL-RESULTS.md) for complete results showing Depot CI averaging 1m 59s vs GitHub Actions 3m 43s (1.9x faster).
+> **Note:** Comprehensive performance testing completed April 4-5, 2026. See [summary.md](./performance-testing/openclaw-ai-testing/summary.md) for complete results across three environments (Local Docker, GitHub Actions, Depot CI) showing Depot CI averaging 2m 20s vs GitHub Actions 3m 47s (38% faster) and vs Local Docker 11m 28s (5x faster).
 
 ---
 

@@ -103,8 +103,9 @@ Or trigger manually:
 
 | Workflow | Expected Time |
 |----------|---------------|
-| Baseline (GitHub Actions) | 4-7 minutes |
-| Depot CI | 20-60 seconds |
+| Local Docker | 9-16 minutes |
+| GitHub Actions | 3-4 minutes |
+| Depot CI | ~2-3 minutes |
 
 ## Troubleshooting
 

@@ -181,9 +181,12 @@ depot ci migrate
 
 ### Time Savings
 
-- 10 builds/day × 4 min saved = 40 min/day
-- 40 min/day × 5 days = 200 min/week
-- **That's an extra morning every week**
+Based on Run 3 testing (Depot CI 2m 20s avg vs GitHub Actions 3m 47s avg):
+
+- 100 builds/day × 1.5 min saved = 150 min/day
+- 150 min/day × 5 days = 750 min/week
+- 750 min/week × 50 weeks = 37,500 min/year
+- **That's ~625 hours per year, or ~16 full work weeks**
 
 ### Cost Savings
 
