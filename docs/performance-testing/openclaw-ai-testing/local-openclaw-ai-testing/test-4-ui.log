@@ -1,309 +1,285 @@
-Build started at: Thu Apr  2 23:32:26 EDT 2026
+Build started at: Sun Apr  5 00:03:57 EDT 2026
 ========================================
 #0 building with "default" instance using docker driver
 
 #1 [internal] load build definition from Dockerfile
 #1 transferring dockerfile: 13.45kB 0.0s done
-#1 DONE 0.0s
+#1 DONE 0.1s
 
 #2 resolve image config for docker-image://docker.io/docker/dockerfile:1.7
-#2 DONE 0.6s
+#2 DONE 0.8s
 
 #3 docker-image://docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
-#3 resolve docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e 0.0s done
+#3 resolve docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e 0.1s done
 #3 CACHED
 
 #4 [internal] load metadata for docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
 #4 DONE 0.0s
 
 #5 [internal] load .dockerignore
-#5 transferring context: 1.26kB done
+#5 transferring context: 1.29kB done
 #5 DONE 0.0s
 
-#6 [ext-deps 1/3] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
+#6 [build  1/15] FROM docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b
 #6 resolve docker.io/library/node:24-bookworm@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b 0.0s done
 #6 DONE 0.0s
 
 #7 [internal] load build context
-#7 transferring context: 709.71kB 0.8s done
-#7 DONE 0.9s
+#7 transferring context: 767.23kB 0.9s done
+#7 DONE 1.3s
 
-#8 [build  4/15] WORKDIR /app
+#8 [ext-deps 2/3] COPY extensions /tmp/extensions
 #8 CACHED
 
-#9 [build  7/15] COPY patches ./patches
+#9 [ext-deps 3/3] RUN mkdir -p /out &&     for ext in ; do       if [ -f "/tmp/extensions/$ext/package.json" ]; then         mkdir -p "/out/$ext" &&         cp "/tmp/extensions/$ext/package.json" "/out/$ext/package.json";       fi;     done
 #9 CACHED
 
-#10 [ext-deps 2/3] COPY extensions /tmp/extensions
+#10 [build  4/15] WORKDIR /app
 #10 CACHED
 
-#11 [build  9/15] COPY --from=ext-deps /out/ ./extensions/
+#11 [build  5/15] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 #11 CACHED
 
-#12 [build  3/15] RUN corepack enable
+#12 [build  6/15] COPY ui/package.json ./ui/package.json
 #12 CACHED
 
-#13 [build  5/15] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+#13 [build  7/15] COPY patches ./patches
 #13 CACHED
 
 #14 [build  8/15] COPY scripts/postinstall-bundled-plugins.mjs scripts/npm-runner.mjs ./scripts/
 #14 CACHED
 
-#15 [ext-deps 3/3] RUN mkdir -p /out &&     for ext in ; do       if [ -f "/tmp/extensions/$ext/package.json" ]; then         mkdir -p "/out/$ext" &&         cp "/tmp/extensions/$ext/package.json" "/out/$ext/package.json";       fi;     done
+#15 [build  9/15] COPY --from=ext-deps /out/ ./extensions/
 #15 CACHED
 
 #16 [build  2/15] RUN set -eux;     for attempt in 1 2 3 4 5; do       if curl --retry 5 --retry-all-errors --retry-delay 2 -fsSL https://bun.sh/install | bash; then         break;       fi;       if [ "$attempt" -eq 5 ]; then         exit 1;       fi;       sleep $((attempt * 2));     done
 #16 CACHED
 
-#17 [build  6/15] COPY ui/package.json ./ui/package.json
+#17 [build  3/15] RUN corepack enable
 #17 CACHED
 
 #18 [build 10/15] RUN --mount=type=cache,id=openclaw-pnpm-store,target=/root/.local/share/pnpm/store,sharing=locked     NODE_OPTIONS=--max-old-space-size=2048 pnpm install --frozen-lockfile
 #18 CACHED
 
 #19 [build 11/15] COPY . .
-#19 DONE 5.8s
+#19 DONE 6.2s
 
 #20 [build 12/15] RUN for dir in /app/extensions /app/.agent /app/.agents; do       if [ -d "$dir" ]; then         find "$dir" -type d -exec chmod 755 {} +;         find "$dir" -type f -exec chmod 644 {} +;       fi;     done
-#20 DONE 13.6s
+#20 DONE 16.8s
 
 #21 [build 13/15] RUN pnpm canvas:a2ui:bundle ||     (echo "A2UI bundle: creating stub (non-fatal)" &&      mkdir -p src/canvas-host/a2ui &&      echo "/* A2UI bundle unavailable in this build */" > src/canvas-host/a2ui/a2ui.bundle.js &&      echo "stub" > src/canvas-host/a2ui/.bundle.hash &&      rm -rf vendor/a2ui apps/shared/OpenClawKit/Tools/CanvasA2UI)
-#21 0.954 
-#21 0.954 > openclaw@2026.4.2 canvas:a2ui:bundle /app
-#21 0.954 > bash scripts/bundle-a2ui.sh
-#21 0.954 
-#21 5.030 <DIR>/a2ui.bundle.js  chunk │ size: 486.00 kB
-#21 5.030 
-#21 5.032 ✔ rolldown v1.0.0-rc.12 Finished in 194.56 ms
-#21 DONE 5.1s
+#21 0.945 
+#21 0.945 > openclaw@2026.4.4 canvas:a2ui:bundle /app
+#21 0.945 > bash scripts/bundle-a2ui.sh
+#21 0.945 
+#21 5.773 <DIR>/a2ui.bundle.js  chunk │ size: 486.00 kB
+#21 5.773 
+#21 5.773 ✔ rolldown v1.0.0-rc.12 Finished in 166.63 ms
+#21 DONE 5.8s
 
 #22 [build 14/15] RUN pnpm build:docker
-#22 0.659 
-#22 0.659 > openclaw@2026.4.2 build:docker /app
-#22 0.659 > node scripts/tsdown-build.mjs && node scripts/runtime-postbuild.mjs && node scripts/build-stamp.mjs && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/copy-export-html-templates.ts && node --import tsx scripts/write-build-info.ts && node --import tsx scripts/write-cli-startup-metadata.ts && node --import tsx scripts/write-cli-compat.ts
-#22 0.659 
-#22 42.39 [copy-hook-metadata] Copied 4 hook metadata files.
-#22 42.68 [copy-export-html-templates] Copied 5 export-html assets.
-#22 DONE 58.6s
+#22 0.724 
+#22 0.724 > openclaw@2026.4.4 build:docker /app
+#22 0.724 > node scripts/tsdown-build.mjs && node scripts/runtime-postbuild.mjs && node scripts/build-stamp.mjs && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/copy-export-html-templates.ts && node --import tsx scripts/write-build-info.ts && node --experimental-strip-types scripts/write-cli-startup-metadata.ts && node --import tsx scripts/write-cli-compat.ts
+#22 0.724 
+#22 46.30 [copy-hook-metadata] Copied 4 hook metadata files.
+#22 46.57 [copy-export-html-templates] Copied 5 export-html assets.
+#22 DONE 51.9s
 
 #23 [build 15/15] RUN pnpm ui:build
-#23 0.911 
-#23 0.911 > openclaw@2026.4.2 ui:build /app
-#23 0.911 > node scripts/ui.js build
-#23 0.911 
-#23 1.479 
-#23 1.479 > openclaw-control-ui@ build /app/ui
-#23 1.479 > vite build
-#23 1.479 
-#23 1.803 vite v8.0.3 building client environment for production...
-#23 1.824 [2Ktransforming...✓ 1622 modules transformed.
-#23 2.835 rendering chunks...
-#23 3.711 computing gzip size...
-#23 3.743 ../dist/control-ui/index.html                                    2.98 kB │ gzip:   1.08 kB
-#23 3.743 ../dist/control-ui/assets/index-Bhjki1_a.css                   196.49 kB │ gzip:  32.30 kB
-#23 3.743 ../dist/control-ui/assets/directive-C6NBp6xJ.js                  0.36 kB │ gzip:   0.27 kB │ map:     1.03 kB
-#23 3.743 ../dist/control-ui/assets/hash-Bt1aVMQ3.js                       0.38 kB │ gzip:   0.26 kB │ map:     1.19 kB
-#23 3.743 ../dist/control-ui/assets/github-copilot-headers-CrI0CIJ7.js     0.46 kB │ gzip:   0.31 kB │ map:     1.80 kB
-#23 3.743 ../dist/control-ui/assets/channel-config-extras-DNCeHtEf.js      0.50 kB │ gzip:   0.32 kB │ map:     2.16 kB
-#23 3.743 ../dist/control-ui/assets/preload-helper-xBbMyY7u.js             1.20 kB │ gzip:   0.68 kB
-#23 3.743 ../dist/control-ui/assets/skills-shared-DJsJP4-4.js              1.50 kB │ gzip:   0.69 kB │ map:     4.49 kB
-#23 3.743 ../dist/control-ui/assets/transform-messages-XKqwKV3D.js         2.17 kB │ gzip:   0.97 kB │ map:    12.71 kB
-#23 3.743 ../dist/control-ui/assets/instances-DTNtCw6q.js                  2.79 kB │ gzip:   1.07 kB │ map:     5.53 kB
-#23 3.743 ../dist/control-ui/assets/logs-vVeVJ0CI.js                       3.12 kB │ gzip:   1.15 kB │ map:     6.45 kB
-#23 3.743 ../dist/control-ui/assets/openai-responses-DJl0G-3f.js           3.18 kB │ gzip:   1.53 kB │ map:    10.61 kB
-#23 3.743 ../dist/control-ui/assets/azure-openai-responses-BlgsZIK0.js     3.32 kB │ gzip:   1.57 kB │ map:    10.55 kB
-#23 3.743 ../dist/control-ui/assets/format-Cbj45nru.js                     3.70 kB │ gzip:   1.60 kB │ map:    19.60 kB
-#23 3.743 ../dist/control-ui/assets/debug-CWZygxPv.js                      4.17 kB │ gzip:   1.28 kB │ map:     7.15 kB
-#23 3.743 ../dist/control-ui/assets/de-DU-XmSEb.js                         4.32 kB │ gzip:   2.11 kB │ map:     6.89 kB
-#23 3.743 ../dist/control-ui/assets/zh-TW-CCgwa2eS.js                      4.69 kB │ gzip:   2.67 kB │ map:     8.08 kB
-#23 3.743 ../dist/control-ui/assets/pt-BR-RqwUvKTB.js                      5.15 kB │ gzip:   2.41 kB │ map:     8.62 kB
-#23 3.743 ../dist/control-ui/assets/google-DH3sJwd0.js                     5.65 kB │ gzip:   2.06 kB │ map:    23.08 kB
-#23 3.743 ../dist/control-ui/assets/google-vertex-lQwbjEII.js              6.37 kB │ gzip:   2.32 kB │ map:    25.43 kB
-#23 3.743 ../dist/control-ui/assets/openai-responses-shared-d8tCggM4.js    7.35 kB │ gzip:   2.39 kB │ map:    28.57 kB
-#23 3.743 ../dist/control-ui/assets/skills--6nT6ERj.js                     9.16 kB │ gzip:   2.79 kB │ map:    17.60 kB
-#23 3.743 ../dist/control-ui/assets/zh-CN-CUzhgfRs.js                     10.95 kB │ gzip:   5.25 kB │ map:    18.70 kB
-#23 3.743 ../dist/control-ui/assets/openai-codex-responses-BFNlkFpD.js    11.00 kB │ gzip:   4.30 kB │ map:    41.96 kB
-#23 3.743 ../dist/control-ui/assets/google-gemini-cli-BpxbH95Q.js         11.18 kB │ gzip:   4.32 kB │ map:    49.77 kB
-#23 3.743 ../dist/control-ui/assets/sessions-Dr_r3LLC.js                  11.49 kB │ gzip:   3.20 kB │ map:    27.51 kB
-#23 3.743 ../dist/control-ui/assets/openai-completions-Bx9WUImb.js        11.88 kB │ gzip:   3.93 kB │ map:    46.60 kB
-#23 3.743 ../dist/control-ui/assets/es-Be891ZDf.js                        11.93 kB │ gzip:   4.83 kB │ map:    19.08 kB
-#23 3.743 ../dist/control-ui/assets/lit-zdTgzAJI.js                       15.03 kB │ gzip:   5.87 kB │ map:    34.52 kB
-#23 3.743 ../dist/control-ui/assets/nodes-B1R45Hyv.js                     21.99 kB │ gzip:   5.02 kB │ map:    53.05 kB
-#23 3.743 ../dist/control-ui/assets/channels-6kAnhm1b.js                  22.18 kB │ gzip:   4.93 kB │ map:    59.83 kB
-#23 3.743 ../dist/control-ui/assets/dist-D8DZLmCF.js                      22.50 kB │ gzip:   6.69 kB │ map:    75.94 kB
-#23 3.743 ../dist/control-ui/assets/agents-CmyA4rQV.js                    46.25 kB │ gzip:  11.07 kB │ map:   130.21 kB
-#23 3.743 ../dist/control-ui/assets/cron-f2Wyb0Eo.js                      49.18 kB │ gzip:   8.47 kB │ map:    95.70 kB
-#23 3.743 ../dist/control-ui/assets/anthropic-BzPVIrLm.js                 82.24 kB │ gzip:  22.59 kB │ map:   361.55 kB
-#23 3.743 ../dist/control-ui/assets/openai-Cn7eGqwa.js                   105.20 kB │ gzip:  28.25 kB │ map:   473.47 kB
-#23 3.743 ../dist/control-ui/assets/event-stream-B8X6sYaV.js             247.22 kB │ gzip:  20.77 kB │ map:   634.65 kB
-#23 3.743 ../dist/control-ui/assets/google-shared-CbPHVnPr.js            263.21 kB │ gzip:  52.59 kB │ map: 1,177.12 kB
-#23 3.743 ../dist/control-ui/assets/index-Bhz0foFB.js                    795.06 kB │ gzip: 215.82 kB │ map: 2,544.34 kB
-#23 3.743 ../dist/control-ui/assets/mistral-BHA4h9bS.js                  803.00 kB │ gzip:  82.83 kB │ map: 2,513.35 kB
-#23 3.743 
-#23 3.745 ✓ built in 1.94s
-#23 DONE 4.2s
+#23 1.146 
+#23 1.146 > openclaw@2026.4.4 ui:build /app
+#23 1.146 > node scripts/ui.js build
+#23 1.146 
+#23 1.665 
+#23 1.665 > openclaw-control-ui@ build /app/ui
+#23 1.665 > vite build
+#23 1.665 
+#23 1.992 vite v8.0.3 building client environment for production...
+#23 2.013 [2Ktransforming...✓ 696 modules transformed.
+#23 2.720 rendering chunks...
+#23 3.520 computing gzip size...
+#23 3.542 ../dist/control-ui/index.html                                  2.81 kB │ gzip:   1.05 kB
+#23 3.542 ../dist/control-ui/assets/index-CEunN36H.css                 204.78 kB │ gzip:  33.80 kB
+#23 3.542 ../dist/control-ui/assets/directive-CUxOzvVj.js                0.36 kB │ gzip:   0.27 kB │ map:     1.03 kB
+#23 3.542 ../dist/control-ui/assets/channel-config-extras-CnhailPb.js    0.50 kB │ gzip:   0.32 kB │ map:     2.16 kB
+#23 3.542 ../dist/control-ui/assets/skills-shared-DOtW23Gq.js            1.50 kB │ gzip:   0.69 kB │ map:     4.49 kB
+#23 3.542 ../dist/control-ui/assets/instances-DWrqqOWY.js                2.79 kB │ gzip:   1.07 kB │ map:     5.53 kB
+#23 3.542 ../dist/control-ui/assets/logs-DyPBW1nc.js                     3.12 kB │ gzip:   1.15 kB │ map:     6.45 kB
+#23 3.542 ../dist/control-ui/assets/debug-BiKkbHRk.js                    4.17 kB │ gzip:   1.27 kB │ map:     7.15 kB
+#23 3.542 ../dist/control-ui/assets/de-DhP8YdZj.js                       4.32 kB │ gzip:   2.11 kB │ map:     6.89 kB
+#23 3.542 ../dist/control-ui/assets/zh-TW-GnDPLInd.js                    4.69 kB │ gzip:   2.67 kB │ map:     8.08 kB
+#23 3.542 ../dist/control-ui/assets/pt-BR-BaW5eiXE.js                    5.15 kB │ gzip:   2.41 kB │ map:     8.62 kB
+#23 3.542 ../dist/control-ui/assets/dreams-D4Bi5u79.js                   5.52 kB │ gzip:   1.85 kB │ map:     9.19 kB
+#23 3.542 ../dist/control-ui/assets/format-DCgJzWag.js                   6.10 kB │ gzip:   2.44 kB │ map:    31.22 kB
+#23 3.542 ../dist/control-ui/assets/zh-CN-Fdg5YAtN.js                   10.95 kB │ gzip:   5.25 kB │ map:    18.70 kB
+#23 3.542 ../dist/control-ui/assets/sessions-2Nd5CVSv.js                11.49 kB │ gzip:   3.20 kB │ map:    27.51 kB
+#23 3.542 ../dist/control-ui/assets/es-BNbpobKD.js                      11.93 kB │ gzip:   4.82 kB │ map:    19.08 kB
+#23 3.542 ../dist/control-ui/assets/skills-SkTaVqbS.js                  13.93 kB │ gzip:   3.47 kB │ map:    26.49 kB
+#23 3.542 ../dist/control-ui/assets/lit-BZwq2xLD.js                     15.03 kB │ gzip:   5.87 kB │ map:    34.52 kB
+#23 3.542 ../dist/control-ui/assets/nodes-D368Itye.js                   21.99 kB │ gzip:   5.02 kB │ map:    53.05 kB
+#23 3.542 ../dist/control-ui/assets/channels-CDbFcSQ5.js                22.18 kB │ gzip:   4.93 kB │ map:    59.83 kB
+#23 3.542 ../dist/control-ui/assets/dist-JpQZl4c2.js                    22.50 kB │ gzip:   6.69 kB │ map:    75.94 kB
+#23 3.542 ../dist/control-ui/assets/agents-lpbTp_hb.js                  46.21 kB │ gzip:  11.08 kB │ map:   130.21 kB
+#23 3.542 ../dist/control-ui/assets/cron-DYL80G-q.js                    49.27 kB │ gzip:   8.51 kB │ map:    95.83 kB
+#23 3.542 ../dist/control-ui/assets/index-D6wBJJAv.js                  675.11 kB │ gzip: 179.42 kB │ map: 2,130.53 kB
+#23 3.542 
+#23 3.544 ✓ built in 1.55s
+#23 DONE 3.8s
 
 #24 [runtime-assets 1/1] RUN CI=true pnpm prune --prod &&     find dist -type f ( -name '*.d.ts' -o -name '*.d.mts' -o -name '*.d.cts' -o -name '*.map' ) -delete
-#24 1.246 Lockfile is up to date, resolution step is skipped
-#24 3.474 Progress: resolved 0, reused 0, downloaded 1, added 0
-#24 3.643 Packages: +18
-#24 3.643 ++++++++++++++++++
-#24 4.482 Progress: resolved 0, reused 0, downloaded 2, added 0
-#24 8.343 Progress: resolved 0, reused 0, downloaded 3, added 0
-#24 9.343 Progress: resolved 0, reused 0, downloaded 5, added 0
-#24 11.50 Progress: resolved 0, reused 0, downloaded 6, added 0
-#24 13.18 Progress: resolved 0, reused 0, downloaded 7, added 0
-#24 14.18 Progress: resolved 0, reused 0, downloaded 9, added 0
-#24 17.64 Progress: resolved 0, reused 0, downloaded 10, added 0
-#24 18.64 Progress: resolved 0, reused 0, downloaded 11, added 0
-#24 21.21 Progress: resolved 0, reused 0, downloaded 12, added 0
-#24 22.21 Progress: resolved 0, reused 0, downloaded 13, added 0
-#24 25.67 Progress: resolved 0, reused 0, downloaded 14, added 0
-#24 30.89 Progress: resolved 0, reused 0, downloaded 15, added 0
-#24 32.08 Progress: resolved 0, reused 0, downloaded 16, added 0
-#24 33.08 Progress: resolved 0, reused 0, downloaded 19, added 0
-#24 34.08 Progress: resolved 0, reused 0, downloaded 25, added 0
-#24 35.08 Progress: resolved 0, reused 0, downloaded 31, added 0
-#24 36.09 Progress: resolved 0, reused 0, downloaded 33, added 0
-#24 37.10 Progress: resolved 0, reused 0, downloaded 34, added 0
-#24 38.10 Progress: resolved 0, reused 0, downloaded 36, added 0
-#24 39.76 Progress: resolved 0, reused 0, downloaded 37, added 0
-#24 41.27 Progress: resolved 0, reused 0, downloaded 38, added 0
-#24 42.37 Progress: resolved 0, reused 0, downloaded 39, added 0
-#24 47.64 Progress: resolved 0, reused 0, downloaded 40, added 0
-#24 48.64 Progress: resolved 0, reused 0, downloaded 41, added 0
-#24 49.64 Progress: resolved 0, reused 0, downloaded 42, added 0
-#24 50.64 Progress: resolved 0, reused 0, downloaded 44, added 0
-#24 51.64 Progress: resolved 0, reused 0, downloaded 46, added 0
-#24 54.88 Progress: resolved 0, reused 0, downloaded 47, added 0
-#24 55.88 Progress: resolved 0, reused 0, downloaded 50, added 0
-#24 56.88 Progress: resolved 0, reused 0, downloaded 54, added 0
-#24 57.88 Progress: resolved 0, reused 0, downloaded 55, added 0
-#24 58.88 Progress: resolved 0, reused 0, downloaded 56, added 0
-#24 59.88 Progress: resolved 0, reused 0, downloaded 58, added 0
-#24 60.93 Progress: resolved 0, reused 0, downloaded 60, added 0
-#24 61.90 Progress: resolved 0, reused 0, downloaded 62, added 0
-#24 62.90 Progress: resolved 0, reused 0, downloaded 64, added 0
-#24 63.90 Progress: resolved 0, reused 0, downloaded 67, added 0
-#24 65.69 Progress: resolved 0, reused 0, downloaded 68, added 0
-#24 66.81 Progress: resolved 0, reused 0, downloaded 69, added 0
-#24 67.82 Progress: resolved 0, reused 0, downloaded 70, added 0
-#24 68.82 Progress: resolved 0, reused 0, downloaded 71, added 0
-#24 69.82 Progress: resolved 0, reused 0, downloaded 72, added 0
-#24 70.82 Progress: resolved 0, reused 0, downloaded 73, added 0
-#24 71.82 Progress: resolved 0, reused 0, downloaded 75, added 0
-#24 72.94 Progress: resolved 0, reused 0, downloaded 77, added 0
-#24 74.20 Progress: resolved 0, reused 0, downloaded 78, added 0
-#24 75.19 Progress: resolved 0, reused 0, downloaded 79, added 0
-#24 76.19 Progress: resolved 0, reused 0, downloaded 84, added 0
-#24 77.54 Progress: resolved 0, reused 0, downloaded 85, added 0
-#24 78.54 Progress: resolved 0, reused 0, downloaded 91, added 0
-#24 79.54 Progress: resolved 0, reused 0, downloaded 93, added 0
-#24 81.95 Progress: resolved 0, reused 0, downloaded 94, added 0
-#24 85.92 Progress: resolved 0, reused 0, downloaded 95, added 0
-#24 90.36 Progress: resolved 0, reused 0, downloaded 96, added 0
-#24 91.36 Progress: resolved 0, reused 0, downloaded 97, added 0
-#24 92.36 Progress: resolved 0, reused 0, downloaded 98, added 0
-#24 94.99 Progress: resolved 0, reused 0, downloaded 99, added 0
-#24 96.22 Progress: resolved 0, reused 0, downloaded 100, added 0
-#24 97.22 Progress: resolved 0, reused 0, downloaded 102, added 0
-#24 98.22 Progress: resolved 0, reused 0, downloaded 103, added 0
-#24 99.22 Progress: resolved 0, reused 0, downloaded 105, added 0
-#24 100.2 Progress: resolved 0, reused 0, downloaded 107, added 0
-#24 101.2 Progress: resolved 0, reused 0, downloaded 109, added 0
-#24 102.5 Progress: resolved 0, reused 0, downloaded 110, added 0
-#24 103.5 Progress: resolved 0, reused 0, downloaded 111, added 0
-#24 104.7 Progress: resolved 0, reused 0, downloaded 112, added 0
-#24 106.6 Progress: resolved 0, reused 0, downloaded 113, added 0
-#24 107.6 Progress: resolved 0, reused 0, downloaded 115, added 0
-#24 108.6 Progress: resolved 0, reused 0, downloaded 117, added 0
-#24 109.6 Progress: resolved 0, reused 0, downloaded 120, added 0
-#24 111.5 Progress: resolved 0, reused 0, downloaded 121, added 0
-#24 112.5 Progress: resolved 0, reused 0, downloaded 124, added 0
-#24 113.6 Progress: resolved 0, reused 0, downloaded 125, added 0
-#24 114.6 Progress: resolved 0, reused 0, downloaded 127, added 0
-#24 115.6 Progress: resolved 0, reused 0, downloaded 130, added 0
-#24 116.6 Progress: resolved 0, reused 0, downloaded 136, added 0
-#24 117.6 Progress: resolved 0, reused 0, downloaded 141, added 0
-#24 118.6 Progress: resolved 0, reused 0, downloaded 144, added 0
-#24 119.6 Progress: resolved 0, reused 0, downloaded 146, added 0
-#24 120.6 Progress: resolved 0, reused 0, downloaded 152, added 0
-#24 121.7 Progress: resolved 0, reused 0, downloaded 153, added 0
-#24 122.7 Progress: resolved 0, reused 0, downloaded 154, added 0
-#24 123.7 Progress: resolved 0, reused 0, downloaded 155, added 0
-#24 124.7 Progress: resolved 0, reused 0, downloaded 156, added 0
-#24 127.0 Progress: resolved 0, reused 0, downloaded 157, added 0
-#24 128.0 Progress: resolved 0, reused 0, downloaded 158, added 0
-#24 129.0 Progress: resolved 0, reused 0, downloaded 159, added 0
-#24 130.4 Progress: resolved 0, reused 0, downloaded 160, added 0
-#24 131.4 Progress: resolved 0, reused 0, downloaded 165, added 0
-#24 133.0 Progress: resolved 0, reused 0, downloaded 166, added 0
-#24 134.6 Progress: resolved 0, reused 0, downloaded 167, added 0
-#24 139.6 Progress: resolved 0, reused 0, downloaded 168, added 0
-#24 150.9 Progress: resolved 0, reused 0, downloaded 169, added 0
-#24 154.1 Progress: resolved 0, reused 0, downloaded 170, added 0
-#24 155.9 Progress: resolved 0, reused 0, downloaded 171, added 0
-#24 157.8 Progress: resolved 0, reused 0, downloaded 172, added 0
-#24 158.8 Progress: resolved 0, reused 0, downloaded 175, added 2
-#24 159.8 Progress: resolved 0, reused 0, downloaded 179, added 7
-#24 160.8 Progress: resolved 0, reused 0, downloaded 184, added 12
-#24 161.8 Progress: resolved 0, reused 0, downloaded 189, added 17
-#24 164.1 Progress: resolved 0, reused 0, downloaded 190, added 17
-#24 167.0 Progress: resolved 0, reused 0, downloaded 191, added 17
-#24 168.2 Progress: resolved 0, reused 0, downloaded 192, added 17
-#24 169.2 Progress: resolved 0, reused 0, downloaded 193, added 17
-#24 172.0 Progress: resolved 0, reused 0, downloaded 194, added 17
-#24 176.3 Progress: resolved 0, reused 0, downloaded 195, added 17
-#24 177.3 Progress: resolved 0, reused 0, downloaded 196, added 17
-#24 178.9 Progress: resolved 0, reused 0, downloaded 197, added 17
-#24 180.6 Progress: resolved 0, reused 0, downloaded 198, added 17
-#24 183.6 Progress: resolved 0, reused 0, downloaded 199, added 17
-#24 184.6 Progress: resolved 0, reused 0, downloaded 200, added 18
-#24 185.6 Progress: resolved 0, reused 0, downloaded 202, added 18
-#24 186.6 Progress: resolved 0, reused 0, downloaded 203, added 18
-#24 187.5 Progress: resolved 0, reused 0, downloaded 204, added 18, done
-#24 188.1 
-#24 188.1 devDependencies: skipped
-#24 188.1 
-#24 188.5 . postinstall$ node scripts/postinstall-bundled-plugins.mjs
-#24 188.6 . postinstall: Done
-#24 188.6 . prepare$ command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git config core.hooksPath git-hooks || exit 0
-#24 188.7 . prepare: Done
-#24 DONE 226.2s
+#24 1.492 Lockfile is up to date, resolution step is skipped
+#24 6.158 Packages: +18
+#24 6.158 ++++++++++++++++++
+#24 6.556 Progress: resolved 0, reused 0, downloaded 1, added 0
+#24 7.578 Progress: resolved 0, reused 0, downloaded 4, added 0
+#24 8.587 Progress: resolved 0, reused 0, downloaded 5, added 0
+#24 10.85 Progress: resolved 0, reused 0, downloaded 6, added 0
+#24 12.51 Progress: resolved 0, reused 0, downloaded 7, added 0
+#24 13.51 Progress: resolved 0, reused 0, downloaded 8, added 0
+#24 14.52 Progress: resolved 0, reused 0, downloaded 9, added 0
+#24 15.60 Progress: resolved 0, reused 0, downloaded 10, added 0
+#24 16.60 Progress: resolved 0, reused 0, downloaded 11, added 0
+#24 17.65 Progress: resolved 0, reused 0, downloaded 12, added 0
+#24 18.65 Progress: resolved 0, reused 0, downloaded 13, added 0
+#24 20.26 Progress: resolved 0, reused 0, downloaded 14, added 0
+#24 21.27 Progress: resolved 0, reused 0, downloaded 15, added 0
+#24 22.75 Progress: resolved 0, reused 0, downloaded 16, added 0
+#24 23.76 Progress: resolved 0, reused 0, downloaded 17, added 0
+#24 24.76 Progress: resolved 0, reused 0, downloaded 21, added 0
+#24 25.81 Progress: resolved 0, reused 0, downloaded 26, added 0
+#24 26.81 Progress: resolved 0, reused 0, downloaded 30, added 0
+#24 27.82 Progress: resolved 0, reused 0, downloaded 32, added 0
+#24 28.82 Progress: resolved 0, reused 0, downloaded 34, added 0
+#24 29.82 Progress: resolved 0, reused 0, downloaded 35, added 0
+#24 30.82 Progress: resolved 0, reused 0, downloaded 36, added 0
+#24 32.88 Progress: resolved 0, reused 0, downloaded 37, added 0
+#24 33.88 Progress: resolved 0, reused 0, downloaded 38, added 0
+#24 34.89 Progress: resolved 0, reused 0, downloaded 39, added 0
+#24 35.89 Progress: resolved 0, reused 0, downloaded 41, added 0
+#24 36.89 Progress: resolved 0, reused 0, downloaded 42, added 0
+#24 37.91 Progress: resolved 0, reused 0, downloaded 43, added 0
+#24 38.91 Progress: resolved 0, reused 0, downloaded 46, added 0
+#24 39.91 Progress: resolved 0, reused 0, downloaded 48, added 0
+#24 40.91 Progress: resolved 0, reused 0, downloaded 51, added 0
+#24 41.91 Progress: resolved 0, reused 0, downloaded 52, added 0
+#24 42.91 Progress: resolved 0, reused 0, downloaded 54, added 0
+#24 43.91 Progress: resolved 0, reused 0, downloaded 56, added 0
+#24 45.81 Progress: resolved 0, reused 0, downloaded 57, added 0
+#24 46.82 Progress: resolved 0, reused 0, downloaded 62, added 0
+#24 47.85 Progress: resolved 0, reused 0, downloaded 65, added 0
+#24 48.85 Progress: resolved 0, reused 0, downloaded 68, added 0
+#24 50.87 Progress: resolved 0, reused 0, downloaded 69, added 0
+#24 52.94 Progress: resolved 0, reused 0, downloaded 70, added 0
+#24 53.94 Progress: resolved 0, reused 0, downloaded 72, added 0
+#24 54.94 Progress: resolved 0, reused 0, downloaded 73, added 0
+#24 56.00 Progress: resolved 0, reused 0, downloaded 76, added 0
+#24 57.01 Progress: resolved 0, reused 0, downloaded 78, added 0
+#24 58.01 Progress: resolved 0, reused 0, downloaded 83, added 0
+#24 59.01 Progress: resolved 0, reused 0, downloaded 85, added 0
+#24 60.01 Progress: resolved 0, reused 0, downloaded 91, added 0
+#24 61.01 Progress: resolved 0, reused 0, downloaded 93, added 0
+#24 62.02 Progress: resolved 0, reused 0, downloaded 94, added 0
+#24 68.22 Progress: resolved 0, reused 0, downloaded 95, added 0
+#24 69.56 Progress: resolved 0, reused 0, downloaded 96, added 0
+#24 73.19 Progress: resolved 0, reused 0, downloaded 97, added 0
+#24 74.59 Progress: resolved 0, reused 0, downloaded 98, added 0
+#24 75.60 Progress: resolved 0, reused 0, downloaded 100, added 0
+#24 76.60 Progress: resolved 0, reused 0, downloaded 102, added 0
+#24 77.60 Progress: resolved 0, reused 0, downloaded 103, added 0
+#24 78.60 Progress: resolved 0, reused 0, downloaded 105, added 0
+#24 79.60 Progress: resolved 0, reused 0, downloaded 106, added 0
+#24 80.61 Progress: resolved 0, reused 0, downloaded 108, added 0
+#24 81.61 Progress: resolved 0, reused 0, downloaded 110, added 0
+#24 82.63 Progress: resolved 0, reused 0, downloaded 114, added 0
+#24 83.64 Progress: resolved 0, reused 0, downloaded 117, added 0
+#24 84.64 Progress: resolved 0, reused 0, downloaded 118, added 0
+#24 86.21 Progress: resolved 0, reused 0, downloaded 119, added 0
+#24 87.21 Progress: resolved 0, reused 0, downloaded 120, added 0
+#24 88.53 Progress: resolved 0, reused 0, downloaded 121, added 0
+#24 89.54 Progress: resolved 0, reused 0, downloaded 122, added 0
+#24 90.54 Progress: resolved 0, reused 0, downloaded 126, added 0
+#24 91.54 Progress: resolved 0, reused 0, downloaded 131, added 0
+#24 92.54 Progress: resolved 0, reused 0, downloaded 140, added 0
+#24 93.55 Progress: resolved 0, reused 0, downloaded 145, added 0
+#24 94.55 Progress: resolved 0, reused 0, downloaded 152, added 0
+#24 95.55 Progress: resolved 0, reused 0, downloaded 154, added 0
+#24 97.94 Progress: resolved 0, reused 0, downloaded 155, added 0
+#24 98.94 Progress: resolved 0, reused 0, downloaded 156, added 0
+#24 100.5 Progress: resolved 0, reused 0, downloaded 157, added 0
+#24 103.5 Progress: resolved 0, reused 0, downloaded 158, added 0
+#24 104.5 Progress: resolved 0, reused 0, downloaded 162, added 0
+#24 105.5 Progress: resolved 0, reused 0, downloaded 163, added 0
+#24 106.5 Progress: resolved 0, reused 0, downloaded 165, added 0
+#24 111.5 Progress: resolved 0, reused 0, downloaded 166, added 0
+#24 112.5 Progress: resolved 0, reused 0, downloaded 167, added 0
+#24 113.5 Progress: resolved 0, reused 0, downloaded 168, added 0
+#24 116.8 Progress: resolved 0, reused 0, downloaded 169, added 0
+#24 122.5 Progress: resolved 0, reused 0, downloaded 170, added 0
+#24 123.5 Progress: resolved 0, reused 0, downloaded 171, added 0
+#24 128.0 Progress: resolved 0, reused 0, downloaded 172, added 0
+#24 129.0 Progress: resolved 0, reused 0, downloaded 173, added 0
+#24 130.0 Progress: resolved 0, reused 0, downloaded 173, added 1
+#24 131.0 Progress: resolved 0, reused 0, downloaded 174, added 1
+#24 132.0 Progress: resolved 0, reused 0, downloaded 176, added 4
+#24 133.5 Progress: resolved 0, reused 0, downloaded 177, added 4
+#24 134.5 Progress: resolved 0, reused 0, downloaded 180, added 7
+#24 135.5 Progress: resolved 0, reused 0, downloaded 184, added 11
+#24 136.5 Progress: resolved 0, reused 0, downloaded 191, added 17
+#24 137.5 Progress: resolved 0, reused 0, downloaded 192, added 17
+#24 138.5 Progress: resolved 0, reused 0, downloaded 193, added 17
+#24 142.4 Progress: resolved 0, reused 0, downloaded 194, added 17
+#24 144.0 Progress: resolved 0, reused 0, downloaded 195, added 17
+#24 145.0 Progress: resolved 0, reused 0, downloaded 196, added 17
+#24 146.1 Progress: resolved 0, reused 0, downloaded 197, added 17
+#24 147.1 Progress: resolved 0, reused 0, downloaded 200, added 18
+#24 148.7 Progress: resolved 0, reused 0, downloaded 201, added 18
+#24 149.7 Progress: resolved 0, reused 0, downloaded 203, added 18
+#24 150.7 Progress: resolved 0, reused 0, downloaded 204, added 18
+#24 151.7 Progress: resolved 0, reused 0, downloaded 205, added 18
+#24 152.0 Progress: resolved 0, reused 0, downloaded 205, added 18, done
+#24 153.6 
+#24 153.6 devDependencies: skipped
+#24 153.6 
+#24 154.3 . postinstall$ node scripts/postinstall-bundled-plugins.mjs
+#24 154.7 . postinstall: Done
+#24 154.7 . prepare$ command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git config core.hooksPath git-hooks || exit 0
+#24 154.9 . prepare: Done
+#24 DONE 188.4s
 
-#25 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
+#25 [stage-5  1/15] WORKDIR /app
 #25 CACHED
 
-#26 [stage-5  1/15] WORKDIR /app
+#26 [stage-5  2/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     apt-get update &&     if [ "1" != "0" ]; then       DEBIAN_FRONTEND=noninteractive apt-get upgrade -y --no-install-recommends;     fi &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       procps hostname curl git lsof openssl
 #26 CACHED
 
 #27 [stage-5  3/15] RUN chown node:node /app
 #27 CACHED
 
 #28 [stage-5  4/15] COPY --from=runtime-assets --chown=node:node /app/dist ./dist
-#28 DONE 2.8s
+#28 DONE 5.0s
 
 #29 [stage-5  5/15] COPY --from=runtime-assets --chown=node:node /app/node_modules ./node_modules
-#29 DONE 40.4s
+#29 DONE 61.6s
 
 #30 [stage-5  6/15] COPY --from=runtime-assets --chown=node:node /app/package.json .
-#30 DONE 0.5s
+#30 DONE 0.7s
 
 #31 [stage-5  7/15] COPY --from=runtime-assets --chown=node:node /app/openclaw.mjs .
 #31 DONE 0.1s
 
 #32 [stage-5  8/15] COPY --from=runtime-assets --chown=node:node /app/extensions ./extensions
-#32 DONE 1.4s
+#32 DONE 2.6s
 
 #33 [stage-5  9/15] COPY --from=runtime-assets --chown=node:node /app/skills ./skills
-#33 DONE 0.1s
+#33 DONE 0.2s
 
 #34 [stage-5 10/15] COPY --from=runtime-assets --chown=node:node /app/docs ./docs
-#34 DONE 0.2s
+#34 DONE 0.6s
 
 #35 [stage-5 11/15] RUN install -d -m 0755 "/usr/local/share/corepack" &&     corepack enable &&     for attempt in 1 2 3 4 5; do       if corepack prepare "$(node -p "require('./package.json').packageManager")" --activate; then         break;       fi;       if [ "$attempt" -eq 5 ]; then         exit 1;       fi;       sleep $((attempt * 2));     done &&     chmod -R a+rX "/usr/local/share/corepack"
-#35 0.656 Preparing pnpm@10.32.1 for immediate activation...
-#35 DONE 3.1s
+#35 1.491 Preparing pnpm@10.32.1 for immediate activation...
+#35 DONE 5.0s
 
 #36 [stage-5 12/15] RUN --mount=type=cache,id=openclaw-bookworm-apt-cache,target=/var/cache/apt,sharing=locked     --mount=type=cache,id=openclaw-bookworm-apt-lists,target=/var/lib/apt,sharing=locked     if [ -n "" ]; then       apt-get update &&       DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ;     fi
 #36 DONE 0.3s
@@ -319,14 +295,18 @@ Build started at: Thu Apr  2 23:32:26 EDT 2026
 
 #40 exporting to image
 #40 exporting layers
-#40 exporting layers 120.1s done
-#40 exporting manifest sha256:5a8898ce1df90c4d6c009fea84a642210fe1054fdf6197448d66e977011d6dfe 0.0s done
-#40 exporting config sha256:473550a43eea75a5e7c5bb1396e02f5d9777c358218ef1f10927cdade437fe57 0.0s done
-#40 exporting attestation manifest sha256:d2ab5a22e2ab5f5782c933ce5698ea01e0829147613df03c9a32f42375c6e6e4 0.0s done
-#40 exporting manifest list sha256:c57a36dd1e8c7ba7835c687dd0d1d088062785b182852f35d40b0119ef75c82b 0.0s done
+#40 exporting layers 145.6s done
+#40 exporting manifest sha256:e99d4381a514bafb5adf0c5621327a43650ba1c3de14bb9537ef4381173f9bc8 0.1s done
+#40 exporting config sha256:79511a1cb8f65df6a44b78cf5e2e9add768ff2cee8e03ba11f164abb35c8d300
+#40 exporting config sha256:79511a1cb8f65df6a44b78cf5e2e9add768ff2cee8e03ba11f164abb35c8d300 0.2s done
+#40 exporting attestation manifest sha256:fcc2223bad2225ac26524b438b8cce3b1fafb79e3d3595f0bf1a3bfed63ebf77
+#40 exporting attestation manifest sha256:fcc2223bad2225ac26524b438b8cce3b1fafb79e3d3595f0bf1a3bfed63ebf77 0.2s done
+#40 exporting manifest list sha256:127de5e0ae515f3f6a3648124eb4a20d1987262ed657769470ccc8d08658bad5
+#40 exporting manifest list sha256:127de5e0ae515f3f6a3648124eb4a20d1987262ed657769470ccc8d08658bad5 0.1s done
+#40 naming to docker.io/library/openclaw:test-4-ui
 #40 naming to docker.io/library/openclaw:test-4-ui done
 #40 unpacking to docker.io/library/openclaw:test-4-ui
-#40 unpacking to docker.io/library/openclaw:test-4-ui 40.9s done
-#40 DONE 161.2s
-Build completed at: Thu Apr  2 23:41:49 EDT 2026
-Total time: 9m 23s
+#40 unpacking to docker.io/library/openclaw:test-4-ui 47.9s done
+#40 DONE 194.3s
+Build completed at: Sun Apr  5 00:13:56 EDT 2026
+Total time: 9m 59s
