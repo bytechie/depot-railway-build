@@ -163,7 +163,7 @@ This script:
 - Clones/resets OpenClaw to a clean state before each test
 - Applies each test case mutation
 - Runs `docker build` and records timing
-- Saves logs to `docs/performance-testing/openclaw-ai-testing/local-openclaw-ai-testing/`
+- Saves logs to `docs/performance-testing/openclaw-ai-testing/run3-local-openclaw-ai-testing-20260404/`
 - Generates a summary in `summary.md`
 
 **Run a specific test case locally:**
